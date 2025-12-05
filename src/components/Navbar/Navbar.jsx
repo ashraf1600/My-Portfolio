@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   // Detect scroll and change navbar background
   useEffect(() => {
@@ -31,18 +33,18 @@ const Navbar = () => {
   const menuItems = [
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
-    { id: "experience", label: "Experience" },
     { id: "work", label: "Projects" },
     { id: "research", label: "Research" },
     { id: "certifications", label: "Certifications" },
     { id: "education", label: "Education" },
+    { id: "contact", label: "Contact" },
   ];
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ease-out px-4 md:px-8 lg:px-12 ${isScrolled
-          ? "bg-[#050414]/80 backdrop-blur-lg shadow-lg shadow-purple-500/10"
-          : "bg-transparent"
+        ? "bg-[#050414]/80 backdrop-blur-lg shadow-lg shadow-purple-500/10"
+        : "bg-transparent"
         }`}
     >
       <div className="text-white py-5 flex justify-between items-center">
@@ -95,20 +97,14 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden">
-          {isOpen ? (
-            <FiX
-              className="text-3xl text-[#8245ec] cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            />
-          ) : (
-            <FiMenu
-              className="text-3xl text-[#8245ec] cursor-pointer"
-              onClick={() => setIsOpen(true)}
-            />
-          )}
-        </div>
+        {/* Mobile Menu Toggle */}
+        <button
+          onClick={toggleMenu}
+          className="md:hidden text-2xl text-white"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <FiX /> : <FiMenu />}
+        </button>
       </div>
 
       {/* Mobile Menu Items */}

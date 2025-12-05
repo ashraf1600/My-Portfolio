@@ -12,7 +12,7 @@ import {
 import {
   SiCodeforces,
 } from 'react-icons/si';
-import profileImage from '../../assets/pt-pf.jpg';
+import profileImage from '../../assets/enhanced-profile.png';
 
 const About = () => {
   return (
@@ -83,10 +83,15 @@ const About = () => {
               <FaEnvelope />
               Get In Touch
             </a>
-            <button className="inline-flex items-center gap-2 bg-gray-800/80 hover:bg-gray-700 backdrop-blur-sm border border-gray-700 hover:border-purple-500/50 text-gray-300 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105">
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-gray-800/80 hover:bg-gray-700 backdrop-blur-sm border border-gray-700 hover:border-purple-500/50 text-gray-300 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+            >
               <FaDownload />
-              Download CV
-            </button>
+              View Resume
+            </a>
           </div>
 
           {/* Social Links - cleaner design */}
