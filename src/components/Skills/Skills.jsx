@@ -78,7 +78,7 @@ const Skills = () => (
       {[...SkillsInfo, ...extraTechnicalSkills].map((category) => (
         <div
           key={category.title}
-          className="bg-gray-900 backdrop-blur-md px-6 py-8 w-full sm:w-[48%] rounded-2xl border border-white shadow-[0_0_20px_1px_rgba(130,69,236,0.3)]"
+          className="bg-gray-900/80 backdrop-blur-md px-6 py-8 w-full sm:w-[48%] rounded-2xl border border-gray-700/50 shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/50"
         >
           <h3 className="text-2xl sm:text-3xl font-semibold text-gray-400 mb-4 text-center">
             {category.title}
@@ -95,7 +95,7 @@ const Skills = () => (
               {category.skills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="flex items-center justify-start space-x-3 border-2 border-gray-700 rounded-xl py-2 px-3"
+                  className="flex items-center justify-start space-x-3 border-2 border-gray-700/70 rounded-xl py-2.5 px-3 transition-all duration-300 hover:border-purple-500/70 hover:bg-purple-500/10 hover:scale-105"
                 >
                   <img
                     src={skill.logo}
@@ -124,7 +124,7 @@ const Skills = () => (
           href={platform.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-gray-900 border border-white rounded-xl p-4 flex items-center space-x-4 hover:scale-105 transition-all duration-300 shadow-[0_0_20px_1px_rgba(130,69,236,0.3)]"
+          className="bg-gray-900/80 border border-gray-700/50 rounded-xl p-4 flex items-center space-x-4 hover:scale-105 hover:border-purple-500/50 transition-all duration-300 shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1"
         >
           {platform.icon}
           <div>

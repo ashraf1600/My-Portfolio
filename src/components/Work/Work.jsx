@@ -48,11 +48,10 @@ const Work = () => {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
-              selectedCategory === category
-                ? "bg-purple-600 text-white"
-                : "bg-gray-800 text-gray-300 hover:bg-purple-700"
-            }`}
+            className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${selectedCategory === category
+                ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/40 scale-105"
+                : "bg-gray-800/70 text-gray-300 hover:bg-gray-700 hover:scale-105"
+              }`}
           >
             {category}
           </button>
@@ -65,17 +64,17 @@ const Work = () => {
           <div
             key={project.id}
             onClick={() => handleOpenModal(project)}
-            className="border border-white bg-gray-900 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden cursor-pointer hover:shadow-purple-500/50 hover:-translate-y-2 transition-transform duration-300"
+            className="group border border-gray-700/50 bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden cursor-pointer hover:shadow-purple-500/40 hover:-translate-y-2 transition-all duration-300 hover:border-purple-500/50"
           >
-            <div className="p-4">
+            <div className="p-4 overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-48 object-cover rounded-xl"
+                className="w-full h-48 object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-110"
               />
             </div>
             <div className="p-6">
-              <h3 className="text-2xl font-bold text-white mb-2">
+              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">
                 {project.title}
               </h3>
               <p className="text-gray-500 mb-4 pt-4 line-clamp-3">
@@ -85,7 +84,7 @@ const Work = () => {
                 {project.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="inline-block bg-[#251f38] text-xs font-semibold text-purple-500 rounded-full px-2 py-1 mr-2 mb-2"
+                    className="inline-block bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-xs font-semibold text-purple-400 rounded-full px-3 py-1 mr-2 mb-2 hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-200"
                   >
                     {tag}
                   </span>
@@ -98,8 +97,8 @@ const Work = () => {
 
       {/* Modal Container */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4">
-          <div className="bg-gray-900 rounded-xl shadow-2xl lg:w-full w-[90%] max-w-3xl overflow-hidden relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+          <div className="bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-purple-500/20 lg:w-full w-[90%] max-w-3xl overflow-hidden relative border border-purple-500/30">
             <div className="flex justify-end p-4">
               <button
                 onClick={handleCloseModal}

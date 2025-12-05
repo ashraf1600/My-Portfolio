@@ -1,71 +1,62 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
-  // Smooth scroll function
-  const handleScroll = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+    const handleScroll = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
-  return (
-    <footer className="text-white py-8 px-[12vw] md:px-[7vw] lg:px-[20vw]">
-      <div className="container mx-auto text-center">
-        {/* Name / Logo */}
-        <h2 className="text-xl font-semibold text-purple-500">Ashraful Islam</h2>
+    return (
+        <footer className="text-white py-8 px-[12vw] md:px-[7vw] lg:px-[20vw]">
+            <div className="container mx-auto text-center">
+                <h2 className="text-xl font-semibold text-purple-500">Ashraful Islam</h2>
 
-        {/* Navigation Links - Responsive */}
-        <nav className="flex flex-wrap justify-center space-x-4 sm:space-x-6 mt-4">
-          {[
-            { name: "About", id: "about" },
-            { name: "Skills", id: "skills" },
-            { name: "Experience", id: "experience" },
-            { name: "Projects", id: "work" },
-            { name: "Research", id: "research" },
-            { name: "Certifications", id: "certifications" },
-            { name: "Education", id: "education" },
-          ].map((item, index) => (
-            <button
-              key={index}
-              onClick={() => handleScroll(item.id)}
-              className="hover:text-purple-500 text-sm sm:text-base my-1"
-            >
-              {item.name}
-            </button>
-          ))}
-        </nav>
+                <nav className="flex flex-wrap justify-center space-x-4 sm:space-x-6 mt-4">
+                    {[
+                        { name: "About", id: "about" },
+                        { name: "Skills", id: "skills" },
+                        { name: "Experience", id: "experience" },
+                        { name: "Projects", id: "work" },
+                        { name: "Research", id: "research" },
+                        { name: "Certifications", id: "certifications" },
+                        { name: "Education", id: "education" },
+                    ].map((item, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handleScroll(item.id)}
+                            className="hover:text-purple-500 text-sm sm:text-base my-1 transition-all duration-300 hover:scale-105"
+                        >
+                            {item.name}
+                        </button>
+                    ))}
+                </nav>
 
-        {/* Social Media Icons - Responsive */}
-        <div className="flex flex-wrap justify-center space-x-4 mt-6">
-          {[
-            { icon: <FaFacebook />, link: "https://www.facebook.com/ashraful.islam.924584" },
-            // { icon: <FaTwitter />, link: "https://twitter.com/CodingMaster6?s=09" },
-            { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/ashraful-islam-a31268226/" },
-            // { icon: <FaInstagram />, link: "https://www.instagram.com/coding_.master/" },
-            // { icon: <FaYoutube />, link: "https://www.youtube.com/codingmasteryt" },
+                <div className="flex flex-wrap justify-center space-x-4 mt-6">
+                    {[
+                        { icon: <FaFacebook />, link: "https://www.facebook.com/ashraful.islam.924584" },
+                        { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/ashraful-islam-a31268226/" },
+                    ].map((item, index) => (
+                        <a
+                            key={index}
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xl hover:text-purple-500 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
+                        >
+                            {item.icon}
+                        </a>
+                    ))}
+                </div>
 
-          ].map((item, index) => (
-            <a
-              key={index}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl hover:text-purple-500 transition-transform transform hover:scale-110"
-            >
-              {item.icon}
-            </a>
-          ))}
-        </div>
-
-        {/* Copyright Text */}
-        <p className="text-sm text-gray-400 mt-6">
-          © 2025 Ashraful Islam. All rights reserved.
-        </p>
-      </div>
-    </footer>
-  );
+                <p className="text-sm text-gray-400 mt-6">
+                    © 2025 Ashraful Islam. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    );
 };
 
 export default Footer;

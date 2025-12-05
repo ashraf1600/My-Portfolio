@@ -50,8 +50,8 @@ const About = () => {
               text={[
                 'CSE Student',
                 'Problem Solver',
-                'AI Enthusiast',
-                'Full-Stack Developer',
+                'AI Engineer Aspirant',
+                'Django Developer',
               ]}
               speed={100}
               eraseSpeed={50}
@@ -78,12 +78,12 @@ const About = () => {
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/50 hover:scale-105"
             >
               <FaEnvelope />
               Get In Touch
             </a>
-            <button className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-300 hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300">
+            <button className="inline-flex items-center gap-2 bg-gray-800/80 hover:bg-gray-700 backdrop-blur-sm border border-gray-700 hover:border-purple-500/50 text-gray-300 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105">
               <FaDownload />
               Download CV
             </button>
@@ -95,46 +95,46 @@ const About = () => {
               href="https://www.linkedin.com/in/ashraful-islam-b9266b235/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center bg-gray-800/50 hover:bg-purple-600 text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500"
+              className="w-12 h-12 flex items-center justify-center bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
               aria-label="LinkedIn"
             >
-              <FaLinkedin size={18} />
+              <FaLinkedin size={20} />
             </a>
             <a
               href="https://www.facebook.com/ashrafullislamm"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center bg-gray-800/50 hover:bg-purple-600 text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500"
+              className="w-12 h-12 flex items-center justify-center bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
               aria-label="Facebook"
             >
-              <FaFacebook size={18} />
+              <FaFacebook size={20} />
             </a>
             <a
               href="https://github.com/ashraf1600"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center bg-gray-800/50 hover:bg-purple-600 text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500"
+              className="w-12 h-12 flex items-center justify-center bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
               aria-label="GitHub"
             >
-              <FaGithub size={18} />
+              <FaGithub size={20} />
             </a>
             <a
               href="https://www.kaggle.com/ashrafulislam1600"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center bg-gray-800/50 hover:bg-purple-600 text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500"
+              className="w-12 h-12 flex items-center justify-center bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
               aria-label="Kaggle"
             >
-              <FaKaggle size={18} />
+              <FaKaggle size={20} />
             </a>
             <a
               href="https://codeforces.com/profile/ashraf1600"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center bg-gray-800/50 hover:bg-purple-600 text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500"
+              className="w-12 h-12 flex items-center justify-center bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
               aria-label="Codeforces"
             >
-              <SiCodeforces size={18} />
+              <SiCodeforces size={20} />
             </a>
           </div>
         </div>
@@ -153,19 +153,19 @@ const About = () => {
               <div className="absolute -inset-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition duration-700"></div>
 
               {/* Main image container - cleaner border */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] rounded-full overflow-hidden border-2 border-purple-500/20 shadow-xl">
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] rounded-full overflow-hidden border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20">
                 <img
                   src={profileImage}
                   alt="Ashraful Islam"
-                  className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                 />
                 {/* Subtle overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
               {/* Status badge - more professional */}
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gray-900 border border-purple-500/30 text-gray-300 px-5 py-2 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm border border-purple-500/40 text-gray-300 px-6 py-2.5 rounded-full shadow-xl shadow-purple-500/20 flex items-center gap-2 text-sm font-medium">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
                 Available for work
               </div>
             </div>
