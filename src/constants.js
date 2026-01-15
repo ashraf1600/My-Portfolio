@@ -206,12 +206,12 @@ export const education = [
 export const projects = [
   {
     id: 0,
-    title: "GitHub Profile Detective",
-    description: "A powerful React-based web application that allows users to search and view comprehensive GitHub profiles. Features include repository listings, follower/following counts, user stats, and an intuitive UI powered by the GitHub API.",
+    title: "MultiMart - An open marketplace",
+    description: "A dynamic e-commerce web application built with Django and Bootstrap. Features include product browsing, detailed views, user authentication, shopping cart functionality, and a seamless checkout process, providing users with an intuitive online shopping experience.",
     image: githubdetLogo,
-    tags: ["HTML", "CSS", "JavaScript", "React JS", "API"],
-    github: "https://github.com/ashraf1600/GitHub-Profile-Search-App-Using-React-JS",
-    webapp: "https://githubprofiledetective.netlify.app/",
+    tags: [ "Django","HTML", "CSS", "Bootstrap"],
+    github: "https://github.com/ashraf1600/MultiMart",
+    webapp: "https://github.com/ashraf1600/MultiMart",
     category: "Web Development",
   },
   {
