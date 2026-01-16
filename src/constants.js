@@ -232,7 +232,7 @@ export const projects = [
     tags: ["React JS", "API", "HTML", "CSS", "JavaScript"],
     github: "https://github.com/ashraf1600/Movie-Recommendation-App",
     webapp: "https://movie-recommendation-app-jet.vercel.app/",
-    category: "Machine Learning",
+    category: "Machine Learninggg",
   },
   {
     id: 3,
