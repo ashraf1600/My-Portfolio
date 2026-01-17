@@ -69,7 +69,7 @@ npm run build
 
 ## 🌟 About
 
-This portfolio showcases my work as a Computer Science student specializing in Machine Learning, AI, and Full-Stack Development.
+This portfolio showcases my work as an AI Engineer Aspirant and Computer Science student specializing in Machine Learning, Deep Learning, MLOps, and Full-Stack Development. Built with modern technologies and minimal professional design.
 
 Created with ❤️ by **Ashraful Islam**
 
