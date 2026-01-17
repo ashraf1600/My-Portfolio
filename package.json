@@ -20,6 +20,14 @@
     "react-toastify": "^11.0.3",
     "react-typing-effect": "^2.0.5"
   },
+  "keywords": [
+    "portfolio",
+    "react",
+    "ai-engineer",
+    "machine-learning",
+    "full-stack",
+    "web-development"
+  ],
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@types/react": "^18.3.18",
