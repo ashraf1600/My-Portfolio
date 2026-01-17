@@ -6,48 +6,36 @@ export default {
   ],
   theme: {
     extend: {
-      keyframes: {
-        blob: {
-          '0%': { transform: 'scale(1)' },
-          '33%': { transform: 'scale(1.2)' },
-          '66%': { transform: 'scale(0.8)' },
-          '100%': { transform: 'scale(1)' },
+      colors: {
+        primary: {
+          DEFAULT: '#3b82f6', // Blue 500
+          dark: '#2563eb',    // Blue 600
+          light: '#60a5fa',   // Blue 400
         },
+        background: {
+          DEFAULT: '#0f172a', // Slate 900
+          card: '#1e293b',    // Slate 800
+          hover: '#334155',   // Slate 700
+        },
+      },
+      keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
         slideUp: {
-          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        scaleIn: {
-          '0%': { opacity: '0', transform: 'scale(0.95)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
-        },
-        glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(130, 69, 236, 0.3)' },
-          '50%': { boxShadow: '0 0 30px rgba(130, 69, 236, 0.6)' },
         },
       },
       animation: {
-        blob: 'blob 10s infinite',
-        fadeIn: 'fadeIn 0.6s ease-out',
-        slideUp: 'slideUp 0.6s ease-out',
-        scaleIn: 'scaleIn 0.5s ease-out',
-        glow: 'glow 2s ease-in-out infinite',
-      },
-      backgroundImage: {
-        'skills-gradient': 'linear-gradient(38.73deg, rgba(204, 0, 187, 0.15) 0%, rgba(201, 32, 184, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%)',
-      },
-      transitionTimingFunction: {
-        'premium': 'cubic-bezier(0.4, 0, 0.2, 1)',
-        'smooth': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        fadeIn: 'fadeIn 0.5s ease-out',
+        slideUp: 'slideUp 0.5s ease-out',
       },
       boxShadow: {
-        'purple-glow': '0 0 20px rgba(130, 69, 236, 0.4), 0 0 40px rgba(130, 69, 236, 0.2)',
-        'pink-glow': '0 0 20px rgba(236, 72, 153, 0.4), 0 0 40px rgba(236, 72, 153, 0.2)',
-        'premium': '0 10px 40px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)',
+        'minimal': '0 2px 8px rgba(0, 0, 0, 0.2)',
+        'minimal-hover': '0 4px 12px rgba(0, 0, 0, 0.3)',
+        'accent': '0 2px 8px rgba(59, 130, 246, 0.15)',
       },
     },
   },
