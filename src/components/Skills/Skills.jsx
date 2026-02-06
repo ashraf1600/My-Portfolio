@@ -9,19 +9,19 @@ import {
   SiCodechef,
 } from "react-icons/si";
 
-const extraTechnicalSkills = [
-  {
-    title: "Data Science / ML / AI",
-    skills: [
-      { name: "Pandas", logo: "/assets/logos/pandas.png" },
-      { name: "NumPy", logo: "/assets/logos/numpy.png" },
-      { name: "Scikit-Learn", logo: "/assets/logos/sklearn.png" },
-      { name: "Matplotlib", logo: "/assets/logos/matplotlib.png" },
-      { name: "TensorFlow", logo: "/assets/logos/tensorflow.png" },
-      { name: "PyTorch", logo: "/assets/logos/pytorch.png" },
-    ],
-  },
-];
+// const extraTechnicalSkills = [
+//   {
+//     title: "Data Science / ML / AI",
+//     skills: [
+//       { name: "Pandas", logo: "/assets/logos/pandas.png" },
+//       { name: "NumPy", logo: "/assets/logos/numpy.png" },
+//       { name: "Scikit-Learn", logo: "/assets/logos/sklearn.png" },
+//       { name: "Matplotlib", logo: "/assets/logos/matplotlib.png" },
+//       { name: "TensorFlow", logo: "/assets/logos/tensorflow.png" },
+//       { name: "PyTorch", logo: "/assets/logos/pytorch.png" },
+//     ],
+//   },
+// ];
 
 const problemSolvingPlatforms = [
   {
@@ -75,7 +75,7 @@ const Skills = () => (
       Technical Skills
     </div>
     <div className="flex flex-wrap gap-6 justify-between mb-16">
-      {[...SkillsInfo, ...extraTechnicalSkills].map((category) => (
+      {[...SkillsInfo,].map((category) => (
         <div
           key={category.title}
           className="bg-gray-900/80 backdrop-blur-md px-6 py-8 w-full sm:w-[48%] rounded-2xl border border-gray-700/50 shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/50"
