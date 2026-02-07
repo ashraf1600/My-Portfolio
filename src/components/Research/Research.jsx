@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { research } from "../../constants";
 import { FaExternalLinkAlt, FaFilePdf } from "react-icons/fa";
 
-const categories = ["All", "Machine Learning", "Computer Vision", "Software Engineering", "Healthcare AI"];
+const categories = ["All", "Machine Learning", "Deep Learning ", "Image Processing", "Healthcare AI"];
 
 const Research = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
