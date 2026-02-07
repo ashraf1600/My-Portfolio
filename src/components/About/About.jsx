@@ -12,7 +12,7 @@ import {
 import {
   SiCodeforces,
 } from 'react-icons/si';
-import profileImage from '../../assets/enhanced-profile.png';
+import profileImage from '../../assets/dp.png';
 
 const About = () => {
   return (
