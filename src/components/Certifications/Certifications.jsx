@@ -24,74 +24,75 @@ const Certifications = () => {
                 <div className="w-24 h-1 bg-purple-500 mx-auto rounded-full"></div>
             </div>
 
-            {/* Compact Grid - 3 columns on desktop */}
-            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                {certifications.map((cert) => (
-                    <div
-                        key={cert.id}
-                        className="group relative bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/20"
+            {/* Attractive List */}
+            <ol className="space-y-6 max-w-4xl mx-auto">
+                {certifications.map((cert, index) => (
+                    <li 
+                        key={cert.id} 
+                        className="group flex gap-5 items-start pb-6 border-b border-gray-800/50 hover:border-purple-500/30 transition-colors duration-300 last:border-b-0"
                     >
-                        {/* Minimal Header */}
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <img
-                                    src={cert.logo}
-                                    alt={cert.organization}
-                                    className="w-6 h-6 object-contain"
-                                />
+                        {/* Number Circle */}
+                        <div className="relative flex-shrink-0">
+                            <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-purple-500/60 transition-all duration-300">
+                                <span className="text-white font-bold text-lg">{index + 1}</span>
                             </div>
-                            <div className="flex-1 min-w-0">
-                                <h3 className="text-sm font-bold text-white truncate group-hover:text-purple-400 transition">
-                                    {cert.title}
-                                </h3>
-                                <p className="text-xs text-gray-400 truncate">{cert.organization}</p>
-                            </div>
+                            <div className="absolute inset-0 rounded-full bg-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10"></div>
                         </div>
 
-                        {/* Skills - Compact */}
-                        <div className="flex flex-wrap gap-1.5 mb-3">
-                            {cert.skills.slice(0, 3).map((skill, index) => (
-                                <span
-                                    key={index}
-                                    className="bg-purple-500/10 text-[10px] font-medium text-purple-300 rounded px-2 py-0.5"
+                        <div className="flex-1 min-w-0 py-1">
+                            {/* Title & Organization */}
+                            <div className="flex items-baseline gap-3 flex-wrap mb-2">
+                                <button
+                                    onClick={() => openModal(cert)}
+                                    className="text-lg font-bold text-white hover:text-purple-300 cursor-pointer transition group-hover:text-purple-300 duration-300"
                                 >
-                                    {skill}
-                                </span>
-                            ))}
-                            {cert.skills.length > 3 && (
-                                <span className="text-[10px] text-gray-500">+{cert.skills.length - 3}</span>
-                            )}
-                        </div>
-
-                        {/* Action Buttons */}
-                        <div className="flex gap-2 mb-3">
-                            <button
-                                onClick={() => openModal(cert)}
-                                className="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2 px-3 rounded-lg transition"
-                            >
-                                See Certificate
-                            </button>
-                        </div>
-
-                        {/* Bottom Row - Date & Link */}
-                        <div className="flex items-center justify-between pt-3 border-t border-gray-800">
-                            <div className="flex items-center gap-1.5 text-xs text-gray-400">
-                                <FaCertificate className="text-yellow-500 text-[10px]" />
-                                <span>{cert.date}</span>
+                                    {cert.title}
+                                </button>
+                                <span className="text-purple-500 font-semibold text-sm">{cert.organization}</span>
                             </div>
+
+                            {/* Date & Meta */}
+                            <div className="flex items-center gap-4 mb-3 text-sm text-gray-400 flex-wrap">
+                                <div className="flex items-center gap-1.5">
+                                    <FaCertificate className="text-yellow-500 text-xs" />
+                                    <span>{cert.date}</span>
+                                </div>
+                                {cert.expiryDate && (
+                                    <span className="text-gray-500">• Expires: {cert.expiryDate}</span>
+                                )}
+                            </div>
+
+                            {/* Skills */}
+                            <div className="flex flex-wrap gap-2 mb-3">
+                                {cert.skills.slice(0, 5).map((skill, idx) => (
+                                    <span
+                                        key={idx}
+                                        className="bg-purple-500/20 text-purple-300 text-xs font-medium px-3 py-1 rounded-full border border-purple-500/40 group-hover:border-purple-500/70 group-hover:bg-purple-500/30 transition-all duration-300"
+                                    >
+                                        {skill}
+                                    </span>
+                                ))}
+                                {cert.skills.length > 5 && (
+                                    <span className="text-gray-500 text-xs px-2 py-1">
+                                        +{cert.skills.length - 5}
+                                    </span>
+                                )}
+                            </div>
+
+                            {/* Verify Link */}
                             <a
                                 href={cert.credentialUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 text-purple-400 hover:text-purple-300 text-xs font-semibold transition"
+                                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-200 font-semibold text-sm transition-colors duration-300"
                             >
-                                <span>Verify</span>
-                                <FaExternalLinkAlt size={10} />
+                                <span>View Credential</span>
+                                <FaExternalLinkAlt size={12} className="group-hover:translate-x-0.5 transition-transform" />
                             </a>
                         </div>
-                    </div>
+                    </li>
                 ))}
-            </div>
+            </ol>
 
             {/* Certificate Modal */}
             {selectedCert && (

@@ -487,6 +487,24 @@ export const research = [
     link: "https://example.com/research/traffic-prediction",
     category: "Deep Learning",
   },
+{
+  id: 2,
+  title: "Towards Robust Counterfeit Detection of Bangladesh Currency Using Vision Transformer Models",
+  authors: "Ashraf Ahmed, Dr. Mohammad Hasan",
+  conference: "Not Submitted Yet",
+  year: 2026,
+  status: "In Progress",
+  tags: [
+    "Vision Transformer",
+    "Counterfeit Detection",
+    "Banknote Authentication",
+    "Deep Learning",
+    "Computer Vision",
+  ],
+  link: "https://example.com/research/bangladesh-currency-counterfeit-vit",
+  category: "Deep Learning"
+}
+
  
 ];
 
