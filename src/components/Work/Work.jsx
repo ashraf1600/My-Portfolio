@@ -3,10 +3,8 @@ import { projects } from "../../constants";
 
 const categories = [
   "All",
-  "Academic",
+  "Academic Project",
   "Web Development",
-  "Data Science",
-  "Data Analytics",
   "Machine Learning",
 ];
 
@@ -25,7 +23,11 @@ const Work = () => {
   const filteredProjects =
     selectedCategory === "All"
       ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+      : projects.filter((project) =>
+        Array.isArray(project.category)
+          ? project.category.includes(selectedCategory)
+          : project.category === selectedCategory
+      );
 
   return (
     <section
@@ -49,8 +51,8 @@ const Work = () => {
             key={category}
             onClick={() => setSelectedCategory(category)}
             className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${selectedCategory === category
-                ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/40 scale-105"
-                : "bg-gray-800/70 text-gray-300 hover:bg-gray-700 hover:scale-105"
+              ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/40 scale-105"
+              : "bg-gray-800/70 text-gray-300 hover:bg-gray-700 hover:scale-105"
               }`}
           >
             {category}
