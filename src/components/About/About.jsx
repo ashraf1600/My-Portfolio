@@ -97,7 +97,7 @@ const About = () => {
           {/* Social Links - cleaner design */}
           <div className="flex gap-3 justify-center lg:justify-start">
             <a
-              href="https://www.linkedin.com/in/ashraful-islam-b9266b235/"
+              href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 flex items-center justify-center bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
@@ -106,7 +106,7 @@ const About = () => {
               <FaLinkedin size={20} />
             </a>
             <a
-              href="https://www.facebook.com/ashrafullislamm"
+              href="https://www.facebook.com/share/19gm9nUyqU/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 flex items-center justify-center bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
@@ -124,7 +124,7 @@ const About = () => {
               <FaGithub size={20} />
             </a>
             <a
-              href="https://www.kaggle.com/ashrafulislam1600"
+              href="https://www.kaggle.com/ashraf1600"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 flex items-center justify-center bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
