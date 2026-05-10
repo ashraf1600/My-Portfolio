@@ -236,7 +236,7 @@ export const research = [
     authors: "Ashraf Ahmed, Dr. Mohammad Hasan",
     conference: "Not Submitted Yet",
     year: 2026,
-    status: "In Progress",
+    status: "Accepted",
     tags: [
       "Vision Transformer",
       "Counterfeit Detection",
