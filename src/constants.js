@@ -234,7 +234,7 @@ export const research = [
     id: 2,
     title: "Towards Robust Counterfeit Detection of Bangladesh Currency Using Vision Transformer Models",
     authors: "Ashraf Ahmed, Dr. Mohammad Hasan",
-    conference: "Not Submitted Yet",
+    conference: " Submitted Yet",
     year: 2026,
     status: "Accepted",
     tags: [
