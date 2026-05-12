@@ -232,7 +232,7 @@ export const research = [
   },
   {
     id: 2,
-    title: "Towards Robust Counterfeit Detection of Bangladesh Currency Using Vision Transformer Models",
+    title: "Vision Transformer-Based Detection of Counterfeit Bangladeshi Banknotes Using the DeiT-Tiny Architecture",
     authors: "Ashraful Islam , Dr. Mahfuzulhoq Chowdhury, Towihdul Islam",
     conference: " Submitted ",
     year: 2026,
@@ -246,7 +246,47 @@ export const research = [
     ],
     link: "https://example.com/research/bangladesh-currency-counterfeit-vit",
     category: "Deep Learning"
-  }
+  },
+  {
+  id: 3,
+  title: "A Double Layer Stacking Classifier Based Explainable Tax Evasion Fraud Prediction with Optuna and SMOTE-Tomek",
+  authors: "Dr. Mahfuzulhoq Chowdhury,Saklain Ahmed, Ashraful Islam",
+  conference: "1st International Conference on Next-Generation Electrical & Electronics, Computer Systems, and Technologies (iCONEECT 2026)",
+  year: 2026,
+  status: "Submitted",
+  tags: [
+    "Tax Fraud Detection",
+    "Explainable AI",
+    "Stacking Classifier",
+    "SMOTE-Tomek",
+    "Optuna",
+    "SHAP",
+    "Machine Learning",
+    "Data Engineering"
+  ],
+  link: "https://example.com/research/tax-fraud-prediction-stacking",
+  category: "Machine Learning"
+},
+{
+  id: 4,
+  title: "A Traffic Rules Violation Prediction Scheme Based on Hybrid Stacking Ensemble Classifier and SHAP Analysis",
+  authors: "Dr. Mahfuzul Hoq Chowdhury, Oarisa Rebayet, Ifath Jeba Chowdhury, Ashraf-ul-Islam, Isnat Mehrin Sami, Snaholata Mondal",
+  conference: "2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence & Networking (QPAIN)",
+  year: 2026,
+  status: "Copyright Confirmed",
+  tags: [
+    "Traffic Violation Prediction",
+    "Stacking Ensemble",
+    "SHAP Analysis",
+    "Explainable AI",
+    "Machine Learning",
+    "Traffic Analytics",
+    "Hybrid Classifier",
+    "Deep Learning"
+  ],
+  link: "https://example.com/research/traffic-rules-violation-prediction",
+  category: "Machine Learning"
+}
 
 
 ];
