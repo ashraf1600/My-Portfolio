@@ -23,7 +23,8 @@ import pytorch from './assets/tech_logo/pytorch.png';
 import cppLogo from './assets/tech_logo/cpp.png';
 import cLogo from './assets/tech_logo/c.png';
 import nodejsLogo from './assets/tech_logo/nodejs.png';
-//  Machine Learning Data Analysis
+
+//  Machine Learning / Data Analysis
 import scikitlearnLogo from './assets/tech_logo/sklearn.png';
 import numpylogo from './assets/tech_logo/numpy.png';
 import pandasLogo from './assets/tech_logo/pandas.png';
@@ -31,22 +32,26 @@ import matplotlibLogo from './assets/tech_logo/matplotlib.png';
 import seabornLogo from './assets/tech_logo/seaborn.png';
 import jupyterLogo from './assets/tech_logo/jupyter.png';
 
+// Deep Learning & GenAI (previously missing / reusing pythonLogo as placeholder)
+import tensorflowLogo from './assets/tech_logo/tensorflow.svg';
+import langchainLogo from './assets/tech_logo/langchain.svg';
+import langgraphLogo from './assets/tech_logo/langgraph.svg';
+
+// Backend (previously missing / reusing pythonLogo as placeholder)
+import djangoLogo from './assets/tech_logo/django.svg';
+import flaskLogo from './assets/tech_logo/flask.svg';
+import expressjsLogo from './assets/tech_logo/express.svg';
+
+// Dev Tools (previously reusing pythonLogo as placeholder)
+import streamlitLogo from './assets/tech_logo/streamlit.svg';
 
 // Experience Section Logo's
 import webverseLogo from './assets/company_logo/webverse_logo.png';
 
 // Education Section Logo's
-
 import cuetLogo from './assets/education_logo/Cover.png';
 
-
 // Project Section Logo's
-// import cmLogo from './assets/work_logo/cm.png';
-// import csprepLogo from './assets/work_logo/cs_prep.png';
-// import movierecLogo from './assets/work_logo/movie_rec.png';
-// import taskremLogo from './assets/work_logo/task_rem.png';
-// import npmLogo from './assets/work_logo/npm.png';
-
 import CUET_Hos from './assets/work_logo/CUET_Hos.png';
 import CUET_Peer from './assets/work_logo/CUET_Peer.png';
 import Multi from './assets/work_logo/Multi.png';
@@ -59,23 +64,21 @@ export const SkillsInfo = [
   {
     title: 'Machine Learning & Data Analysis',
     skills: [
-
-
       { name: 'Scikit-Learn', logo: scikitlearnLogo },
       { name: 'NumPy', logo: numpylogo },
       { name: 'Pandas', logo: pandasLogo },
       { name: 'Matplotlib', logo: matplotlibLogo },
       { name: 'Seaborn', logo: seabornLogo },
       { name: 'Jupyter', logo: jupyterLogo },
-
-
     ],
   },
   {
-    title: 'Deep Learning & Artificial Intelligence',
+    title: 'Deep Learning & Generative AI',
     skills: [
       { name: 'PyTorch', logo: pytorch },
-
+      { name: 'TensorFlow', logo: tensorflowLogo },
+      { name: 'LangChain', logo: langchainLogo },
+      { name: 'LangGraph', logo: langgraphLogo },
     ],
   },
   {
@@ -85,15 +88,16 @@ export const SkillsInfo = [
       { name: 'C++', logo: cppLogo },
       { name: 'C', logo: cLogo },
       { name: 'JavaScript', logo: javascriptLogo },
+      { name: 'C#', logo: csharpLogo },
     ],
   },
   {
     title: 'Backend & Databases',
     skills: [
-      { name: 'Django', logo: pythonLogo },
-      { name: 'Flask', logo: pythonLogo },
-      { name: 'Node JS', logo: nodejsLogo },
-      // { name: 'Express JS', logo: expressjsLogo },
+      { name: 'Django & DRF', logo: djangoLogo },
+      { name: 'Flask', logo: flaskLogo },
+      { name: 'Node.js', logo: nodejsLogo },
+      { name: 'Express.js', logo: expressjsLogo },
       { name: 'MongoDB', logo: mongodbLogo },
       { name: 'PostgreSQL', logo: postgreLogo },
       { name: 'MySQL', logo: mysqlLogo },
@@ -102,7 +106,7 @@ export const SkillsInfo = [
   {
     title: 'Frontend Development',
     skills: [
-      { name: 'React JS', logo: reactjsLogo },
+      { name: 'React.js', logo: reactjsLogo },
       { name: 'JavaScript', logo: javascriptLogo },
       { name: 'HTML', logo: htmlLogo },
       { name: 'CSS', logo: cssLogo },
@@ -117,8 +121,9 @@ export const SkillsInfo = [
       { name: 'GitHub', logo: githubLogo },
       { name: 'VS Code', logo: vscodeLogo },
       { name: 'Postman', logo: postmanLogo },
-      { name: 'Streamlit', logo: pythonLogo },
+      { name: 'Streamlit', logo: streamlitLogo },
       { name: 'Vercel', logo: vercelLogo },
+      { name: 'Netlify', logo: netlifyLogo },
     ],
   },
 ];
@@ -128,17 +133,14 @@ export const experiences = [
 ];
 
 export const education = [
-
   {
     id: 0,
     img: cuetLogo,
     school: "Chittagong University of Engineering & Technology (CUET)",
     date: "January 2023 - Present",
-    desc: "I’m pursuing a B.Sc. in Computer Science and Engineering at CUET, Chittagong. My coursework covers Data Structures, Algorithms, Web Development, Machine Learning, and AI. I’ve gained practical experience through coding contests, hackathons, and collaborative projects..",
+    desc: "I'm pursuing a B.Sc. in Computer Science and Engineering at CUET, Chittagong. My coursework covers Data Structures, Algorithms, Web Development, Machine Learning, and AI. I've gained practical experience through coding contests, hackathons, and collaborative projects.",
     degree: "B.Sc. in Computer Science and Engineering",
     type: "University",
-
-
   },
 ];
 
@@ -222,7 +224,7 @@ export const research = [
   {
     id: 1,
     title: "Unveiling Facial Forensic Traces: A Hybrid Xception-Vision Transformer Framework for Robust Morphing Attack Detection with 10-Channel Feature Fusion",
-    authors: "Ashraf Ahmed, Dr. Mohammad Hasan",
+    authors: "Ashraful Islam, Towhidul Islam, Dr. Mahfuzulhoq Chowdhury",
     conference: "Not Submitted yet",
     year: 2026,
     status: "In Progress",
@@ -233,8 +235,8 @@ export const research = [
   {
     id: 2,
     title: "Vision Transformer-Based Detection of Counterfeit Bangladeshi Banknotes Using the DeiT-Tiny Architecture",
-    authors: "Ashraful Islam , Dr. Mahfuzulhoq Chowdhury, Towihdul Islam",
-    conference: " Submitted ",
+    authors: "Ashraful Islam, Dr. Mahfuzulhoq Chowdhury, Towhidul Islam",
+    conference: "INTERNATIONAL CONFERENCE ON CIRCUIT POWER & COMPUTING TECHNOLOGIES (ICCPCT-2026)",
     year: 2026,
     status: "Accepted",
     tags: [
@@ -245,50 +247,48 @@ export const research = [
       "Computer Vision",
     ],
     link: "https://example.com/research/bangladesh-currency-counterfeit-vit",
-    category: "Deep Learning"
+    category: "Deep Learning",
   },
   {
-  id: 3,
-  title: "A Double Layer Stacking Classifier Based Explainable Tax Evasion Fraud Prediction with Optuna and SMOTE-Tomek",
-  authors: "Dr. Mahfuzulhoq Chowdhury,Saklain Ahmed, Ashraful Islam",
-  conference: "1st International Conference on Next-Generation Electrical & Electronics, Computer Systems, and Technologies (iCONEECT 2026)",
-  year: 2026,
-  status: "Submitted",
-  tags: [
-    "Tax Fraud Detection",
-    "Explainable AI",
-    "Stacking Classifier",
-    "SMOTE-Tomek",
-    "Optuna",
-    "SHAP",
-    "Machine Learning",
-    "Data Engineering"
-  ],
-  link: "https://example.com/research/tax-fraud-prediction-stacking",
-  category: "Machine Learning"
-},
-{
-  id: 4,
-  title: "A Traffic Rules Violation Prediction Scheme Based on Hybrid Stacking Ensemble Classifier and SHAP Analysis",
-  authors: "Dr. Mahfuzul Hoq Chowdhury, Oarisa Rebayet, Ifath Jeba Chowdhury, Ashraf-ul-Islam, Isnat Mehrin Sami, Snaholata Mondal",
-  conference: "2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence & Networking (QPAIN)",
-  year: 2026,
-  status: "Copyright Confirmed",
-  tags: [
-    "Traffic Violation Prediction",
-    "Stacking Ensemble",
-    "SHAP Analysis",
-    "Explainable AI",
-    "Machine Learning",
-    "Traffic Analytics",
-    "Hybrid Classifier",
-    "Deep Learning"
-  ],
-  link: "https://example.com/research/traffic-rules-violation-prediction",
-  category: "Machine Learning"
-}
-
-
+    id: 3,
+    title: "A Double Layer Stacking Classifier Based Explainable Tax Evasion Fraud Prediction with Optuna and SMOTE-Tomek",
+    authors: "Dr. Mahfuzulhoq Chowdhury, Saklain Ahmed, Ashraful Islam",
+    conference: "1st International Conference on Next-Generation Electrical & Electronics, Computer Systems, and Technologies (iCONEECT 2026)",
+    year: 2026,
+    status: "Submitted",
+    tags: [
+      "Tax Fraud Detection",
+      "Explainable AI",
+      "Stacking Classifier",
+      "SMOTE-Tomek",
+      "Optuna",
+      "SHAP",
+      "Machine Learning",
+      "Data Engineering",
+    ],
+    link: "https://example.com/research/tax-fraud-prediction-stacking",
+    category: "Machine Learning",
+  },
+  {
+    id: 4,
+    title: "A Traffic Rules Violation Prediction Scheme Based on Hybrid Stacking Ensemble Classifier and SHAP Analysis",
+    authors: "Dr. Mahfuzul Hoq Chowdhury, Oarisa Rebayet, Ifath Jeba Chowdhury, Ashraf-ul-Islam, Isnat Mehrin Sami, Snaholata Mondal",
+    conference: "2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence & Networking (QPAIN)",
+    year: 2026,
+    status: "Copyright Confirmed",
+    tags: [
+      "Traffic Violation Prediction",
+      "Stacking Ensemble",
+      "SHAP Analysis",
+      "Explainable AI",
+      "Machine Learning",
+      "Traffic Analytics",
+      "Hybrid Classifier",
+      "Deep Learning",
+    ],
+    link: "https://example.com/research/traffic-rules-violation-prediction",
+    category: "Machine Learning",
+  },
 ];
 
 // Certifications
@@ -368,19 +368,19 @@ export const certifications = [
     description: "Stanford University course on fundamental computer science algorithms including divide and conquer strategies, sorting algorithms, and randomized algorithms",
     skills: ["Algorithms", "Data Structures", "Sorting", "Searching", "Problem Solving"],
   },
-   {
+  {
     id: 5,
     title: "Exploratory Data Analysis in Python",
     name: "Exploratory Data Analysis in Python",
     issuer: "Gianluca Malato",
     organization: "Udemy",
-    logo: cppLogo,
+    logo: pythonLogo,
     date: "February 2026",
     expiryDate: null,
-    credentialId: "M5SWX0PJJFIY",
+    credentialId: "UC-f84f7912-d28b-428a-a774-147226448486",
     credentialURL: "https://gale.udemy.com/certificate/UC-f84f7912-d28b-428a-a774-147226448486/",
     credentialUrl: "https://gale.udemy.com/certificate/UC-f84f7912-d28b-428a-a774-147226448486/",
-    description: "",
+    description: "Course covering exploratory data analysis techniques in Python.",
     skills: ["EDA", "Python"],
   },
 ];

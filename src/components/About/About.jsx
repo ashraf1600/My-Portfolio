@@ -67,9 +67,9 @@ const About = () => {
           {/* Description - more concise */}
           <p className="text-base sm:text-lg text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
             I'm a passionate <span className="text-purple-300 font-medium">Machine Learning</span> and{' '}
-            <span className="text-purple-300 font-medium">AI</span> enthusiast with a foundation in Software Engineering.
+            <span className="text-purple-300 font-medium">Generative AI</span> enthusiast with a foundation in Software Engineering.
             Currently expanding my expertise in full-stack development using{' '}
-            <span className="text-purple-300 font-medium">Django</span> and{' '}
+            <span className="text-purple-300 font-medium">Django , DRF</span> and{' '}
             <span className="text-purple-300 font-medium">React</span>, combining web development
             skills with AI technologies to create intelligent applications.
           </p>

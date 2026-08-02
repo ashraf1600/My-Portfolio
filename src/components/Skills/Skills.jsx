@@ -8,51 +8,43 @@ import {
   SiGeeksforgeeks,
   SiCodechef,
 } from "react-icons/si";
-
-// const extraTechnicalSkills = [
-//   {
-//     title: "Data Science / ML / AI",
-//     skills: [
-//       { name: "Pandas", logo: "/assets/logos/pandas.png" },
-//       { name: "NumPy", logo: "/assets/logos/numpy.png" },
-//       { name: "Scikit-Learn", logo: "/assets/logos/sklearn.png" },
-//       { name: "Matplotlib", logo: "/assets/logos/matplotlib.png" },
-//       { name: "TensorFlow", logo: "/assets/logos/tensorflow.png" },
-//       { name: "PyTorch", logo: "/assets/logos/pytorch.png" },
-//     ],
-//   },
-// ];
+import { HiArrowUpRight } from "react-icons/hi2";
 
 const problemSolvingPlatforms = [
   {
     name: "Codeforces",
-    icon: <SiCodeforces size={24} className="text-[#8245ec]" />,
+    icon: <SiCodeforces size={22} />,
+    color: "#8245ec",
     link: "https://codeforces.com/profile/your_username",
-    stats: "Specialist (1450) | 300+ problems",
+    stats: "Specialist (1450) · 300+ problems",
   },
   {
     name: "LeetCode",
-    icon: <SiLeetcode size={24} className="text-yellow-400" />,
+    icon: <SiLeetcode size={22} />,
+    color: "#facc15",
     link: "https://leetcode.com/your_username",
     stats: "250+ problems",
   },
   {
     name: "HackerRank",
-    icon: <SiHackerrank size={24} className="text-green-500" />,
+    icon: <SiHackerrank size={22} />,
+    color: "#22c55e",
     link: "https://www.hackerrank.com/your_username",
-    stats: "Gold badge | 120+ problems",
+    stats: "Gold badge · 120+ problems",
   },
   {
     name: "GeeksforGeeks",
-    icon: <SiGeeksforgeeks size={24} className="text-green-700" />,
+    icon: <SiGeeksforgeeks size={22} />,
+    color: "#15803d",
     link: "https://auth.geeksforgeeks.org/user/your_username",
     stats: "100+ problems",
   },
   {
     name: "CodeChef",
-    icon: <SiCodechef size={24} className="text-[#6e4c1e]" />,
+    icon: <SiCodechef size={22} />,
+    color: "#a3714f",
     link: "https://www.codechef.com/users/your_username",
-    stats: "3★ | 90+ problems",
+    stats: "3★ · 90+ problems",
   },
 ];
 
@@ -62,75 +54,108 @@ const Skills = () => (
     className="py-24 px-[10vw] md:px-[7vw] lg:px-[15vw] font-sans bg-skills-gradient clip-path-custom"
   >
     {/* Section Title */}
-    <div className="text-center mb-8">
-      <h2 className="text-3xl sm:text-4xl font-bold text-white">SKILLS</h2>
-      <div className="w-24 h-1 bg-[#8245ec] mx-auto mt-2"></div>
-      <p className="text-gray-400 mt-4 text-lg font-semibold">
-        A collection of my technical skills and problem-solving expertise
+    <div className="text-center mb-14">
+      <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+        Skills
+      </h2>
+      <div className="w-16 h-[3px] bg-[#8245ec] mx-auto mt-3 rounded-full"></div>
+      <p className="text-gray-400 mt-4 text-base sm:text-lg max-w-xl mx-auto">
+        Tools and technologies I build with, alongside my competitive
+        programming track record.
       </p>
     </div>
 
     {/* TECHNICAL SKILLS */}
-    <div className="text-white mb-6 text-xl sm:text-2xl font-semibold">
-      Technical Skills
+    <div className="flex items-baseline justify-between mb-6">
+      <h3 className="text-white text-xl sm:text-2xl font-semibold">
+        Technical Skills
+      </h3>
     </div>
-    <div className="flex flex-wrap gap-6 justify-between mb-16">
-      {[...SkillsInfo,].map((category) => (
-        <div
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+      {SkillsInfo.map((category) => (
+        <Tilt
           key={category.title}
-          className="bg-gray-900/80 backdrop-blur-md px-6 py-8 w-full sm:w-[48%] rounded-2xl border border-gray-700/50 shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/50"
+          tiltMaxAngleX={8}
+          tiltMaxAngleY={8}
+          perspective={1200}
+          scale={1.02}
+          transitionSpeed={800}
+          glareEnable={false}
         >
-          <h3 className="text-2xl sm:text-3xl font-semibold text-gray-400 mb-4 text-center">
-            {category.title}
-          </h3>
-          <Tilt
-            tiltMaxAngleX={20}
-            tiltMaxAngleY={20}
-            perspective={1000}
-            scale={1.05}
-            transitionSpeed={1000}
-            gyroscope={true}
-          >
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full">
+          <div className="h-full bg-gray-900/70 backdrop-blur-md px-6 py-6 rounded-2xl border border-gray-700/50 shadow-lg hover:shadow-purple-500/20 transition-all duration-300 hover:border-purple-500/40">
+            <div className="flex items-center justify-between mb-5">
+              <h4 className="text-base sm:text-lg font-semibold text-gray-200">
+                {category.title}
+              </h4>
+              <span className="text-[11px] font-medium text-purple-300/90 bg-purple-500/10 border border-purple-500/20 rounded-full px-2.5 py-0.5 whitespace-nowrap">
+                {category.skills.length} tools
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2.5">
               {category.skills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="flex items-center justify-start space-x-3 border-2 border-gray-700/70 rounded-xl py-2.5 px-3 transition-all duration-300 hover:border-purple-500/70 hover:bg-purple-500/10 hover:scale-105"
+                  className="flex items-center gap-2.5 rounded-xl border border-gray-700/60 bg-gray-800/40 py-2 px-2.5 transition-all duration-200 hover:border-purple-500/60 hover:bg-purple-500/10"
                 >
-                  <img
-                    src={skill.logo}
-                    alt={`${skill.name} logo`}
-                    className="w-6 h-6 sm:w-8 sm:h-8"
-                  />
-                  <span className="text-sm sm:text-base text-gray-300">
+                  {skill.logo ? (
+                    <img
+                      src={skill.logo}
+                      alt=""
+                      className="w-5 h-5 shrink-0 object-contain"
+                    />
+                  ) : (
+                    <div className="w-5 h-5 shrink-0 rounded-md bg-purple-500/20" />
+                  )}
+                  <span className="text-[13px] sm:text-sm text-gray-300 truncate">
                     {skill.name}
                   </span>
                 </div>
               ))}
             </div>
-          </Tilt>
-        </div>
+          </div>
+        </Tilt>
       ))}
     </div>
 
     {/* PROBLEM SOLVING SKILLS */}
-    <div className="text-white mb-6 text-xl sm:text-2xl font-semibold">
-      Problem Solving Skills
+    <div className="flex items-baseline justify-between mb-6">
+      <h3 className="text-white text-xl sm:text-2xl font-semibold">
+        Problem Solving
+      </h3>
     </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {problemSolvingPlatforms.map((platform) => (
         <a
           key={platform.name}
           href={platform.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-gray-900/80 border border-gray-700/50 rounded-xl p-4 flex items-center space-x-4 hover:scale-105 hover:border-purple-500/50 transition-all duration-300 shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1"
+          className="group bg-gray-900/70 border border-gray-700/50 rounded-2xl p-5 flex items-center gap-4 hover:border-purple-500/40 transition-all duration-300 shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1"
         >
-          {platform.icon}
-          <div>
-            <h4 className="text-white text-lg font-semibold">{platform.name}</h4>
-            <p className="text-gray-400 text-sm">{platform.stats}</p>
+          <div
+            className="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center"
+            style={{
+              backgroundColor: `${platform.color}1A`,
+              color: platform.color,
+            }}
+          >
+            {platform.icon}
           </div>
+
+          <div className="min-w-0 flex-1">
+            <h4 className="text-white text-base font-semibold truncate">
+              {platform.name}
+            </h4>
+            <p className="text-gray-400 text-sm truncate">{platform.stats}</p>
+          </div>
+
+          <HiArrowUpRight
+            size={18}
+            className="shrink-0 text-gray-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+          />
         </a>
       ))}
     </div>
