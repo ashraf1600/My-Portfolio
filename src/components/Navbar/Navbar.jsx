@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiExternalLink } from "react-icons/fi";
+
+const DOCS_URL = "https://ashraf1600.github.io/NextGen-AI/";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +60,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-8 lg:gap-12 text-gray-300 font-medium">
+        <ul className="hidden md:flex gap-8 lg:gap-12 text-gray-300 font-medium items-center">
           {menuItems.map((item) => (
             <li
               key={item.id}
@@ -75,6 +77,20 @@ const Navbar = () => {
                 }`}></span>
             </li>
           ))}
+
+          {/* External Documentation link */}
+          <li className="relative group">
+            <a
+              href={DOCS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 transition-all duration-300 hover:text-[#8245ec] hover:scale-110"
+            >
+              Docs
+              <FiExternalLink size={14} />
+            </a>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 group-hover:w-full"></span>
+          </li>
         </ul>
 
         {/* Social Icons */}
@@ -125,6 +141,21 @@ const Navbar = () => {
                 </button>
               </li>
             ))}
+
+            {/* External Documentation link */}
+            <li className="w-full text-center">
+              <a
+                href={DOCS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="inline-flex items-center gap-1.5 cursor-pointer hover:text-[#8245ec] transition-all duration-300 hover:scale-110"
+              >
+                Docs
+                <FiExternalLink size={14} />
+              </a>
+            </li>
+
             <div className="flex space-x-6 pt-4 border-t border-gray-700/50 w-3/4">
               <a
                 href="https://github.com/ashraf1600"
