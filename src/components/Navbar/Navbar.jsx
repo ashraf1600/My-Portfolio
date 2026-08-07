@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { FiMenu, FiX, FiExternalLink } from "react-icons/fi";
+import { FiMenu, FiX, FiBookOpen } from "react-icons/fi";
 
 const DOCS_URL = "https://ashraf1600.github.io/NextGen-AI/";
 
@@ -77,24 +77,19 @@ const Navbar = () => {
                 }`}></span>
             </li>
           ))}
-
-          {/* External Documentation link */}
-          <li className="relative group">
-            <a
-              href={DOCS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 transition-all duration-300 hover:text-[#8245ec] hover:scale-110"
-            >
-              Docs
-              <FiExternalLink size={14} />
-            </a>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 group-hover:w-full"></span>
-          </li>
         </ul>
 
         {/* Social Icons */}
-        <div className="hidden md:flex gap-6">
+        <div className="hidden md:flex gap-6 items-center">
+          <a
+            href={DOCS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Documentation"
+            className="text-gray-300 hover:text-[#8245ec] transition-all duration-300 hover:scale-125 hover:rotate-12"
+          >
+            <FiBookOpen size={24} />
+          </a>
           <a
             href="https://github.com/ashraf1600"
             target="_blank"
@@ -142,38 +137,35 @@ const Navbar = () => {
               </li>
             ))}
 
-            {/* External Documentation link */}
-            <li className="w-full text-center">
-              <a
-                href={DOCS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="inline-flex items-center gap-1.5 cursor-pointer hover:text-[#8245ec] transition-all duration-300 hover:scale-110"
-              >
-                Docs
-                <FiExternalLink size={14} />
-              </a>
+            <li className="w-full flex justify-center pt-4 border-t border-gray-700/50">
+              <div className="flex space-x-6">
+                <a
+                  href={DOCS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Documentation"
+                  className="text-gray-300 hover:text-[#8245ec] transition-all duration-300 hover:scale-125"
+                >
+                  <FiBookOpen size={24} />
+                </a>
+                <a
+                  href="https://github.com/ashraf1600"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-[#8245ec] transition-all duration-300 hover:scale-125"
+                >
+                  <FaGithub size={24} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-[#8245ec] transition-all duration-300 hover:scale-125"
+                >
+                  <FaLinkedin size={24} />
+                </a>
+              </div>
             </li>
-
-            <div className="flex space-x-6 pt-4 border-t border-gray-700/50 w-3/4">
-              <a
-                href="https://github.com/ashraf1600"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-[#8245ec] transition-all duration-300 hover:scale-125"
-              >
-                <FaGithub size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-[#8245ec] transition-all duration-300 hover:scale-125"
-              >
-                <FaLinkedin size={24} />
-              </a>
-            </div>
           </ul>
         </div>
       )}

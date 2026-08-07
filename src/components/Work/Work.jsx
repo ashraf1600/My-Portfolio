@@ -5,7 +5,8 @@ const categories = [
   "All",
   "Academic Project",
   "Web Development",
-  "Machine Learning",
+  "AI/ML",
+  
 ];
 
 const Work = () => {
