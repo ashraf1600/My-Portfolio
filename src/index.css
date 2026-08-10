@@ -13,6 +13,17 @@ html {
   scroll-padding-top: 80px;
 }
 
+html, body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.light, html.light body {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
 /* Minimal Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -22,6 +33,10 @@ html {
   background: #0f172a;
 }
 
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #475569;
   border-radius: 4px;
@@ -29,6 +44,14 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #64748b;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
 /* Subtle Animations */

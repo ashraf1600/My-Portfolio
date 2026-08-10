@@ -46,7 +46,7 @@ import expressjsLogo from './assets/tech_logo/express.svg';
 import streamlitLogo from './assets/tech_logo/streamlit.svg';
 
 // Experience Section Logo's
-import webverseLogo from './assets/company_logo/webverse_logo.png';
+// import webverseLogo from './assets/company_logo/webverse_logo.png';
 
 // Education Section Logo's
 import cuetLogo from './assets/education_logo/Cover.png';
@@ -58,6 +58,11 @@ import Multi from './assets/work_logo/Multi.png';
 import Personal_AI from './assets/work_logo/Personal_AI.png';
 import Traffic from './assets/work_logo/Traffic.png';
 import Fraud from './assets/work_logo/Fraud.png';
+import ResQNet from './assets/work_logo/ResQNet.png';
+import Stacks from './assets/work_logo/Stacks.png';
+import ExportMart from './assets/work_logo/ExportMart.png';
+import CoxsBazar from './assets/work_logo/CoxsBazar.png';
+
 
 
 export const SkillsInfo = [
@@ -145,65 +150,183 @@ export const education = [
 ];
 
 export const projects = [
-  // Web Development Projects
+  // Newest & Most Advanced Work
   {
     id: 0,
-    title: "CUET Hospital Management System",
-    description: "A comprehensive hospital management system built for CUET. Features patient registration, appointment scheduling, doctor management, medical records tracking, and administrative functions for efficient healthcare facility operations.",
-    image: CUET_Hos,
-    tags: ["Web Development", "Healthcare", "Django", "Bootstrap"],
-    github: "https://github.com/ashraf1600/CUET-Hospital-Management-System",
-    webapp: "https://github.com/ashraf1600/CUET-Hospital-Management-System",
+    title: "ResQNet",
+    description: "A real-time disaster and emergency resource coordination platform connecting Requesters, Responders, and Coordinators. Features an auditable need-lifecycle (pending → open → committed → resolved), atomic conditional updates to prevent duplicate commitments, server-side role enforcement, and a locked API contract enabling parallel frontend/backend development.",
+    image: ResQNet,
+    screenshots: [ResQNet, ResQNet],
+    tags: ["Django REST Framework", "React", "PostgreSQL", "Docker"],
+    github: "https://github.com/Towhid454/Resqnet/tree/backend",
+    webapp: "https://github.com/Towhid454/Resqnet/tree/backend",
+    featured: true,
+    highlights: [
+      "Auditable need-lifecycle with atomic conditional updates",
+      "Role-based access control enforced server-side",
+      "Locked API contract for parallel team development",
+      "Production-ready Docker deployment",
+    ],
     category: ["Web Development", "Academic Project"],
   },
   {
     id: 1,
-    title: "CUET Peer Delivery",
-    description: "A peer-to-peer delivery platform designed specifically for CUET students. Built with the MERN stack, this application enables students to send and receive items within the campus community safely and efficiently.",
-    image: CUET_Peer,
-    tags: ["React", "Node.js", "MongoDB", "Express", "MERN"],
-    github: "",
-    webapp: "https://github.com/ashraf1600/CUET_Peer_Delivery",
+    title: "Stacks — A Library Management System",
+    description: "A modular-monolith library management system built with Django + DRF, built as hackathon rehearsal practice. Implements concurrency-safe borrow/return via row-level locking (select_for_update), role-based access control, book reservations with waitlisting, and in-app notifications. 35/35 tests passing against live PostgreSQL, fully containerized and deployed.",
+    image: Stacks,
+    screenshots: [Stacks, Stacks],
+    tags: ["Django", "Django REST Framework", "PostgreSQL", "Docker", "Concurrency"],
+    github: "https://github.com/ashraf1600/Stacks----A-Library-System",
+    webapp: "https://github.com/ashraf1600/Stacks----A-Library-System",
+    featured: true,
+    highlights: [
+      "Concurrency-safe borrow/return via row-level locking",
+      "35/35 tests passing against live PostgreSQL",
+      "Book reservations with waitlisting and in-app notifications",
+      "Fully containerized and deployment-ready",
+    ],
     category: ["Web Development", "Academic Project"],
   },
   {
     id: 2,
-    title: "MultiMart E-commerce",
-    description: "A dynamic e-commerce marketplace built with Django and Bootstrap. Features product browsing, detailed views, user authentication, shopping cart functionality, and a seamless checkout process for an intuitive online shopping experience.",
-    image: Multi,
-    tags: ["Django", "Python", "Bootstrap", "E-commerce"],
-    github: "https://github.com/ashraf1600/MultiMart",
-    webapp: "https://github.com/ashraf1600/MultiMart",
-    category: "Web Development",
+    title: "ExportMart",
+    description: "A full-stack e-commerce platform with a Django REST Framework API and a React + Vite storefront. Features product/category browsing, cart and wishlist workflows, JWT authentication via Djoser, checkout and order management, product reviews, and Swagger/Redoc API docs. Fully Dockerized for local dev and deployment.",
+    image: ExportMart,
+    screenshots: [ExportMart, ExportMart],
+    tags: ["Django REST Framework", "React", "Vite", "Tailwind CSS", "Docker", "E-commerce"],
+    github: "https://github.com/ashraf1600/ExportMart-Full",
+    webapp: "https://github.com/ashraf1600/ExportMart-Full",
+    featured: true,
+    highlights: [
+      "JWT authentication with Djoser for secure sessions",
+      "Cart, wishlist, checkout, and order management",
+      "Product reviews and category browsing",
+      "Auto-generated Swagger/Redoc API documentation",
+    ],
+    category: ["Web Development", "Personal Project"],
   },
   {
     id: 3,
-    title: "Personal AI Assistant",
-    description: "An intelligent personal AI assistant built with Gemini API, Streamlit, and OOP principles. Features conversational AI capabilities, task automation, and a clean Streamlit interface for seamless user interaction.",
-    image: Personal_AI,
-    tags: ["Gemini API", "Streamlit", "Python", "AI", "OOP"],
-    github: "https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main",
-    webapp: "https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main",
-    category: "Machine Learning",
+    title: "CSF-CUET — Cox's Bazar Student Forum",
+    description: "A community platform for Cox's Bazar district students and alumni at CUET. Includes user registration with admin approval, a public community feed with posts/likes/comments, event and announcement management, committee/department organization, and a full Django admin moderation panel. Live in production on Render.",
+    image: CoxsBazar,
+    screenshots: [CoxsBazar, CoxsBazar],
+    tags: ["Django", "Bootstrap", "SQLite", "Community Platform"],
+    github: "https://github.com/ashraf1600/Cox-s-Bazar-Student-Forum-CUET",
+    webapp: "https://cox-s-bazar-student-forum-cuet.onrender.com",
+    featured: true,
+    highlights: [
+      "Admin-approved registration and moderation pipeline",
+      "Public feed with posts, likes, and comments",
+      "Event and announcement management",
+      "Live in production on Render",
+    ],
+    category: ["Web Development", "Personal Project"],
   },
+
+  // Web Development
   {
     id: 4,
-    title: "Traffic Light Control with RL",
-    description: "An intelligent traffic light control system using Reinforcement Learning. Optimizes traffic flow, reduces congestion, and improves urban mobility through adaptive signal timing.",
-    image: Traffic,
-    tags: ["Reinforcement Learning", "AI", "Smart City", "Python"],
-    github: "https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning",
-    webapp: "https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning",
-    category: "Machine Learning",
+    title: "CUET Hospital Management System",
+    description: "A comprehensive hospital management system built for CUET. Features patient registration, appointment scheduling, doctor management, medical records tracking, and administrative functions for efficient healthcare facility operations.",
+    image: CUET_Hos,
+    screenshots: [CUET_Hos, CUET_Hos],
+    tags: ["Web Development", "Healthcare", "Django", "Bootstrap"],
+    github: "https://github.com/ashraf1600/CUET-Hospital-Management-System",
+    webapp: "https://github.com/ashraf1600/CUET-Hospital-Management-System",
+    featured: false,
+    highlights: [
+      "Patient registration with appointment scheduling",
+      "Doctor management and medical records tracking",
+      "Administrative functions for clinic operations",
+    ],
+    category: ["Web Development", "Academic Project"],
   },
   {
     id: 5,
+    title: "CUET Peer Delivery",
+    description: "A peer-to-peer delivery platform designed specifically for CUET students. Built with the MERN stack, this application enables students to send and receive items within the campus community safely and efficiently.",
+    image: CUET_Peer,
+    screenshots: [CUET_Peer, CUET_Peer],
+    tags: ["React", "Node.js", "MongoDB", "Express", "MERN"],
+    github: "",
+    webapp: "https://github.com/ashraf1600/CUET_Peer_Delivery",
+    featured: false,
+    highlights: [
+      "Campus-only peer-to-peer delivery system",
+      "MERN stack architecture (MongoDB, Express, React, Node)",
+      "Safe and efficient item exchange workflows",
+    ],
+    category: ["Web Development", "Academic Project"],
+  },
+  {
+    id: 6,
+    title: "MultiMart E-commerce",
+    description: "A dynamic e-commerce marketplace built with Django and Bootstrap. Features product browsing, detailed views, user authentication, shopping cart functionality, and a seamless checkout process for an intuitive online shopping experience.",
+    image: Multi,
+    screenshots: [Multi, Multi],
+    tags: ["Django", "Python", "Bootstrap", "E-commerce"],
+    github: "https://github.com/ashraf1600/MultiMart",
+    webapp: "https://github.com/ashraf1600/MultiMart",
+    featured: false,
+    highlights: [
+      "Product browsing with detailed views",
+      "User authentication and shopping cart",
+      "Streamlined checkout experience",
+    ],
+    category: "Web Development",
+  },
+
+  // Machine Learning / AI
+  {
+    id: 7,
+    title: "Personal AI Assistant",
+    description: "An intelligent personal AI assistant built with Gemini API, Streamlit, and OOP principles. Features conversational AI capabilities, task automation, and a clean Streamlit interface for seamless user interaction.",
+    image: Personal_AI,
+    screenshots: [Personal_AI, Personal_AI],
+    tags: ["Gemini API", "Streamlit", "Python", "AI", "OOP"],
+    github: "https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main",
+    webapp: "https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main",
+    featured: false,
+    highlights: [
+      "Conversational AI powered by Gemini API",
+      "Object-oriented architecture for extensibility",
+      "Clean Streamlit UI for instant interaction",
+    ],
+    category: "Machine Learning",
+  },
+  {
+    id: 8,
+    title: "Traffic Light Control with RL",
+    description: "An intelligent traffic light control system using Reinforcement Learning. Optimizes traffic flow, reduces congestion, and improves urban mobility through adaptive signal timing.",
+    image: Traffic,
+    screenshots: [Traffic, Traffic],
+    tags: ["Reinforcement Learning", "AI", "Smart City", "Python"],
+    github: "https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning",
+    webapp: "https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning",
+    featured: false,
+    highlights: [
+      "Reinforcement learning agent for signal control",
+      "Adaptive timing to reduce congestion",
+      "Urban mobility optimization for smart cities",
+    ],
+    category: "Machine Learning",
+  },
+  {
+    id: 9,
     title: "E-commerce Fraud Detection",
     description: "Machine learning-based fraud detection system for e-commerce transactions. Utilizes supervised learning algorithms to identify fraudulent activities and protect customers.",
     image: Fraud,
+    screenshots: [Fraud, Fraud],
     tags: ["Supervised Learning", "Flask", "Python", "ML"],
     github: "https://github.com/ashraf1600/Fraud-Detection-ML",
     webapp: "https://github.com/ashraf1600/Fraud-Detection-ML",
+    featured: false,
+    highlights: [
+      "Supervised learning classifiers on transaction data",
+      "Flask API for real-time scoring",
+      "Productionized fraud alerts for end users",
+    ],
     category: "Machine Learning",
   },
 ];
@@ -219,6 +342,7 @@ export const research = [
     status: "Accepted",
     tags: ["Machine Learning", "IoT Security", "Ensemble Methods", "Cyber Attack Detection"],
     link: "https://example.com/research/iot-cyber-attack-detection",
+    abstract: "This work proposes an explainable ensemble voting classifier for detecting cyber attacks in highly imbalanced IoT network traffic. We combine multiple base learners with class-balancing strategies and use SHAP to surface model decisions, achieving strong detection on minority attack categories.",
     category: "Machine Learning",
   },
   {
@@ -230,6 +354,7 @@ export const research = [
     status: "In Progress",
     tags: ["Deep Learning", "Image Processing"],
     link: "https://example.com/research/traffic-prediction",
+    abstract: "We present a hybrid Xception + Vision Transformer framework for morphing attack detection on face images. A 10-channel feature fusion module captures low-level forensic cues alongside global semantic structure, improving robustness to post-processed morphs.",
     category: "Deep Learning",
   },
   {
@@ -247,6 +372,7 @@ export const research = [
       "Computer Vision",
     ],
     link: "https://example.com/research/bangladesh-currency-counterfeit-vit",
+    abstract: "We fine-tune a DeiT-Tiny Vision Transformer to classify Bangladeshi banknotes as genuine or counterfeit, achieving high accuracy with a compact model suitable for mobile deployment. Ablations cover data augmentation, class weighting, and attention visualization.",
     category: "Deep Learning",
   },
   {
@@ -267,6 +393,7 @@ export const research = [
       "Data Engineering",
     ],
     link: "https://example.com/research/tax-fraud-prediction-stacking",
+    abstract: "This paper introduces a double-layer stacking classifier for tax evasion prediction, with Optuna-tuned base learners, SMOTE-Tomek resampling, and SHAP-based explanations to support auditing workflows.",
     category: "Machine Learning",
   },
   {
@@ -287,6 +414,7 @@ export const research = [
       "Deep Learning",
     ],
     link: "https://example.com/research/traffic-rules-violation-prediction",
+    abstract: "We propose a hybrid stacking ensemble for predicting traffic rules violations, combining gradient boosting, random forests, and a deep tabular model. SHAP analysis isolates the contextual and behavioral factors that drive high-risk predictions.",
     category: "Machine Learning",
   },
 ];
