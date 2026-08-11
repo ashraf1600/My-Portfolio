@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3c34"/>
+      <stop offset="100%" style="stop-color:#0d2420"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#bg)" stroke="url(#ring)" stroke-width="5"/>
+  <text x="100" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="bold" fill="#10b981">CGHS</text>
+  <line x1="45" y1="90" x2="155" y2="90" stroke="#10b981" stroke-width="1.5" opacity="0.6"/>
+  <text x="100" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" letter-spacing="1.5">COX'S BAZAR</text>
+  <text x="100" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" letter-spacing="1.5">GOVT. HIGH SCHOOL</text>
+</svg>

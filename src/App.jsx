@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import About from "./components/About/About";
 import Skills from "./components/Skills/Skills";
@@ -11,7 +11,33 @@ import BlurBlob from './components/BlurBlob';
 import Research from "./components/Research/Research";
 import Certifications from "./components/Certifications/Certifications";
 
+// Global scroll-reveal: observes all .reveal-section elements and adds .revealed
+const useScrollReveal = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target); // animate once
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    // Observe all sections with the reveal class
+    document.querySelectorAll(".reveal-section").forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+};
+
 const App = () => {
+  useScrollReveal();
+
   return (
     <div className="bg-white dark:bg-[#050414] min-h-screen transition-colors duration-300">
 
@@ -22,13 +48,13 @@ const App = () => {
       <div className="relative pt-20">
         <Navbar />
         <About />
-        <Skills />
+        <div className="reveal-section"><Skills /></div>
         {/* <Experience /> */}
-        <Work />
-        <Research />
-        <Certifications />
-        <Education />
-        <Contact />
+        <div className="reveal-section"><Work /></div>
+        <div className="reveal-section"><Research /></div>
+        <div className="reveal-section"><Certifications /></div>
+        <div className="reveal-section"><Education /></div>
+        <div className="reveal-section"><Contact /></div>
         <Footer />
       </div>
 

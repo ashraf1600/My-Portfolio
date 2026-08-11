@@ -23,16 +23,17 @@ const Education = () => {
       <div className="absolute top-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
 
-      {/* Section Title */}
+      {/* Section Title — standardized */}
       <div className="text-center mb-20 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 dark:from-purple-400 dark:via-pink-400 dark:to-purple-500 bg-clip-text text-transparent">
-            EDUCATION
-          </span>
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-purple-600 dark:text-purple-400 uppercase mb-3">
+          Academic Journey
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
+          Education
         </h2>
-        <div className="w-24 h-1.5 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 mx-auto rounded-full shadow-lg shadow-purple-500/50 mb-4"></div>
-        <p className="text-slate-600 dark:text-gray-400 text-lg max-w-3xl mx-auto">
-          Academic journey and qualifications
+        <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-5"></div>
+        <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+          Academic qualifications and the learning journey that shaped my engineering foundation.
         </p>
       </div>
 

@@ -1,62 +1,175 @@
-import React from "react";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FaFacebook, FaLinkedin, FaGithub, FaKaggle } from "react-icons/fa";
+import { SiCodeforces } from "react-icons/si";
+import { FiBookOpen, FiArrowUp, FiArrowUpRight } from "react-icons/fi";
+
+const DOCS_URL = "https://ashraf1600.github.io/NextGen-AI/";
+
+const navItems = [
+  { name: "About",          id: "about" },
+  { name: "Skills",         id: "skills" },
+  { name: "Projects",       id: "work" },
+  { name: "Research",       id: "research" },
+  { name: "Certifications", id: "certifications" },
+  { name: "Education",      id: "education" },
+  { name: "Contact",        id: "contact" },
+];
+
+const socialLinks = [
+  {
+    icon: <FaGithub size={20} />,
+    href: "https://github.com/ashraf1600",
+    label: "GitHub",
+  },
+  {
+    icon: <FaLinkedin size={20} />,
+    href: "https://www.linkedin.com/in/ashraful-islam-a31268226/",
+    label: "LinkedIn",
+  },
+  {
+    icon: <FaFacebook size={20} />,
+    href: "https://www.facebook.com/share/19gm9nUyqU/",
+    label: "Facebook",
+  },
+  {
+    icon: <FaKaggle size={20} />,
+    href: "https://www.kaggle.com/ashraf1600",
+    label: "Kaggle",
+  },
+  {
+    icon: <SiCodeforces size={20} />,
+    href: "https://codeforces.com/profile/ashraf1600",
+    label: "Codeforces",
+  },
+];
 
 const Footer = () => {
-    const handleScroll = (sectionId) => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-        }
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 600);
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return (
-        <footer className="text-slate-900 dark:text-white py-8 px-[12vw] md:px-[7vw] lg:px-[20vw] border-t border-slate-200 dark:border-transparent">
-            <div className="container mx-auto text-center">
-                <h2 className="text-xl font-semibold text-purple-600 dark:text-purple-500">Ashraful Islam</h2>
+  const handleScroll = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-                <nav className="flex flex-wrap justify-center space-x-4 sm:space-x-6 mt-4">
-                    {[
-                        { name: "About", id: "about" },
-                        { name: "Skills", id: "skills" },
-                        { name: "Experience", id: "experience" },
-                        { name: "Projects", id: "work" },
-                        { name: "Research", id: "research" },
-                        { name: "Certifications", id: "certifications" },
-                        { name: "Education", id: "education" },
-                    ].map((item, index) => (
-                        <button
-                            key={index}
-                            onClick={() => handleScroll(item.id)}
-                            className="hover:text-purple-600 dark:hover:text-purple-500 text-slate-700 dark:text-gray-300 text-sm sm:text-base my-1 transition-all duration-300 hover:scale-105"
-                        >
-                            {item.name}
-                        </button>
-                    ))}
-                </nav>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-                <div className="flex flex-wrap justify-center space-x-4 mt-6">
-                    {[
-                        { icon: <FaFacebook />, link: "https://www.facebook.com/ashraful.islam.924584" },
-                        { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/ashraful-islam-a31268226/" },
-                    ].map((item, index) => (
-                        <a
-                            key={index}
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xl text-slate-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-500 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
-                        >
-                            {item.icon}
-                        </a>
-                    ))}
-                </div>
+  return (
+    <footer className="relative border-t border-slate-200 dark:border-gray-700/50 bg-white dark:bg-[#050414]">
+      {/* Subtle top gradient accent line */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-purple-500/60 to-transparent" />
 
-                <p className="text-sm text-slate-500 dark:text-gray-400 mt-6">
-                    © 2025 Ashraful Islam. All rights reserved.
-                </p>
-            </div>
-        </footer>
-    );
+      <div className="px-[8vw] md:px-[6vw] lg:px-[12vw] py-12">
+        {/* Top row: logo + nav */}
+        <div className="flex flex-col items-center gap-6 mb-8">
+          {/* Brand */}
+          <div
+            className="text-lg font-semibold cursor-pointer transition-all duration-300 hover:scale-105"
+            onClick={scrollToTop}
+          >
+            <span className="text-purple-600 dark:text-purple-400">&lt;</span>
+            <span className="text-slate-900 dark:text-white">Ashraful</span>
+            <span className="text-purple-600 dark:text-purple-400">/Islam</span>
+            <span className="text-purple-600 dark:text-purple-400">&gt;</span>
+          </div>
+
+          {/* Tagline */}
+          <p className="text-sm text-slate-500 dark:text-gray-500 text-center max-w-md">
+            Building intelligent applications at the intersection of AI and software engineering.
+          </p>
+
+          {/* Nav links */}
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleScroll(item.id)}
+                className="relative text-sm font-medium text-slate-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 group"
+              >
+                {item.name}
+                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300" />
+              </button>
+            ))}
+          </nav>
+
+          {/* Docs link — consistent with navbar */}
+          <a
+            href={DOCS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold
+              bg-gradient-to-r from-purple-600/10 to-pink-600/10
+              dark:from-purple-500/15 dark:to-pink-500/15
+              border border-purple-500/30
+              text-purple-700 dark:text-purple-300
+              hover:from-purple-600 hover:to-pink-600
+              hover:text-white hover:border-transparent
+              hover:shadow-lg hover:shadow-purple-500/30
+              transition-all duration-300"
+          >
+            <FiBookOpen size={15} />
+            <span>NextGen AI Docs</span>
+            <FiArrowUpRight size={13} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+          </a>
+        </div>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-slate-200 dark:bg-gray-700/50 mb-8" />
+
+        {/* Bottom row: social icons + copyright */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          {/* Social icons */}
+          <div className="flex items-center gap-3">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-gray-800/60 text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 hover:text-white hover:border-transparent transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+
+          {/* Copyright */}
+          <p className="text-sm text-slate-500 dark:text-gray-500 text-center sm:text-right">
+            © {new Date().getFullYear()}{" "}
+            <span className="text-slate-700 dark:text-gray-300 font-medium">
+              Ashraful Islam
+            </span>
+            . All rights reserved.
+          </p>
+        </div>
+      </div>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/30 flex items-center justify-center transition-all duration-500 hover:scale-110 hover:shadow-xl hover:shadow-purple-500/50 ${
+          showBackToTop
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+        aria-label="Back to top"
+      >
+        <FiArrowUp size={20} />
+      </button>
+    </footer>
+  );
 };
 
 export default Footer;

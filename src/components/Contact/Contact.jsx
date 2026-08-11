@@ -71,26 +71,34 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="flex flex-col items-center justify-center py-24 px-[12vw] md:px-[7vw] lg:px-[20vw]"
+      className="flex flex-col items-center justify-center py-24 px-[8vw] md:px-[7vw] lg:px-[20vw]"
     >
       <ToastContainer className={theme === "light" ? "light-toast" : ""} />
 
-      {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-slate-900 dark:text-white">CONTACT</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-slate-600 dark:text-gray-400 mt-4 text-lg font-semibold">
-          I’d love to hear from you—reach out for any opportunities or questions!
+      {/* Section Title — consistent with the rest of the site */}
+      <div className="text-center mb-14">
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-purple-600 dark:text-purple-400 uppercase mb-3">
+          Get In Touch
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
+          Contact Me
+        </h2>
+        <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-5"></div>
+        <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+          I'd love to hear from you — reach out for opportunities, collaborations, or just to say hello.
         </p>
       </div>
 
       {/* Contact Form */}
-      <div className="mt-8 w-full max-w-md bg-white/80 dark:bg-gray-900/70 backdrop-blur-xl p-8 rounded-2xl shadow-2xl shadow-purple-500/20 border border-slate-200 dark:border-gray-700/50">
+      <div className="w-full max-w-md bg-white/80 dark:bg-gray-900/70 backdrop-blur-xl p-8 rounded-2xl shadow-2xl shadow-purple-500/20 border border-slate-200 dark:border-gray-700/50">
         <h3 className="text-xl font-semibold text-slate-900 dark:text-white text-center mb-1">
-          Connect With Me <span className="ml-1">🚀</span>
+          Send a Message <span className="ml-1">🚀</span>
         </h3>
+        <p className="text-sm text-slate-500 dark:text-gray-400 text-center mb-6">
+          I typically respond within 24 hours.
+        </p>
 
-        <form ref={form} onSubmit={sendEmail} className="mt-4 flex flex-col space-y-4">
+        <form ref={form} onSubmit={sendEmail} className="flex flex-col space-y-4">
           <input
             type="text"
             name="name"
@@ -122,9 +130,9 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-3.5 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/50 hover:scale-105"
+            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-3.5 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/50 hover:scale-[1.02]"
           >
-            Send
+            Send Message
           </button>
         </form>
       </div>

@@ -56,6 +56,8 @@ import streamlitLogo from './assets/tech_logo/streamlit.svg';
 
 // Education Section Logo's
 import cuetLogo from './assets/education_logo/Cover.png';
+import dccLogo from './assets/education_logo/dcc_logo.svg';
+import cghsLogo from './assets/education_logo/cghs_logo.svg';
 
 // Project Section Logo's
 import CUET_Hos from './assets/work_logo/CUET_Hos.png';
@@ -152,6 +154,25 @@ export const education = [
     desc: "I'm pursuing a B.Sc. in Computer Science and Engineering at CUET, Chittagong. My coursework covers Data Structures, Algorithms, Web Development, Machine Learning, and AI. I've gained practical experience through coding contests, hackathons, and collaborative projects.",
     degree: "B.Sc. in Computer Science and Engineering",
     type: "University",
+  },
+  {
+    id: 1,
+    img: dccLogo,
+    school: "Dhaka City College",
+    date: "2019 - 2021",
+    grade: "GPA: 5.00",
+    desc: "Completed Higher Secondary Certificate (HSC) in Science from Dhaka City College, one of the prestigious institutions in Dhaka. Achieved a perfect GPA of 5.00, building a strong foundation in mathematics, physics, and computer science that paved the way for engineering studies.",
+    degree: "Higher Secondary Certificate (HSC) — Science",
+    type: "Higher Secondary",
+  },
+  {
+    id: 2,
+    img: cghsLogo,
+    school: "Cox's Bazar Government High School",
+    date: "2017 - 2019",
+    desc: "Completed Secondary School Certificate (SSC) from Cox's Bazar Government High School, one of the oldest and most reputed schools in the Cox's Bazar district. Developed a strong academic foundation and early interest in science and technology.",
+    degree: "Secondary School Certificate (SSC) — Science",
+    type: "Secondary School",
   },
 ];
 
