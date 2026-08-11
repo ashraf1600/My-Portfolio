@@ -1,4 +1,10 @@
 // Skills Section Logo's
+import {
+  HiDocumentText,
+  HiAcademicCap,
+  HiBookOpen,
+} from "react-icons/hi2";
+import { SiIeee, SiGooglescholar, SiOrcid } from "react-icons/si";
 import htmlLogo from './assets/tech_logo/html.png';
 import cssLogo from './assets/tech_logo/css.png';
 import javascriptLogo from './assets/tech_logo/javascript.png';
@@ -416,6 +422,74 @@ export const research = [
     link: "https://example.com/research/traffic-rules-violation-prediction",
     abstract: "We propose a hybrid stacking ensemble for predicting traffic rules violations, combining gradient boosting, random forests, and a deep tabular model. SHAP analysis isolates the contextual and behavioral factors that drive high-risk predictions.",
     category: "Machine Learning",
+  },
+];
+
+// Research Impact Metrics
+export const researchMetrics = [
+  {
+    label: "Publications",
+    value: research.length,
+    suffix: "",
+    icon: HiDocumentText,
+    accent: "from-purple-500 to-fuchsia-500",
+    tint: "bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-500/30",
+    trend: "All 2026",
+    description: "Peer-reviewed papers across IEEE & international venues.",
+  },
+  {
+    label: "IEEE Papers",
+    value: research.filter((p) => /IEEE/i.test(p.conference)).length,
+    suffix: "",
+    icon: SiIeee,
+    accent: "from-blue-500 to-cyan-500",
+    tint: "bg-blue-500/10 text-blue-600 dark:text-blue-300 border-blue-500/30",
+    trend: "+1 in review",
+    description: "Indexed in IEEE Xplore — the gold standard in engineering.",
+  },
+  {
+    label: "Research Areas",
+    value: new Set(research.map((p) => p.category)).size,
+    suffix: "",
+    icon: HiAcademicCap,
+    accent: "from-amber-500 to-orange-500",
+    tint: "bg-amber-500/10 text-amber-600 dark:text-amber-300 border-amber-500/30",
+    description:
+      "Domains covered — from IoT security to computer vision and fraud analytics.",
+  },
+  {
+    label: "Co-authors",
+    value: new Set(research.flatMap((p) => p.authors.split(", "))).size,
+    suffix: "",
+    icon: HiBookOpen,
+    accent: "from-emerald-500 to-teal-500",
+    tint: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-500/30",
+    description: "Faculty collaborators and peer researchers across institutions.",
+  },
+];
+
+// Scholarly Profiles
+export const scholarlyProfiles = [
+  {
+    name: "Google Scholar",
+    icon: SiGooglescholar,
+    url: "https://scholar.google.com/citations?user=ashraf1600",
+    bgClass:
+      "bg-sky-500/10 text-sky-600 dark:text-sky-300 border-sky-500/30 hover:bg-sky-500/20",
+  },
+  {
+    name: "ORCID",
+    icon: SiOrcid,
+    url: "https://orcid.org/0009-0000-0000-0000",
+    bgClass:
+      "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/20",
+  },
+  {
+    name: "ResearchGate",
+    icon: HiAcademicCap,
+    url: "https://www.researchgate.net/profile/Ashraful-Islam",
+    bgClass:
+      "bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 border-cyan-500/30 hover:bg-cyan-500/20",
   },
 ];
 
