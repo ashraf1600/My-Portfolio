@@ -1,0 +1,535 @@
+/* ============================================
+   NextGen-AI Docs — Unified Portfolio Theme
+   Matches the portfolio's premium purple/slate
+   dark-first design with glassmorphism effects
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500;600&display=swap');
+
+/* ============================================
+   LIGHT THEME (default — :root)
+   ============================================ */
+:root {
+  --ng-bg: #ffffff;
+  --ng-surface: #f8fafc;
+  --ng-surface-2: #f1f5f9;
+  --ng-border: #e2e8f0;
+  --ng-accent: #7c3aed;
+  --ng-accent-soft: rgba(139, 92, 246, 0.1);
+  --ng-accent-2: #6366f1;
+  --ng-text: #0f172a;
+  --ng-text-muted: #475569;
+  --ng-gradient-from: #7c3aed;
+  --ng-gradient-to: #ec4899;
+
+  --vp-c-bg: var(--ng-bg);
+  --vp-c-bg-alt: var(--ng-surface);
+  --vp-c-bg-elv: var(--ng-surface-2);
+  --vp-c-border: var(--ng-border);
+  --vp-c-divider: var(--ng-border);
+
+  --vp-c-brand-1: var(--ng-accent);
+  --vp-c-brand-2: #6d28d9;
+  --vp-c-brand-3: #8b5cf6;
+  --vp-c-brand-soft: var(--ng-accent-soft);
+
+  --vp-c-text-1: var(--ng-text);
+  --vp-c-text-2: var(--ng-text-muted);
+  --vp-c-text-3: #64748b;
+
+  --vp-font-family-base: 'Inter', 'Noto Sans Bengali', -apple-system, BlinkMacSystemFont, sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', monospace;
+
+  --vp-c-default-1: var(--ng-accent-2);
+}
+
+/* ============================================
+   DARK THEME (.dark class)
+   Matches portfolio bg-[#050414]
+   ============================================ */
+.dark {
+  --ng-bg: #050414;
+  --ng-surface: #0a0820;
+  --ng-surface-2: #0f0c2a;
+  --ng-border: rgba(139, 92, 246, 0.12);
+  --ng-accent: #a78bfa;
+  --ng-accent-soft: rgba(167, 139, 250, 0.1);
+  --ng-accent-2: #818cf8;
+  --ng-text: #f1f5f9;
+  --ng-text-muted: #94a3b8;
+  --ng-gradient-from: #a78bfa;
+  --ng-gradient-to: #f472b6;
+
+  --vp-c-bg: var(--ng-bg);
+  --vp-c-bg-alt: var(--ng-surface);
+  --vp-c-bg-elv: var(--ng-surface-2);
+  --vp-c-border: var(--ng-border);
+  --vp-c-divider: var(--ng-border);
+
+  --vp-c-brand-1: var(--ng-accent);
+  --vp-c-brand-2: #8b5cf6;
+  --vp-c-brand-3: #c084fc;
+  --vp-c-brand-soft: var(--ng-accent-soft);
+
+  --vp-c-text-1: var(--ng-text);
+  --vp-c-text-2: var(--ng-text-muted);
+  --vp-c-text-3: #475569;
+}
+
+/* ============================================
+   Global body — grid background matching portfolio
+   ============================================ */
+body {
+  position: relative;
+}
+
+.dark body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    linear-gradient(to right, rgba(79, 79, 79, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79, 79, 79, 0.18) 1px, transparent 1px);
+  background-size: 14px 24px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle purple glow blobs — same as portfolio BlurBlob */
+.dark body::after {
+  content: '';
+  position: fixed;
+  top: 20%;
+  left: 15%;
+  width: 35%;
+  height: 45%;
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px);
+}
+
+/* ============================================
+   Typography — matching portfolio's Inter font
+   ============================================ */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+h1.title,
+.name, .text {
+  font-family: 'Inter', 'Noto Sans Bengali', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em;
+}
+
+.vp-doc h2 {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 48px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ng-border);
+}
+
+/* ============================================
+   Code blocks — premium look
+   ============================================ */
+div[class*='language-'] {
+  border: 1px solid var(--ng-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.dark div[class*='language-'] {
+  background: #0a0820 !important;
+  box-shadow: 0 4px 24px -4px rgba(139, 92, 246, 0.08);
+}
+
+div[class*='language-'] pre {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+.vp-doc :not(pre) > code {
+  background: var(--ng-accent-soft);
+  color: var(--ng-accent);
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+/* ============================================
+   Links
+   ============================================ */
+.vp-doc a {
+  color: var(--ng-accent-2);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--ng-accent-2) 30%, transparent);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.vp-doc a:hover {
+  color: var(--ng-accent);
+  border-color: var(--ng-accent);
+}
+
+/* ============================================
+   Tables — premium style
+   ============================================ */
+.vp-doc table {
+  border: 1px solid var(--ng-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.vp-doc th {
+  background: var(--ng-surface-2);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--ng-accent);
+}
+.dark .vp-doc tr:nth-child(2n) {
+  background: rgba(139, 92, 246, 0.03);
+}
+.vp-doc tr:nth-child(2n) {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+/* ============================================
+   Custom blocks (tip, warning, danger)
+   ============================================ */
+.vp-doc .custom-block.tip {
+  border-color: var(--ng-accent-2);
+  background: color-mix(in srgb, var(--ng-accent-2) 6%, transparent);
+}
+.vp-doc .custom-block.warning {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.06);
+}
+.vp-doc .custom-block.danger {
+  border-color: #f87171;
+  background: rgba(248, 113, 113, 0.06);
+}
+
+/* ============================================
+   Sidebar — active state matches portfolio purple
+   ============================================ */
+.VPSidebarItem.is-active > .item .text {
+  color: var(--ng-accent) !important;
+  font-weight: 600;
+}
+.VPSidebarItem .indicator {
+  background-color: var(--ng-accent) !important;
+}
+
+/* ============================================
+   NAVBAR — glassmorphism matching portfolio
+   ============================================ */
+.VPNavBar {
+  height: 64px !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border-bottom: 1px solid var(--ng-border) !important;
+  transition: all 0.3s ease !important;
+}
+.dark .VPNavBar {
+  background: rgba(5, 4, 20, 0.8) !important;
+}
+.VPNavBar {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+.VPNavBar .container {
+  padding: 0 24px !important;
+}
+
+/* ---- Logo / Site title — gradient matching portfolio ---- */
+.VPNavBarTitle .title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', 'Noto Sans Bengali', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 19px !important;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--ng-gradient-from) 0%, var(--ng-gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.VPNavBarTitle .title::before {
+  content: '⟨/⟩';
+  -webkit-text-fill-color: var(--ng-accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 2px;
+}
+
+.VPNavBarTitle .title:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.VPNavBarTitle .logo {
+  display: none;
+}
+
+/* ---- "← Portfolio" nav link — special styling ---- */
+.VPNavBarMenu .VPNavBarMenuLink:first-child,
+.VPNavBarMenu a[href*="ashrafulislam.vercel.app"] {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(236, 72, 153, 0.12)) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  border-radius: 9999px !important;
+  padding: 6px 16px !important;
+  font-weight: 600 !important;
+  color: var(--ng-accent) !important;
+  transition: all 0.3s ease !important;
+  line-height: 1.5 !important;
+}
+.VPNavBarMenu .VPNavBarMenuLink:first-child:hover,
+.VPNavBarMenu a[href*="ashrafulislam.vercel.app"]:hover {
+  background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+  color: white !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+.VPNavBarMenu .VPNavBarMenuLink:first-child::after {
+  display: none !important;
+}
+
+/* ---- Nav menu items ---- */
+.VPNavBarMenu .VPNavBarMenuLink,
+.VPNavBarMenu .VPNavBarMenuGroup .button {
+  font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  color: var(--ng-text-muted) !important;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink:hover,
+.VPNavBarMenu .VPNavBarMenuGroup .button:hover,
+.VPNavBarMenu .VPNavBarMenuLink.active {
+  color: var(--ng-text) !important;
+}
+
+/* underline-on-hover accent */
+.VPNavBarMenu .VPNavBarMenuLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ng-gradient-from), var(--ng-gradient-to));
+  border-radius: 1px;
+  transition: width 0.25s ease;
+}
+.VPNavBarMenu .VPNavBarMenuLink:hover::after,
+.VPNavBarMenu .VPNavBarMenuLink.active::after {
+  width: 100%;
+}
+
+/* dropdown menu panel */
+.VPNavBarMenu .VPNavBarMenuGroup .button .text {
+  color: inherit;
+}
+.VPMenu {
+  border: 1px solid var(--ng-border) !important;
+  border-radius: 12px !important;
+  background: var(--ng-surface) !important;
+  box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(12px) !important;
+}
+.dark .VPMenu {
+  background: rgba(10, 8, 32, 0.95) !important;
+}
+.VPMenuLink:hover {
+  background: var(--ng-accent-soft) !important;
+  color: var(--ng-accent) !important;
+}
+
+/* ---- Social icons ---- */
+.VPNavBarSocialLinks {
+  gap: 4px;
+}
+.VPSocialLink {
+  color: var(--ng-text-muted) !important;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.VPSocialLink:hover {
+  color: var(--ng-accent) !important;
+  transform: translateY(-2px);
+}
+
+/* ---- Theme toggle button ---- */
+.VPSwitchAppearance {
+  transition: transform 0.2s ease;
+}
+.VPSwitchAppearance:hover {
+  transform: rotate(20deg);
+}
+
+/* ============================================
+   Buttons — gradient matching portfolio CTA
+   ============================================ */
+.VPButton.brand {
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%) !important;
+  color: white !important;
+  font-weight: 600;
+  border: none !important;
+  border-radius: 9999px !important;
+  padding: 10px 28px !important;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.25);
+  transition: all 0.3s ease !important;
+}
+.VPButton.brand:hover {
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4) !important;
+  transform: translateY(-2px) !important;
+  filter: brightness(1.1);
+}
+.VPButton.alt {
+  border: 1px solid var(--ng-border) !important;
+  color: var(--ng-accent) !important;
+  border-radius: 9999px !important;
+  padding: 10px 28px !important;
+  transition: all 0.3s ease !important;
+}
+.VPButton.alt:hover {
+  border-color: var(--ng-accent) !important;
+  background: var(--ng-accent-soft) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ============================================
+   Hero section — dramatic styling
+   ============================================ */
+.VPHero .name {
+  background: linear-gradient(135deg, var(--ng-gradient-from), var(--ng-gradient-to)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+.VPHero .tagline {
+  color: var(--ng-text-muted) !important;
+}
+
+/* ============================================
+   Feature cards — glassmorphism
+   ============================================ */
+.VPFeature {
+  border: 1px solid var(--ng-border) !important;
+  border-radius: 16px !important;
+  transition: all 0.3s ease !important;
+}
+.dark .VPFeature {
+  background: rgba(10, 8, 32, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+}
+.VPFeature:hover {
+  border-color: rgba(139, 92, 246, 0.3) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.1) !important;
+}
+
+/* ============================================
+   Footer — subtle, matching portfolio
+   ============================================ */
+.VPFooter {
+  border-top: 1px solid var(--ng-border) !important;
+}
+.dark .VPFooter {
+  background: var(--ng-surface) !important;
+}
+
+/* ============================================
+   Scrollbar — matching portfolio
+   ============================================ */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--ng-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--ng-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ng-accent); }
+
+/* Purple-themed text selection — matching portfolio */
+::selection {
+  background-color: rgba(139, 92, 246, 0.3);
+  color: inherit;
+}
+
+/* ============================================
+   Terminal signature element
+   ============================================ */
+.ng-terminal {
+  max-width: 520px;
+  margin: 40px auto 0;
+  border-radius: 16px;
+  border: 1px solid var(--ng-border);
+  background: var(--ng-surface);
+  box-shadow: 0 20px 60px -20px rgba(139, 92, 246, 0.2);
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+}
+.dark .ng-terminal {
+  backdrop-filter: blur(8px);
+  background: rgba(10, 8, 32, 0.8);
+}
+.ng-terminal-bar {
+  display: flex;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--ng-surface-2);
+  border-bottom: 1px solid var(--ng-border);
+}
+.ng-terminal-bar span {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--ng-border);
+}
+.ng-terminal-bar span:nth-child(1) { background: #f87171; }
+.ng-terminal-bar span:nth-child(2) { background: #fbbf24; }
+.ng-terminal-bar span:nth-child(3) { background: #34d399; }
+.ng-terminal-body { padding: 18px 20px; color: var(--ng-text); }
+.ng-terminal-body .prompt { color: var(--ng-accent); }
+.ng-terminal-body .cmd { color: var(--ng-text); }
+.ng-terminal-body .out { color: var(--ng-text-muted); display: block; margin-top: 6px; }
+.ng-cursor {
+  display: inline-block;
+  width: 8px; height: 16px;
+  background: var(--ng-accent);
+  margin-left: 2px;
+  animation: ng-blink 1s steps(1) infinite;
+  vertical-align: middle;
+}
+@keyframes ng-blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ng-cursor { animation: none; }
+}
+
+@media (max-width: 640px) {
+  .ng-terminal { margin: 24px 16px 0; font-size: 13px; }
+}
+
+@media (max-width: 768px) {
+  .VPNavBarTitle .title { font-size: 17px !important; }
+}
+
+/* ============================================
+   Content area — relative z-index above grid bg
+   ============================================ */
+.VPContent,
+.VPDoc,
+.VPSidebar,
+.VPNavBar,
+.VPFooter,
+.VPHero {
+  position: relative;
+  z-index: 1;
+}

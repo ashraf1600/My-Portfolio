@@ -3,7 +3,7 @@ import { FaFacebook, FaLinkedin, FaGithub, FaKaggle } from "react-icons/fa";
 import { SiCodeforces } from "react-icons/si";
 import { FiBookOpen, FiArrowUp, FiArrowUpRight } from "react-icons/fi";
 
-const DOCS_URL = "https://ashraf1600.github.io/NextGen-AI/";
+const DOCS_URL = "/NextGen-AI/";
 
 const navItems = [
   { name: "About",          id: "about" },
@@ -106,8 +106,6 @@ const Footer = () => {
           {/* Docs link — consistent with navbar */}
           <a
             href={DOCS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold
               bg-gradient-to-r from-purple-600/10 to-pink-600/10
               dark:from-purple-500/15 dark:to-pink-500/15

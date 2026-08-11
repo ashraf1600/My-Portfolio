@@ -2,5 +2,9 @@
     "buildCommand": "npm run build",
     "outputDirectory": "dist",
     "framework": "vite",
-    "installCommand": "npm install"
+    "installCommand": "npm install",
+    "rewrites": [
+        { "source": "/NextGen-AI/(.*)", "destination": "/NextGen-AI/$1" },
+        { "source": "/((?!NextGen-AI).*)", "destination": "/index.html" }
+    ]
 }

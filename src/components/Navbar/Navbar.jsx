@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiMenu, FiX, FiBookOpen, FiArrowUpRight } from "react-icons/fi";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
-const DOCS_URL = "https://ashraf1600.github.io/NextGen-AI/";
+const DOCS_URL = "/NextGen-AI/";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -133,8 +133,6 @@ const Navbar = () => {
           {/* Docs CTA — distinct pill button */}
           <a
             href={DOCS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold
               bg-gradient-to-r from-purple-600/10 to-pink-600/10
               dark:from-purple-500/15 dark:to-pink-500/15
@@ -214,8 +212,6 @@ const Navbar = () => {
           <li className="w-full px-6 pt-3">
             <a
               href={DOCS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold
                 bg-gradient-to-r from-purple-600/10 to-pink-600/10
                 dark:from-purple-500/15 dark:to-pink-500/15
