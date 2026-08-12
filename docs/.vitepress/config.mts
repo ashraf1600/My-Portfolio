@@ -172,6 +172,51 @@ export default withMermaid(
           }
         ],
 
+        '/fastapi/': [
+          {
+            text: '🟢 Level 1 — Beginner',
+            collapsed: false,
+            items: [
+              { text: '১. FastAPI পরিচিতি', link: '/fastapi/' },
+              { text: '২. Routing & Endpoints', link: '/fastapi/routing' },
+              { text: '৩. Pydantic Models', link: '/fastapi/pydantic' },
+              { text: '৪. Response Handling', link: '/fastapi/response-handling' },
+              { text: '৫. Request Data', link: '/fastapi/request-data' },
+            ]
+          },
+          {
+            text: '🟡 Level 2 — Intermediate',
+            collapsed: false,
+            items: [
+              { text: '৬. Path Configuration', link: '/fastapi/path-configuration' },
+              { text: '৭. Dependency Injection', link: '/fastapi/dependencies' },
+              { text: '৮. Security & Auth (JWT)', link: '/fastapi/security' },
+              { text: '৯. Database (SQLAlchemy)', link: '/fastapi/database' },
+              { text: '১০. Middlewares', link: '/fastapi/middleware' },
+              { text: '১১. Error Handling', link: '/fastapi/error-handling' },
+            ]
+          },
+          {
+            text: '🟠 Level 3 — Advanced',
+            collapsed: false,
+            items: [
+              { text: '১২. Pydantic Advanced', link: '/fastapi/pydantic-advanced' },
+              { text: '১৩. Testing', link: '/fastapi/testing' },
+              { text: '১৪. Performance', link: '/fastapi/performance' },
+              { text: '১৫. WebSockets', link: '/fastapi/websockets' },
+            ]
+          },
+          {
+            text: '🔴 Level 4 — Expert',
+            collapsed: false,
+            items: [
+              { text: '১৬. Architecture Patterns', link: '/fastapi/architecture' },
+              { text: '১৭. Deployment', link: '/fastapi/deployment' },
+              { text: '১৮. Best Practices', link: '/fastapi/best-practices' },
+            ]
+          }
+        ],
+
         '/drf/': [
           {
             text: 'Django Rest Framework',
