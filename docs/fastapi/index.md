@@ -46,25 +46,50 @@ FastAPI দিয়ে এই সব সমস্যা **automatically** স�
 
 ---
 
-## System Architecture
+## System Architecture & API Life Cycle 🔄
+
+FastAPI-তে একটি HTTP Request আসার পর থেকে Client-এ Response ফিরে যাওয়া পর্যন্ত সম্পূর্ণ জীবনচক্র (Life Cycle) নিচে ডায়াগ্রামের মাধ্যমে দেখানো হলো:
 
 ```mermaid
 graph TD
-    Client["🌐 Client<br/>(Browser / Mobile / Postman)"]
-    Uvicorn["⚡ Uvicorn<br/>(ASGI Server)"]
-    FastAPI["🚀 FastAPI App<br/>(Your Code)"]
-    Starlette["📦 Starlette<br/>(Routing, Middleware)"]
-    Pydantic["✅ Pydantic<br/>(Validation)"]
-    DB["🗄️ Database"]
+    Client["🌐 Client<br/>(Browser / Postman / Mobile)"]
+    Uvicorn["⚡ Uvicorn Server<br/>(ASGI Protocol Manager)"]
 
-    Client -->|HTTP Request| Uvicorn
-    Uvicorn --> FastAPI
-    FastAPI --> Starlette
-    FastAPI --> Pydantic
-    FastAPI --> DB
-    FastAPI -->|HTTP Response| Uvicorn
-    Uvicorn -->|JSON| Client
+    subgraph FastAPI_Internal["🚀 FastAPI Internal Request Life Cycle"]
+        MW["🧱 Middlewares<br/>(CORS, Security Headers, Logging)"]
+        Router["🔀 Starlette Router<br/>(Path & HTTP Method Matching)"]
+        Validation["✅ Pydantic Request Validation<br/>(Type Check & Field Validation)"]
+        Deps["💉 Dependency Injection<br/>(Auth Check, DB Session Get)"]
+        Endpoint["💻 Endpoint Handler<br/>(Business Logic)"]
+        DB[("🗄️ Database / ORM<br/>(SQLAlchemy CRUD Operations)")]
+        Serialize["📦 Response Serialization<br/>(Pydantic Filter & JSON Convert)"]
+    end
+
+    Client -->|১. HTTP Request| Uvicorn
+    Uvicorn -->|২. ASGI Event| MW
+    MW -->|৩. Process Request| Router
+    Router -->|৪. Route Matched| Validation
+    Validation -->|৫. Valid Input Data| Deps
+    Validation -.->|❌ Validation Failed| Client
+    Deps -->|৬. Inject DB & User| Endpoint
+    Endpoint <-->|৭. Read / Write Data| DB
+    Endpoint -->|৮. Return Python Object| Serialize
+    Serialize -->|৯. JSON Object| MW
+    MW -->|১০. Set Cookies/Headers| Uvicorn
+    Uvicorn -->|১১. HTTP Response| Client
 ```
+
+### 📍 API Life Cycle-এর ধাপসমূহ:
+
+1. **Client Request:** ক্লায়েন্ট (Browser/Mobile App) কোনো HTTP রিকোয়েস্ট পাঠায়।
+2. **ASGI Server (Uvicorn):** Uvicorn সার্ভার রিকোয়েস্ট গ্রহণ করে FastAPI অ্যাপে পাঠায়।
+3. **Middlewares:** CORS, Security Headers, Request Logging ইত্যাদি মধ্যবর্তী লেয়ারে প্রসেস হয়।
+4. **Router:** Starlette Router সঠিক URL path ও HTTP method (GET/POST/PUT/DELETE) ম্যাচ করে।
+5. **Pydantic Request Validation:** ইনপুট ডেটার টাইপ ও ফরম্যাট চেক করা হয়। ভুল থাকলে সাথে সাথে `422 Unprocessable Entity` এরর ক্লায়েন্টে ফেরত যায়।
+6. **Dependency Injection:** `Depends()` দিয়ে Auth Check, DB Session হ্যান্ডেল করা হয়।
+7. **Endpoint & Database:** বিজনেস লজিক এক্সিকিউট হয় এবং প্রয়োজনে ডাটাবেজে CRUD অপারেশন চালানো হয়।
+8. **Response Serialization:** `response_model` দিয়ে গোপন তথ্য (যেমন পাসওয়ার্ড) বাদ দিয়ে ডেটা ফিল্টার এবং JSON-এ কনভার্ট করা হয়।
+9. **Final Response:** প্রস্তুতকৃত JSON রেসপন্স ক্লায়েন্টের কাছে ফেরত পাঠানো হয়।
 
 ---
 
