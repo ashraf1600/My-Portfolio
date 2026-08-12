@@ -23,6 +23,7 @@ export default withMermaid(
           text: 'Languages & Frameworks',
           items: [
             { text: 'Django Rest Framework', link: '/drf/' },
+            { text: 'FastAPI', link: '/fastapi/' },
           ]
         },
         {
