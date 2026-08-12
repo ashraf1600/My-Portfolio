@@ -53,15 +53,15 @@ graph TD
     Request["🌐 Client Request"]
     Endpoint["🚀 FastAPI Endpoint"]
 
-    E1["❌ HTTPException\n404, 401, 403, 409..."]
-    E2["❌ RequestValidationError\nPydantic validation fail"]
-    E3["❌ Custom Exception\nBusinessLogicError"]
-    E4["❌ Unhandled Exception\nBug, crash"]
+    E1["❌ HTTPException<br/>404, 401, 403, 409..."]
+    E2["❌ RequestValidationError<br/>Pydantic validation fail"]
+    E3["❌ Custom Exception<br/>BusinessLogicError"]
+    E4["❌ Unhandled Exception<br/>Bug, crash"]
 
-    H1["🔧 http_exception_handler\nCustom format"]
-    H2["🔧 validation_exception_handler\nUser-friendly messages"]
-    H3["🔧 business_error_handler\nDomain-specific"]
-    H4["🔧 global_exception_handler\n500 — Stack trace লুকাও"]
+    H1["🔧 http_exception_handler<br/>Custom format"]
+    H2["🔧 validation_exception_handler<br/>User-friendly messages"]
+    H3["🔧 business_error_handler<br/>Domain-specific"]
+    H4["🔧 global_exception_handler<br/>500 — Stack trace লুকাও"]
 
     Response["📤 Consistent JSON Error Response"]
 

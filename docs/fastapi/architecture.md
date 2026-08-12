@@ -36,9 +36,9 @@ description: FastAPI-তে Production-Grade Project Layout, Clean Architecture,
 ```mermaid
 graph TD
     Client["🌐 Client (HTTP Request)"]
-    API["🔌 API / Router Layer\n(Request/Response, Validation)"]
-    Service["⚙️ Service Layer\n(Business Logic, Rules)"]
-    Repo["🗄️ Repository Layer\n(Database Queries, ORM)"]
+    API["🔌 API / Router Layer<br/>(Request/Response, Validation)"]
+    Service["⚙️ Service Layer<br/>(Business Logic, Rules)"]
+    Repo["🗄️ Repository Layer<br/>(Database Queries, ORM)"]
     DB[("💾 Database / External Services")]
 
     Client -->|HTTP| API

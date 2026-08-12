@@ -42,7 +42,7 @@ graph TD
     Cache{"🧠 Redis Cache hit?"}
     FastResponse["⚡ Instant Response (< 5ms)"]
     DB["🗄️ Database / I/O Operation"]
-    BGTask["⚙️ Background Task\n(Send Email / Process Log)"]
+    BGTask["⚙️ Background Task<br/>(Send Email / Process Log)"]
 
     Client --> Gunicorn
     Gunicorn --> Worker1

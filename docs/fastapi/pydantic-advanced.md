@@ -59,10 +59,10 @@ class User(BaseModel):
 graph TD
     Input["📨 JSON Input Data"]
 
-    FV["🔍 @field_validator\nPer-field validation\ncls method"]
-    MV["🔍 @model_validator\nCross-field validation\nself method"]
-    CF["⚡ @computed_field\nAuto-calculated fields\n@property style"]
-    MS["📤 @model_serializer\nCustom JSON output"]
+    FV["🔍 @field_validator<br/>Per-field validation<br/>cls method"]
+    MV["🔍 @model_validator<br/>Cross-field validation<br/>self method"]
+    CF["⚡ @computed_field<br/>Auto-calculated fields<br/>@property style"]
+    MS["📤 @model_serializer<br/>Custom JSON output"]
 
     Output["✅ Validated Model Instance"]
     Error["❌ ValidationError"]

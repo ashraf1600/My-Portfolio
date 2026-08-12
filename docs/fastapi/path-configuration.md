@@ -42,13 +42,13 @@ Path configuration-এর মূল tools:
 
 ```mermaid
 graph TD
-    Decorator["@app.get('/users/{id}'\nsummary='...'\ndescription='...'\ntags=['Users']\nresponses={...})"]
+    Decorator["@app.get('/users/{id}'<br/>summary='...'<br/>description='...'<br/>tags=['Users']<br/>responses={...})"]
 
-    SwaggerUI["📄 Swagger UI /docs\n• Grouped by tags\n• Summary visible\n• Description expanded\n• Try it out button"]
+    SwaggerUI["📄 Swagger UI /docs<br/>• Grouped by tags<br/>• Summary visible<br/>• Description expanded<br/>• Try it out button"]
 
-    ReDoc["📋 ReDoc /redoc\n• Full description\n• Response schemas\n• Code examples"]
+    ReDoc["📋 ReDoc /redoc<br/>• Full description<br/>• Response schemas<br/>• Code examples"]
 
-    OpenAPI["📑 OpenAPI JSON /openapi.json\n• Machine-readable\n• Client generation"]
+    OpenAPI["📑 OpenAPI JSON /openapi.json<br/>• Machine-readable<br/>• Client generation"]
 
     Decorator --> SwaggerUI
     Decorator --> ReDoc

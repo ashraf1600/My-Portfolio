@@ -50,11 +50,11 @@ FastAPI দিয়ে এই সব সমস্যা **automatically** স�
 
 ```mermaid
 graph TD
-    Client["🌐 Client\n(Browser / Mobile / Postman)"]
-    Uvicorn["⚡ Uvicorn\n(ASGI Server)"]
-    FastAPI["🚀 FastAPI App\n(Your Code)"]
-    Starlette["📦 Starlette\n(Routing, Middleware)"]
-    Pydantic["✅ Pydantic\n(Validation)"]
+    Client["🌐 Client<br/>(Browser / Mobile / Postman)"]
+    Uvicorn["⚡ Uvicorn<br/>(ASGI Server)"]
+    FastAPI["🚀 FastAPI App<br/>(Your Code)"]
+    Starlette["📦 Starlette<br/>(Routing, Middleware)"]
+    Pydantic["✅ Pydantic<br/>(Validation)"]
     DB["🗄️ Database"]
 
     Client -->|HTTP Request| Uvicorn

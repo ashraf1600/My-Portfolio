@@ -50,14 +50,14 @@ Client Response
 ```mermaid
 graph TD
     Client["🌐 Client Request"]
-    MW1["🔒 TrustedHost Middleware\nHost validate করো"]
-    MW2["🌍 CORS Middleware\nCross-origin check করো"]
-    MW3["📝 Logging Middleware\nRequest log করো"]
-    MW4["📦 GZip Middleware\nResponse compress করো"]
-    Endpoint["🚀 FastAPI Endpoint\nBusiness Logic"]
-    MW4R["📦 GZip\nCompress response"]
-    MW3R["📝 Logging\nResponse log + timing"]
-    MW2R["🌍 CORS\nHeaders add করো"]
+    MW1["🔒 TrustedHost Middleware<br/>Host validate করো"]
+    MW2["🌍 CORS Middleware<br/>Cross-origin check করো"]
+    MW3["📝 Logging Middleware<br/>Request log করো"]
+    MW4["📦 GZip Middleware<br/>Response compress করো"]
+    Endpoint["🚀 FastAPI Endpoint<br/>Business Logic"]
+    MW4R["📦 GZip<br/>Compress response"]
+    MW3R["📝 Logging<br/>Response log + timing"]
+    MW2R["🌍 CORS<br/>Headers add করো"]
     Response["📤 Client Response"]
 
     Client --> MW1 --> MW2 --> MW3 --> MW4 --> Endpoint

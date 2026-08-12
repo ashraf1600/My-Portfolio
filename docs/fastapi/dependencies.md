@@ -68,15 +68,15 @@ def list_products(
 
 ```mermaid
 graph TD
-    Request["🌐 HTTP Request\nGET /users/"]
+    Request["🌐 HTTP Request<br/>GET /users/"]
 
-    D1["⚙️ get_pagination()\npage=1, limit=10"]
-    D2["🔐 get_token()\nAuthorization header"]
-    D3["👤 get_current_user()\nDepends(get_token)"]
-    D4["🗄️ get_db()\nyield db session"]
+    D1["⚙️ get_pagination()<br/>page=1, limit=10"]
+    D2["🔐 get_token()<br/>Authorization header"]
+    D3["👤 get_current_user()<br/>Depends(get_token)"]
+    D4["🗄️ get_db()<br/>yield db session"]
 
-    Endpoint["🚀 list_users()\nMain Logic"]
-    Response["📤 HTTP Response\nJSON data"]
+    Endpoint["🚀 list_users()<br/>Main Logic"]
+    Response["📤 HTTP Response<br/>JSON data"]
 
     Request --> D1
     Request --> D2

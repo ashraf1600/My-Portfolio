@@ -38,12 +38,12 @@ FastAPI-তে **Response Handling** মানে হলো — client-কে �
 
 ```mermaid
 graph TD
-    Endpoint["🚀 FastAPI Endpoint\nreturn data"]
-    Check{"response_model\nআছে?"}
-    Filter["✂️ Data Filter\nশুধু defined fields"]
-    Serialize["📦 Serialize\nPython → JSON"]
-    Status["📊 HTTP Status Code\n200 / 201 / 404..."]
-    Headers["📋 Headers\nContent-Type, Custom..."]
+    Endpoint["🚀 FastAPI Endpoint<br/>return data"]
+    Check{"response_model<br/>আছে?"}
+    Filter["✂️ Data Filter<br/>শুধু defined fields"]
+    Serialize["📦 Serialize<br/>Python → JSON"]
+    Status["📊 HTTP Status Code<br/>200 / 201 / 404..."]
+    Headers["📋 Headers<br/>Content-Type, Custom..."]
     Client["🌐 Client Response"]
 
     Endpoint --> Check

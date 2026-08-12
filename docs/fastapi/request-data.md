@@ -44,14 +44,14 @@ FastAPI এই সব ধরনের data **type hints** দিয়েই han
 graph TD
     Request["🌐 HTTP Request"]
 
-    Path["📍 Path Parameter\n/users/{user_id}\nURL path-এর অংশ"]
-    Query["❓ Query Parameter\n?page=1&search=test\n? এর পরে"]
-    Body["📦 Request Body\nJSON data\nHTTP body-তে"]
-    Header["📋 Header\nAuthorization: Bearer ...\nHTTP header-এ"]
-    Cookie["🍪 Cookie\nsession_id=abc\nBrowser cookie"]
-    Form["📝 Form Data\nusername=x&pass=y\nHTML form"]
+    Path["📍 Path Parameter<br/>/users/{user_id}<br/>URL path-এর অংশ"]
+    Query["❓ Query Parameter<br/>?page=1&search=test<br/>? এর পরে"]
+    Body["📦 Request Body<br/>JSON data<br/>HTTP body-তে"]
+    Header["📋 Header<br/>Authorization: Bearer ...<br/>HTTP header-এ"]
+    Cookie["🍪 Cookie<br/>session_id=abc<br/>Browser cookie"]
+    Form["📝 Form Data<br/>username=x&pass=y<br/>HTML form"]
 
-    FastAPI["🚀 FastAPI\nAuto Parse & Validate"]
+    FastAPI["🚀 FastAPI<br/>Auto Parse & Validate"]
 
     Request --> Path
     Request --> Query

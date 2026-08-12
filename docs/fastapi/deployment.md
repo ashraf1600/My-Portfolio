@@ -37,7 +37,7 @@ description: FastAPI-তে Production Deployment, Docker, Docker Compose, Nginx
 graph TD
     Client["🌐 Client (Browser / Mobile App)"]
     HTTPS["🔒 Internet (HTTPS Port 443)"]
-    Nginx["🛡️ Nginx Reverse Proxy\n(SSL Termination, Rate Limit, Static Files)"]
+    Nginx["🛡️ Nginx Reverse Proxy<br/>(SSL Termination, Rate Limit, Static Files)"]
     DockerApp["🐳 Docker Container (App)"]
     Gunicorn["⚡ Gunicorn Master Process"]
     Worker1["👷 Uvicorn Worker 1"]

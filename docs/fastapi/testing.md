@@ -36,11 +36,11 @@ FastAPI-তে টেস্টিং করার জন্য মূলত **Py
 ```mermaid
 graph TD
     Pytest["🧪 Pytest Runner"]
-    Fixture["🔌 Pytest Fixture\n(Test Client, DB Override)"]
-    TestClient["⚡ TestClient (httpx)\nSimulated HTTP Calls"]
+    Fixture["🔌 Pytest Fixture<br/>(Test Client, DB Override)"]
+    TestClient["⚡ TestClient (httpx)<br/>Simulated HTTP Calls"]
     FastAPIApp["🚀 FastAPI Application"]
-    MockDB["🗄️ In-Memory SQLite DB\n(Dependency Override)"]
-    Assert["✅ Assertions\n(Status 200, JSON Validation)"]
+    MockDB["🗄️ In-Memory SQLite DB<br/>(Dependency Override)"]
+    Assert["✅ Assertions<br/>(Status 200, JSON Validation)"]
 
     Pytest --> Fixture
     Fixture --> TestClient

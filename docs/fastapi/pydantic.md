@@ -58,12 +58,12 @@ def create_user(user: UserCreate):
 
 ```mermaid
 graph TD
-    A["📨 Client JSON\n{name: 'আরিফ', age: 25}"]
+    A["📨 Client JSON<br/>{name: 'আরিফ', age: 25}"]
     B["🔍 Pydantic Validation"]
     C{"✅ Valid?"}
-    D["✅ Python Object\nUserCreate instance"]
-    E["❌ 422 Error\nValidation details"]
-    F["🚀 FastAPI Endpoint\ndef create_user(user: UserCreate)"]
+    D["✅ Python Object<br/>UserCreate instance"]
+    E["❌ 422 Error<br/>Validation details"]
+    F["🚀 FastAPI Endpoint<br/>def create_user(user: UserCreate)"]
 
     A --> B
     B --> C

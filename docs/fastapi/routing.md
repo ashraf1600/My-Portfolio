@@ -41,22 +41,24 @@ Routing ছাড়া API তৈরি করা অসম্ভব। কি�
 ## Request Flow Diagram
 
 ```mermaid
-graph LR
-    Client["🌐 Client"]
+graph TD
+    Client["🌐 Client Request"]
     Router["🔀 FastAPI Router"]
-    G["GET /users/\nlist_users()"]
-    P["POST /users/\ncreate_user()"]
-    PU["PUT /users/id\nupdate_user()"]
-    D["DELETE /users/id\ndelete_user()"]
 
-    Client -->|"GET /users/"| Router
-    Client -->|"POST /users/"| Router
-    Client -->|"PUT /users/1"| Router
-    Client -->|"DELETE /users/1"| Router
-    Router --> G
-    Router --> P
-    Router --> PU
-    Router --> D
+    subgraph Handlers["Route Handlers"]
+        G["GET /products/<br/>list_products()"]
+        P["POST /products/<br/>create_product()"]
+        PU["PUT /products/{id}<br/>update_product()"]
+        PA["PATCH /products/{id}<br/>partial_update()"]
+        D["DELETE /products/{id}<br/>delete_product()"]
+    end
+
+    Client -->|HTTP Request| Router
+    Router -->|GET| G
+    Router -->|POST| P
+    Router -->|PUT| PU
+    Router -->|PATCH| PA
+    Router -->|DELETE| D
 ```
 
 ---
