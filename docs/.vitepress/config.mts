@@ -214,6 +214,13 @@ export default withMermaid(
               { text: '১৭. Deployment', link: '/fastapi/deployment' },
               { text: '১৮. Best Practices', link: '/fastapi/best-practices' },
             ]
+          },
+          {
+            text: '🏆 Capstone Real Project',
+            collapsed: false,
+            items: [
+              { text: '১৯. Expense Tracker API', link: '/fastapi/project' },
+            ]
           }
         ],
 
