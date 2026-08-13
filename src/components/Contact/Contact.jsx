@@ -33,7 +33,7 @@ const INITIAL_MESSAGES = [
 
 const Contact = () => {
   const form = useRef();
-  const chatBottomRef = useRef(null);
+  const chatContainerRef = useRef(null);
   const { theme } = useTheme();
 
   const [activeTab, setActiveTab] = useState("chat"); // 'chat' | 'email'
@@ -74,10 +74,10 @@ const Contact = () => {
     document.head.appendChild(style);
   }, []);
 
-  // Auto scroll chat to bottom when messages update
+  // Auto scroll inner chat container to bottom when messages update (does NOT scroll the window)
   useEffect(() => {
-    if (activeTab === "chat" && chatBottomRef.current) {
-      chatBottomRef.current.scrollIntoView({ behavior: "smooth" });
+    if (activeTab === "chat" && chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages, isTyping, activeTab]);
 
@@ -322,7 +322,7 @@ const Contact = () => {
           {activeTab === "chat" && (
             <div className="flex-1 flex flex-col justify-between">
               {/* Chat Thread */}
-              <div className="p-6 overflow-y-auto space-y-4 max-h-[400px] min-h-[320px]">
+              <div ref={chatContainerRef} className="p-6 overflow-y-auto space-y-4 max-h-[400px] min-h-[320px]">
                 {messages.map((msg) => (
                   <div
                     key={msg.id}
@@ -376,7 +376,6 @@ const Contact = () => {
                     </div>
                   </div>
                 )}
-                <div ref={chatBottomRef} />
               </div>
 
               {/* Quick Topics */}

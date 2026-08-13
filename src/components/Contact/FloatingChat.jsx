@@ -14,11 +14,11 @@ const FloatingChat = () => {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const chatBottomRef = useRef(null);
+  const chatContainerRef = useRef(null);
 
   useEffect(() => {
-    if (isOpen && chatBottomRef.current) {
-      chatBottomRef.current.scrollIntoView({ behavior: "smooth" });
+    if (isOpen && chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages, isTyping, isOpen]);
 
@@ -103,7 +103,7 @@ const FloatingChat = () => {
           </div>
 
           {/* Chat Messages Thread */}
-          <div className="p-4 overflow-y-auto max-h-72 min-h-[220px] space-y-3 text-xs bg-slate-50/50 dark:bg-gray-950/50">
+          <div ref={chatContainerRef} className="p-4 overflow-y-auto max-h-72 min-h-[220px] space-y-3 text-xs bg-slate-50/50 dark:bg-gray-950/50">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -137,7 +137,6 @@ const FloatingChat = () => {
                 </div>
               </div>
             )}
-            <div ref={chatBottomRef} />
           </div>
 
           {/* Jump to Full Form Bar */}

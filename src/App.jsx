@@ -39,7 +39,7 @@ const useScrollReveal = () => {
 const App = () => {
   useScrollReveal();
 
-  // Redirect /portfolio, /home, #portfolio, or unknown paths back to Home
+  // Redirect /portfolio, /home, #portfolio, or unknown paths back to Home & ensure initial load stays at top
   useEffect(() => {
     const handleUrlRedirect = () => {
       const path = window.location.pathname.toLowerCase();
@@ -54,7 +54,10 @@ const App = () => {
         (path !== "/" && !path.startsWith("/nextgen-ai"))
       ) {
         window.history.replaceState(null, "", "/");
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: "instant" });
+      } else if (!hash) {
+        // Ensure default root / always opens at top (Home)
+        window.scrollTo({ top: 0, behavior: "instant" });
       }
     };
 
