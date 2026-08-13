@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { research, researchMetrics, scholarlyProfiles } from "../../constants";
-import { FaExternalLinkAlt, FaFilePdf } from "react-icons/fa";
+import { FaExternalLinkAlt, FaFilePdf, FaTimes, FaQuoteRight, FaCopy, FaCheck } from "react-icons/fa";
 import {
   HiAcademicCap,
   HiDocumentText,
@@ -97,18 +97,144 @@ const MetricCard = ({ metric, index }) => {
 const getStatusColor = (status) => {
   switch (status) {
     case "Published":
-      return "bg-green-500/20 text-green-400 border-green-500";
+    case "Accepted":
+    case "Copyright Confirmed":
+      return "bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border-emerald-500/40";
     case "Under Review":
-      return "bg-yellow-500/20 text-yellow-400 border-yellow-500";
+    case "Submitted":
+      return "bg-amber-500/20 text-amber-600 dark:text-amber-400 border-amber-500/40";
     case "In Progress":
-      return "bg-blue-500/20 text-blue-400 border-blue-500";
+      return "bg-sky-500/20 text-sky-600 dark:text-sky-400 border-sky-500/40";
     default:
       return "bg-slate-200 dark:bg-gray-500/20 text-slate-700 dark:text-gray-400 border-slate-300 dark:border-gray-500";
   }
 };
 
+const PaperModal = ({ paper, onClose }) => {
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const handleKey = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [onClose]);
+
+  const bibtex = `@article{islam${paper.year}_${paper.id},
+  title={${paper.title}},
+  author={${paper.authors}},
+  journal={${paper.conference}},
+  year={${paper.year}}
+}`;
+
+  const copyBibtex = () => {
+    navigator.clipboard.writeText(bibtex);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 overflow-y-auto"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white dark:bg-gray-900 rounded-3xl max-w-3xl w-full border border-slate-200 dark:border-purple-500/30 shadow-2xl overflow-hidden relative my-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="p-6 sm:p-8">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <span
+              className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(
+                paper.status
+              )}`}
+            >
+              {paper.status}
+            </span>
+            <button
+              onClick={onClose}
+              className="text-slate-400 hover:text-slate-900 dark:hover:text-white p-2 rounded-full hover:bg-slate-100 dark:hover:bg-gray-800 transition"
+            >
+              <FaTimes size={18} />
+            </button>
+          </div>
+
+          <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3 leading-snug">
+            {paper.title}
+          </h3>
+
+          <p className="text-sm font-medium text-purple-700 dark:text-purple-300 mb-2">
+            {paper.authors}
+          </p>
+
+          <p className="text-xs text-slate-500 dark:text-gray-400 mb-6 font-semibold">
+            {paper.conference} • {paper.year}
+          </p>
+
+          <div className="mb-6 bg-slate-50 dark:bg-gray-800/50 p-5 rounded-2xl border border-slate-200 dark:border-gray-700/60">
+            <h4 className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2">
+              Abstract Overview
+            </h4>
+            <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
+              {paper.abstract}
+            </p>
+          </div>
+
+          {/* Citation BibTeX Block */}
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider flex items-center gap-1.5">
+                <FaQuoteRight size={12} className="text-purple-500" /> BibTeX Citation
+              </span>
+              <button
+                onClick={copyBibtex}
+                className="inline-flex items-center gap-1 text-xs text-purple-600 dark:text-purple-400 hover:underline font-semibold"
+              >
+                {copied ? <FaCheck size={12} className="text-emerald-500" /> : <FaCopy size={12} />}
+                <span>{copied ? "Copied!" : "Copy BibTeX"}</span>
+              </button>
+            </div>
+            <pre className="p-4 rounded-xl bg-slate-900 text-purple-300 text-xs font-mono overflow-x-auto border border-slate-800">
+              {bibtex}
+            </pre>
+          </div>
+
+          <div className="flex flex-wrap gap-2 mb-6">
+            {paper.tags.map((tag, idx) => (
+              <span
+                key={idx}
+                className="text-xs font-medium px-3 py-1 rounded-full bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-500/20"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href={paper.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-xl transition shadow-lg shadow-purple-500/30"
+            >
+              <FaExternalLinkAlt size={14} />
+              <span>Publisher Paper Link</span>
+            </a>
+            <button
+              onClick={onClose}
+              className="px-6 py-3 bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 font-semibold rounded-xl transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Research = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedPaper, setSelectedPaper] = useState(null);
 
   const filteredResearch =
     selectedCategory === "All"
@@ -158,10 +284,11 @@ const Research = () => {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedCategory === category
-              ? "bg-purple-600 text-white"
-              : "bg-slate-200 dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-purple-700 hover:text-white"
-              }`}
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
+              selectedCategory === category
+                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/30"
+                : "bg-slate-200 dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-purple-700 hover:text-white"
+            }`}
           >
             {category}
           </button>
@@ -173,11 +300,11 @@ const Research = () => {
         {filteredResearch.map((paper) => (
           <div
             key={paper.id}
-            className="border border-slate-200 dark:border-white bg-white/90 dark:bg-gray-900 backdrop-blur-md rounded-2xl shadow-2xl p-6 hover:shadow-purple-500/50 hover:-translate-y-1 transition-transform duration-300"
+            className="border border-slate-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl shadow-xl p-6 md:p-7 hover:shadow-purple-500/30 hover:-translate-y-1 transition-all duration-300"
           >
             <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">
                   {paper.title}
                 </h3>
                 <p className="text-slate-600 dark:text-gray-400 text-sm mb-2">{paper.authors}</p>
@@ -196,32 +323,35 @@ const Research = () => {
               </div>
             </div>
 
-            <p className="text-slate-700 dark:text-gray-300 mb-4 leading-relaxed">{paper.abstract}</p>
+            <p className="text-slate-700 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3">
+              {paper.abstract}
+            </p>
 
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="flex flex-wrap gap-2 mb-6">
               {paper.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="bg-purple-500/10 dark:bg-[#251f38] text-xs font-semibold text-purple-700 dark:text-purple-500 rounded-full px-3 py-1"
+                  className="bg-purple-500/10 text-xs font-semibold text-purple-700 dark:text-purple-300 rounded-full px-3 py-1 border border-purple-500/20"
                 >
                   {tag}
                 </span>
               ))}
             </div>
 
-            <div className="flex gap-4">
-              <a
-                href={paper.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition"
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => setSelectedPaper(paper)}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-md shadow-purple-500/20"
               >
-                <FaExternalLinkAlt size={14} />
-                View Paper
-              </a>
-              <button className="inline-flex items-center gap-2 bg-slate-200 dark:bg-gray-800 hover:bg-slate-300 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold transition">
-                <FaFilePdf size={14} />
-                Download PDF
+                <FaExternalLinkAlt size={13} />
+                <span>View Details & Citation</span>
+              </button>
+              <button
+                onClick={() => setSelectedPaper(paper)}
+                className="inline-flex items-center gap-2 bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 px-5 py-2.5 rounded-xl text-sm font-semibold transition"
+              >
+                <FaFilePdf size={13} />
+                <span>Paper Abstract PDF</span>
               </button>
             </div>
           </div>
@@ -235,6 +365,11 @@ const Research = () => {
             No research papers found in this category.
           </p>
         </div>
+      )}
+
+      {/* Paper Modal */}
+      {selectedPaper && (
+        <PaperModal paper={selectedPaper} onClose={() => setSelectedPaper(null)} />
       )}
 
       {/* Scholarly Profiles */}
@@ -277,3 +412,4 @@ const Research = () => {
 };
 
 export default Research;
+

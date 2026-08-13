@@ -6,6 +6,7 @@ import Experience from "./components/Experience/Experience";
 import Work from "./components/Work/Work";
 import Education from "./components/Education/Education";
 import Contact from "./components/Contact/Contact";
+import FloatingChat from "./components/Contact/FloatingChat";
 import Footer from "./components/Footer/Footer";
 import BlurBlob from './components/BlurBlob';
 import Research from "./components/Research/Research";
@@ -55,6 +56,7 @@ const App = () => {
         <div className="reveal-section"><Certifications /></div>
         <div className="reveal-section"><Education /></div>
         <div className="reveal-section"><Contact /></div>
+        <FloatingChat />
         <Footer />
       </div>
 
@@ -63,3 +65,4 @@ const App = () => {
 };
 
 export default App;
+
