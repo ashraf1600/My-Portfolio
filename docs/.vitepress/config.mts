@@ -185,6 +185,13 @@ export default withMermaid(
             ]
           },
           {
+            text: '🔄 Migration & Comparison',
+            collapsed: false,
+            items: [
+              { text: 'DRF to FastAPI Guide', link: '/fastapi/drf-vs-fastapi' },
+            ]
+          },
+          {
             text: '🟡 Level 2 — Intermediate',
             collapsed: false,
             items: [
@@ -254,7 +261,8 @@ export default withMermaid(
               { text: 'Section 23: Security', link: '/drf/security' },
               { text: 'Section 24: Interview Questions', link: '/drf/interview-questions' },
               { text: 'Section 25: Project Review', link: '/drf/project-review' },
-              { text: 'Docker: DRF + React Full Stack', link: '/drf/docker-fullstack' }
+              { text: 'Docker: DRF + React Full Stack', link: '/drf/docker-fullstack' },
+              { text: 'DRF to FastAPI Guide 🚀', link: '/fastapi/drf-vs-fastapi' }
             ]
           }
         ],
