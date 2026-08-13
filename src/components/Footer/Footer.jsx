@@ -6,7 +6,7 @@ import { FiBookOpen, FiArrowUp, FiArrowUpRight } from "react-icons/fi";
 const DOCS_URL = "/NextGen-AI/";
 
 const navItems = [
-  { name: "About",          id: "about" },
+  { name: "Home",           id: "about" },
   { name: "Skills",         id: "skills" },
   { name: "Projects",       id: "work" },
   { name: "Research",       id: "research" },
@@ -55,6 +55,10 @@ const Footer = () => {
   }, []);
 
   const handleScroll = (sectionId) => {
+    if (sectionId === "about") {
+      scrollToTop();
+      return;
+    }
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
@@ -62,6 +66,7 @@ const Footer = () => {
   };
 
   const scrollToTop = () => {
+    window.history.pushState(null, "", "/");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

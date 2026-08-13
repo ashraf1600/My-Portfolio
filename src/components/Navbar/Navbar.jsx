@@ -13,7 +13,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const menuItems = [
-    { id: "about", label: "About" },
+    { id: "about", label: "Home" },
     { id: "skills", label: "Skills" },
     { id: "work", label: "Projects" },
     { id: "research", label: "Research" },
@@ -65,6 +65,12 @@ const Navbar = () => {
     setActiveSection(sectionId);
     setIsOpen(false);
 
+    if (sectionId === "about") {
+      window.history.pushState(null, "", "/");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
@@ -97,7 +103,10 @@ const Navbar = () => {
         {/* Logo */}
         <div
           className="text-lg font-semibold cursor-pointer transition-all duration-300 hover:scale-105"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => {
+            window.history.pushState(null, "", "/");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
         >
           <span className="text-[#8245ec]">&lt;</span>
           <span className="text-slate-900 dark:text-white">Ashraful</span>

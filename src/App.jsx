@@ -39,6 +39,30 @@ const useScrollReveal = () => {
 const App = () => {
   useScrollReveal();
 
+  // Redirect /portfolio, /home, #portfolio, or unknown paths back to Home
+  useEffect(() => {
+    const handleUrlRedirect = () => {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+
+      // If user accesses /portfolio, /home, #portfolio, #home, or non-docs subpaths
+      if (
+        path.includes("/portfolio") ||
+        path.includes("/home") ||
+        hash === "#portfolio" ||
+        hash === "#home" ||
+        (path !== "/" && !path.startsWith("/nextgen-ai"))
+      ) {
+        window.history.replaceState(null, "", "/");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+
+    handleUrlRedirect();
+    window.addEventListener("popstate", handleUrlRedirect);
+    return () => window.removeEventListener("popstate", handleUrlRedirect);
+  }, []);
+
   return (
     <div className="bg-white dark:bg-[#050414] min-h-screen transition-colors duration-300">
 
