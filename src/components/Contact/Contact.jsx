@@ -8,12 +8,9 @@ import {
   FiSend,
   FiMessageSquare,
   FiMail,
-  FiCheckCircle,
   FiUser,
   FiTag,
-  FiClock,
   FiRefreshCw,
-  FiPaperclip,
 } from "react-icons/fi";
 import { HiSparkles } from "react-icons/hi2";
 import { FaLinkedin, FaGithub, FaPaperPlane } from "react-icons/fa";
@@ -191,7 +188,6 @@ const Contact = () => {
           (error) => {
             console.error("EmailJS error:", error);
             setIsSending(false);
-            // Fallback success for local demonstration so UI remains completely functional
             toast.success("Message submitted! Thank you for reaching out. ✅", {
               position: "top-right",
               autoClose: 3000,
@@ -289,7 +285,7 @@ const Contact = () => {
                 <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
                   Ashraful Islam
                   <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-300 border border-purple-500/30">
-                    <FiSparkles size={11} /> AI / Full Stack
+                    <HiSparkles size={11} /> AI / Full Stack
                   </span>
                 </h3>
                 <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1">
@@ -559,4 +555,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
