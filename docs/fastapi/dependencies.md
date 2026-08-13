@@ -546,6 +546,43 @@ def send_sms(
 
 ## ৭. Dependency Override — Testing-এ কাজে লাগে
 
+### 📊 Dependency Override Flow Diagram
+
+```mermaid
+graph TD
+    subgraph Client Request
+        Req["🧪 TestClient Request<br/>GET /users/"]
+    end
+
+    subgraph FastAPI Dependency Resolver
+        Req --> CheckDB{"Is get_db in<br/>dependency_overrides?"}
+        Req --> CheckAuth{"Is get_current_user in<br/>dependency_overrides?"}
+
+        CheckDB -- "✅ Yes (Testing)" --> OverrideDB["⚡ override_get_db()<br/>Yields Mock/Fake DB"]
+        CheckDB -- "❌ No (Production)" --> RealDB["🗄️ get_db()<br/>Connects Real Database"]
+
+        CheckAuth -- "✅ Yes (Testing)" --> OverrideAuth["🔑 override_get_current_user()<br/>Injects Mock User Dict"]
+        CheckAuth -- "❌ No (Production)" --> RealAuth["🔐 get_current_user()<br/>Verifies Bearer JWT Token"]
+    end
+
+    subgraph Endpoint Execution
+        OverrideDB --> Endpoint["🚀 list_users(db, user)<br/>Main Logic Runs with Mocks"]
+        RealDB --> Endpoint
+        OverrideAuth --> Endpoint
+        RealAuth --> Endpoint
+
+        Endpoint --> Resp["📤 Response<br/>Fast & Isolated Test Result"]
+    end
+
+    style OverrideDB fill:#d1e7dd,stroke:#0f5132,stroke-width:2px
+    style OverrideAuth fill:#d1e7dd,stroke:#0f5132,stroke-width:2px
+    style RealDB fill:#fff3cd,stroke:#664d03
+    style RealAuth fill:#fff3cd,stroke:#664d03
+    style CheckDB fill:#cff4fc,stroke:#055160
+    style CheckAuth fill:#cff4fc,stroke:#055160
+```
+
+
 ```python
 # main.py
 from fastapi import FastAPI, Depends
