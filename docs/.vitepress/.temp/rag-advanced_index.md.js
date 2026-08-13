@@ -1,0 +1,62 @@
+import { resolveComponent, useSSRContext } from "vue";
+import { ssrRenderAttrs, ssrRenderSuspense, ssrRenderComponent } from "vue/server-renderer";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"Course Overview","description":"","frontmatter":{"title":"Course Overview"},"headers":[],"relativePath":"rag-advanced/index.md","filePath":"rag-advanced/index.md"}');
+const _sfc_main = { name: "rag-advanced/index.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_Mermaid = resolveComponent("Mermaid");
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="advanced-rag-—-সম্পূর্ণ-কোর্স" tabindex="-1">Advanced RAG — সম্পূর্ণ কোর্স <a class="header-anchor" href="#advanced-rag-—-সম্পূর্ণ-কোর্স" aria-label="Permalink to &quot;Advanced RAG — সম্পূর্ণ কোর্স&quot;">​</a></h1><p>এই কোর্সটা RAG (Retrieval-Augmented Generation) কে একদম ভিত্তি থেকে শুরু করে production-grade, agentic, multimodal সিস্টেম পর্যন্ত কভার করে। প্রতিটা Module ধাপে ধাপে আগের Module এর উপর ভিত্তি করে তৈরি — তাই ক্রম অনুযায়ী পড়াই সবচেয়ে ভালো ফলাফল দেবে।</p><hr><h2 id="prerequisite-—-শুরু-করার-আগে" tabindex="-1">Prerequisite — শুরু করার আগে <a class="header-anchor" href="#prerequisite-—-শুরু-করার-আগে" aria-label="Permalink to &quot;Prerequisite — শুরু করার আগে&quot;">​</a></h2><p>এই কোর্স শুরু করার আগে নিচের দুইটা বিষয়ে basic ধারণা থাকা আবশ্যক:</p><ul><li><strong>LangChain Basics</strong> — Models, Prompts, Chains, Runnables, Retrievers</li><li><strong>LangGraph Basics</strong> — State, Node, Edge, Graph-based workflow</li></ul><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>যদি এই দুইটা বিষয়ে এখনো comfortable না হও, আগে আমাদের <strong>LangChain</strong> এবং <strong>LangGraph</strong> সেকশন সম্পূর্ণ করে আসা উচিত — এই RAG কোর্স ধরে নেবে তুমি ইতিমধ্যে <code>Runnable</code>, <code>Retriever</code>, <code>StateGraph</code> এর মতো concept এর সাথে পরিচিত।</p></div><hr><h2 id="এই-কোর্স-কেন-গুরুত্বপূর্ণ" tabindex="-1">এই কোর্স কেন গুরুত্বপূর্ণ? <a class="header-anchor" href="#এই-কোর্স-কেন-গুরুত্বপূর্ণ" aria-label="Permalink to &quot;এই কোর্স কেন গুরুত্বপূর্ণ?&quot;">​</a></h2><p>সাধারণ একটা &quot;RAG chatbot&quot; বানানো তুলনামূলক সহজ — কিন্তু সেই সিস্টেম <strong>production এ নির্ভরযোগ্যভাবে</strong> চালানো, ভুল উত্তর কমানো, খরচ নিয়ন্ত্রণে রাখা, এবং scale করা — এটাই আসল challenge। এই কোর্স ঠিক এই gap টা পূরণ করে — বেসিক RAG থেকে শুরু করে industry-level সমস্যা এবং সমাধান পর্যন্ত।</p>`);
+  ssrRenderSuspense(_push, {
+    default: () => {
+      _push(ssrRenderComponent(_component_Mermaid, {
+        id: "mermaid-37",
+        class: "mermaid",
+        graph: "flowchart%20LR%0A%20%20%20%20A%5BBasic%20RAG%3Cbr%2F%3EModule%201-4%5D%20--%3E%20B%5BRetrieval%20Techniques%3Cbr%2F%3EModule%205-6%5D%0A%20%20%20%20B%20--%3E%20C%5BAdvanced%20Patterns%3Cbr%2F%3EModule%207%5D%0A%20%20%20%20C%20--%3E%20D%5BAgentic%20RAG%3Cbr%2F%3EModule%208%5D%0A%20%20%20%20D%20--%3E%20E%5BEvaluation%3Cbr%2F%3EModule%209%5D%0A%20%20%20%20E%20--%3E%20F%5BProduction%20%26%3Cbr%2F%3ECapstone%3Cbr%2F%3EModule%2010%5D%0A"
+      }, null, _parent));
+    },
+    fallback: () => {
+      _push(` Loading... `);
+    },
+    _: 1
+  });
+  _push(`<hr><h2 id="কোর্সের-সম্পূর্ণ-roadmap" tabindex="-1">কোর্সের সম্পূর্ণ Roadmap <a class="header-anchor" href="#কোর্সের-সম্পূর্ণ-roadmap" aria-label="Permalink to &quot;কোর্সের সম্পূর্ণ Roadmap&quot;">​</a></h2><table tabindex="0"><thead><tr><th>Module</th><th>বিষয়</th><th>মূল ফোকাস</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>RAG Fundamentals and Architecture</td><td>RAG কী, কেন দরকার, RAG vs Fine-tuning vs Prompt Engineering</td></tr><tr><td><strong>2</strong></td><td>Document Processing and Chunking</td><td>Document Loader, Text Splitter, Chunking strategy</td></tr><tr><td><strong>3</strong></td><td>Embeddings and Vector Representations</td><td>Embedding কীভাবে কাজ করে, কোন model বেছে নেবে</td></tr><tr><td><strong>4</strong></td><td>Vector Stores</td><td>Indexing (IVF, HNSW), CRUD operations</td></tr><tr><td><strong>5</strong></td><td>Basic Retrieval Techniques</td><td>Similarity Search, MMR, Hybrid Search</td></tr><tr><td><strong>6</strong></td><td>Advanced Retrieval Techniques</td><td>Contextual Compression, Parent Document, Self-Query, Multi-Query</td></tr><tr><td><strong>7</strong></td><td>Advanced RAG Patterns</td><td>RAG Fusion, HyDE, CRAG, Self-RAG, Graph RAG, Multimodal RAG</td></tr><tr><td><strong>8</strong></td><td>Agentic RAG with LangGraph</td><td>RAG কে Tool হিসেবে ব্যবহার, ReAct/Plan-Execute pattern</td></tr><tr><td><strong>9</strong></td><td>RAG Evaluation through RAGAS</td><td>Faithfulness, Relevance, Retrieval Quality metric</td></tr><tr><td><strong>10</strong></td><td>Capstone Project with Deployment</td><td>সম্পূর্ণ production-ready RAG সিস্টেম বানানো</td></tr><tr><td>—</td><td>Production RAG</td><td>Optimization, Caching, Cost, Monitoring, Security</td></tr></tbody></table><hr><h2 id="rag-vs-fine-tuning-vs-prompt-engineering-—-কেন-rag" tabindex="-1">RAG vs Fine-Tuning vs Prompt Engineering — কেন RAG? <a class="header-anchor" href="#rag-vs-fine-tuning-vs-prompt-engineering-—-কেন-rag" aria-label="Permalink to &quot;RAG vs Fine-Tuning vs Prompt Engineering — কেন RAG?&quot;">​</a></h2><p>কোর্স শুরু করার আগে এই মৌলিক প্রশ্নটার উত্তর জানা জরুরি — LLM কে নতুন জ্ঞান দেওয়ার তিনটা প্রধান উপায় আছে, এবং প্রতিটার আলাদা ব্যবহারক্ষেত্র।</p>`);
+  ssrRenderSuspense(_push, {
+    default: () => {
+      _push(ssrRenderComponent(_component_Mermaid, {
+        id: "mermaid-187",
+        class: "mermaid",
+        graph: "flowchart%20TD%0A%20%20%20%20A%5BLLM%20%E0%A6%95%E0%A7%87%20%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8%20%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF%20%E0%A6%B6%E0%A7%87%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0%20%E0%A6%A6%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0%5D%20--%3E%20B%7B%E0%A6%95%E0%A7%80%20%E0%A6%A7%E0%A6%B0%E0%A6%A8%E0%A7%87%E0%A6%B0%20%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF%3F%7D%0A%20%20%20%20B%20--%3E%7C%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%9F%20%E0%A6%86%E0%A6%9A%E0%A6%B0%E0%A6%A3%2F%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%87%E0%A6%B2%20%E0%A6%B6%E0%A7%87%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A7%8B%7C%20C%5BFine-Tuning%5D%0A%20%20%20%20B%20--%3E%7C%E0%A6%B8%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%A3%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A6%BE%2F%E0%A6%89%E0%A6%A6%E0%A6%BE%E0%A6%B9%E0%A6%B0%E0%A6%A3%7C%20D%5BPrompt%20Engineering%5D%0A%20%20%20%20B%20--%3E%7C%E0%A6%AC%E0%A6%A1%E0%A6%BC%2C%20%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8%E0%A6%B6%E0%A7%80%E0%A6%B2%2C%20%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BF%E0%A6%95%20%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%BE%E0%A6%A8%7C%20E%5BRAG%5D%0A"
+      }, null, _parent));
+    },
+    fallback: () => {
+      _push(` Loading... `);
+    },
+    _: 1
+  });
+  _push(`<table tabindex="0"><thead><tr><th>পদ্ধতি</th><th>কী করে</th><th>সীমাবদ্ধতা</th><th>কখন ব্যবহার করবে</th></tr></thead><tbody><tr><td><strong>Fine-Tuning</strong></td><td>Model এর নিজের weight পরিবর্তন করে নতুন প্যাটার্ন/স্টাইল শেখানো</td><td>ব্যয়বহুল, ধীর, নতুন তথ্য যোগ করতে আবার training লাগে</td><td>নির্দিষ্ট tone/format/domain-specific আচরণ দরকার হলে</td></tr><tr><td><strong>Prompt Engineering</strong></td><td>Prompt এ instruction/example দিয়ে output নিয়ন্ত্রণ করা</td><td>Context window সীমিত, বড় knowledge base রাখা যায় না</td><td>ছোট, static context যথেষ্ট হলে</td></tr><tr><td><strong>RAG</strong></td><td>External knowledge base থেকে relevant তথ্য এনে prompt এ যুক্ত করা</td><td>Retrieval quality এর উপর নির্ভরশীল</td><td>বড়, dynamic, ঘন ঘন পরিবর্তনশীল knowledge base থাকলে</td></tr></tbody></table><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>বাস্তব production system এ প্রায়ই এই তিনটা <strong>একসাথে</strong> ব্যবহার করা হয় — যেমন একটা fine-tuned model, RAG দিয়ে সাম্প্রতিক তথ্যের সাথে সংযুক্ত, এবং prompt engineering দিয়ে output format নিয়ন্ত্রিত। এগুলো একে অপরের প্রতিদ্বন্দ্বী না, বরং complementary টুল।</p></div><hr><h2 id="rag-এর-core-data-flow-—-সংক্ষিপ্ত-প্রিভিউ" tabindex="-1">RAG এর Core Data Flow — সংক্ষিপ্ত প্রিভিউ <a class="header-anchor" href="#rag-এর-core-data-flow-—-সংক্ষিপ্ত-প্রিভিউ" aria-label="Permalink to &quot;RAG এর Core Data Flow — সংক্ষিপ্ত প্রিভিউ&quot;">​</a></h2>`);
+  ssrRenderSuspense(_push, {
+    default: () => {
+      _push(ssrRenderComponent(_component_Mermaid, {
+        id: "mermaid-259",
+        class: "mermaid",
+        graph: "flowchart%20LR%0A%20%20%20%20A%5BKnowledge%20Base%3Cbr%2F%3EPDF%2FWeb%2FDoc%5D%20--%3E%20B%5BRetriever%5D%0A%20%20%20%20B%20--%3E%7CRelevant%20Chunks%7C%20C%5BGenerator%3Cbr%2F%3ELLM%5D%0A%20%20%20%20C%20--%3E%20D%5B%E0%A6%9A%E0%A7%82%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%20%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%5D%0A"
+      }, null, _parent));
+    },
+    fallback: () => {
+      _push(` Loading... `);
+    },
+    _: 1
+  });
+  _push(`<p>এই তিনটা ধাপ — <strong>Knowledge Base → Retriever → Generator</strong> — এটাই RAG এর হৃদয়, যেটা Module 1 এ বিস্তারিত আলোচনা করা হবে।</p><hr><h2 id="কীভাবে-এই-কোর্স-পড়বে" tabindex="-1">কীভাবে এই কোর্স পড়বে <a class="header-anchor" href="#কীভাবে-এই-কোর্স-পড়বে" aria-label="Permalink to &quot;কীভাবে এই কোর্স পড়বে&quot;">​</a></h2><ul><li><strong>ক্রম অনুযায়ী পড়ো</strong> — প্রতিটা Module আগেরটার উপর নির্ভর করে</li><li><strong>কোড নিজে চালাও</strong> — শুধু পড়ে বুঝে গেলাম ভাবার বদলে, প্রতিটা code snippet নিজে টাইপ করে চালাও</li><li><strong>Capstone এ প্রয়োগ করো</strong> — Module 10 এ যা শিখেছ সব একসাথে একটা বাস্তব প্রজেক্টে প্রয়োগ করবে</li></ul><h2 id="পরবর্তী-ধাপ" tabindex="-1">পরবর্তী ধাপ <a class="header-anchor" href="#পরবর্তী-ধাপ" aria-label="Permalink to &quot;পরবর্তী ধাপ&quot;">​</a></h2><p>শুরু করো <strong>Module 1: RAG Fundamentals and Architecture</strong> দিয়ে — যেখানে আমরা দেখব LLM কেন hallucinate করে, এবং RAG এই সমস্যার সমাধান কীভাবে দেয়।</p></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("rag-advanced/index.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  index as default
+};
