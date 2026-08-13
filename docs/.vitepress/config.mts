@@ -223,10 +223,11 @@ export default withMermaid(
             ]
           },
           {
-            text: '🏆 Capstone Real Project',
+            text: '🏆 Capstone Real Project & Workflow',
             collapsed: false,
             items: [
               { text: '১৯. Expense Tracker API', link: '/fastapi/project' },
+              { text: '২০. Step-by-Step API Building Blueprint', link: '/fastapi/step-by-step-api-guide' },
             ]
           }
         ],
