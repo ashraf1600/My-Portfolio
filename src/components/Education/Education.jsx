@@ -56,7 +56,8 @@ const Education = () => {
 
             {/* Education Cards */}
             {entries.map((edu, index) => {
-              const isLeft = index % 2 === 0;
+              const globalIndex = education.findIndex((item) => item.id === edu.id);
+              const isLeft = globalIndex % 2 === 0;
 
               return (
                 <div key={edu.id} className="relative mb-12 lg:mb-20">
