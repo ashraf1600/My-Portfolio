@@ -71,10 +71,13 @@ export default withMermaid(
             collapsed: false,
             items: [
               { text: 'Introduction', link: '/langchain/' },
+              { text: 'What is LangChain?', link: '/langchain/what-is-langchain' },
               { text: 'Installation', link: '/langchain/installation' },
               { text: 'LangChain Expression Language (LCEL)', link: '/langchain/langchain-expression-language' },
               { text: 'Core Components Overview', link: '/langchain/langchain-components' },
               { text: 'Component: Models', link: '/langchain/models' },
+              { text: 'Chat Models', link: '/langchain/chat-models' },
+              { text: 'Embeddings', link: '/langchain/embeddings' },
               { text: 'Component: Prompts', link: '/langchain/prompt' },
               { text: 'Structured Output', link: '/langchain/structured-output' },
               { text: 'Output Parsers', link: '/langchain/output-parsers_1' },
