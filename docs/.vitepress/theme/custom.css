@@ -533,3 +533,33 @@ div[class*='language-'] pre {
   position: relative;
   z-index: 1;
 }
+
+/* ============================================
+   Full Sidebar Collapse / Expanded Reading View
+   ============================================ */
+html.hide-sidebar-panel .VPSidebar {
+  transform: translateX(-100%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html.hide-sidebar-panel .VPContent {
+  padding-left: 0 !important;
+}
+
+html.hide-sidebar-panel .VPContent .container {
+  max-width: 100% !important;
+}
+
+html.hide-sidebar-panel .VPDoc .container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+html.hide-sidebar-panel .VPDoc .content {
+  max-width: 100% !important;
+}
+
+.VPSidebar, .VPContent {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}

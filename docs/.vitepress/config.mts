@@ -68,7 +68,7 @@ export default withMermaid(
         '/langchain/': [
           {
             text: 'LangChain',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Introduction', link: '/langchain/' },
               { text: 'What is LangChain?', link: '/langchain/what-is-langchain' },
@@ -104,7 +104,7 @@ export default withMermaid(
         '/llamaindex/': [
           {
             text: 'LlamaIndex',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Introduction', link: '/llamaindex/' },
               { text: 'What is LlamaIndex?', link: '/llamaindex/what-is-llamaindex' },
@@ -125,7 +125,7 @@ export default withMermaid(
         '/langgraph/': [
           {
             text: 'LangGraph',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Introduction', link: '/langgraph/' },
               { text: 'What is LangGraph?', link: '/langgraph/what-is-langgraph' },
@@ -145,7 +145,7 @@ export default withMermaid(
         '/orchestration/': [
           {
             text: 'Orchestration Frameworks',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Overview', link: '/orchestration/' },
               { text: 'Choosing the Right Framework', link: '/orchestration/comparison' },
@@ -157,7 +157,7 @@ export default withMermaid(
         '/rag-advanced/': [
           {
             text: 'Advanced RAG — Course Outline',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Course Overview & Prerequisites', link: '/rag-advanced/' },
               { text: 'Module 1: RAG Fundamentals and Architecture', link: '/rag-advanced/module-1-fundamentals' },
@@ -178,7 +178,7 @@ export default withMermaid(
         '/fastapi/': [
           {
             text: '🟢 Level 1 — Beginner',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: '১. FastAPI পরিচিতি', link: '/fastapi/' },
               { text: '২. Routing & Endpoints', link: '/fastapi/routing' },
@@ -189,14 +189,14 @@ export default withMermaid(
           },
           {
             text: '🔄 Migration & Comparison',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'DRF to FastAPI Guide', link: '/fastapi/drf-vs-fastapi' },
             ]
           },
           {
             text: '🟡 Level 2 — Intermediate',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: '৬. Path Configuration', link: '/fastapi/path-configuration' },
               { text: '৭. Dependency Injection', link: '/fastapi/dependencies' },
@@ -208,7 +208,7 @@ export default withMermaid(
           },
           {
             text: '🟠 Level 3 — Advanced',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: '১২. Pydantic Advanced', link: '/fastapi/pydantic-advanced' },
               { text: '১৩. Testing', link: '/fastapi/testing' },
@@ -218,7 +218,7 @@ export default withMermaid(
           },
           {
             text: '🔴 Level 4 — Expert',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: '১৬. Architecture Patterns', link: '/fastapi/architecture' },
               { text: '১৭. Deployment', link: '/fastapi/deployment' },
@@ -227,7 +227,7 @@ export default withMermaid(
           },
           {
             text: '🏆 Capstone Real Project & Workflow',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: '১৯. Expense Tracker API', link: '/fastapi/project' },
               { text: '২০. Todo App API (Full Capstone Architecture)', link: '/fastapi/todo-app' },
@@ -239,7 +239,7 @@ export default withMermaid(
         '/drf/': [
           {
             text: 'Django Rest Framework',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Section 1: Introduction', link: '/drf/' },
               { text: 'Section 2: Project Setup', link: '/drf/project-setup' },
@@ -275,7 +275,7 @@ export default withMermaid(
         '/mlops/': [
           {
             text: 'MLOps/LLMOps',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Overview', link: '/mlops/' },
 
@@ -285,7 +285,7 @@ export default withMermaid(
         '/mlflow/': [
           {
             text: 'MLflow',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Introduction', link: '/mlflow/' },
               { text: 'Experiment Tracking', link: '/mlflow/experiment-tracking' },
@@ -299,14 +299,14 @@ export default withMermaid(
         '/aws/': [
           {
             text: 'Course Outline',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Day 0: Course Outline', link: '/aws/' }
             ]
           },
           {
             text: 'Phase 1 — Cloud & AWS Foundations',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Day 01: Cloud Computing Basics', link: '/aws/day-01-cloud-computing-basics' },
               { text: 'Day 02: AWS Introduction', link: '/aws/day-02-aws-introduction' },
@@ -412,7 +412,7 @@ export default withMermaid(
         '/prompt-engineering/': [
           {
             text: 'Prompt Engineering',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Introduction', link: '/prompt-engineering/' }
             ]
@@ -422,7 +422,7 @@ export default withMermaid(
         '/fine-tuning/': [
           {
             text: 'Fine-tuning',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Introduction', link: '/fine-tuning/' }
             ]
@@ -432,7 +432,7 @@ export default withMermaid(
         '/tool-use/': [
           {
             text: 'Function Calling / Tool Use',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Introduction', link: '/tool-use/' }
             ]
@@ -442,7 +442,7 @@ export default withMermaid(
         '/evaluation/': [
           {
             text: 'Evaluation & Guardrails',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Introduction', link: '/evaluation/' }
             ]
@@ -452,7 +452,7 @@ export default withMermaid(
         '/fundamentals/': [
           {
             text: 'AI/ML Fundamentals',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Math & Statistics', link: '/fundamentals/math-stats' }
             ]
@@ -462,7 +462,7 @@ export default withMermaid(
         '/Rag/': [
           {
             text: 'RAG Interview',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'RAG', link: '/Rag/rag' }
             ]
@@ -472,7 +472,7 @@ export default withMermaid(
         '/Agentic_ai/': [
           {
             text: 'Agentic AI',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Introduction', link: '/Agentic_ai/' }
             ]
