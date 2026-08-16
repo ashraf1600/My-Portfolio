@@ -230,7 +230,8 @@ export default withMermaid(
             collapsed: false,
             items: [
               { text: '১৯. Expense Tracker API', link: '/fastapi/project' },
-              { text: '২০. Step-by-Step API Building Blueprint', link: '/fastapi/step-by-step-api-guide' },
+              { text: '২০. Todo App API (Full Capstone Architecture)', link: '/fastapi/todo-app' },
+              { text: '২১. Step-by-Step API Building Blueprint', link: '/fastapi/step-by-step-api-guide' },
             ]
           }
         ],
