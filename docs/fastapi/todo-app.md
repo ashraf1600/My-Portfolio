@@ -14,15 +14,17 @@ description: লোকাল Todo App ব্যাকএন্ড প্রজ�
 
 ## 🏗️ Project Architecture & Data Flow Diagram
 
+### 1. High-Level Component Flow Diagram
+
 ```mermaid
 graph TD
     Client["🌐 Client / Frontend<br/>(Vite/HTML+JS / Postman)"]
     CORS["🧱 CORSMiddleware<br/>(Cross-Origin Access Control)"]
     App["🚀 FastAPI Main Application<br/>(main.py)"]
 
-    subgraph Error_Handling["⚠️ Exception Handlers"]
-        VE["Validation Handler (422)"]
-        TLE["TodoLimitExceeded Handler (400)"]
+    subgraph Error_Handling["⚠️ Exception Handlers Layer"]
+        VE["Validation Handler (422)<br/>RequestValidationError"]
+        TLE["TodoLimitExceeded Handler (400)<br/>Custom Business Exception"]
     end
 
     subgraph Security_Deps["🔐 Security & Dependency Injection Layer"]
@@ -44,6 +46,70 @@ graph TD
     Security_Deps --> Database_Layer
     Database_Layer <-->|2. SQL Queries (Eager Loading selectinload)| DB
 ```
+
+---
+
+### 2. Request Lifecycle Sequence Diagram (অনুরোধের পূর্ণাঙ্গ জীবনচক্র)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as 🌐 Client App
+    participant CORS as 🧱 CORSMiddleware
+    participant App as 🚀 FastAPI Route (main.py)
+    participant Dep as 🔐 Security & Dependencies
+    participant Schema as 📋 Pydantic Schemas
+    participant ORM as 📦 SQLAlchemy ORM
+    participant DB as 💾 SQLite Database
+
+    Client->>CORS: HTTP Request (POST /todos/ + Bearer JWT + Body JSON)
+    CORS->>App: Validate Headers & Origins
+    App->>Schema: Validate Request Body (TodoCreate Schema)
+    alt Validation Failure
+        Schema-->>Client: 422 Unprocessable Entity (Custom Error Format)
+    end
+    App->>Dep: Inject Dependencies (get_db & get_current_user)
+    Dep->>DB: Verify JWT & Fetch User
+    alt Invalid/Expired Token
+        Dep-->>Client: 401 Unauthorized
+    end
+    Dep->>DB: Check User's Todo Count (Max 10 Limit)
+    alt Limit Exceeded (>= 10)
+        Dep-->>Client: 400 Bad Request (TodoLimitExceeded Exception)
+    end
+    App->>ORM: Construct Todo ORM Model & Associate Tags
+    ORM->>DB: COMMIT Transaction
+    DB-->>ORM: Confirm Insert & Return Generated ID
+    App->>Schema: Serialize ORM Model to TodoResponse (from_attributes)
+    App->>Dep: Finally Trigger get_db() -> db.close()
+    App-->>Client: 201 Created Response JSON
+```
+
+---
+
+### 3. ডাটা ফ্লো-এর ৬টি মূল ধাপ (Step-by-Step Data Flow Breakdown)
+
+1. **ধাপ ১: Incoming HTTP Request (ক্লায়েন্ট রিকোয়েস্ট)**:
+   - ক্লায়েন্ট (React/HTML বা Postman) থেকে HTTP হেডার (`Authorization: Bearer <Token>`) এবং JSON পে-লোড সহ এন্ডপয়েন্টে (যেমন: `POST /todos/`) রিকোয়েস্ট আসে।
+
+2. **ধাপ ২: CORS Middleware Verification (নিরাপত্তা গেটওয়ে)**:
+   - `CORSMiddleware` রিকোয়েস্টের Origin, Method এবং Header চেক করে ক্রস-অরিজিন পারমিশন নিশ্চিত করে।
+
+3. **ধাপ ৩: Input Validation & Exception Handling (ডাটা যাচাই)**:
+   - Pydantic schema (`TodoCreate`) ইনপুট ফিল্ডগুলো চেক করে। `@field_validator` দিয়ে নিশ্চিত করা হয় যে `due_date` অতীতে নয় এবং `title` খালি বা শুধু স্পেস নয়। ভুল থাকলে `RequestValidationError` হ্যান্ডলার 422 কাস্টম এরর পাঠায়।
+
+4. **ধাপ ৪: Dependency Injection & Auth Layer (ডিপেন্ডেন্সি ও ইউজারের পরিচয়)**:
+   - `get_db()` সেশন চালু করে।
+   - `get_current_user` ডিপেন্ডেন্সি JWT ডিকোড করে ইউজারের পরিচয় বের করে ডাটাবেজ থেকে `User` মডেল লোড করে।
+   - বিজনেস রুলস চেক করা হয় (যেমন: ইউজার ১০টির বেশি Todo তৈরি করার চেষ্টা করলে `TodoLimitExceeded` হ্যান্ডলার ৪০টি ৪-০-০ Bad Request এরর পাঠায়)।
+
+5. **ধাপ ৫: Database Execution & Query Optimization (ডাটাবেজ কাজ)**:
+   - SQLAlchemy ORM অবজেক্ট তৈরি করা হয়। ডুপ্লিকেট ট্যাগ এড়িয়ে নতুন/বিদ্যমান ট্যাগের সাথে সংযোগ ঘটানো হয়। 
+   - রিড ক্যোয়ারীর ক্ষেত্রে `selectinload(models.Todo.tags)` ব্যবহার করা হয় যাতে **N+1 ক্যোয়ারী প্রবলেম** না ঘটে এবং মাত্র ২টি ক্যোয়ারীতে সমস্ত নিস্টেড ট্যাগ ইগার-লোড (Eager Load) হয়।
+
+6. **ধাপ ৬: Response Serialization & Session Cleanup (রেসপন্স ও ক্লিওনিং)**:
+   - SQLAlchemy মডলকে Pydantic schema (`TodoResponse`) দিয়ে JSON ফরম্যাটে রূপান্তর (`from_attributes = True`) করা হয়।
+   - `get_db()` এর `finally: db.close()` ব্লকের মাধ্যমে ক্যনেকশন ক্লোজ করা হয় এবং ক্লায়েন্টকে HTTP 201 Created রেসপন্স পাঠানো হয়।
 
 ---
 
