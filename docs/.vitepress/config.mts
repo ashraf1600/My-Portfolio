@@ -51,6 +51,7 @@ export default withMermaid(
           items: [
             { text: 'Overview', link: '/mlops/' },
             { text: 'MLflow', link: '/mlflow/' },
+            { text: 'Docker', link: '/docker/' },
             { text: 'AWS', link: '/aws/' }
           ]
         },
@@ -407,6 +408,54 @@ export default withMermaid(
           }
         ],
 
+        '/docker/': [
+          {
+            text: '🟢 Level 1: Foundation',
+            collapsed: true,
+            items: [
+              { text: 'Introduction', link: '/docker/' },
+              { text: 'Containerization Fundamentals', link: '/docker/basics' },
+              { text: 'Docker Introduction', link: '/docker/intro' },
+              { text: 'Docker Architecture', link: '/docker/architecture' },
+              { text: 'Docker Installation', link: '/docker/installation' },
+              { text: 'Docker CLI Basics', link: '/docker/cli-basics' },
+              { text: 'Working with Docker Images', link: '/docker/images' },
+              { text: 'Docker Image Commands', link: '/docker/image-commands' },
+              { text: 'Running Containers', link: '/docker/containers' },
+              { text: 'Container Lifecycle', link: '/docker/lifecycle' },
+              { text: 'Container Management', link: '/docker/container-management' },
+              { text: 'Container Interaction', link: '/docker/interaction' },
+              { text: 'Port Mapping', link: '/docker/ports' },
+              { text: 'Environment Variables', link: '/docker/env-vars' },
+              { text: 'Docker Hub', link: '/docker/hub' },
+            ]
+          },
+          {
+            text: '🟡 Level 2: Intermediate',
+            collapsed: true,
+            items: [
+              { text: 'Dockerfile Basics', link: '/docker/dockerfile-basics' },
+              { text: 'Dockerfile Instructions 1', link: '/docker/dockerfile-instructions-p1' },
+              { text: 'Dockerfile Instructions 2', link: '/docker/dockerfile-instructions-p2' },
+              { text: 'Building Images', link: '/docker/build-images' },
+              { text: 'Multi-Stage Builds', link: '/docker/multi-stage-builds' },
+              { text: 'Docker Volumes', link: '/docker/volumes' },
+              { text: 'Volume Commands', link: '/docker/volume-commands' },
+              { text: 'Bind Mounts', link: '/docker/bind-mounts' },
+              { text: 'Docker Networks', link: '/docker/networks' },
+              { text: 'Network Commands', link: '/docker/network-commands' },
+              { text: 'Container Networking', link: '/docker/container-networking' },
+              { text: 'Docker Compose Intro', link: '/docker/compose-intro' },
+              { text: 'Compose File Structure', link: '/docker/compose-structure' },
+              { text: 'Compose Commands', link: '/docker/compose-commands' },
+              { text: 'Compose Services', link: '/docker/compose-services' },
+              { text: 'Compose Networks & Volumes', link: '/docker/compose-networks-volumes' },
+              { text: 'Compose Advanced', link: '/docker/compose-advanced' },
+              { text: 'Container Logs', link: '/docker/container-logs' },
+              { text: 'Resource Management', link: '/docker/resource-management' },
+            ]
+          }
+        ],
 
 
         '/prompt-engineering/': [
