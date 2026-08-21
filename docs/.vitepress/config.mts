@@ -275,11 +275,13 @@ export default withMermaid(
 
         '/mlops/': [
           {
-            text: 'MLOps/LLMOps',
-            collapsed: true,
+            text: '🚀 MLOps & LLMOps Platform',
+            collapsed: false,
             items: [
-              { text: 'Overview', link: '/mlops/' },
-
+              { text: 'MLOps & LLMOps Roadmap 2026', link: '/mlops/' },
+              { text: 'MLflow Experiment Tracking & Registry', link: '/mlflow/' },
+              { text: 'Docker for MLOps & AI Infrastructure', link: '/docker/' },
+              { text: 'Full-Stack ML Docker + AWS Deployment', link: '/docker/fullstack-ml-aws' },
             ]
           }
         ],
