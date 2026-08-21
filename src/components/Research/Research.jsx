@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { research, researchMetrics, scholarlyProfiles } from "../../constants";
 import { FaExternalLinkAlt, FaFilePdf, FaTimes, FaQuoteRight, FaCopy, FaCheck } from "react-icons/fa";
 import {
@@ -56,7 +57,7 @@ const MetricCard = ({ metric, index }) => {
   const Icon = metric.icon;
   return (
     <div
-      className="group relative bg-white/90 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-gray-700/50 shadow-md hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-1 hover:border-purple-500/50 overflow-hidden"
+      className="group relative bg-white/90 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-gray-700/50 shadow-md hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 overflow-hidden"
       style={{ animationDelay: `${index * 80}ms` }}
     >
       <div
@@ -132,15 +133,16 @@ const PaperModal = ({ paper, onClose }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 overflow-y-auto"
+      className="fixed inset-0 z-[1000] overflow-y-auto bg-black/80 backdrop-blur-md"
       onClick={onClose}
     >
-      <div
-        className="bg-white dark:bg-gray-900 rounded-3xl max-w-3xl w-full border border-slate-200 dark:border-purple-500/30 shadow-2xl overflow-hidden relative my-8"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="flex min-h-full items-center justify-center p-4">
+        <div
+          className="bg-white dark:bg-gray-900 rounded-3xl max-w-3xl w-full border border-slate-200 dark:border-indigo-500/30 shadow-2xl overflow-hidden relative my-8"
+          onClick={(e) => e.stopPropagation()}
+        >
         <div className="p-6 sm:p-8">
           <div className="flex items-start justify-between gap-4 mb-4">
             <span
@@ -162,7 +164,7 @@ const PaperModal = ({ paper, onClose }) => {
             {paper.title}
           </h3>
 
-          <p className="text-sm font-medium text-purple-700 dark:text-purple-300 mb-2">
+          <p className="text-sm font-medium text-indigo-700 dark:text-indigo-300 mb-2">
             {paper.authors}
           </p>
 
@@ -183,17 +185,17 @@ const PaperModal = ({ paper, onClose }) => {
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider flex items-center gap-1.5">
-                <FaQuoteRight size={12} className="text-purple-500" /> BibTeX Citation
+                <FaQuoteRight size={12} className="text-indigo-500" /> BibTeX Citation
               </span>
               <button
                 onClick={copyBibtex}
-                className="inline-flex items-center gap-1 text-xs text-purple-600 dark:text-purple-400 hover:underline font-semibold"
+                className="inline-flex items-center gap-1 text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-semibold"
               >
                 {copied ? <FaCheck size={12} className="text-emerald-500" /> : <FaCopy size={12} />}
                 <span>{copied ? "Copied!" : "Copy BibTeX"}</span>
               </button>
             </div>
-            <pre className="p-4 rounded-xl bg-slate-900 text-purple-300 text-xs font-mono overflow-x-auto border border-slate-800">
+            <pre className="p-4 rounded-xl bg-slate-900 text-indigo-300 text-xs font-mono overflow-x-auto border border-slate-800">
               {bibtex}
             </pre>
           </div>
@@ -202,7 +204,7 @@ const PaperModal = ({ paper, onClose }) => {
             {paper.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="text-xs font-medium px-3 py-1 rounded-full bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-500/20"
+                className="text-xs font-medium px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20"
               >
                 {tag}
               </span>
@@ -214,7 +216,7 @@ const PaperModal = ({ paper, onClose }) => {
               href={paper.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-xl transition shadow-lg shadow-purple-500/30"
+              className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-xl transition shadow-lg shadow-indigo-500/30"
             >
               <FaExternalLinkAlt size={14} />
               <span>Publisher Paper Link</span>
@@ -228,7 +230,9 @@ const PaperModal = ({ paper, onClose }) => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </div>,
+    document.body
   );
 };
 
@@ -248,13 +252,13 @@ const Research = () => {
     >
       {/* Section Title */}
       <div className="text-center mb-14">
-        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-purple-600 dark:text-purple-400 uppercase mb-3">
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-indigo-600 dark:text-indigo-400 uppercase mb-3">
           By the Numbers
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
           Research & Impact
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-5"></div>
+        <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-teal-500 mx-auto rounded-full mb-5"></div>
         <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
           My research contributions in Machine Learning, AI, and Computer
           Science — and a snapshot of the academic footprint they form.
@@ -271,7 +275,7 @@ const Research = () => {
       {/* Category Filters */}
       <div className="flex items-center gap-3 mb-6">
         <div className="flex items-center gap-2">
-          <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full" />
+          <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-indigo-500 to-teal-500 rounded-full" />
           <h3 className="text-slate-900 dark:text-white text-xl md:text-2xl font-bold">
             Publications
           </h3>
@@ -286,8 +290,8 @@ const Research = () => {
             onClick={() => setSelectedCategory(category)}
             className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
               selectedCategory === category
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/30"
-                : "bg-slate-200 dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-purple-700 hover:text-white"
+                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30"
+                : "bg-slate-200 dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-indigo-700 hover:text-white"
             }`}
           >
             {category}
@@ -300,7 +304,7 @@ const Research = () => {
         {filteredResearch.map((paper) => (
           <div
             key={paper.id}
-            className="border border-slate-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl shadow-xl p-6 md:p-7 hover:shadow-purple-500/30 hover:-translate-y-1 transition-all duration-300"
+            className="border border-slate-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl shadow-xl p-6 md:p-7 hover:shadow-indigo-500/30 hover:-translate-y-1 transition-all duration-300"
           >
             <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
               <div className="flex-1">
@@ -308,7 +312,7 @@ const Research = () => {
                   {paper.title}
                 </h3>
                 <p className="text-slate-600 dark:text-gray-400 text-sm mb-2">{paper.authors}</p>
-                <p className="text-purple-600 dark:text-purple-400 text-sm font-semibold">
+                <p className="text-indigo-600 dark:text-indigo-400 text-sm font-semibold">
                   {paper.conference} • {paper.year}
                 </p>
               </div>
@@ -331,7 +335,7 @@ const Research = () => {
               {paper.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="bg-purple-500/10 text-xs font-semibold text-purple-700 dark:text-purple-300 rounded-full px-3 py-1 border border-purple-500/20"
+                  className="bg-indigo-500/10 text-xs font-semibold text-indigo-700 dark:text-indigo-300 rounded-full px-3 py-1 border border-indigo-500/20"
                 >
                   {tag}
                 </span>
@@ -341,7 +345,7 @@ const Research = () => {
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => setSelectedPaper(paper)}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-md shadow-purple-500/20"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-md shadow-indigo-500/20"
               >
                 <FaExternalLinkAlt size={13} />
                 <span>View Details & Citation</span>

@@ -21,35 +21,35 @@ const About = () => {
       className="relative py-20 px-[5vw] md:px-[8vw] lg:px-[12vw] font-sans mt-16 md:mt-20 overflow-hidden"
     >
       {/* Subtle background elements */}
-      <div className="absolute top-40 left-0 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-40 left-0 w-72 h-72 bg-indigo-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-teal-500/5 rounded-full blur-3xl"></div>
 
       <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-12 lg:gap-20 relative z-10">
         {/* Left Side - Content */}
         <div className="lg:w-1/2 text-center lg:text-left">
-          {/* Greeting badge - more subtle */}
+          {/* Greeting badge */}
           <div className="mb-5">
-            <span className="inline-block bg-purple-500/10 dark:bg-purple-500/5 border border-purple-500/30 dark:border-purple-500/20 text-purple-700 dark:text-purple-300 text-sm font-medium px-4 py-2 rounded-full">
+            <span className="inline-block bg-indigo-500/10 dark:bg-indigo-500/5 border border-indigo-500/30 dark:border-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-sm font-medium px-4 py-2 rounded-full">
               👋 Welcome to my portfolio
             </span>
           </div>
 
-          {/* Name - cleaner gradient */}
+          {/* Name */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
             <span className="text-slate-700 dark:text-gray-300">Hi, I'm</span>
             <br />
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-indigo-600 to-teal-600 dark:from-indigo-400 dark:to-teal-400 bg-clip-text text-transparent">
               Ashraful Islam
             </span>
           </h1>
 
-          {/* Typing Effect - simplified */}
+          {/* Typing Effect */}
           <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-6 min-h-[2.5rem]">
             <span className="text-slate-600 dark:text-gray-400">I'm a </span>
             <ReactTypingEffect
               text={[
                 'CSE Student',
-                'Problem Solver',
+                'ML Researcher',
                 'AI Engineer Aspirant',
                 'Django Developer',
               ]}
@@ -58,27 +58,27 @@ const About = () => {
               typingDelay={500}
               eraseDelay={2000}
               cursorRenderer={(cursor) => (
-                <span className="text-purple-600 dark:text-purple-400">{cursor}</span>
+                <span className="text-indigo-600 dark:text-indigo-400">{cursor}</span>
               )}
-              className="inline-block text-purple-600 dark:text-purple-400"
+              className="inline-block text-indigo-600 dark:text-indigo-400"
             />
           </div>
 
-          {/* Description - more concise */}
+          {/* Description */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            I'm a passionate <span className="text-purple-700 dark:text-purple-300 font-medium">Machine Learning</span> and{' '}
-            <span className="text-purple-700 dark:text-purple-300 font-medium">Generative AI</span> enthusiast with a foundation in Software Engineering.
+            I'm a passionate <span className="text-indigo-700 dark:text-indigo-300 font-medium">Machine Learning</span> researcher and{' '}
+            <span className="text-indigo-700 dark:text-indigo-300 font-medium">Generative AI</span> enthusiast with a foundation in Software Engineering.
             Currently expanding my expertise in full-stack development using{' '}
-            <span className="text-purple-700 dark:text-purple-300 font-medium">Django , DRF</span> and{' '}
-            <span className="text-purple-700 dark:text-purple-300 font-medium">React</span>, combining web development
+            <span className="text-indigo-700 dark:text-indigo-300 font-medium">Django, DRF</span> and{' '}
+            <span className="text-indigo-700 dark:text-indigo-300 font-medium">React</span>, combining web development
             skills with AI technologies to create intelligent applications.
           </p>
 
-          {/* CTA Buttons - more professional */}
+          {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/50 hover:scale-105"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/50 hover:scale-105"
             >
               <FaEnvelope />
               Get In Touch
@@ -87,20 +87,20 @@ const About = () => {
               href="/Resume_1.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-gray-800/80 dark:hover:bg-gray-700 backdrop-blur-sm border border-slate-300 dark:border-gray-700 hover:border-purple-500/50 text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-gray-800/80 dark:hover:bg-gray-700 backdrop-blur-sm border border-slate-300 dark:border-gray-700 hover:border-indigo-500/50 text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
             >
               <FaDownload />
               View Resume
             </a>
           </div>
 
-          {/* Social Links - cleaner design */}
+          {/* Social Links */}
           <div className="flex gap-3 justify-center lg:justify-start">
             <a
               href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
+              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-teal-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-indigo-500/50 hover:scale-110 hover:shadow-lg hover:shadow-indigo-500/30"
               aria-label="LinkedIn"
             >
               <FaLinkedin size={20} />
@@ -109,7 +109,7 @@ const About = () => {
               href="https://www.facebook.com/share/19gm9nUyqU/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
+              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-teal-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-indigo-500/50 hover:scale-110 hover:shadow-lg hover:shadow-indigo-500/30"
               aria-label="Facebook"
             >
               <FaFacebook size={20} />
@@ -118,7 +118,7 @@ const About = () => {
               href="https://github.com/ashraf1600"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
+              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-teal-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-indigo-500/50 hover:scale-110 hover:shadow-lg hover:shadow-indigo-500/30"
               aria-label="GitHub"
             >
               <FaGithub size={20} />
@@ -127,7 +127,7 @@ const About = () => {
               href="https://www.kaggle.com/ashraf1600"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
+              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-teal-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-indigo-500/50 hover:scale-110 hover:shadow-lg hover:shadow-indigo-500/30"
               aria-label="Kaggle"
             >
               <FaKaggle size={20} />
@@ -136,7 +136,7 @@ const About = () => {
               href="https://codeforces.com/profile/ashraf1600"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-purple-500/50 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
+              className="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-gray-800/60 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-teal-600 backdrop-blur-sm text-slate-600 dark:text-gray-400 hover:text-white rounded-lg transition-all duration-300 border border-slate-300 dark:border-gray-700 hover:border-indigo-500/50 hover:scale-110 hover:shadow-lg hover:shadow-indigo-500/30"
               aria-label="Codeforces"
             >
               <SiCodeforces size={20} />
@@ -144,7 +144,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Right Side - Profile Picture - Professional & Subtle */}
+        {/* Right Side - Profile Picture */}
         <div className="lg:w-1/2 flex justify-center lg:justify-end">
           <Tilt
             tiltMaxAngleX={5}
@@ -154,22 +154,22 @@ const About = () => {
             className="relative"
           >
             <div className="relative group">
-              {/* Subtle glow - much less intense */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition duration-700"></div>
+              {/* Subtle glow */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-indigo-600/20 to-teal-600/20 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition duration-700"></div>
 
-              {/* Main image container - cleaner border */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] rounded-full overflow-hidden border-2 border-purple-500/40 dark:border-purple-500/30 shadow-2xl shadow-purple-500/20">
+              {/* Main image container */}
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] rounded-full overflow-hidden border-2 border-indigo-500/40 dark:border-indigo-500/30 shadow-2xl shadow-indigo-500/20">
                 <img
                   src={profileImage}
                   alt="Ashraful Islam"
                   className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                 />
                 {/* Subtle overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
-              {/* Status badge - more professional */}
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white/95 dark:bg-gray-900/90 backdrop-blur-sm border border-purple-500/40 text-slate-700 dark:text-gray-300 px-6 py-2.5 rounded-full shadow-xl shadow-purple-500/20 flex items-center gap-2 text-sm font-medium">
+              {/* Status badge */}
+              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white/95 dark:bg-gray-900/90 backdrop-blur-sm border border-indigo-500/40 text-slate-700 dark:text-gray-300 px-6 py-2.5 rounded-full shadow-xl shadow-indigo-500/20 flex items-center gap-2 text-sm font-medium">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
                 Available for work
               </div>

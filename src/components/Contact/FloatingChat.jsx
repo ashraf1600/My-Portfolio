@@ -79,9 +79,9 @@ const FloatingChat = () => {
     <div className="fixed bottom-8 right-24 z-40 font-sans">
       {/* Floating Chat Window */}
       {isOpen && (
-        <div className="absolute bottom-16 right-0 w-80 sm:w-96 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border border-slate-200 dark:border-purple-500/30 rounded-3xl shadow-2xl shadow-purple-500/20 overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="absolute bottom-16 right-0 w-80 sm:w-96 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border border-slate-200 dark:border-indigo-500/30 rounded-3xl shadow-2xl shadow-indigo-500/20 overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-300">
           {/* Header */}
-          <div className="px-5 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white flex items-center justify-between">
+          <div className="px-5 py-4 bg-gradient-to-r from-indigo-600 to-teal-600 text-white flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="relative w-9 h-9 rounded-full overflow-hidden border border-white/40">
                 <img src={profileImg} alt="Ashraful Islam" className="w-full h-full object-cover" />
@@ -91,7 +91,7 @@ const FloatingChat = () => {
                   Ashraf's Assistant
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 </h4>
-                <p className="text-[11px] text-purple-100 opacity-90">Instant Quick Chat</p>
+                <p className="text-[11px] text-indigo-100 opacity-90">Instant Quick Chat</p>
               </div>
             </div>
             <button
@@ -112,14 +112,14 @@ const FloatingChat = () => {
                 <div
                   className={`max-w-[85%] p-3 rounded-2xl ${
                     msg.sender === "user"
-                      ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-br-none"
+                      ? "bg-gradient-to-r from-indigo-600 to-teal-600 text-white rounded-br-none"
                       : "bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200 rounded-bl-none border border-slate-200 dark:border-gray-700/60 shadow-sm"
                   }`}
                 >
                   <p>{msg.text}</p>
                   <span
                     className={`block text-[9px] mt-1 ${
-                      msg.sender === "user" ? "text-purple-200 text-right" : "text-slate-400"
+                      msg.sender === "user" ? "text-indigo-200 text-right" : "text-slate-400"
                     }`}
                   >
                     {msg.time}
@@ -131,20 +131,20 @@ const FloatingChat = () => {
             {isTyping && (
               <div className="flex justify-start">
                 <div className="bg-white dark:bg-gray-800 px-3 py-2 rounded-2xl rounded-bl-none border border-slate-200 dark:border-gray-700/60 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-bounce"></span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-bounce" style={{ animationDelay: "150ms" }}></span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-bounce" style={{ animationDelay: "300ms" }}></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce" style={{ animationDelay: "150ms" }}></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce" style={{ animationDelay: "300ms" }}></span>
                 </div>
               </div>
             )}
           </div>
 
           {/* Jump to Full Form Bar */}
-          <div className="px-4 py-2 bg-purple-500/10 border-t border-purple-500/20 flex items-center justify-between text-xs">
-            <span className="text-purple-700 dark:text-purple-300 font-medium">Want to send a full email?</span>
+          <div className="px-4 py-2 bg-indigo-500/10 border-t border-indigo-500/20 flex items-center justify-between text-xs">
+            <span className="text-indigo-700 dark:text-indigo-300 font-medium">Want to send a full email?</span>
             <button
               onClick={scrollToContact}
-              className="inline-flex items-center gap-1 text-purple-600 dark:text-purple-400 hover:underline font-bold"
+              className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:underline font-bold"
             >
               <span>Contact Form</span>
               <FiArrowUpRight size={12} />
@@ -158,12 +158,12 @@ const FloatingChat = () => {
               placeholder="Ask a quick question..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="flex-1 px-3 py-2 rounded-xl bg-slate-100 dark:bg-gray-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-purple-500"
+              className="flex-1 px-3 py-2 rounded-xl bg-slate-100 dark:bg-gray-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-indigo-500"
             />
             <button
               type="submit"
               disabled={!inputValue.trim()}
-              className="p-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white disabled:opacity-50"
+              className="p-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-teal-600 text-white disabled:opacity-50"
             >
               <FiSend size={14} />
             </button>
@@ -174,7 +174,7 @@ const FloatingChat = () => {
       {/* Floating Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/40 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-purple-500/60 relative group"
+        className="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-teal-600 text-white shadow-lg shadow-indigo-500/40 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-indigo-500/60 relative group"
         aria-label="Open Floating Message UI"
       >
         {isOpen ? <FiX size={20} /> : <FiMessageSquare size={20} />}

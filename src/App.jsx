@@ -77,7 +77,7 @@ const App = () => {
         <Navbar />
         <About />
         <div className="reveal-section"><Skills /></div>
-        {/* <Experience /> */}
+        <div className="reveal-section"><Experience /></div>
         <div className="reveal-section"><Work /></div>
         <div className="reveal-section"><Research /></div>
         <div className="reveal-section"><Certifications /></div>

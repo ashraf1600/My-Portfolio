@@ -218,18 +218,18 @@ const Contact = () => {
       <ToastContainer className={theme === "light" ? "light-toast" : ""} />
 
       {/* Decorative ambient background glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-500/10 dark:bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-pink-500/10 dark:bg-pink-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-teal-500/10 dark:bg-teal-600/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Section Header */}
       <div className="text-center mb-12 relative z-10">
-        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-purple-600 dark:text-purple-400 uppercase mb-3">
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-indigo-600 dark:text-indigo-400 uppercase mb-3">
           Get In Touch
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
           Let's Connect & Build
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-5"></div>
+        <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-teal-500 mx-auto rounded-full mb-5"></div>
         <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
           Send a quick message via the interactive chat assistant or complete the direct message form below.
         </p>
@@ -244,8 +244,8 @@ const Contact = () => {
               onClick={() => setActiveTab("chat")}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 activeTab === "chat"
-                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/30 scale-105"
-                  : "text-slate-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                  ? "bg-gradient-to-r from-indigo-600 to-teal-600 text-white shadow-lg shadow-indigo-500/30 scale-105"
+                  : "text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
               }`}
             >
               <FiMessageSquare size={16} />
@@ -257,8 +257,8 @@ const Contact = () => {
               onClick={() => setActiveTab("email")}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 activeTab === "email"
-                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/30 scale-105"
-                  : "text-slate-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                  ? "bg-gradient-to-r from-indigo-600 to-teal-600 text-white shadow-lg shadow-indigo-500/30 scale-105"
+                  : "text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
               }`}
             >
               <FiMail size={16} />
@@ -268,11 +268,11 @@ const Contact = () => {
         </div>
 
         {/* Card Frame */}
-        <div className="bg-white/90 dark:bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-slate-200 dark:border-purple-500/20 shadow-2xl shadow-purple-500/10 overflow-hidden min-h-[580px] flex flex-col">
+        <div className="bg-white/90 dark:bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-slate-200 dark:border-indigo-500/20 shadow-2xl shadow-indigo-500/10 overflow-hidden min-h-[580px] flex flex-col">
           {/* Header Bar */}
           <div className="px-6 py-4 bg-slate-100/90 dark:bg-gray-800/80 border-b border-slate-200 dark:border-gray-700/60 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="relative w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-purple-500 to-pink-500">
+              <div className="relative w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-indigo-500 to-teal-500">
                 <img
                   src={profileImg}
                   alt="Ashraful Islam"
@@ -284,7 +284,7 @@ const Contact = () => {
               <div>
                 <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
                   Ashraful Islam
-                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-300 border border-purple-500/30">
+                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30">
                     <HiSparkles size={11} /> AI / Full Stack
                   </span>
                 </h3>
@@ -301,7 +301,7 @@ const Contact = () => {
                 href="https://github.com/ashraf1600"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-gray-700/60 text-slate-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition"
+                className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-gray-700/60 text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
                 title="GitHub"
               >
                 <FaGithub size={16} />
@@ -310,7 +310,7 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-gray-700/60 text-slate-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition"
+                className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-gray-700/60 text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
                 title="LinkedIn"
               >
                 <FaLinkedin size={16} />
@@ -331,7 +331,7 @@ const Contact = () => {
                     }`}
                   >
                     {msg.sender === "assistant" && (
-                      <div className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
+                      <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
                         AI
                       </div>
                     )}
@@ -339,7 +339,7 @@ const Contact = () => {
                     <div
                       className={`max-w-[80%] sm:max-w-[70%] p-4 rounded-2xl shadow-sm text-sm leading-relaxed ${
                         msg.sender === "user"
-                          ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-br-none"
+                          ? "bg-gradient-to-r from-indigo-600 to-teal-600 text-white rounded-br-none"
                           : "bg-slate-100 dark:bg-gray-800/90 text-slate-800 dark:text-gray-100 rounded-bl-none border border-slate-200 dark:border-gray-700/60"
                       }`}
                     >
@@ -347,7 +347,7 @@ const Contact = () => {
                       <span
                         className={`block text-[10px] mt-1.5 ${
                           msg.sender === "user"
-                            ? "text-purple-200 text-right"
+                            ? "text-indigo-200 text-right"
                             : "text-slate-400 dark:text-gray-400"
                         }`}
                       >
@@ -360,17 +360,17 @@ const Contact = () => {
                 {/* Animated Typing Indicator */}
                 {isTyping && (
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
+                    <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
                       AI
                     </div>
                     <div className="bg-slate-100 dark:bg-gray-800/90 px-4 py-3 rounded-2xl rounded-bl-none border border-slate-200 dark:border-gray-700/60 flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-purple-500 animate-bounce"></span>
+                      <span className="w-2 h-2 rounded-full bg-indigo-500 animate-bounce"></span>
                       <span
-                        className="w-2 h-2 rounded-full bg-purple-500 animate-bounce"
+                        className="w-2 h-2 rounded-full bg-indigo-500 animate-bounce"
                         style={{ animationDelay: "150ms" }}
                       ></span>
                       <span
-                        className="w-2 h-2 rounded-full bg-purple-500 animate-bounce"
+                        className="w-2 h-2 rounded-full bg-indigo-500 animate-bounce"
                         style={{ animationDelay: "300ms" }}
                       ></span>
                     </div>
@@ -388,7 +388,7 @@ const Contact = () => {
                     <button
                       key={idx}
                       onClick={() => handleQuickPrompt(prompt.text)}
-                      className="text-xs font-medium px-3 py-1.5 rounded-full bg-white dark:bg-gray-800 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30 hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 transition-all duration-200 shadow-sm"
+                      className="text-xs font-medium px-3 py-1.5 rounded-full bg-white dark:bg-gray-800 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 transition-all duration-200 shadow-sm"
                     >
                       {prompt.label}
                     </button>
@@ -408,14 +408,14 @@ const Contact = () => {
                     placeholder="Your Name (optional)"
                     value={senderName}
                     onChange={(e) => setSenderName(e.target.value)}
-                    className="p-2 rounded-lg bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
+                    className="p-2 rounded-lg bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                   <input
                     type="email"
                     placeholder="Your Email (for reply)"
                     value={senderEmail}
                     onChange={(e) => setSenderEmail(e.target.value)}
-                    className="p-2 rounded-lg bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
+                    className="p-2 rounded-lg bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
 
@@ -425,14 +425,14 @@ const Contact = () => {
                     placeholder="Type your message..."
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    className="flex-1 p-3.5 rounded-xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition"
+                    className="flex-1 p-3.5 rounded-xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition"
                   />
                   <button
                     type="submit"
                     disabled={!inputValue.trim()}
                     className={`px-5 py-3.5 rounded-xl font-semibold text-white flex items-center gap-2 transition-all shadow-md ${
                       inputValue.trim()
-                        ? "bg-gradient-to-r from-purple-600 to-pink-600 hover:scale-105 shadow-purple-500/30"
+                        ? "bg-gradient-to-r from-indigo-600 to-teal-600 hover:scale-105 shadow-indigo-500/30"
                         : "bg-slate-400 dark:bg-gray-700 cursor-not-allowed opacity-60"
                     }`}
                   >
@@ -464,7 +464,7 @@ const Contact = () => {
                           setEmailFormData({ ...emailFormData, name: e.target.value })
                         }
                         placeholder="John Doe"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition text-sm"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm"
                       />
                     </div>
                   </div>
@@ -484,7 +484,7 @@ const Contact = () => {
                           setEmailFormData({ ...emailFormData, email: e.target.value })
                         }
                         placeholder="john@example.com"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition text-sm"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm"
                       />
                     </div>
                   </div>
@@ -505,7 +505,7 @@ const Contact = () => {
                         setEmailFormData({ ...emailFormData, title: e.target.value })
                       }
                       placeholder="Project Opportunity / Hello"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition text-sm"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm"
                     />
                   </div>
                 </div>
@@ -523,14 +523,14 @@ const Contact = () => {
                       setEmailFormData({ ...emailFormData, message: e.target.value })
                     }
                     placeholder="Write your message here..."
-                    className="w-full p-4 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition text-sm resize-none"
+                    className="w-full p-4 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSending}
-                  className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/50 hover:scale-[1.01] flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/50 hover:scale-[1.01] flex items-center justify-center gap-2"
                 >
                   {isSending ? (
                     <>

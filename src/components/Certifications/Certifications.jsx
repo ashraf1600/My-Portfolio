@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { certifications } from "../../constants";
 import {
   FaExternalLinkAlt,
@@ -58,7 +59,7 @@ const CertCard = ({ cert, index, onOpen }) => {
 
   return (
     <div
-      className="group relative bg-white/90 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-gray-700/50 shadow-md hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-1 hover:border-purple-500/50 overflow-hidden flex flex-col"
+      className="group relative bg-white/90 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-gray-700/50 shadow-md hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 overflow-hidden flex flex-col"
       style={{ animationDelay: `${index * 80}ms` }}
     >
       {/* Top accent bar */}
@@ -90,7 +91,7 @@ const CertCard = ({ cert, index, onOpen }) => {
         {/* Title */}
         <button
           onClick={() => onOpen(cert)}
-          className="text-left text-base font-bold text-slate-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-300 transition-colors duration-300 leading-snug mb-3 line-clamp-3"
+          className="text-left text-base font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors duration-300 leading-snug mb-3 line-clamp-3"
         >
           {cert.title}
         </button>
@@ -98,7 +99,7 @@ const CertCard = ({ cert, index, onOpen }) => {
         {/* Meta */}
         <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-gray-400 mb-4 flex-wrap">
           <div className="flex items-center gap-1.5">
-            <FaCalendarAlt className="text-purple-500" size={11} />
+            <FaCalendarAlt className="text-indigo-500" size={11} />
             <span>Issued {issuedFormatted}</span>
           </div>
           {cert.expiryDate && (
@@ -136,7 +137,7 @@ const CertCard = ({ cert, index, onOpen }) => {
         <div className="mt-auto pt-4 border-t border-slate-200 dark:border-gray-700/50 flex items-center justify-between gap-2">
           <button
             onClick={() => onOpen(cert)}
-            className="inline-flex items-center gap-1.5 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-200 font-semibold text-sm transition-colors"
+            className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-200 font-semibold text-sm transition-colors"
           >
             <span>Details</span>
             <HiArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -146,7 +147,7 @@ const CertCard = ({ cert, index, onOpen }) => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1.5 text-slate-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-300 font-semibold text-sm transition-colors"
+            className="inline-flex items-center gap-1.5 text-slate-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-300 font-semibold text-sm transition-colors"
           >
             <FaExternalLinkAlt size={11} />
             <span>Verify</span>
@@ -167,15 +168,16 @@ const CertModal = ({ cert, onClose }) => {
   const provider = getProvider(cert);
   const expired = isExpired(cert.expiryDate);
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 overflow-y-auto"
+      className="fixed inset-0 z-[1000] overflow-y-auto bg-black/80 backdrop-blur-sm"
       onClick={onClose}
     >
-      <div
-        className="relative bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-purple-500/30 shadow-2xl shadow-purple-500/20 my-8"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="flex min-h-full items-center justify-center p-4">
+        <div
+          className="relative bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 rounded-2xl max-w-3xl w-full border border-indigo-500/30 shadow-2xl shadow-indigo-500/20 my-8"
+          onClick={(e) => e.stopPropagation()}
+        >
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-gray-800/50 hover:bg-slate-200 dark:hover:bg-gray-700 rounded-full p-2 transition z-10"
@@ -204,7 +206,7 @@ const CertModal = ({ cert, onClose }) => {
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
               {cert.title}
             </h2>
-            <p className="text-purple-600 dark:text-purple-400 text-lg font-semibold mb-2">
+            <p className="text-indigo-600 dark:text-indigo-400 text-lg font-semibold mb-2">
               {cert.organization}
             </p>
             <div className="flex items-center justify-center gap-2 text-slate-600 dark:text-gray-400 text-sm">
@@ -230,7 +232,7 @@ const CertModal = ({ cert, onClose }) => {
           {/* Description */}
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-              <HiAcademicCap className="text-purple-500" size={20} />
+              <HiAcademicCap className="text-indigo-500" size={20} />
               About This Certification
             </h3>
             <p className="text-slate-700 dark:text-gray-300 leading-relaxed">
@@ -248,7 +250,7 @@ const CertModal = ({ cert, onClose }) => {
               {cert.skills.map((skill, index) => (
                 <span
                   key={index}
-                  className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-sm font-medium text-purple-700 dark:text-purple-300 rounded-full px-4 py-2"
+                  className="bg-gradient-to-r from-indigo-500/20 to-teal-500/20 border border-indigo-500/30 text-sm font-medium text-indigo-700 dark:text-indigo-300 rounded-full px-4 py-2"
                 >
                   {skill}
                 </span>
@@ -281,7 +283,7 @@ const CertModal = ({ cert, onClose }) => {
               href={cert.credentialUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105"
+              className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105"
             >
               <FaExternalLinkAlt />
               Verify Credential
@@ -295,10 +297,12 @@ const CertModal = ({ cert, onClose }) => {
           </div>
         </div>
 
-        <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-40 h-40 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-40 h-40 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
       </div>
-    </div>
+      </div>
+    </div>,
+    document.body
   );
 };
 
@@ -324,13 +328,13 @@ const Certifications = () => {
     >
       {/* Section Title */}
       <div className="text-center mb-14">
-        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-purple-600 dark:text-purple-400 uppercase mb-3">
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-indigo-600 dark:text-indigo-400 uppercase mb-3">
           Continuous Learning
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
           Certifications
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-5"></div>
+        <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-teal-500 mx-auto rounded-full mb-5"></div>
         <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
           Industry-recognized credentials and coursework from leading
           institutions and platforms.
@@ -339,19 +343,19 @@ const Certifications = () => {
         {/* Stats row */}
         <div className="flex flex-wrap justify-center gap-3 mt-8">
           <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-purple-600 dark:text-purple-400">
+            <span className="font-bold text-indigo-600 dark:text-indigo-400">
               {certifications.length}
             </span>{" "}
             Certifications
           </div>
           <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-purple-600 dark:text-purple-400">
+            <span className="font-bold text-indigo-600 dark:text-indigo-400">
               {providers.length}
             </span>{" "}
             Providers
           </div>
           <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-purple-600 dark:text-purple-400">
+            <span className="font-bold text-indigo-600 dark:text-indigo-400">
               {certifications.reduce((sum, c) => sum + c.skills.length, 0)}
             </span>{" "}
             Skills Covered

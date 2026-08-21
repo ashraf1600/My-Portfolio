@@ -47,8 +47,8 @@ const categoryMeta = {
   },
   "Frontend Development": {
     icon: HiPaintBrush,
-    accent: "from-pink-500 to-rose-500",
-    tint: "bg-pink-500/10 text-pink-600 dark:text-pink-300 border-pink-500/30",
+    accent: "from-rose-500 to-pink-500",
+    tint: "bg-rose-500/10 text-rose-600 dark:text-rose-300 border-rose-500/30",
     description: "Modern, responsive, accessible user interfaces.",
   },
   "Developer Tools & Platform": {
@@ -63,9 +63,9 @@ const problemSolvingPlatforms = [
   {
     name: "Codeforces",
     icon: SiCodeforces,
-    color: "#8245ec",
+    color: "#4f46e5",
     bgClass:
-      "bg-violet-500/10 text-violet-600 dark:text-violet-300 border-violet-500/30",
+      "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border-indigo-500/30",
     link: "https://codeforces.com/profile/ashraf1600",
     rank: "Specialist",
     rating: "1450",
@@ -135,7 +135,7 @@ const SkillCard = ({ category, meta }) => {
       glareEnable={false}
       className="h-full"
     >
-      <div className="group relative h-full bg-white/90 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-gray-700/50 shadow-md hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:border-purple-500/50 overflow-hidden">
+      <div className="group relative h-full bg-white/90 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-gray-700/50 shadow-md hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 hover:border-indigo-500/50 overflow-hidden">
         {/* Top accent bar */}
         <div
           className={`h-1 w-full bg-gradient-to-r ${meta.accent}`}
@@ -154,7 +154,7 @@ const SkillCard = ({ category, meta }) => {
               <h4 className="text-base font-bold text-slate-900 dark:text-white leading-tight">
                 {category.title}
               </h4>
-              <span className="inline-block mt-1 text-[10px] font-semibold text-purple-700 dark:text-purple-300 bg-purple-500/10 border border-purple-500/20 rounded-full px-2 py-0.5">
+              <span className="inline-block mt-1 text-[10px] font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-2 py-0.5">
                 {category.skills.length} tools
               </span>
             </div>
@@ -170,7 +170,7 @@ const SkillCard = ({ category, meta }) => {
               <div
                 key={skill.name}
                 title={skill.name}
-                className="flex items-center gap-2 rounded-lg border border-slate-200 dark:border-gray-700/60 bg-slate-50/80 dark:bg-gray-800/40 py-1.5 px-2 transition-all duration-200 hover:border-purple-500/60 hover:bg-purple-500/10 hover:-translate-y-0.5 cursor-default"
+                className="flex items-center gap-2 rounded-lg border border-slate-200 dark:border-gray-700/60 bg-slate-50/80 dark:bg-gray-800/40 py-1.5 px-2 transition-all duration-200 hover:border-indigo-500/60 hover:bg-indigo-500/10 hover:-translate-y-0.5 cursor-default"
               >
                 {skill.logo ? (
                   <img
@@ -179,7 +179,7 @@ const SkillCard = ({ category, meta }) => {
                     className="w-5 h-5 shrink-0 object-contain"
                   />
                 ) : (
-                  <div className="w-5 h-5 shrink-0 rounded bg-purple-500/20" />
+                  <div className="w-5 h-5 shrink-0 rounded bg-indigo-500/20" />
                 )}
                 <span className="text-[12px] font-medium text-slate-700 dark:text-gray-300 truncate">
                   {skill.name}
@@ -200,7 +200,7 @@ const PlatformCard = ({ platform }) => {
       href={platform.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative bg-white/90 dark:bg-gray-900/70 border border-slate-200 dark:border-gray-700/50 rounded-2xl p-5 hover:border-purple-500/50 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1 overflow-hidden"
+      className="group relative bg-white/90 dark:bg-gray-900/70 border border-slate-200 dark:border-gray-700/50 rounded-2xl p-5 hover:border-indigo-500/50 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-indigo-500/10 hover:-translate-y-1 overflow-hidden"
     >
       {/* Subtle hover accent */}
       <div
@@ -256,13 +256,13 @@ const Skills = () => {
     >
       {/* Section Title */}
       <div className="text-center mb-14">
-        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-purple-600 dark:text-purple-400 uppercase mb-3">
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-indigo-600 dark:text-indigo-400 uppercase mb-3">
           Expertise
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
           Skills & Tools
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-5"></div>
+        <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-teal-500 mx-auto rounded-full mb-5"></div>
         <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
           The full stack I work with — from data pipelines to production
           deployments — plus my competitive programming track record.
@@ -271,19 +271,19 @@ const Skills = () => {
         {/* Stats Row */}
         <div className="flex flex-wrap justify-center gap-3 mt-8">
           <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-purple-600 dark:text-purple-400">
+            <span className="font-bold text-indigo-600 dark:text-indigo-400">
               {totalSkills}+
             </span>{" "}
             Tools & Technologies
           </div>
           <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-purple-600 dark:text-purple-400">
+            <span className="font-bold text-indigo-600 dark:text-indigo-400">
               {SkillsInfo.length}
             </span>{" "}
             Categories
           </div>
           <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-purple-600 dark:text-purple-400">
+            <span className="font-bold text-indigo-600 dark:text-indigo-400">
               {totalProblems}+
             </span>{" "}
             Problems Solved
@@ -294,7 +294,7 @@ const Skills = () => {
       {/* TECHNICAL SKILLS */}
       <div className="flex items-center gap-3 mb-6">
         <div className="flex items-center gap-2">
-          <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full" />
+          <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-indigo-500 to-teal-500 rounded-full" />
           <h3 className="text-slate-900 dark:text-white text-xl md:text-2xl font-bold">
             Technical Skills
           </h3>
@@ -310,8 +310,8 @@ const Skills = () => {
             meta={
               categoryMeta[category.title] || {
                 icon: FiTarget,
-                accent: "from-purple-500 to-pink-500",
-                tint: "bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-500/30",
+                accent: "from-indigo-500 to-teal-500",
+                tint: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border-indigo-500/30",
                 description: "",
               }
             }
