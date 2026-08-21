@@ -25,17 +25,17 @@ Container = Application Code + Dependencies + Runtime + System Libraries + Confi
 
 ### সমস্যাটা কোথায়?
 
-ধরুন আপনি একটা Node.js API বানিয়েছেন (আমাদের NexGen AI প্রজেক্ট)। এটা আপনার laptop-এ চমৎকার চলছে। এখন এই app আপনার colleague রাফি-র কাছে পাঠালেন। কিন্তু রাফি-র মেশিনে:
+ধরুন আপনি একটা FastAPI দিয়ে বানানো API তৈরি করেছেন (আমাদের NexGen AI প্রজেক্ট)। এটা আপনার laptop-এ চমৎকার চলছে। এখন এই app আপনার colleague রাফি-র কাছে পাঠালেন। কিন্তু রাফি-র মেশিনে:
 
 ```
 আপনার Laptop (চলছে ✅)          রাফি-র Laptop (ভাঙছে ❌)
 ─────────────────────           ─────────────────────
-Node.js v20.x                   Node.js v16.x (পুরোনো)
-npm 10.x                        npm 8.x
-MongoDB 7.0                     MongoDB 5.0
+Python 3.12                     Python 3.9 (পুরোনো)
+pip 24.x                        pip 21.x
+PostgreSQL 16                   PostgreSQL 13
 Ubuntu 22.04                    Windows 11
-PORT=3000 সেট করা               PORT সেট করা নেই
-python3 installed               python3 নেই (কিছু dependency-র জন্য দরকার)
+PORT=8000 সেট করা               PORT সেট করা নেই
+virtualenv দিয়ে isolated env    system-wide Python — dependency conflict!
 ```
 
 ফলাফল? **"আমার মেশিনে তো চলছে!"** — software development এর সবচেয়ে কুখ্যাত বাক্য।
@@ -110,10 +110,10 @@ Containerization বোঝার আগে আমাদের বুঝতে �
 ```
 🖥️ Physical Server
 ├── 🐧 Operating System (যেমন Ubuntu)
-├── 📦 App A (Node.js v16)
-├── 📦 App B (Node.js v20)   ← Conflict! দুটো version একসাথে?
-├── 📦 App C (Python 3.8)
-└── 📦 App D (Python 3.11)   ← আবার conflict!
+├── 📦 App A (Python 3.9)
+├── 📦 App B (Python 3.12)   ← Conflict! দুটো version একসাথে?
+├── 📦 App C (Java 11)
+└── 📦 App D (Java 17)      ← আবার conflict!
 ```
 
 সমস্যা: সব app **একই OS** share করে, তাই dependency conflict হয়। একটা app আপডেট করলে অন্যটা ভেঙে যায়।
@@ -157,10 +157,10 @@ Container হলো VM-এর **lightweight alternative**। Container-এ আ�
 ├── 🐳 Container Engine (Docker)
 │   ├── 📦 Container 1
 │   │   ├── 📚 App Libraries only
-│   │   └── 📦 App A (Node.js)
+│   │   └── 📦 App A (FastAPI)
 │   ├── 📦 Container 2
 │   │   ├── 📚 App Libraries only
-│   │   └── 📦 App B (Python)
+│   │   └── 📦 App B (Django)
 │   └── 📦 Container 3
 │       ├── 📚 App Libraries only
 │       └── 📦 App C (Go)
@@ -206,8 +206,8 @@ graph TB
     end
 
     subgraph "Containers"
-        C1["📦 Container 1<br/>Node.js App"]
-        C2["📦 Container 2<br/>MongoDB"]
+        C1["📦 Container 1<br/>FastAPI App"]
+        C2["📦 Container 2<br/>PostgreSQL"]
         C3["📦 Container 3<br/>Redis"]
     end
 
@@ -302,47 +302,51 @@ graph TB
 ## বাস্তব উদাহরণ — NexGen AI এর ক্ষেত্রে
 
 আমাদের NexGen AI প্রজেক্টের কথা ভাবুন। এই app চালাতে দরকার:
-- Node.js runtime
-- Express.js framework
-- MongoDB database
-- কিছু npm packages
+- Python runtime
+- FastAPI framework
+- PostgreSQL database
+- কিছু pip packages (uvicorn, sqlalchemy, psycopg2)
 
 ### Containerization ছাড়া
 
 ```bash
-# ধাপ ১: Node.js install (OS ভেদে আলাদা command)
+# ধাপ ১: Python install (OS ভেদে আলাদা command)
 # Ubuntu:
 sudo apt update
-sudo apt install nodejs npm
+sudo apt install python3 python3-pip python3-venv
 
 # macOS:
-brew install node
+brew install python3
 
 # Windows:
-# nodejs.org থেকে installer download করে install
+# python.org থেকে installer download করে install
 
-# ধাপ ২: MongoDB install (আবার OS ভেদে আলাদা!)
+# ধাপ ২: PostgreSQL install (আবার OS ভেদে আলাদা!)
 # Ubuntu:
-wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo apt-key add -
-echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
-sudo apt update
-sudo apt install mongodb-org
-sudo systemctl start mongod
+sudo apt install postgresql postgresql-contrib
+sudo systemctl start postgresql
+sudo -u postgres createdb nexgen
+
+# macOS:
+brew install postgresql@16
+brew services start postgresql@16
 
 # ধাপ ৩: Project setup
 git clone https://github.com/your-repo/nexgen-api.git
 cd nexgen-api
-npm install
+python3 -m venv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
+pip install -r requirements.txt
 
 # ধাপ ৪: Environment variables সেট করা
-export PORT=3000
-export MONGO_URI=mongodb://localhost:27017/nexgen
+export PORT=8000
+export DATABASE_URL=postgresql://postgres:password@localhost:5432/nexgen
 
 # ধাপ ৫: App চালানো
-npm start
+uvicorn main:app --reload
 ```
 
-**সমস্যা:** ৫ টা ধাপ, OS ভেদে আলাদা command, MongoDB install করাটাই একটা দুঃস্বপ্ন, এবং সবার মেশিনে version আলাদা হতে পারে।
+**সমস্যা:** ৫ টা ধাপ, OS ভেদে আলাদা command, PostgreSQL install করাটাই একটা দুঃস্বপ্ন, virtual environment manage করতে হয়, এবং সবার মেশিনে version আলাদা হতে পারে।
 
 ### Containerization দিয়ে
 
@@ -351,10 +355,10 @@ npm start
 docker compose up
 ```
 
-**ব্যাস!** Node.js, MongoDB, environment variables — সবকিছু container-এ defined। সবার মেশিনে exact same version, exact same configuration।
+**ব্যাস!** Python, PostgreSQL, environment variables — সবকিছু container-এ defined। সবার মেশিনে exact same version, exact same configuration।
 
 :::tip আমরা এটাই শিখব
-পুরো ডকুমেন্টেশন শেষে আপনি উপরের ঐ একটা command-এই NexGen AI app + MongoDB চালাতে পারবেন। তবে সেখানে পৌঁছাতে হলে আগে ভিত্তি (foundation) শক্ত করতে হবে।
+পুরো ডকুমেন্টেশন শেষে আপনি উপরের ঐ একটা command-এই NexGen AI app + PostgreSQL চালাতে পারবেন। তবে সেখানে পৌঁছাতে হলে আগে ভিত্তি (foundation) শক্ত করতে হবে।
 :::
 
 ---
@@ -379,7 +383,7 @@ docker compose up
 **Volume** হলো container-এর data permanent ভাবে সংরক্ষণ করার ব্যবস্থা। Container মুছে দিলেও volume-এর data থাকে।
 
 ### 6. Network (নেটওয়ার্ক)
-**Docker Network** দিয়ে একাধিক container একে অপরের সাথে যোগাযোগ করতে পারে। যেমন: NexGen API container → MongoDB container।
+**Docker Network** দিয়ে একাধিক container একে অপরের সাথে যোগাযোগ করতে পারে। যেমন: NexGen API container → PostgreSQL container।
 
 ```mermaid
 graph TB
@@ -452,7 +456,7 @@ Container technology Docker-এর আবিষ্কার নয়। LXC, Fr
 
 1. **Containerization mindset তৈরি করুন** — প্রতিটা application-কে self-contained unit হিসেবে ভাবুন। App যেন নিজের dependencies নিজে বহন করে।
 
-2. **"One process per container" নীতি** — একটা container-এ একটাই main process চালান। Node.js API এক container-এ, MongoDB অন্য container-এ। এটা maintenance, scaling, এবং debugging সহজ করে।
+2. **"One process per container" নীতি** — একটা container-এ একটাই main process চালান। FastAPI app এক container-এ, PostgreSQL অন্য container-এ। এটা maintenance, scaling, এবং debugging সহজ করে।
 
 3. **Container-কে disposable (নিষ্পত্তিযোগ্য) ভাবুন** — Container যেকোনো সময় মুছে ফেলা এবং নতুন করে তৈরি করা যায়। তাই গুরুত্বপূর্ণ data সবসময় Volume-এ রাখুন, container-এর ভিতরে নয়।
 

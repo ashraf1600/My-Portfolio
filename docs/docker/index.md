@@ -26,9 +26,9 @@ head:
 ```
 ❌ Docker ছাড়া (Before):
    - "আমার মেশিনে তো চলছে!" — কিন্তু সার্ভারে deploy করলে কাজ করে না
-   - Node.js v18 লোকালে, সার্ভারে v14 — code ভাঙে
+   - Python 3.12 লোকালে, সার্ভারে 3.9 — code ভাঙে
    - নতুন developer team-এ join করলে environment সেটআপে ২-৩ দিন চলে যায়
-   - Python, Node.js, PostgreSQL, Redis সব আলাদা আলাদা install ও configure
+   - Python, PostgreSQL, Redis সব আলাদা আলাদা install ও configure
    - "আমি Ubuntu ব্যবহার করি, তুমি Windows" — আলাদা setup guide দরকার
    - Production-এ একটু ভুল হলে পুরো সার্ভার ক্র্যাশ
 
@@ -63,7 +63,7 @@ head:
 এই ডকুমেন্টেশন follow করার জন্য আপনার যা জানা থাকলে ভালো হয়:
 
 - **Linux Terminal / Command Line** — basic commands (`cd`, `ls`, `mkdir`, `cat`) জানলেই যথেষ্ট
-- **যেকোনো একটা programming language** — JavaScript (Node.js) বা Python হলে সবচেয়ে ভালো, কারণ আমাদের উদাহরণগুলো Node.js-ভিত্তিক
+- **Python** — আমাদের উদাহরণগুলো Python ও FastAPI-ভিত্তিক, তাই Python-এর basic ধারণা থাকলে সবচেয়ে ভালো
 - **Web development এর basic ধারণা** — HTTP, API, server কী এসব বুঝলেই হবে
 - **Git** — basic `git clone`, `git commit` জানলে চলবে
 
@@ -75,7 +75,7 @@ head:
 
 ## আমাদের ধারাবাহিক প্রজেক্ট: NexGen AI 🚀
 
-পুরো ডকুমেন্টেশন জুড়ে আমরা **একটাই প্রজেক্ট** ধাপে ধাপে তৈরি করব — **NexGen AI**। এটি একটি Node.js + Express.js ভিত্তিক REST API, যেটার সাথে MongoDB database থাকবে।
+পুরো ডকুমেন্টেশন জুড়ে আমরা **একটাই প্রজেক্ট** ধাপে ধাপে তৈরি করব — **NexGen AI**। এটি একটি Python + FastAPI ভিত্তিক REST API, যেটার সাথে PostgreSQL database থাকবে।
 
 ### কেন একটাই প্রজেক্ট?
 
@@ -83,12 +83,15 @@ head:
 
 ```
 📁 nexgen-api/
-├── package.json          # Node.js dependencies
-├── server.js             # Express.js API server
-├── routes/
-│   └── ai.js             # AI-related API routes
-├── models/
-│   └── Prompt.js         # MongoDB model
+├── requirements.txt      # Python dependencies
+├── main.py               # FastAPI entry point
+├── app/
+│   ├── __init__.py
+│   ├── routes/
+│   │   └── ai.py         # AI-related API routes
+│   ├── models/
+│   │   └── prompt.py     # SQLAlchemy model
+│   └── database.py       # PostgreSQL connection
 ├── .env                  # Environment variables
 ├── Dockerfile            # Docker image build instructions
 ├── .dockerignore         # Docker ignore file
@@ -102,13 +105,13 @@ graph LR
     L1["🟢 Level 1: Foundation"]
     L2["🟡 Level 2: Intermediate"]
 
-    L1_1["Container-এ শুধু<br/>Node.js app চালানো"]
+    L1_1["Container-এ শুধু<br/>Python app চালানো"]
     L1_2["Image build ও<br/>Docker Hub-এ push"]
 
     L2_1["Dockerfile দিয়ে<br/>custom image তৈরি"]
     L2_2["Volume দিয়ে<br/>data persist"]
     L2_3["Network দিয়ে<br/>container যোগাযোগ"]
-    L2_4["Docker Compose দিয়ে<br/>Node.js + MongoDB<br/>একসাথে চালানো"]
+    L2_4["Docker Compose দিয়ে<br/>FastAPI + PostgreSQL<br/>একসাথে চালানো"]
 
     L1 --> L1_1 --> L1_2 --> L2
     L2 --> L2_1 --> L2_2 --> L2_3 --> L2_4
@@ -117,7 +120,7 @@ graph LR
 :::info প্রজেক্ট Journey
 **Level 1 (Foundation):** প্রথমে Docker কী, কেন, কীভাবে কাজ করে বুঝবেন। তারপর basic command শিখে existing image দিয়ে container চালাবেন।
 
-**Level 2 (Intermediate):** নিজে Dockerfile লিখে NexGen AI এর custom image বানাবেন। Volume দিয়ে data save করবেন, Network দিয়ে container-এ container যোগাযোগ করাবেন, এবং সবশেষে Docker Compose দিয়ে পুরো multi-container application (Node.js + MongoDB) একটা command-এ চালাবেন।
+**Level 2 (Intermediate):** নিজে Dockerfile লিখে NexGen AI এর custom image বানাবেন। Volume দিয়ে data save করবেন, Network দিয়ে container-এ container যোগাযোগ করাবেন, এবং সবশেষে Docker Compose দিয়ে পুরো multi-container application (FastAPI + PostgreSQL) একটা command-এ চালাবেন।
 :::
 
 ---
@@ -235,7 +238,7 @@ graph TD
 | **Code Editor** | Code ও Dockerfile লেখার জন্য | VS Code (recommended) |
 | **Terminal** | Docker command চালানোর জন্য | যেকোনো terminal |
 | **Git** | প্রজেক্ট clone ও version control | Git 2.x+ |
-| **Node.js** | NexGen AI প্রজেক্ট locally test করতে | Node.js 18+ (Docker install এর পর এটা ছাড়াই চলবে!) |
+| **Python** | NexGen AI প্রজেক্ট locally test করতে | Python 3.10+ (Docker install এর পর এটা ছাড়াই চলবে!) |
 | **Internet** | Docker image download, Docker Hub | Stable connection |
 
 :::tip VS Code Extension
@@ -266,7 +269,7 @@ VS Code ব্যবহার করলে **Docker extension** (`ms-azuretools.
 
 প্রথমত, **environment consistency** — "আমার মেশিনে চলছে" এই সমস্যা আর থাকে না, কারণ Docker container সব জায়গায় একই environment নিশ্চিত করে।
 
-দ্বিতীয়ত, **isolation** — প্রতিটা application আলাদা container-এ চলে, তাই একটার dependency আরেকটাকে প্রভাবিত করে না। আপনি একই মেশিনে Node.js 18 আর Node.js 20 দুটোই চালাতে পারবেন conflict ছাড়া।
+দ্বিতীয়ত, **isolation** — প্রতিটা application আলাদা container-এ চলে, তাই একটার dependency আরেকটাকে প্রভাবিত করে না। আপনি একই মেশিনে Python 3.10 আর Python 3.12 দুটোই চালাতে পারবেন conflict ছাড়া।
 
 তৃতীয়ত, **deployment simplicity** — Docker image বানিয়ে ফেললে সেটা যেকোনো server-এ, cloud-এ, বা Kubernetes-এ deploy করা সহজ হয়ে যায়।
 
@@ -306,7 +309,7 @@ VS Code ব্যবহার করলে **Docker extension** (`ms-azuretools.
 | **কী** | Docker নিয়ে সম্পূর্ণ বাংলা ডকুমেন্টেশন |
 | **কার জন্য** | Junior থেকে Senior — যেকোনো Bangladeshi developer |
 | **Levels** | Foundation (১৪ topics) → Intermediate (১৯ topics) |
-| **প্রজেক্ট** | NexGen AI — Node.js + MongoDB REST API |
+| **প্রজেক্ট** | NexGen AI — Python + FastAPI + PostgreSQL REST API |
 | **বিশেষত্ব** | গভীর ব্যাখ্যা, diagram, interview Q&A, best practices, common mistakes |
 | **ভাষা** | বাংলা (technical terms ইংরেজি) |
 
