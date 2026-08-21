@@ -1,6 +1,6 @@
 ---
 title: Real-World Capstone Project — Todo App API (গভীর কোড ব্যাখ্যা)
-description: লোকাল Todo App ব্যাকএন্ড প্রজেক্টের (D:\Django_The_Last_Hope_Phitron\Fast_api\todo-app) প্রতিটি ফাইল, ফাংশন, স্কিমা, সিকিউরিটি এবং ডকার আর্কিটেকচারের লাইন-বাই-লাইন বিস্তারিত বাংলা ব্যাখ্যা।
+description: "লোকাল Todo App ব্যাকএন্ড প্রজেক্টের প্রতিটি ফাইল, ফাংশন, স্কিমা, সিকিউরিটি এবং ডকার আর্কিটেকচারের লাইন-বাই-লাইন বিস্তারিত বাংলা ব্যাখ্যা।"
 ---
 
 # Real-World Capstone Project — Todo App API 📝

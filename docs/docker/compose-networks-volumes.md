@@ -1,6 +1,6 @@
 ---
 title: Compose Networks & Volumes — Docker বাংলা গাইড
-description: Docker Compose Networks ও Volumes এর গভীর প্রযুক্তিগত গাইড — external নেটওয়ার্ক ও ভলিউম, internal: true আইসোলেশন, কাস্টম আইপ্যাম (IPAM) এবং মাল্টি-স্ট্যাক ইন্টিগ্রেশন।
+description: "Docker Compose Networks ও Volumes এর গভীর প্রযুক্তিগত গাইড — external নেটওয়ার্ক ও ভলিউম, internal: true আইসোলেশন, কাস্টম আইপ্যাম (IPAM) এবং মাল্টি-স্ট্যাক ইন্টিগ্রেশন।"
 head:
   - - meta
     - name: keywords

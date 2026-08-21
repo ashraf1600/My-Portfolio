@@ -249,7 +249,7 @@ Total reclaimed space: 12.45MB
 |---|---|---|
 | **কন্টেইনার খোঁজা** | `docker ps -a` চালিয়ে স্ক্রল করা | `docker ps --filter "name=nexgen" --filter "status=running"` |
 | **সব বন্ধ করা** | এক এক করে `docker stop id1 id2 id3` | `docker stop $(docker ps -q)` |
-| **আউটপুট দেখা** | লম্বা লাইন ভেঙে যাওয়া টেবিল | `docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"` |
+| **আউটপুট দেখা** | লম্বা লাইন ভেঙে যাওয়া টেবিল | `docker ps --format "table &#123;&#123;.Names&#125;&#125;\t&#123;&#123;.Status&#125;&#125;\t&#123;&#123;.Ports&#125;&#125;"` |
 | **প্রসেস পর্যবেক্ষণ** | কন্টেইনারে `exec` করে ঢুকে `ps aux` দেওয়া | সরাসরি হোস্ট থেকে `docker container top <name>` |
 | **স্টপড কন্টেইনার সাফ** | এক এক করে `docker rm <id>` | `docker container prune --filter "until=24h"` |
 
@@ -287,7 +287,7 @@ Total reclaimed space: 12.45MB
 
 ### ১. `docker container ls` এর আউটপুট কীভাবে `--format` ফ্ল্যাগ দিয়ে কাস্টমাইজ করা যায়?
 
-**উত্তর:** ডকার CLI আউটপুট ফরম্যাট করার জন্য **Go Templates** সিনট্যাক্স সমর্থন করে। `--format` ফ্ল্যাগের সাথে `table` কিওয়ার্ড এবং প্লেসহোল্ডার যেমন `{{.ID}}`, `{{.Names}}`, `{{.Image}}`, `{{.Status}}`, `{{.Ports}}` ইত্যাদি ব্যবহার করা হয়।
+**উত্তর:** ডকার CLI আউটপুট ফরম্যাট করার জন্য **Go Templates** সিনট্যাক্স সমর্থন করে। `--format` ফ্ল্যাগের সাথে `table` কিওয়ার্ড এবং প্লেসহোল্ডার যেমন `&#123;&#123;.ID&#125;&#125;`, `&#123;&#123;.Names&#125;&#125;`, `&#123;&#123;.Image&#125;&#125;`, `&#123;&#123;.Status&#125;&#125;`, `&#123;&#123;.Ports&#125;&#125;` ইত্যাদি ব্যবহার করা হয়।
 উদাহরণ:
 ```bash
 docker container ls --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
@@ -339,7 +339,7 @@ docker container ls --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 |---|---|---|
 | **স্ট্যাটাস ফিল্টার** | `--filter "status=exited"` | নির্দিষ্ট অবস্থার কন্টেইনার খোঁজে |
 | **ইমেজ ফিল্টার** | `--filter "ancestor=<image>"` | নির্দিষ্ট ইমেজ থেকে তৈরি কন্টেইনার খোঁজে |
-| **কাস্টম টেবিল** | `--format "table {{.Names}}\t{{.Status}}"` | পরিচ্ছন্ন কাস্টম কলামের টেবিল তৈরি করে |
+| **কাস্টম টেবিল** | `--format "table &#123;&#123;.Names&#125;&#125;\t&#123;&#123;.Status&#125;&#125;"` | পরিচ্ছন্ন কাস্টম কলামের টেবিল তৈরি করে |
 | **নাম পরিবর্তন** | `docker container rename <old> <new>` | কন্টেইনারের নাম আপডেট করে |
 | **প্রসেস অডিট** | `docker container top <name>` | কন্টেইনারের রানিং প্রসেস লিস্ট দেখে |
 | **ব্যাচ স্টপ** | `docker stop $(docker ps -q)` | সব রানিং কন্টেইনার একসাথে থামায় |

@@ -1,6 +1,6 @@
 ---
 title: Container Logs & Debugging — Docker বাংলা গাইড
-description: Docker Logs এবং প্রোডাকশন ডিবাগিংয়ের সম্পূর্ণ গাইড — docker logs ফিল্টারিং (--since, --tail, -t), লগিং ড্রাইভার্স (json-file, local, loki), এবং ক্র্যাশ ইনভেস্টিগেশন।
+description: "Docker Logs এবং প্রোডাকশন ডিবাগিংয়ের সম্পূর্ণ গাইড — docker logs ফিল্টারিং (--since, --tail, -t), লগিং ড্রাইভার্স (json-file, local, loki), এবং ক্র্যাশ ইনভেস্টিগেশন।"
 head:
   - - meta
     - name: keywords
@@ -169,7 +169,7 @@ graph TD
     
     S1 --> CheckExit{"Exit Code কত?"}
     
-    CheckExit -->|Exit 137| OOM["ধাপ ২: OOMKilled চেক করা<br/>docker inspect -f '{{.State.OOMKilled}}'"]
+    CheckExit -->|Exit 137| OOM["ধাপ ২: OOMKilled চেক করা<br/>docker inspect OOMKilled state"]
     CheckExit -->|Exit 1 / 2| CodeBug["ধাপ ২: লগ অডিট করা<br/>docker logs &lt;container_name&gt;"]
     
     OOM --> FixOOM["💡 সমাধান: কন্টেইনারের মেমরি লিমিট বাড়ানো"]
@@ -241,7 +241,7 @@ docker stats --no-stream
 
 1. **Structured JSON Logging ব্যবহার করুন**: পাইথনে `structlog` বা `json` ফরম্যাটে লগ প্রিন্ট করুন, যা সেন্ট্রালাইজড সিস্টেমে পার্স করা খুব সহজ।
 2. **লগ রোটেশন কনফিগার করুন**: `max-size: 10m` এবং `max-file: 3` ব্যবহার করে ডিস্ক স্পেস সুরক্ষিত রাখুন।
-3. **হেলথচেক লগ ট্র্যাক করুন**: কন্টেইনারের হেলথ ফেইলিউর হিস্ট্রি দেখতে `docker inspect --format '{{json .State.Health}}' <container>` ব্যবহার করুন।
+3. **হেলথচেক লগ ট্র্যাক করুন**: কন্টেইনারের হেলথ ফেইলিউর হিস্ট্রি দেখতে `docker inspect --format '&#123;&#123;json .State.Health&#125;&#125;' <container>` ব্যবহার করুন।
 4. **ইনসিডেন্টে `--since` ব্যবহার করুন**: সমস্যা তৈরি হওয়ার নির্দিষ্ট টাইম উইন্ডো ফিল্টার করে দ্রুত রুট কজ (Root Cause) বের করুন।
 
 ---
@@ -257,7 +257,7 @@ docker stats --no-stream
 
 ### ২. Docker-এ Exit Code 137 এবং OOMKilled এর পেছনের মেকানিজম কী এবং কীভাবে তা সনাক্ত করা যায়?
 
-**উত্তর:** যখন একটি কন্টেইনার তার নির্ধারিত মেমরি লিমিটের চেয়ে বেশি র‍্যাম খরচ করে ফেলে, তখন হোস্ট লিনাক্স কার্নেলের **Out-Of-Memory (OOM) Killer** সাবসিস্টেম সক্রিয় হয়ে সিস্টেমকে ক্র্যাশ থেকে বাঁচাতে মেমরি খাদক প্রসেসটিকে `SIGKILL` (Signal 9) সিগন্যাল পাঠিয়ে মেরে ফেলে। সিগন্যাল ৯ এর কারণে এক্সিট কোড হয় $128 + 9 = 137$।
+**উত্তর:** যখন একটি কন্টেইনার তার নির্ধারিত মেমরি লিমিটের চেয়ে বেশি র‍্যাম খরচ করে ফেলে, তখন হোস্ট লিনাক্স কার্নেলের **Out-Of-Memory (OOM) Killer** সাবসিস্টেম সক্রিয় হয়ে সিস্টেমকে ক্র্যাশ থেকে বাঁচাতে মেমরি খাদক প্রসেসটিকে `SIGKILL` (Signal 9) সিগন্যাল পাঠিয়ে মেরে ফেলে। সিগন্যাল ৯ এর কারণে এক্সিট কোড হয় 128 + 9 = 137।
 এটি সনাক্ত করার উপায়:
 ```bash
 docker inspect --format '{{.State.OOMKilled}}' <container_name>
@@ -290,7 +290,7 @@ docker inspect --format '{{.State.OOMKilled}}' <container_name>
 | **নির্দিষ্ট লাইন** | `docker logs --tail=50 <name>` | শুধুমাত্র শেষ ৫০ লাইন দেখে |
 | **টাইমস্ট্যাম্প** | `docker logs -t <name>` | প্রতি লাইনে সময় প্রদর্শন করে |
 | **টাইম ফিল্টার**| `docker logs --since 15m <name>` | গত ১৫ মিনিটের লগ ফিল্টার করে |
-| **OOM চেক** | `docker inspect -f '{{.State.OOMKilled}}'` | মেমরি ক্র্যাশ তদন্ত করে |
+| **OOM চেক** | `docker inspect -f '&#123;&#123;.State.OOMKilled&#125;&#125;'` | মেমরি ক্র্যাশ তদন্ত করে |
 | **লাইভ ইভেন্ট** | `docker events` | কন্টেইনার স্টপ/ডাই ইভেন্ট দেখে |
 
 ---
