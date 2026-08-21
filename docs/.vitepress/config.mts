@@ -445,14 +445,22 @@ export default withMermaid(
               { text: 'Docker Networks', link: '/docker/networks' },
               { text: 'Network Commands', link: '/docker/network-commands' },
               { text: 'Container Networking', link: '/docker/container-networking' },
-              { text: 'Docker Compose Intro', link: '/docker/compose-intro' },
-              { text: 'Compose File Structure', link: '/docker/compose-structure' },
+              { text: 'Docker Compose Basics', link: '/docker/compose-basics' },
+              { text: 'Compose File Structure', link: '/docker/compose-file' },
+              { text: 'Multi-Container with Compose', link: '/docker/compose-multi' },
               { text: 'Compose Commands', link: '/docker/compose-commands' },
-              { text: 'Compose Services', link: '/docker/compose-services' },
+              { text: 'Compose Services Deep Dive', link: '/docker/compose-services' },
               { text: 'Compose Networks & Volumes', link: '/docker/compose-networks-volumes' },
-              { text: 'Compose Advanced', link: '/docker/compose-advanced' },
-              { text: 'Container Logs', link: '/docker/container-logs' },
+              { text: 'Compose Advanced Features', link: '/docker/compose-advanced' },
+              { text: 'Container Logs & Debugging', link: '/docker/container-logs' },
               { text: 'Resource Management', link: '/docker/resource-management' },
+            ]
+          },
+          {
+            text: '🔴 Level 3: Real-World Capstone & AWS Deployment',
+            collapsed: false,
+            items: [
+              { text: 'Full-Stack ML & AI Dockerization + AWS Deploy', link: '/docker/fullstack-ml-aws' },
             ]
           }
         ],
