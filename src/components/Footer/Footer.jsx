@@ -111,13 +111,12 @@ const Footer = () => {
           {/* Docs link */}
           <a
             href={DOCS_URL}
-            className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold
-              bg-blue-50 dark:bg-blue-500/10
-              border border-blue-200 dark:border-blue-500/30
-              text-blue-700 dark:text-blue-300
-              hover:bg-blue-600 hover:text-white hover:border-transparent
-              hover:shadow-lg hover:shadow-blue-500/20
-              transition-all duration-300"
+            className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold
+              bg-gray-50 dark:bg-white/5
+              border border-gray-200 dark:border-white/5
+              text-gray-700 dark:text-gray-300
+              hover:text-blue-600 dark:hover:text-blue-400
+              transition-colors duration-300"
           >
             <FiBookOpen size={15} />
             <span>NextGen AI Docs</span>

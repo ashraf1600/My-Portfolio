@@ -654,19 +654,16 @@ const Work = () => {
 
       {/* Section Header */}
       <div className="text-center mb-14 relative z-10 reveal-section">
-        <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 uppercase mb-3 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+        <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 uppercase mb-3 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-white/5 border border-blue-100 dark:border-white/5">
           <FiBookmark size={12} />
           Portfolio
         </span>
         <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
-          Software &{" "}
-          <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-            System Architectures
-          </span>
+          Software & System Architectures
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-blue-400 mx-auto rounded-full mb-5"></div>
+        <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
         <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-          Production full-stack platforms, concurrent data systems, and machine learning research tools â€” engineered with rigor.
+          Production full-stack platforms, concurrent data systems, and machine learning research tools — engineered with rigor.
         </p>
 
         {/* Stats Row */}
@@ -698,8 +695,8 @@ const Work = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 flex items-center gap-2 ${
                   isSelected
-                    ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30"
-                    : "bg-white/80 dark:bg-gray-900/60 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/8 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "bg-blue-600 text-white shadow-sm"
+                    : "bg-gray-50 dark:bg-white/5 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/5 hover:border-gray-300 dark:hover:border-white/10 hover:text-blue-600 dark:hover:text-blue-400"
                 }`}
               >
                 <span>{category}</span>

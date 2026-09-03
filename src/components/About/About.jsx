@@ -165,16 +165,19 @@ const About = () => {
             {/* Soft background glow to blend */}
             <div className="absolute -inset-4 bg-blue-500/5 rounded-3xl blur-2xl opacity-50 transition-opacity duration-700 group-hover:opacity-70"></div>
 
-            {/* Main image container (No borders) */}
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[26rem] rounded-[2rem] overflow-hidden shadow-2xl z-10 bg-blue-50 dark:bg-[#0b1121]">
+            {/* Main image container */}
+            <div 
+              className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[26rem] z-10 flex items-center justify-center bg-[#0b1121]"
+              style={{
+                maskImage: "radial-gradient(circle at center, black 40%, transparent 100%)",
+                WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 100%)"
+              }}
+            >
               <img
                 src={profileImage}
                 alt="Ashraful Islam"
-                className="w-full h-full object-cover transition-all duration-700 mix-blend-luminosity opacity-75 group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-700 mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105"
               />
-              
-              {/* Premium gradient overlay matching UI colors */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 via-transparent to-amber-500/10 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500"></div>
             </div>
 
             {/* Status badge - Floating, Minimalist */}
