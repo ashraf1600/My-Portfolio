@@ -18,27 +18,27 @@ const navItems = [
 
 const socialLinks = [
   {
-    icon: <FaGithub size={20} />,
+    icon: <FaGithub size={18} />,
     href: "https://github.com/ashraf1600",
     label: "GitHub",
   },
   {
-    icon: <FaLinkedin size={20} />,
+    icon: <FaLinkedin size={18} />,
     href: "https://www.linkedin.com/in/ashraful-islam-a31268226/",
     label: "LinkedIn",
   },
   {
-    icon: <FaFacebook size={20} />,
+    icon: <FaFacebook size={18} />,
     href: "https://www.facebook.com/share/19gm9nUyqU/",
     label: "Facebook",
   },
   {
-    icon: <FaKaggle size={20} />,
+    icon: <FaKaggle size={18} />,
     href: "https://www.kaggle.com/ashraf1600",
     label: "Kaggle",
   },
   {
-    icon: <SiCodeforces size={20} />,
+    icon: <SiCodeforces size={18} />,
     href: "https://codeforces.com/profile/ashraf1600",
     label: "Codeforces",
   },
@@ -72,26 +72,25 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative border-t border-slate-200 dark:border-gray-700/50 bg-white dark:bg-[#050414]">
-      {/* Subtle top gradient accent line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent" />
+    <footer className="relative border-t border-gray-200 dark:border-white/5 bg-white dark:bg-[#0b1121]">
+      {/* Subtle top accent */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
 
       <div className="px-[8vw] md:px-[6vw] lg:px-[12vw] py-12">
         {/* Top row: logo + nav */}
         <div className="flex flex-col items-center gap-6 mb-8">
-          {/* Brand */}
+          {/* Brand — Serif italic */}
           <div
-            className="text-lg font-semibold cursor-pointer transition-all duration-300 hover:scale-105"
+            className="cursor-pointer transition-all duration-300 hover:opacity-80"
             onClick={scrollToTop}
           >
-            <span className="text-indigo-600 dark:text-indigo-400">&lt;</span>
-            <span className="text-slate-900 dark:text-white">Ashraful</span>
-            <span className="text-indigo-600 dark:text-indigo-400">/Islam</span>
-            <span className="text-indigo-600 dark:text-indigo-400">&gt;</span>
+            <span className="font-serif text-xl font-bold italic text-gray-900 dark:text-white">
+              Ashraful Islam
+            </span>
           </div>
 
           {/* Tagline */}
-          <p className="text-sm text-slate-500 dark:text-gray-500 text-center max-w-md">
+          <p className="text-sm text-gray-500 dark:text-gray-500 text-center max-w-md">
             Building intelligent applications at the intersection of AI and software engineering.
           </p>
 
@@ -101,25 +100,23 @@ const Footer = () => {
               <button
                 key={item.id}
                 onClick={() => handleScroll(item.id)}
-                className="relative text-sm font-medium text-slate-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300 group"
+                className="relative text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 group"
               >
                 {item.name}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-indigo-500 to-teal-500 group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-blue-500 group-hover:w-full transition-all duration-300" />
               </button>
             ))}
           </nav>
 
-          {/* Docs link — consistent with navbar */}
+          {/* Docs link */}
           <a
             href={DOCS_URL}
             className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold
-              bg-gradient-to-r from-indigo-600/10 to-teal-600/10
-              dark:from-indigo-500/15 dark:to-teal-500/15
-              border border-indigo-500/30
-              text-indigo-700 dark:text-indigo-300
-              hover:from-indigo-600 hover:to-teal-600
-              hover:text-white hover:border-transparent
-              hover:shadow-lg hover:shadow-indigo-500/30
+              bg-blue-50 dark:bg-blue-500/10
+              border border-blue-200 dark:border-blue-500/30
+              text-blue-700 dark:text-blue-300
+              hover:bg-blue-600 hover:text-white hover:border-transparent
+              hover:shadow-lg hover:shadow-blue-500/20
               transition-all duration-300"
           >
             <FiBookOpen size={15} />
@@ -129,7 +126,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-slate-200 dark:bg-gray-700/50 mb-8" />
+        <div className="w-full h-px bg-gray-200 dark:bg-white/5 mb-8" />
 
         {/* Bottom row: social icons + copyright */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -142,7 +139,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-gray-800/60 text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700/60 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-teal-600 hover:text-white hover:border-transparent transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-indigo-500/30"
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/8 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300 hover:scale-110"
               >
                 {social.icon}
               </a>
@@ -150,9 +147,9 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <p className="text-sm text-slate-500 dark:text-gray-500 text-center sm:text-right">
+          <p className="text-sm text-gray-500 dark:text-gray-500 text-center sm:text-right">
             © {new Date().getFullYear()}{" "}
-            <span className="text-slate-700 dark:text-gray-300 font-medium">
+            <span className="text-gray-700 dark:text-gray-300 font-medium">
               Ashraful Islam
             </span>
             . All rights reserved.
@@ -163,14 +160,14 @@ const Footer = () => {
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-teal-600 text-white shadow-lg shadow-indigo-500/30 flex items-center justify-center transition-all duration-500 hover:scale-110 hover:shadow-xl hover:shadow-indigo-500/50 ${
+        className={`fixed bottom-8 right-8 z-40 w-11 h-11 rounded-full bg-blue-600 text-white shadow-lg shadow-blue-500/20 flex items-center justify-center transition-all duration-500 hover:scale-110 hover:shadow-xl hover:shadow-blue-500/30 ${
           showBackToTop
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-4 pointer-events-none"
         }`}
         aria-label="Back to top"
       >
-        <FiArrowUp size={20} />
+        <FiArrowUp size={18} />
       </button>
     </footer>
   );

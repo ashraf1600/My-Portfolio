@@ -35,9 +35,9 @@ const providerPalette = {
 };
 
 const getProvider = (cert) => providerPalette[cert.issuer] || {
-  tint: "bg-slate-500/10 text-slate-600 dark:text-slate-300 border-slate-500/30",
-  accent: "from-slate-500 to-gray-500",
-  initial: cert.issuer?.[0] || "•",
+  tint: "bg-gray-500/10 text-gray-600 dark:text-gray-300 border-gray-500/30",
+  accent: "from-gray-500 to-gray-500",
+  initial: cert.issuer?.[0] || "â€¢",
 };
 
 const isExpired = (date) => {
@@ -59,100 +59,89 @@ const CertCard = ({ cert, index, onOpen }) => {
 
   return (
     <div
-      className="group relative bg-white/90 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-gray-700/50 shadow-md hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 overflow-hidden flex flex-col"
+      className="group bg-white dark:bg-[#111b2e] rounded-xl border border-gray-200 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      {/* Top accent bar */}
-      <div className={`h-1 w-full bg-gradient-to-r ${provider.accent}`} aria-hidden="true" />
-
-      <div className="p-6 flex-1 flex flex-col">
-        {/* Header: logo + provider chip */}
-        <div className="flex items-start justify-between gap-3 mb-4">
-          <div
-            className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center border ${provider.tint} overflow-hidden`}
-          >
-            <img
-              src={cert.logo}
-              alt={cert.issuer}
-              className="w-7 h-7 object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
-              }}
-            />
-          </div>
-          <span
-            className={`inline-flex items-center gap-1 text-[11px] font-semibold rounded-full px-2.5 py-1 border ${provider.tint}`}
-          >
-            <HiAcademicCap size={12} />
-            {cert.issuer}
-          </span>
+      {/* Header: logo + provider chip */}
+      <div className="flex items-start justify-between gap-3 mb-5">
+        <div
+          className={`shrink-0 w-12 h-12 rounded-lg flex items-center justify-center border ${provider.tint} overflow-hidden bg-white dark:bg-[#0b1121]`}
+        >
+          <img
+            src={cert.logo}
+            alt={cert.issuer}
+            className="w-7 h-7 object-contain mix-blend-multiply dark:mix-blend-normal"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
         </div>
+        <span
+          className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider rounded-md px-2 py-1 border ${provider.tint}`}
+        >
+          {cert.issuer}
+        </span>
+      </div>
 
-        {/* Title */}
+      {/* Title */}
+      <h3 className="text-lg font-bold font-serif text-gray-900 dark:text-white leading-tight mb-3 line-clamp-3">
+        {cert.title}
+      </h3>
+
+      {/* Meta */}
+      <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 mb-5 flex-wrap">
+        <div className="flex items-center gap-1.5">
+          <FaCalendarAlt size={10} className="opacity-70" />
+          <span>Issued {issuedFormatted}</span>
+        </div>
+        {cert.expiryDate && (
+          <div
+            className={`flex items-center gap-1.5 ${
+              expired
+                ? "text-red-500 dark:text-red-400"
+                : "text-gray-500 dark:text-gray-400"
+            }`}
+          >
+            <FaShieldAlt size={10} className="opacity-70" />
+            <span>{expired ? "Expired" : "Valid till"} {formatDate(cert.expiryDate)}</span>
+          </div>
+        )}
+      </div>
+
+      {/* Skills */}
+      <div className="flex flex-wrap gap-1.5 mb-6">
+        {cert.skills.slice(0, 3).map((skill, idx) => (
+          <span
+            key={idx}
+            className="bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 text-[11px] font-medium px-2.5 py-0.5 rounded-full"
+          >
+            {skill}
+          </span>
+        ))}
+        {cert.skills.length > 3 && (
+          <span className="text-[11px] text-gray-400 self-center">
+            +{cert.skills.length - 3}
+          </span>
+        )}
+      </div>
+
+      {/* Footer actions */}
+      <div className="mt-auto pt-4 border-t border-gray-100 dark:border-white/5 flex items-center justify-between gap-2">
         <button
           onClick={() => onOpen(cert)}
-          className="text-left text-base font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors duration-300 leading-snug mb-3 line-clamp-3"
+          className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
         >
-          {cert.title}
+          Details <HiArrowUpRight size={12} />
         </button>
-
-        {/* Meta */}
-        <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-gray-400 mb-4 flex-wrap">
-          <div className="flex items-center gap-1.5">
-            <FaCalendarAlt className="text-indigo-500" size={11} />
-            <span>Issued {issuedFormatted}</span>
-          </div>
-          {cert.expiryDate && (
-            <div
-              className={`flex items-center gap-1.5 ${
-                expired
-                  ? "text-red-500 dark:text-red-400"
-                  : "text-slate-500 dark:text-gray-400"
-              }`}
-            >
-              <FaShieldAlt size={11} />
-              <span>{expired ? "Expired" : "Valid till"} {formatDate(cert.expiryDate)}</span>
-            </div>
-          )}
-        </div>
-
-        {/* Skills */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {cert.skills.slice(0, 3).map((skill, idx) => (
-            <span
-              key={idx}
-              className="bg-slate-100 dark:bg-gray-800/60 text-slate-700 dark:text-gray-300 text-[11px] font-medium px-2.5 py-1 rounded-md border border-slate-200 dark:border-gray-700"
-            >
-              {skill}
-            </span>
-          ))}
-          {cert.skills.length > 3 && (
-            <span className="text-[11px] text-slate-500 dark:text-gray-500 px-1.5 py-1">
-              +{cert.skills.length - 3}
-            </span>
-          )}
-        </div>
-
-        {/* Footer actions */}
-        <div className="mt-auto pt-4 border-t border-slate-200 dark:border-gray-700/50 flex items-center justify-between gap-2">
-          <button
-            onClick={() => onOpen(cert)}
-            className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-200 font-semibold text-sm transition-colors"
-          >
-            <span>Details</span>
-            <HiArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </button>
-          <a
-            href={cert.credentialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1.5 text-slate-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-300 font-semibold text-sm transition-colors"
-          >
-            <FaExternalLinkAlt size={11} />
-            <span>Verify</span>
-          </a>
-        </div>
+        <a
+          href={cert.credentialUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="inline-flex items-center gap-1 text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+        >
+          Verify <FaExternalLinkAlt size={10} />
+        </a>
       </div>
     </div>
   );
@@ -175,51 +164,48 @@ const CertModal = ({ cert, onClose }) => {
     >
       <div className="flex min-h-full items-center justify-center p-4">
         <div
-          className="relative bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 rounded-2xl max-w-3xl w-full border border-indigo-500/30 shadow-2xl shadow-indigo-500/20 my-8"
+          className="relative bg-white dark:bg-[#0b1121] rounded-2xl max-w-3xl w-full border border-gray-200 dark:border-white/10 shadow-xl my-8 overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-gray-800/50 hover:bg-slate-200 dark:hover:bg-gray-700 rounded-full p-2 transition z-10"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 dark:hover:text-white bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full p-2 transition z-10"
           aria-label="Close"
         >
-          <FaTimes size={20} />
+          <FaTimes size={16} />
         </button>
 
         <div className="p-8">
           {/* Header */}
-          <div className="text-center mb-8 pb-6 border-b border-slate-200 dark:border-gray-700">
+          <div className="text-center mb-8 pb-6 border-b border-gray-100 dark:border-white/5">
             <div
-              className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br ${provider.accent} rounded-full mb-4 p-1`}
+              className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 border ${provider.tint} bg-white dark:bg-[#111b2e]`}
             >
-              <div className="w-full h-full bg-white dark:bg-gray-900 rounded-full flex items-center justify-center overflow-hidden">
                 <img
                   src={cert.logo}
                   alt={cert.issuer}
                   className="w-10 h-10 object-contain"
                   onError={(e) => {
-                    e.currentTarget.outerHTML = `<span class="text-2xl font-bold text-slate-900 dark:text-white">${provider.initial}</span>`;
+                    e.currentTarget.outerHTML = `<span class="text-xl font-bold font-serif">${provider.initial}</span>`;
                   }}
                 />
-              </div>
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+            <h2 className="text-2xl md:text-3xl font-bold font-serif text-gray-900 dark:text-white mb-2 leading-tight">
               {cert.title}
             </h2>
-            <p className="text-indigo-600 dark:text-indigo-400 text-lg font-semibold mb-2">
+            <p className="text-gray-500 dark:text-gray-400 text-sm font-semibold mb-4 uppercase tracking-wider">
               {cert.organization}
             </p>
-            <div className="flex items-center justify-center gap-2 text-slate-600 dark:text-gray-400 text-sm">
-              <FaCertificate className="text-yellow-500" />
+            <div className="flex items-center justify-center gap-2 text-gray-500 dark:text-gray-500 text-xs font-medium">
               <span>Issued {formatDate(cert.date)}</span>
               {cert.expiryDate && (
                 <>
-                  <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-gray-600" />
+                  <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
                   <span
                     className={
                       expired
                         ? "text-red-500 dark:text-red-400"
-                        : "text-slate-600 dark:text-gray-400"
+                        : "text-gray-500 dark:text-gray-500"
                     }
                   >
                     {expired ? "Expired" : "Valid"} {formatDate(cert.expiryDate)}
@@ -230,27 +216,25 @@ const CertModal = ({ cert, onClose }) => {
           </div>
 
           {/* Description */}
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-              <HiAcademicCap className="text-indigo-500" size={20} />
-              About This Certification
+          <div className="mb-8">
+            <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2 uppercase tracking-wider">
+              Overview
             </h3>
-            <p className="text-slate-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
               {cert.description}
             </p>
           </div>
 
           {/* Skills */}
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-              <FaCheckCircle className="text-emerald-500" size={18} />
+          <div className="mb-8">
+            <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-3 uppercase tracking-wider">
               Skills Acquired
             </h3>
             <div className="flex flex-wrap gap-2">
               {cert.skills.map((skill, index) => (
                 <span
                   key={index}
-                  className="bg-gradient-to-r from-indigo-500/20 to-teal-500/20 border border-indigo-500/30 text-sm font-medium text-indigo-700 dark:text-indigo-300 rounded-full px-4 py-2"
+                  className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 text-xs font-medium text-gray-600 dark:text-gray-400 rounded-full px-3 py-1"
                 >
                   {skill}
                 </span>
@@ -259,20 +243,20 @@ const CertModal = ({ cert, onClose }) => {
           </div>
 
           {/* Credential info */}
-          <div className="bg-slate-100 dark:bg-gray-800/50 rounded-xl p-4 mb-6 border border-slate-200 dark:border-gray-700">
-            <h3 className="text-sm font-semibold text-slate-500 dark:text-gray-400 mb-3 uppercase tracking-wider">
+          <div className="bg-gray-50 dark:bg-[#111b2e] rounded-xl p-5 mb-8 border border-gray-100 dark:border-white/5">
+            <h3 className="text-xs font-bold text-gray-900 dark:text-white mb-3 uppercase tracking-wider">
               Credential Information
             </h3>
-            <div className="grid sm:grid-cols-2 gap-3">
+            <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <span className="text-xs text-slate-500 dark:text-gray-500 block">Credential ID</span>
-                <span className="text-sm font-mono text-slate-900 dark:text-white break-all">
+                <span className="text-[10px] uppercase tracking-wider text-gray-400 block mb-0.5">Credential ID</span>
+                <span className="text-xs font-mono text-gray-700 dark:text-gray-300 break-all">
                   {cert.credentialId}
                 </span>
               </div>
               <div>
-                <span className="text-xs text-slate-500 dark:text-gray-500 block">Issued By</span>
-                <span className="text-sm text-slate-900 dark:text-white">{cert.organization}</span>
+                <span className="text-[10px] uppercase tracking-wider text-gray-400 block mb-0.5">Issued By</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{cert.organization}</span>
               </div>
             </div>
           </div>
@@ -283,22 +267,12 @@ const CertModal = ({ cert, onClose }) => {
               href={cert.credentialUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105"
+              className="flex-1 inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-sm font-semibold transition"
             >
-              <FaExternalLinkAlt />
-              Verify Credential
+              Verify Credential <HiArrowUpRight size={14} />
             </a>
-            <button
-              onClick={onClose}
-              className="px-6 py-3 bg-slate-200 dark:bg-gray-700 hover:bg-slate-300 dark:hover:bg-gray-600 text-slate-900 dark:text-white rounded-lg font-semibold transition"
-            >
-              Close
-            </button>
           </div>
         </div>
-
-        <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-40 h-40 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
       </div>
       </div>
     </div>,
@@ -327,39 +301,22 @@ const Certifications = () => {
       className="py-24 px-[8vw] md:px-[6vw] lg:px-[12vw] font-sans relative"
     >
       {/* Section Title */}
-      <div className="text-center mb-14">
-        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-indigo-600 dark:text-indigo-400 uppercase mb-3">
+      <div className="text-center mb-16">
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 uppercase mb-3">
           Continuous Learning
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
+        <h2 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
           Certifications
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-teal-500 mx-auto rounded-full mb-5"></div>
-        <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-          Industry-recognized credentials and coursework from leading
-          institutions and platforms.
-        </p>
-
-        {/* Stats row */}
-        <div className="flex flex-wrap justify-center gap-3 mt-8">
-          <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-indigo-600 dark:text-indigo-400">
-              {certifications.length}
-            </span>{" "}
-            Certifications
-          </div>
-          <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-indigo-600 dark:text-indigo-400">
-              {providers.length}
-            </span>{" "}
-            Providers
-          </div>
-          <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-indigo-600 dark:text-indigo-400">
-              {certifications.reduce((sum, c) => sum + c.skills.length, 0)}
-            </span>{" "}
-            Skills Covered
-          </div>
+        <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
+        
+        {/* Simple Stats Row */}
+        <div className="flex justify-center items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+          <div><span className="font-bold text-gray-900 dark:text-white">{certifications.length}</span> Certs</div>
+          <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700" />
+          <div><span className="font-bold text-gray-900 dark:text-white">{providers.length}</span> Providers</div>
+          <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700" />
+          <div><span className="font-bold text-gray-900 dark:text-white">{certifications.reduce((sum, c) => sum + c.skills.length, 0)}</span> Skills</div>
         </div>
       </div>
 

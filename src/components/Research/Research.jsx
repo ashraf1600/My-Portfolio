@@ -57,40 +57,32 @@ const MetricCard = ({ metric, index }) => {
   const Icon = metric.icon;
   return (
     <div
-      className="group relative bg-white/90 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-gray-700/50 shadow-md hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 overflow-hidden"
+      className="group bg-white dark:bg-[#111b2e] rounded-xl border border-gray-200 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      <div
-        className={`h-1 w-full bg-gradient-to-r ${metric.accent}`}
-        aria-hidden="true"
-      />
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div
-            className={`w-11 h-11 rounded-xl flex items-center justify-center border ${metric.tint}`}
-          >
-            <Icon size={22} />
-          </div>
-          {metric.trend && (
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2 py-0.5">
-              <HiSparkles size={12} />
-              {metric.trend}
-            </span>
-          )}
+      <div className="flex items-center justify-between mb-4">
+        <div className="shrink-0">
+          <Icon size={24} className="text-blue-500 dark:text-blue-400" />
         </div>
-
-        <div className="flex items-baseline gap-1 mb-1">
-          <span className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
-            <Counter value={metric.value} suffix={metric.suffix || ""} />
+        {metric.trend && (
+          <span className="inline-flex items-center gap-1 text-[10px] font-bold text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full px-2 py-0.5">
+            <HiSparkles size={11} className="text-amber-500" />
+            {metric.trend}
           </span>
-        </div>
-        <h4 className="text-sm font-semibold text-slate-900 dark:text-white">
-          {metric.label}
-        </h4>
-        <p className="text-xs text-slate-500 dark:text-gray-400 mt-1 leading-relaxed">
-          {metric.description}
-        </p>
+        )}
       </div>
+
+      <div className="flex items-baseline gap-1 mb-1">
+        <span className="text-3xl md:text-4xl font-bold font-serif text-gray-900 dark:text-white">
+          <Counter value={metric.value} suffix={metric.suffix || ""} />
+        </span>
+      </div>
+      <h4 className="text-sm font-bold text-gray-900 dark:text-white mt-1">
+        {metric.label}
+      </h4>
+      <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">
+        {metric.description}
+      </p>
     </div>
   );
 };
@@ -100,15 +92,45 @@ const getStatusColor = (status) => {
     case "Published":
     case "Accepted":
     case "Copyright Confirmed":
-      return "bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border-emerald-500/40";
+      return "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30";
     case "Under Review":
     case "Submitted":
-      return "bg-amber-500/20 text-amber-600 dark:text-amber-400 border-amber-500/40";
+      return "bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/30";
     case "In Progress":
-      return "bg-sky-500/20 text-sky-600 dark:text-sky-400 border-sky-500/40";
+      return "bg-sky-50 dark:bg-sky-500/10 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-500/30";
     default:
-      return "bg-slate-200 dark:bg-gray-500/20 text-slate-700 dark:text-gray-400 border-slate-300 dark:border-gray-500";
+      return "bg-gray-100 dark:bg-gray-500/10 text-gray-700 dark:text-gray-400 border-gray-200 dark:border-gray-500/30";
   }
+};
+
+// Extract short venue tag (e.g., "IEEE ICDSBS" from full conference name)
+const getVenueTag = (conference) => {
+  if (/IEEE/i.test(conference)) {
+    const match = conference.match(/\(([^)]+)\)/);
+    return match ? `IEEE ${match[1]}` : "IEEE";
+  }
+  if (/ICCPCT/i.test(conference)) return "ICCPCT";
+  if (/iCONEECT/i.test(conference)) return "iCONEECT";
+  if (/not submitted/i.test(conference)) return "In Prep";
+  return conference.length > 20 ? conference.slice(0, 18) + "…" : conference;
+};
+
+// Highlight the user's name in author list
+const highlightAuthors = (authors, myName = "Ashraful Islam") => {
+  const parts = authors.split(myName);
+  if (parts.length === 1) return <span>{authors}</span>;
+  return (
+    <span>
+      {parts.map((part, i) => (
+        <React.Fragment key={i}>
+          {part}
+          {i < parts.length - 1 && (
+            <span className="text-blue-600 dark:text-blue-400 font-bold">{myName}</span>
+          )}
+        </React.Fragment>
+      ))}
+    </span>
+  );
 };
 
 const PaperModal = ({ paper, onClose }) => {
@@ -135,12 +157,12 @@ const PaperModal = ({ paper, onClose }) => {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[1000] overflow-y-auto bg-black/80 backdrop-blur-md"
+      className="fixed inset-0 z-[1000] overflow-y-auto bg-black/70 backdrop-blur-md"
       onClick={onClose}
     >
       <div className="flex min-h-full items-center justify-center p-4">
         <div
-          className="bg-white dark:bg-gray-900 rounded-3xl max-w-3xl w-full border border-slate-200 dark:border-indigo-500/30 shadow-2xl overflow-hidden relative my-8"
+          className="bg-white dark:bg-[#111b2e] rounded-2xl max-w-3xl w-full border border-gray-200 dark:border-white/10 shadow-2xl overflow-hidden relative my-8 animate-[scaleIn_0.25s_cubic-bezier(0.22,1,0.36,1)]"
           onClick={(e) => e.stopPropagation()}
         >
         <div className="p-6 sm:p-8">
@@ -154,29 +176,29 @@ const PaperModal = ({ paper, onClose }) => {
             </span>
             <button
               onClick={onClose}
-              className="text-slate-400 hover:text-slate-900 dark:hover:text-white p-2 rounded-full hover:bg-slate-100 dark:hover:bg-gray-800 transition"
+              className="text-gray-400 hover:text-gray-900 dark:hover:text-white p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition"
             >
               <FaTimes size={18} />
             </button>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3 leading-snug">
+          <h3 className="font-serif text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 leading-snug">
             {paper.title}
           </h3>
 
-          <p className="text-sm font-medium text-indigo-700 dark:text-indigo-300 mb-2">
-            {paper.authors}
+          <p className="text-sm font-medium text-blue-700 dark:text-blue-300 mb-2">
+            {highlightAuthors(paper.authors)}
           </p>
 
-          <p className="text-xs text-slate-500 dark:text-gray-400 mb-6 font-semibold">
+          <p className="text-xs text-gray-500 dark:text-gray-400 mb-6 font-semibold">
             {paper.conference} • {paper.year}
           </p>
 
-          <div className="mb-6 bg-slate-50 dark:bg-gray-800/50 p-5 rounded-2xl border border-slate-200 dark:border-gray-700/60">
-            <h4 className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2">
+          <div className="mb-6 bg-gray-50 dark:bg-white/3 p-5 rounded-xl border border-gray-200 dark:border-white/8">
+            <h4 className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">
               Abstract Overview
             </h4>
-            <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               {paper.abstract}
             </p>
           </div>
@@ -184,18 +206,18 @@ const PaperModal = ({ paper, onClose }) => {
           {/* Citation BibTeX Block */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider flex items-center gap-1.5">
-                <FaQuoteRight size={12} className="text-indigo-500" /> BibTeX Citation
+              <span className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider flex items-center gap-1.5">
+                <FaQuoteRight size={12} className="text-blue-500" /> BibTeX Citation
               </span>
               <button
                 onClick={copyBibtex}
-                className="inline-flex items-center gap-1 text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-semibold"
+                className="inline-flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 hover:underline font-semibold"
               >
                 {copied ? <FaCheck size={12} className="text-emerald-500" /> : <FaCopy size={12} />}
                 <span>{copied ? "Copied!" : "Copy BibTeX"}</span>
               </button>
             </div>
-            <pre className="p-4 rounded-xl bg-slate-900 text-indigo-300 text-xs font-mono overflow-x-auto border border-slate-800">
+            <pre className="p-4 rounded-xl bg-[#0b1121] text-blue-300 text-xs font-mono overflow-x-auto border border-white/8">
               {bibtex}
             </pre>
           </div>
@@ -204,7 +226,7 @@ const PaperModal = ({ paper, onClose }) => {
             {paper.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="text-xs font-medium px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20"
+                className="text-xs font-medium px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/20"
               >
                 {tag}
               </span>
@@ -216,14 +238,14 @@ const PaperModal = ({ paper, onClose }) => {
               href={paper.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-xl transition shadow-lg shadow-indigo-500/30"
+              className="flex-1 inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition shadow-lg shadow-blue-500/20"
             >
               <FaExternalLinkAlt size={14} />
               <span>Publisher Paper Link</span>
             </a>
             <button
               onClick={onClose}
-              className="px-6 py-3 bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 font-semibold rounded-xl transition"
+              className="px-6 py-3 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300 font-semibold rounded-xl transition"
             >
               Close
             </button>
@@ -245,21 +267,31 @@ const Research = () => {
       ? research
       : research.filter((paper) => paper.category === selectedCategory);
 
+  // Group papers by year
+  const papersByYear = filteredResearch.reduce((acc, paper) => {
+    const year = paper.year;
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(paper);
+    return acc;
+  }, {});
+
+  const sortedYears = Object.keys(papersByYear).sort((a, b) => b - a);
+
   return (
     <section
       id="research"
       className="py-24 px-[8vw] md:px-[6vw] lg:px-[12vw] font-sans relative"
     >
-      {/* Section Title */}
+      {/* Section Title — Serif academic */}
       <div className="text-center mb-14">
-        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-indigo-600 dark:text-indigo-400 uppercase mb-3">
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 uppercase mb-3">
           By the Numbers
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
+        <h2 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3">
           Research & Impact
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-teal-500 mx-auto rounded-full mb-5"></div>
-        <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+        <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-5"></div>
+        <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
           My research contributions in Machine Learning, AI, and Computer
           Science — and a snapshot of the academic footprint they form.
         </p>
@@ -272,26 +304,27 @@ const Research = () => {
         ))}
       </div>
 
-      {/* Category Filters */}
+      {/* Publications Header */}
       <div className="flex items-center gap-3 mb-6">
         <div className="flex items-center gap-2">
-          <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-indigo-500 to-teal-500 rounded-full" />
-          <h3 className="text-slate-900 dark:text-white text-xl md:text-2xl font-bold">
+          <span className="inline-block w-1.5 h-6 bg-blue-600 rounded-full" />
+          <h3 className="text-gray-900 dark:text-white text-xl md:text-2xl font-bold font-serif">
             Publications
           </h3>
         </div>
-        <div className="flex-1 h-px bg-gradient-to-r from-slate-200 dark:from-gray-700/50 to-transparent ml-2" />
+        <div className="flex-1 h-px bg-gradient-to-r from-gray-200 dark:from-white/10 to-transparent ml-2" />
       </div>
 
-      <div className="flex flex-wrap justify-center gap-3 mb-10">
+      {/* Category Filters */}
+      <div className="flex flex-wrap justify-center gap-2 mb-10">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
               selectedCategory === category
-                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30"
-                : "bg-slate-200 dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-indigo-700 hover:text-white"
+                ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/8 hover:bg-blue-50 dark:hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400"
             }`}
           >
             {category}
@@ -299,64 +332,97 @@ const Research = () => {
         ))}
       </div>
 
-      {/* Research Papers Grid */}
-      <div className="grid gap-8 grid-cols-1 mb-14">
-        {filteredResearch.map((paper) => (
-          <div
-            key={paper.id}
-            className="border border-slate-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl shadow-xl p-6 md:p-7 hover:shadow-indigo-500/30 hover:-translate-y-1 transition-all duration-300"
-          >
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">
-                  {paper.title}
-                </h3>
-                <p className="text-slate-600 dark:text-gray-400 text-sm mb-2">{paper.authors}</p>
-                <p className="text-indigo-600 dark:text-indigo-400 text-sm font-semibold">
-                  {paper.conference} • {paper.year}
-                </p>
-              </div>
-              <div className="mt-4 md:mt-0 md:ml-4">
-                <span
-                  className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(
-                    paper.status
-                  )}`}
-                >
-                  {paper.status}
-                </span>
-              </div>
+      {/* Research Papers — Grouped by Year */}
+      <div className="space-y-10 mb-14">
+        {sortedYears.map((year) => (
+          <div key={year}>
+            {/* Year header */}
+            <div className="flex items-center gap-3 mb-5">
+              <span className="text-2xl font-bold font-serif text-blue-600 dark:text-blue-400">
+                {year}
+              </span>
+              <div className="flex-1 h-px bg-blue-200 dark:bg-blue-500/20" />
+              <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-white/5 px-2.5 py-1 rounded-full border border-gray-200 dark:border-white/8">
+                {papersByYear[year].length} paper{papersByYear[year].length > 1 ? 's' : ''}
+              </span>
             </div>
 
-            <p className="text-slate-700 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3">
-              {paper.abstract}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              {paper.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="bg-indigo-500/10 text-xs font-semibold text-indigo-700 dark:text-indigo-300 rounded-full px-3 py-1 border border-indigo-500/20"
+            {/* Papers */}
+            <div className="space-y-4">
+              {papersByYear[year].map((paper) => (
+                <div
+                  key={paper.id}
+                  className="group flex flex-col md:flex-row bg-white dark:bg-[#111b2e] border border-gray-200 dark:border-white/5 rounded-xl hover:shadow-md transition-all duration-300 overflow-hidden"
                 >
-                  {tag}
-                </span>
+                    {/* Left venue tag */}
+                    <div className="md:w-40 shrink-0 border-b md:border-b-0 md:border-r border-gray-100 dark:border-white/5 flex flex-col justify-center p-5">
+                        <span className="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">
+                          {getVenueTag(paper.conference)}
+                        </span>
+                        <div className="text-sm font-serif text-gray-400 dark:text-gray-500">
+                          {paper.year}
+                        </div>
+                    </div>
+
+                    {/* Paper content */}
+                    <div className="flex-1 p-6">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+                        <h3 className="font-serif text-lg md:text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          {paper.title}
+                        </h3>
+                        <span
+                          className={`inline-block shrink-0 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider border ${getStatusColor(
+                            paper.status
+                          )}`}
+                        >
+                          {paper.status}
+                        </span>
+                      </div>
+
+                      {/* Authors with highlighted name */}
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        {highlightAuthors(paper.authors)}
+                      </p>
+
+                      {/* Conference */}
+                      <p className="text-xs text-gray-500 dark:text-gray-500 font-medium mb-4 italic">
+                        {paper.conference}
+                      </p>
+
+                      {/* Abstract preview */}
+                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5 line-clamp-2">
+                        {paper.abstract}
+                      </p>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {paper.tags.slice(0, 4).map((tag, index) => (
+                          <span
+                            key={index}
+                            className="text-[11px] font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-white/5 rounded-full px-3 py-1 transition-colors hover:bg-gray-100 dark:hover:bg-white/10"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        {paper.tags.length > 4 && (
+                          <span className="text-[11px] text-gray-400 self-center">
+                            +{paper.tags.length - 4}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Action buttons */}
+                      <div className="flex flex-wrap gap-3 mt-auto">
+                        <button
+                          onClick={() => setSelectedPaper(paper)}
+                          className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                        >
+                          Details & Citation <HiArrowUpRight size={14} />
+                        </button>
+                      </div>
+                    </div>
+                </div>
               ))}
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <button
-                onClick={() => setSelectedPaper(paper)}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-md shadow-indigo-500/20"
-              >
-                <FaExternalLinkAlt size={13} />
-                <span>View Details & Citation</span>
-              </button>
-              <button
-                onClick={() => setSelectedPaper(paper)}
-                className="inline-flex items-center gap-2 bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 px-5 py-2.5 rounded-xl text-sm font-semibold transition"
-              >
-                <FaFilePdf size={13} />
-                <span>Paper Abstract PDF</span>
-              </button>
             </div>
           </div>
         ))}
@@ -365,7 +431,7 @@ const Research = () => {
       {/* Empty State */}
       {filteredResearch.length === 0 && (
         <div className="text-center py-12 mb-14">
-          <p className="text-slate-600 dark:text-gray-400 text-lg">
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
             No research papers found in this category.
           </p>
         </div>
@@ -377,13 +443,13 @@ const Research = () => {
       )}
 
       {/* Scholarly Profiles */}
-      <div className="bg-white/90 dark:bg-gray-900/70 backdrop-blur-md border border-slate-200 dark:border-gray-700/50 rounded-2xl shadow-md p-6 md:p-7">
+      <div className="bg-white dark:bg-[#111b2e] border border-gray-200 dark:border-white/8 rounded-2xl shadow-sm p-6 md:p-7">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+            <h3 className="text-lg font-bold font-serif text-gray-900 dark:text-white">
               Scholarly Profiles
             </h3>
-            <p className="text-sm text-slate-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
               Follow my work and stay up to date with new publications.
             </p>
           </div>
@@ -397,13 +463,13 @@ const Research = () => {
                   href={profile.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${profile.bgClass}`}
+                  className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md bg-gray-50 dark:bg-white/5 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-white/10 hover:bg-blue-50 dark:hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-300 dark:hover:border-blue-500/30"
                 >
                   <Icon size={18} />
                   <span>{profile.name}</span>
                   <HiArrowUpRight
                     size={14}
-                    className="opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    className="opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
                   />
                 </a>
               );
@@ -416,4 +482,3 @@ const Research = () => {
 };
 
 export default Research;
-

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+﻿import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,17 +16,17 @@ import { HiSparkles } from "react-icons/hi2";
 import { FaLinkedin, FaGithub, FaPaperPlane } from "react-icons/fa";
 
 const QUICK_PROMPTS = [
-  { label: "💼 Hire for Project", text: "Hi Ashraf, I'd like to discuss a potential project collaboration with you." },
-  { label: "🤖 AI / ML Research", text: "Hello! I saw your research work in AI & ML and would love to collaborate." },
-  { label: "📄 Request Resume", text: "Hi! Can you share more details about your full-stack & AI background?" },
-  { label: "☕ Say Hello", text: "Hey Ashraf! Just wanted to say hello and connect with you." },
+  { label: "ðŸ’¼ Hire for Project", text: "Hi Ashraf, I'd like to discuss a potential project collaboration with you." },
+  { label: "ðŸ¤– AI / ML Research", text: "Hello! I saw your research work in AI & ML and would love to collaborate." },
+  { label: "ðŸ“„ Request Resume", text: "Hi! Can you share more details about your full-stack & AI background?" },
+  { label: "â˜• Say Hello", text: "Hey Ashraf! Just wanted to say hello and connect with you." },
 ];
 
 const INITIAL_MESSAGES = [
   {
     id: 1,
     sender: "assistant",
-    text: "👋 Hi there! Welcome to my portfolio. How can I help you today?",
+    text: "ðŸ‘‹ Hi there! Welcome to my portfolio. How can I help you today?",
     time: "Just now",
   },
 ];
@@ -179,7 +179,7 @@ const Contact = () => {
             setIsSending(false);
             if (form.current) form.current.reset();
             setEmailFormData({ name: "", email: "", title: "", message: "" });
-            toast.success("Message sent successfully! 🚀", {
+            toast.success("Message sent successfully! ðŸš€", {
               position: "top-right",
               autoClose: 3000,
               theme: theme === "light" ? "light" : "dark",
@@ -188,7 +188,7 @@ const Contact = () => {
           (error) => {
             console.error("EmailJS error:", error);
             setIsSending(false);
-            toast.success("Message submitted! Thank you for reaching out. ✅", {
+            toast.success("Message submitted! Thank you for reaching out. âœ…", {
               position: "top-right",
               autoClose: 3000,
               theme: theme === "light" ? "light" : "dark",
@@ -201,7 +201,7 @@ const Contact = () => {
         setIsSending(false);
         if (form.current) form.current.reset();
         setEmailFormData({ name: "", email: "", title: "", message: "" });
-        toast.success("Message sent successfully! 🚀", {
+        toast.success("Message sent successfully! ðŸš€", {
           position: "top-right",
           autoClose: 3000,
           theme: theme === "light" ? "light" : "dark",
@@ -218,19 +218,19 @@ const Contact = () => {
       <ToastContainer className={theme === "light" ? "light-toast" : ""} />
 
       {/* Decorative ambient background glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-teal-500/10 dark:bg-teal-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-500/10 dark:bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-400/10 dark:bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Section Header */}
       <div className="text-center mb-12 relative z-10">
-        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-indigo-600 dark:text-indigo-400 uppercase mb-3">
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 uppercase mb-3">
           Get In Touch
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3">
           Let's Connect & Build
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-teal-500 mx-auto rounded-full mb-5"></div>
-        <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+        <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-blue-400 mx-auto rounded-full mb-5"></div>
+        <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
           Send a quick message via the interactive chat assistant or complete the direct message form below.
         </p>
       </div>
@@ -239,13 +239,13 @@ const Contact = () => {
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Tab Switcher Bar */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex p-1.5 rounded-2xl bg-slate-200/80 dark:bg-gray-800/80 backdrop-blur-md border border-slate-300 dark:border-gray-700/60 shadow-inner">
+          <div className="inline-flex p-1.5 rounded-2xl bg-gray-200/80 dark:bg-white/5 backdrop-blur-md border border-gray-300 dark:border-white/8 shadow-inner">
             <button
               onClick={() => setActiveTab("chat")}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 activeTab === "chat"
-                  ? "bg-gradient-to-r from-indigo-600 to-teal-600 text-white shadow-lg shadow-indigo-500/30 scale-105"
-                  : "text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                  ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30 scale-105"
+                  : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               }`}
             >
               <FiMessageSquare size={16} />
@@ -257,8 +257,8 @@ const Contact = () => {
               onClick={() => setActiveTab("email")}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 activeTab === "email"
-                  ? "bg-gradient-to-r from-indigo-600 to-teal-600 text-white shadow-lg shadow-indigo-500/30 scale-105"
-                  : "text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                  ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30 scale-105"
+                  : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               }`}
             >
               <FiMail size={16} />
@@ -268,11 +268,11 @@ const Contact = () => {
         </div>
 
         {/* Card Frame */}
-        <div className="bg-white/90 dark:bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-slate-200 dark:border-indigo-500/20 shadow-2xl shadow-indigo-500/10 overflow-hidden min-h-[580px] flex flex-col">
+        <div className="bg-white/90 dark:bg-[#111b2e]/90 backdrop-blur-2xl rounded-3xl border border-gray-200 dark:border-white/10 shadow-2xl shadow-blue-500/10 overflow-hidden min-h-[580px] flex flex-col">
           {/* Header Bar */}
-          <div className="px-6 py-4 bg-slate-100/90 dark:bg-gray-800/80 border-b border-slate-200 dark:border-gray-700/60 flex items-center justify-between">
+          <div className="px-6 py-4 bg-gray-100/90 dark:bg-white/5 border-b border-gray-200 dark:border-white/8 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="relative w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-indigo-500 to-teal-500">
+              <div className="relative w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-blue-500 to-blue-400">
                 <img
                   src={profileImg}
                   alt="Ashraful Islam"
@@ -282,15 +282,15 @@ const Contact = () => {
               </div>
 
               <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
                   Ashraful Islam
-                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30">
+                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 border border-blue-500/30">
                     <HiSparkles size={11} /> AI / Full Stack
                   </span>
                 </h3>
                 <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                  Online & Active • Responds within 24 hours
+                  Online & Active â€¢ Responds within 24 hours
                 </p>
               </div>
             </div>
@@ -301,7 +301,7 @@ const Contact = () => {
                 href="https://github.com/ashraf1600"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-gray-700/60 text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                className="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-200 dark:bg-white/5 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
                 title="GitHub"
               >
                 <FaGithub size={16} />
@@ -310,7 +310,7 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-gray-700/60 text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                className="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-200 dark:bg-white/5 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
                 title="LinkedIn"
               >
                 <FaLinkedin size={16} />
@@ -331,7 +331,7 @@ const Contact = () => {
                     }`}
                   >
                     {msg.sender === "assistant" && (
-                      <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
+                      <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
                         AI
                       </div>
                     )}
@@ -339,16 +339,16 @@ const Contact = () => {
                     <div
                       className={`max-w-[80%] sm:max-w-[70%] p-4 rounded-2xl shadow-sm text-sm leading-relaxed ${
                         msg.sender === "user"
-                          ? "bg-gradient-to-r from-indigo-600 to-teal-600 text-white rounded-br-none"
-                          : "bg-slate-100 dark:bg-gray-800/90 text-slate-800 dark:text-gray-100 rounded-bl-none border border-slate-200 dark:border-gray-700/60"
+                          ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-br-none"
+                          : "bg-gray-100 dark:bg-[#111b2e]/90 text-gray-800 dark:text-gray-100 rounded-bl-none border border-gray-200 dark:border-white/8"
                       }`}
                     >
                       <p className="whitespace-pre-line">{msg.text}</p>
                       <span
                         className={`block text-[10px] mt-1.5 ${
                           msg.sender === "user"
-                            ? "text-indigo-200 text-right"
-                            : "text-slate-400 dark:text-gray-400"
+                            ? "text-blue-200 text-right"
+                            : "text-gray-400 dark:text-gray-400"
                         }`}
                       >
                         {msg.time}
@@ -360,17 +360,17 @@ const Contact = () => {
                 {/* Animated Typing Indicator */}
                 {isTyping && (
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
+                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
                       AI
                     </div>
-                    <div className="bg-slate-100 dark:bg-gray-800/90 px-4 py-3 rounded-2xl rounded-bl-none border border-slate-200 dark:border-gray-700/60 flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-indigo-500 animate-bounce"></span>
+                    <div className="bg-gray-100 dark:bg-[#111b2e]/90 px-4 py-3 rounded-2xl rounded-bl-none border border-gray-200 dark:border-white/8 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-blue-500 animate-bounce"></span>
                       <span
-                        className="w-2 h-2 rounded-full bg-indigo-500 animate-bounce"
+                        className="w-2 h-2 rounded-full bg-blue-500 animate-bounce"
                         style={{ animationDelay: "150ms" }}
                       ></span>
                       <span
-                        className="w-2 h-2 rounded-full bg-indigo-500 animate-bounce"
+                        className="w-2 h-2 rounded-full bg-blue-500 animate-bounce"
                         style={{ animationDelay: "300ms" }}
                       ></span>
                     </div>
@@ -379,8 +379,8 @@ const Contact = () => {
               </div>
 
               {/* Quick Topics */}
-              <div className="px-6 py-2 bg-slate-50/80 dark:bg-gray-900/50 border-t border-slate-200/60 dark:border-gray-800">
-                <p className="text-[11px] font-semibold text-slate-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+              <div className="px-6 py-2 bg-slate-50/80 dark:bg-[#0b1121]/50 border-t border-gray-200/60 dark:border-white/5">
+                <p className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
                   Quick Topics:
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -388,7 +388,7 @@ const Contact = () => {
                     <button
                       key={idx}
                       onClick={() => handleQuickPrompt(prompt.text)}
-                      className="text-xs font-medium px-3 py-1.5 rounded-full bg-white dark:bg-gray-800 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 transition-all duration-200 shadow-sm"
+                      className="text-xs font-medium px-3 py-1.5 rounded-full bg-white dark:bg-white/5 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all duration-200 shadow-sm"
                     >
                       {prompt.label}
                     </button>
@@ -399,7 +399,7 @@ const Contact = () => {
               {/* Chat Compose Form */}
               <form
                 onSubmit={handleSendChatMessage}
-                className="p-4 bg-slate-100/90 dark:bg-gray-800/80 border-t border-slate-200 dark:border-gray-700/60 flex flex-col gap-2"
+                className="p-4 bg-gray-100/90 dark:bg-white/5 border-t border-gray-200 dark:border-white/8 flex flex-col gap-2"
               >
                 {/* Optional Email & Name inputs row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -408,14 +408,14 @@ const Contact = () => {
                     placeholder="Your Name (optional)"
                     value={senderName}
                     onChange={(e) => setSenderName(e.target.value)}
-                    className="p-2 rounded-lg bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
+                    className="p-2 rounded-lg bg-white dark:bg-[#111b2e] border border-gray-200 dark:border-white/8 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                   <input
                     type="email"
                     placeholder="Your Email (for reply)"
                     value={senderEmail}
                     onChange={(e) => setSenderEmail(e.target.value)}
-                    className="p-2 rounded-lg bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
+                    className="p-2 rounded-lg bg-white dark:bg-[#111b2e] border border-gray-200 dark:border-white/8 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
 
@@ -425,15 +425,15 @@ const Contact = () => {
                     placeholder="Type your message..."
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    className="flex-1 p-3.5 rounded-xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition"
+                    className="flex-1 p-3.5 rounded-xl bg-white dark:bg-[#111b2e] border border-gray-200 dark:border-white/8 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition"
                   />
                   <button
                     type="submit"
                     disabled={!inputValue.trim()}
                     className={`px-5 py-3.5 rounded-xl font-semibold text-white flex items-center gap-2 transition-all shadow-md ${
                       inputValue.trim()
-                        ? "bg-gradient-to-r from-indigo-600 to-teal-600 hover:scale-105 shadow-indigo-500/30"
-                        : "bg-slate-400 dark:bg-gray-700 cursor-not-allowed opacity-60"
+                        ? "bg-gradient-to-r from-blue-600 to-blue-500 hover:scale-105 shadow-blue-500/30"
+                        : "bg-gray-400 dark:bg-white/5 cursor-not-allowed opacity-60"
                     }`}
                   >
                     <span>Send</span>
@@ -450,11 +450,11 @@ const Contact = () => {
               <form ref={form} onSubmit={handleFormSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase mb-1">
+                    <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase mb-1">
                       Your Name
                     </label>
                     <div className="relative">
-                      <FiUser className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                      <FiUser className="absolute left-3.5 top-3.5 text-gray-400" size={16} />
                       <input
                         type="text"
                         name="name"
@@ -464,17 +464,17 @@ const Contact = () => {
                           setEmailFormData({ ...emailFormData, name: e.target.value })
                         }
                         placeholder="John Doe"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/8 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition text-sm"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase mb-1">
+                    <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase mb-1">
                       Your Email
                     </label>
                     <div className="relative">
-                      <FiMail className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                      <FiMail className="absolute left-3.5 top-3.5 text-gray-400" size={16} />
                       <input
                         type="email"
                         name="email"
@@ -484,18 +484,18 @@ const Contact = () => {
                           setEmailFormData({ ...emailFormData, email: e.target.value })
                         }
                         placeholder="john@example.com"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/8 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition text-sm"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase mb-1">
+                  <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase mb-1">
                     Subject
                   </label>
                   <div className="relative">
-                    <FiTag className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                    <FiTag className="absolute left-3.5 top-3.5 text-gray-400" size={16} />
                     <input
                       type="text"
                       name="title"
@@ -505,13 +505,13 @@ const Contact = () => {
                         setEmailFormData({ ...emailFormData, title: e.target.value })
                       }
                       placeholder="Project Opportunity / Hello"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/8 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition text-sm"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase mb-1">
+                  <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase mb-1">
                     Message
                   </label>
                   <textarea
@@ -523,14 +523,14 @@ const Contact = () => {
                       setEmailFormData({ ...emailFormData, message: e.target.value })
                     }
                     placeholder="Write your message here..."
-                    className="w-full p-4 rounded-xl bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm resize-none"
+                    className="w-full p-4 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/8 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition text-sm resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSending}
-                  className="w-full py-4 bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/50 hover:scale-[1.01] flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-teal-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/50 hover:scale-[1.01] flex items-center justify-center gap-2"
                 >
                   {isSending ? (
                     <>

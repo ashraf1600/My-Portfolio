@@ -96,87 +96,80 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ease-out px-4 md:px-8 lg:px-12 ${isScrolled
-        ? "bg-white/80 dark:bg-[#050414]/80 backdrop-blur-lg shadow-lg shadow-indigo-500/10"
+        ? "bg-white/90 dark:bg-[#0b1121]/90 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-black/20 border-b border-gray-200/50 dark:border-white/5"
         : "bg-transparent"
         }`}
     >
-      <div className="text-slate-900 dark:text-white py-5 flex justify-between items-center">
-        {/* Logo */}
+      <div className="text-gray-900 dark:text-white py-4 flex justify-between items-center">
+        {/* Logo — Academic serif brand */}
         <div
-          className="text-lg font-semibold cursor-pointer transition-all duration-300 hover:scale-105"
+          className="cursor-pointer transition-all duration-300 hover:opacity-80"
           onClick={() => {
             window.history.pushState(null, "", "/");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <span className="text-indigo-600 dark:text-indigo-400">&lt;</span>
-          <span className="text-slate-900 dark:text-white">Ashraful</span>
-          <span className="text-indigo-600 dark:text-indigo-400">/Islam</span>
-          <span className="text-slate-900 dark:text-white"></span>
-          <span className="text-indigo-600 dark:text-indigo-400">&gt;</span>
+          <span className="font-serif text-xl font-bold italic text-gray-900 dark:text-white">
+            Ashraful Islam
+          </span>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-5 lg:gap-7 text-slate-700 dark:text-gray-300 font-medium items-center">
+        <ul className="hidden md:flex gap-1 text-gray-600 dark:text-gray-400 font-medium items-center">
           {menuItems.map((item) => (
-            <li
-              key={item.id}
-              className="relative group"
-            >
+            <li key={item.id}>
               <button
                 onClick={() => handleMenuItemClick(item.id)}
-                className={`transition-all duration-300 text-sm hover:text-indigo-600 dark:hover:text-indigo-400 ${activeSection === item.id ? "text-indigo-600 dark:text-indigo-400" : ""
+                className={`px-3 py-1.5 rounded-full text-sm transition-all duration-300 ${activeSection === item.id
+                  ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                  : "hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10"
                   }`}
               >
                 {item.label}
               </button>
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-teal-500 transition-all duration-300 group-hover:w-full ${activeSection === item.id ? "w-full" : ""
-                }`}></span>
             </li>
           ))}
         </ul>
 
         {/* Right side: Docs CTA + Social Icons */}
-        <div className="hidden md:flex gap-4 items-center">
+        <div className="hidden md:flex gap-3 items-center">
           <ThemeToggle />
 
-          {/* Docs CTA — distinct pill button */}
+          {/* Docs CTA */}
           <a
             href={DOCS_URL}
             className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold
-              bg-gradient-to-r from-indigo-600/10 to-teal-600/10
-              dark:from-indigo-500/15 dark:to-teal-500/15
-              border border-indigo-500/40 dark:border-indigo-500/30
-              text-indigo-700 dark:text-indigo-300
-              hover:from-indigo-600 hover:to-teal-600
-              hover:text-white hover:border-transparent
-              hover:shadow-lg hover:shadow-indigo-500/30
-              transition-all duration-300 hover:scale-105"
+              bg-blue-50 dark:bg-blue-500/10
+              border border-blue-200 dark:border-blue-500/30
+              text-blue-700 dark:text-blue-300
+              hover:bg-blue-600 hover:text-white hover:border-transparent
+              hover:shadow-lg hover:shadow-blue-500/20
+              transition-all duration-300"
           >
-            <FiBookOpen size={16} className="transition-transform duration-300 group-hover:rotate-12" />
+            <FiBookOpen size={15} className="transition-transform duration-300 group-hover:rotate-12" />
             <span>Docs</span>
-            <FiArrowUpRight size={13} className="opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <FiArrowUpRight size={12} className="opacity-60 group-hover:opacity-100 transition-all duration-300" />
           </a>
 
-          <div className="w-px h-5 bg-slate-300 dark:bg-gray-700" />
+          <div className="w-px h-5 bg-gray-300 dark:bg-gray-700" />
 
           <a
             href="https://github.com/ashraf1600"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 hover:scale-110"
+            className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
             aria-label="GitHub"
           >
-            <FaGithub size={20} />
+            <FaGithub size={19} />
           </a>
           <a
             href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 hover:scale-110"
+            className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
             aria-label="LinkedIn"
           >
-            <FaLinkedin size={20} />
+            <FaLinkedin size={19} />
           </a>
         </div>
 
@@ -185,7 +178,7 @@ const Navbar = () => {
           <ThemeToggle />
           <button
             onClick={toggleMenu}
-            className="text-2xl text-slate-900 dark:text-white p-1"
+            className="text-2xl text-gray-900 dark:text-white p-1"
             aria-label="Toggle menu"
           >
             {isOpen ? <FiX /> : <FiMenu />}
@@ -195,13 +188,13 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`absolute top-full left-4 right-4 bg-white/95 dark:bg-[#0a0620]/95 backdrop-filter backdrop-blur-xl z-50 rounded-2xl shadow-2xl shadow-indigo-500/20 md:hidden overflow-hidden border border-indigo-500/20 transition-all duration-300 origin-top ${
+        className={`absolute top-full left-4 right-4 bg-white/95 dark:bg-[#0e1729]/95 backdrop-filter backdrop-blur-xl z-50 rounded-2xl shadow-2xl shadow-black/10 dark:shadow-black/30 md:hidden overflow-hidden border border-gray-200 dark:border-white/10 transition-all duration-300 origin-top ${
           isOpen
             ? "opacity-100 scale-y-100 translate-y-0"
             : "opacity-0 scale-y-95 -translate-y-2 pointer-events-none"
         }`}
       >
-        <ul className="flex flex-col items-center py-6 text-slate-700 dark:text-gray-300">
+        <ul className="flex flex-col items-center py-6 text-gray-700 dark:text-gray-300">
           {menuItems.map((item, index) => (
             <li
               key={item.id}
@@ -210,7 +203,9 @@ const Navbar = () => {
             >
               <button
                 onClick={() => handleMenuItemClick(item.id)}
-                className={`block w-full py-3 px-6 text-sm font-medium transition-all duration-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-500/5 ${activeSection === item.id ? "text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-500/5" : ""
+                className={`block w-full py-3 px-6 text-sm font-medium transition-all duration-300 ${activeSection === item.id
+                  ? "text-blue-600 dark:text-blue-400 font-semibold bg-blue-50 dark:bg-blue-500/10"
+                  : "hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-500/5"
                   }`}
               >
                 {item.label}
@@ -218,17 +213,15 @@ const Navbar = () => {
             </li>
           ))}
 
-          {/* Docs CTA — prominent in mobile menu */}
+          {/* Docs CTA */}
           <li className="w-full px-6 pt-3">
             <a
               href={DOCS_URL}
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold
-                bg-gradient-to-r from-indigo-600/10 to-teal-600/10
-                dark:from-indigo-500/15 dark:to-teal-500/15
-                border border-indigo-500/30
-                text-indigo-700 dark:text-indigo-300
-                hover:from-indigo-600 hover:to-teal-600
-                hover:text-white hover:border-transparent
+                bg-blue-50 dark:bg-blue-500/10
+                border border-blue-200 dark:border-blue-500/30
+                text-blue-700 dark:text-blue-300
+                hover:bg-blue-600 hover:text-white hover:border-transparent
                 transition-all duration-300"
             >
               <FiBookOpen size={16} />
@@ -238,13 +231,13 @@ const Navbar = () => {
           </li>
 
           {/* Social Icons */}
-          <li className="w-full flex justify-center pt-4 mt-3 border-t border-slate-200/50 dark:border-gray-700/50">
+          <li className="w-full flex justify-center pt-4 mt-3 border-t border-gray-200/50 dark:border-gray-700/50">
             <div className="flex items-center gap-5">
               <a
                 href="https://github.com/ashraf1600"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 hover:scale-110"
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
                 aria-label="GitHub"
               >
                 <FaGithub size={20} />
@@ -253,7 +246,7 @@ const Navbar = () => {
                 href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 hover:scale-110"
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin size={20} />

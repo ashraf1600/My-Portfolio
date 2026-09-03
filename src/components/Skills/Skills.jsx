@@ -1,6 +1,5 @@
 import React from "react";
 import { SkillsInfo } from "../../constants";
-import Tilt from "react-parallax-tilt";
 import {
   SiLeetcode,
   SiCodeforces,
@@ -23,38 +22,38 @@ import { FiTarget } from "react-icons/fi";
 const categoryMeta = {
   "Machine Learning & Data Analysis": {
     icon: HiChartBar,
-    accent: "from-amber-500 to-orange-500",
-    tint: "bg-amber-500/10 text-amber-600 dark:text-amber-300 border-amber-500/30",
+    colorClass: "text-orange-500",
+    bgClass: "bg-orange-50 dark:bg-orange-500/10 border-orange-100 dark:border-orange-500/20",
     description: "Classical ML, data wrangling, and visualization.",
   },
   "Deep Learning & Generative AI": {
     icon: HiCpuChip,
-    accent: "from-violet-500 to-fuchsia-500",
-    tint: "bg-violet-500/10 text-violet-600 dark:text-violet-300 border-violet-500/30",
+    colorClass: "text-fuchsia-500",
+    bgClass: "bg-fuchsia-50 dark:bg-fuchsia-500/10 border-fuchsia-100 dark:border-fuchsia-500/20",
     description: "Neural networks, transformers, and LLM frameworks.",
   },
   "Programming Languages": {
     icon: HiCodeBracket,
-    accent: "from-sky-500 to-blue-500",
-    tint: "bg-sky-500/10 text-sky-600 dark:text-sky-300 border-sky-500/30",
+    colorClass: "text-blue-500",
+    bgClass: "bg-blue-50 dark:bg-blue-500/10 border-blue-100 dark:border-blue-500/20",
     description: "Languages I use day-to-day for building software.",
   },
   "Backend & Databases": {
     icon: HiServerStack,
-    accent: "from-emerald-500 to-teal-500",
-    tint: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-500/30",
+    colorClass: "text-emerald-500",
+    bgClass: "bg-emerald-50 dark:bg-emerald-500/10 border-emerald-100 dark:border-emerald-500/20",
     description: "APIs, auth, and persistent storage layers.",
   },
   "Frontend Development": {
     icon: HiPaintBrush,
-    accent: "from-rose-500 to-pink-500",
-    tint: "bg-rose-500/10 text-rose-600 dark:text-rose-300 border-rose-500/30",
+    colorClass: "text-indigo-500",
+    bgClass: "bg-indigo-50 dark:bg-indigo-500/10 border-indigo-100 dark:border-indigo-500/20",
     description: "Modern, responsive, accessible user interfaces.",
   },
   "Developer Tools & Platform": {
     icon: HiWrenchScrewdriver,
-    accent: "from-slate-500 to-gray-500",
-    tint: "bg-slate-500/10 text-slate-600 dark:text-slate-300 border-slate-500/30",
+    colorClass: "text-gray-500 dark:text-gray-400",
+    bgClass: "bg-gray-100 dark:bg-gray-500/10 border-gray-200 dark:border-gray-500/20",
     description: "Toolchain, deployment, and collaboration.",
   },
 };
@@ -63,9 +62,7 @@ const problemSolvingPlatforms = [
   {
     name: "Codeforces",
     icon: SiCodeforces,
-    color: "#4f46e5",
-    bgClass:
-      "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border-indigo-500/30",
+    bgClass: "bg-indigo-50 dark:bg-indigo-500/10 border-indigo-100 dark:border-indigo-500/20 text-indigo-600 dark:text-indigo-400",
     link: "https://codeforces.com/profile/ashraf1600",
     rank: "Specialist",
     rating: "1450",
@@ -74,9 +71,7 @@ const problemSolvingPlatforms = [
   {
     name: "LeetCode",
     icon: SiLeetcode,
-    color: "#facc15",
-    bgClass:
-      "bg-amber-500/10 text-amber-600 dark:text-amber-300 border-amber-500/30",
+    bgClass: "bg-amber-50 dark:bg-amber-500/10 border-amber-100 dark:border-amber-500/20 text-amber-600 dark:text-amber-400",
     link: "https://leetcode.com/ashraf1600",
     rank: "Solver",
     rating: "—",
@@ -85,9 +80,7 @@ const problemSolvingPlatforms = [
   {
     name: "HackerRank",
     icon: SiHackerrank,
-    color: "#22c55e",
-    bgClass:
-      "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-500/30",
+    bgClass: "bg-emerald-50 dark:bg-emerald-500/10 border-emerald-100 dark:border-emerald-500/20 text-emerald-600 dark:text-emerald-400",
     link: "https://www.hackerrank.com/ashraf1600",
     rank: "Gold Badge",
     rating: "—",
@@ -96,9 +89,7 @@ const problemSolvingPlatforms = [
   {
     name: "GeeksforGeeks",
     icon: SiGeeksforgeeks,
-    color: "#15803d",
-    bgClass:
-      "bg-green-500/10 text-green-600 dark:text-green-300 border-green-500/30",
+    bgClass: "bg-green-50 dark:bg-green-500/10 border-green-100 dark:border-green-500/20 text-green-600 dark:text-green-400",
     link: "https://auth.geeksforgeeks.org/user/ashraf1600",
     rank: "Contributor",
     rating: "—",
@@ -107,9 +98,7 @@ const problemSolvingPlatforms = [
   {
     name: "CodeChef",
     icon: SiCodechef,
-    color: "#a3714f",
-    bgClass:
-      "bg-orange-500/10 text-orange-600 dark:text-orange-300 border-orange-500/30",
+    bgClass: "bg-orange-50 dark:bg-orange-500/10 border-orange-100 dark:border-orange-500/20 text-orange-600 dark:text-orange-400",
     link: "https://www.codechef.com/users/ashraf1600",
     rank: "3★",
     rating: "—",
@@ -126,70 +115,45 @@ const totalProblems = problemSolvingPlatforms.reduce(
 const SkillCard = ({ category, meta }) => {
   const Icon = meta.icon;
   return (
-    <Tilt
-      tiltMaxAngleX={6}
-      tiltMaxAngleY={6}
-      perspective={1200}
-      scale={1.02}
-      transitionSpeed={900}
-      glareEnable={false}
-      className="h-full"
-    >
-      <div className="group relative h-full bg-white/90 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-gray-700/50 shadow-md hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 hover:border-indigo-500/50 overflow-hidden">
-        {/* Top accent bar */}
-        <div
-          className={`h-1 w-full bg-gradient-to-r ${meta.accent}`}
-          aria-hidden="true"
-        />
-
-        <div className="p-6">
-          {/* Header */}
-          <div className="flex items-start gap-3 mb-1">
-            <div
-              className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center border ${meta.tint}`}
-            >
-              <Icon size={20} />
-            </div>
-            <div className="flex-1 min-w-0">
-              <h4 className="text-base font-bold text-slate-900 dark:text-white leading-tight">
-                {category.title}
-              </h4>
-              <span className="inline-block mt-1 text-[10px] font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-2 py-0.5">
-                {category.skills.length} tools
-              </span>
-            </div>
-          </div>
-
-          <p className="text-xs text-slate-500 dark:text-gray-400 mt-3 mb-5 leading-relaxed">
-            {meta.description}
-          </p>
-
-          {/* Skills grid */}
-          <div className="grid grid-cols-2 gap-2">
-            {category.skills.map((skill) => (
-              <div
-                key={skill.name}
-                title={skill.name}
-                className="flex items-center gap-2 rounded-lg border border-slate-200 dark:border-gray-700/60 bg-slate-50/80 dark:bg-gray-800/40 py-1.5 px-2 transition-all duration-200 hover:border-indigo-500/60 hover:bg-indigo-500/10 hover:-translate-y-0.5 cursor-default"
-              >
-                {skill.logo ? (
-                  <img
-                    src={skill.logo}
-                    alt={skill.name}
-                    className="w-5 h-5 shrink-0 object-contain"
-                  />
-                ) : (
-                  <div className="w-5 h-5 shrink-0 rounded bg-indigo-500/20" />
-                )}
-                <span className="text-[12px] font-medium text-slate-700 dark:text-gray-300 truncate">
-                  {skill.name}
-                </span>
-              </div>
-            ))}
-          </div>
+    <div className="group h-full bg-white dark:bg-[#111b2e] rounded-xl border border-gray-200 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col">
+      {/* Header Area */}
+      <div className="flex items-center gap-4 mb-4">
+        <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center border ${meta.bgClass}`}>
+          <Icon size={20} className={meta.colorClass} />
+        </div>
+        <div className="flex-1">
+          <h4 className="text-lg font-bold text-gray-900 dark:text-white font-serif leading-tight">
+            {category.title}
+          </h4>
         </div>
       </div>
-    </Tilt>
+
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
+        {meta.description}
+      </p>
+
+      {/* Minimalist Skills grid */}
+      <div className="flex flex-wrap gap-2 mt-auto">
+        {category.skills.map((skill) => (
+          <div
+            key={skill.name}
+            title={skill.name}
+            className="flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 py-1 px-3 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-white/10"
+          >
+            {skill.logo && (
+              <img
+                src={skill.logo}
+                alt={skill.name}
+                className="w-3.5 h-3.5 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+              />
+            )}
+            <span className="text-[12px] font-medium text-gray-700 dark:text-gray-300">
+              {skill.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -200,50 +164,31 @@ const PlatformCard = ({ platform }) => {
       href={platform.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative bg-white/90 dark:bg-gray-900/70 border border-slate-200 dark:border-gray-700/50 rounded-2xl p-5 hover:border-indigo-500/50 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-indigo-500/10 hover:-translate-y-1 overflow-hidden"
+      className="group flex items-center justify-between bg-white dark:bg-[#111b2e] border border-gray-200 dark:border-white/5 rounded-xl p-5 hover:shadow-md transition-all duration-300"
     >
-      {/* Subtle hover accent */}
-      <div
-        className="absolute -top-12 -right-12 w-24 h-24 rounded-full opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500"
-        style={{ backgroundColor: platform.color }}
-        aria-hidden="true"
-      />
-
-      <div className="relative flex items-center gap-4">
+      <div className="flex items-center gap-4">
         <div
-          className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center border ${platform.bgClass}`}
+          className={`shrink-0 w-12 h-12 rounded-lg flex items-center justify-center border ${platform.bgClass}`}
         >
-          <Icon size={22} />
+          <Icon size={24} className={platform.bgClass.split(' ').find(c => c.startsWith('text-'))} />
         </div>
 
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 mb-0.5">
-            <h4 className="text-slate-900 dark:text-white text-base font-bold truncate">
-              {platform.name}
-            </h4>
-            <HiTrophy
-              size={14}
-              className="text-amber-500 shrink-0 opacity-70"
-            />
-          </div>
-          <div className="flex items-center gap-2 text-[12px] text-slate-500 dark:text-gray-400">
-            <span className="font-medium">{platform.rank}</span>
-            {platform.rating !== "—" && (
-              <>
-                <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-gray-600" />
-                <span>{platform.rating}</span>
-              </>
-            )}
-            <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-gray-600" />
-            <span>{platform.problems} problems</span>
+        <div>
+          <h4 className="text-gray-900 dark:text-white text-base font-bold font-serif mb-0.5">
+            {platform.name}
+          </h4>
+          <div className="flex items-center gap-2 text-[12px] text-gray-500 dark:text-gray-400">
+            <span className="font-semibold">{platform.rank}</span>
+            <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+            <span className="font-medium">{platform.problems} problems</span>
           </div>
         </div>
-
-        <HiArrowUpRight
-          size={18}
-          className="shrink-0 text-slate-400 dark:text-gray-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-        />
       </div>
+
+      <HiArrowUpRight
+        size={18}
+        className="text-gray-300 dark:text-gray-600 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300"
+      />
     </a>
   );
 };
@@ -254,55 +199,35 @@ const Skills = () => {
       id="skills"
       className="py-24 px-[8vw] md:px-[6vw] lg:px-[12vw] font-sans relative"
     >
-      {/* Section Title */}
-      <div className="text-center mb-14">
-        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-indigo-600 dark:text-indigo-400 uppercase mb-3">
-          Expertise
+      {/* Section Title — Serif academic */}
+      <div className="text-center mb-16">
+        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 uppercase mb-3">
+          Technical Arsenal
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
-          Skills & Tools
+        <h2 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          Skills & Platforms
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-teal-500 mx-auto rounded-full mb-5"></div>
-        <p className="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-          The full stack I work with — from data pipelines to production
-          deployments — plus my competitive programming track record.
-        </p>
-
-        {/* Stats Row */}
-        <div className="flex flex-wrap justify-center gap-3 mt-8">
-          <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-indigo-600 dark:text-indigo-400">
-              {totalSkills}+
-            </span>{" "}
-            Tools & Technologies
-          </div>
-          <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-indigo-600 dark:text-indigo-400">
-              {SkillsInfo.length}
-            </span>{" "}
-            Categories
-          </div>
-          <div className="px-4 py-2 rounded-full bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-gray-700/50 text-sm text-slate-700 dark:text-gray-300 shadow-sm">
-            <span className="font-bold text-indigo-600 dark:text-indigo-400">
-              {totalProblems}+
-            </span>{" "}
-            Problems Solved
-          </div>
+        <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
+        
+        {/* Simple Stats Row */}
+        <div className="flex justify-center items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+          <div><span className="font-bold text-gray-900 dark:text-white">{totalSkills}+</span> Tools</div>
+          <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700" />
+          <div><span className="font-bold text-gray-900 dark:text-white">{SkillsInfo.length}</span> Domains</div>
+          <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700" />
+          <div><span className="font-bold text-gray-900 dark:text-white">{totalProblems}+</span> Problems</div>
         </div>
       </div>
 
       {/* TECHNICAL SKILLS */}
-      <div className="flex items-center gap-3 mb-6">
-        <div className="flex items-center gap-2">
-          <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-indigo-500 to-teal-500 rounded-full" />
-          <h3 className="text-slate-900 dark:text-white text-xl md:text-2xl font-bold">
-            Technical Skills
-          </h3>
-        </div>
-        <div className="flex-1 h-px bg-gradient-to-r from-slate-200 dark:from-gray-700/50 to-transparent ml-2" />
+      <div className="mb-6">
+        <h3 className="text-gray-900 dark:text-white text-xl md:text-2xl font-bold font-serif mb-2">
+          Core Competencies
+        </h3>
+        <p className="text-sm text-gray-500 dark:text-gray-400">The frameworks and languages I use to build systems.</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-20">
         {SkillsInfo.map((category) => (
           <SkillCard
             key={category.title}
@@ -310,9 +235,9 @@ const Skills = () => {
             meta={
               categoryMeta[category.title] || {
                 icon: FiTarget,
-                accent: "from-indigo-500 to-teal-500",
-                tint: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border-indigo-500/30",
-                description: "",
+                colorClass: "text-blue-500",
+                bgClass: "bg-blue-50 dark:bg-blue-500/10 border-blue-100 dark:border-blue-500/20",
+                description: "Key skills and technologies.",
               }
             }
           />
@@ -320,17 +245,14 @@ const Skills = () => {
       </div>
 
       {/* PROBLEM SOLVING */}
-      <div className="flex items-center gap-3 mb-6">
-        <div className="flex items-center gap-2">
-          <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full" />
-          <h3 className="text-slate-900 dark:text-white text-xl md:text-2xl font-bold">
-            Problem Solving
-          </h3>
-        </div>
-        <div className="flex-1 h-px bg-gradient-to-r from-slate-200 dark:from-gray-700/50 to-transparent ml-2" />
+      <div className="mb-6">
+        <h3 className="text-gray-900 dark:text-white text-xl md:text-2xl font-bold font-serif mb-2">
+          Competitive Programming
+        </h3>
+        <p className="text-sm text-gray-500 dark:text-gray-400">My track record in algorithmic problem solving.</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {problemSolvingPlatforms.map((platform) => (
           <PlatformCard key={platform.name} platform={platform} />
         ))}
