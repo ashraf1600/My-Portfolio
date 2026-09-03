@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -226,10 +226,10 @@ const Contact = () => {
         <span className="inline-block text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 uppercase mb-3">
           Get In Touch
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3">
+        <h2 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
           Let's Connect & Build
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-blue-400 mx-auto rounded-full mb-5"></div>
+        <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
         <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
           Send a quick message via the interactive chat assistant or complete the direct message form below.
         </p>
@@ -239,13 +239,13 @@ const Contact = () => {
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Tab Switcher Bar */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex p-1.5 rounded-2xl bg-gray-200/80 dark:bg-white/5 backdrop-blur-md border border-gray-300 dark:border-white/8 shadow-inner">
+          <div className="inline-flex p-1.5 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5">
             <button
               onClick={() => setActiveTab("chat")}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 activeTab === "chat"
-                  ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30 scale-105"
-                  : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
               }`}
             >
               <FiMessageSquare size={16} />
@@ -257,8 +257,8 @@ const Contact = () => {
               onClick={() => setActiveTab("email")}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 activeTab === "email"
-                  ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30 scale-105"
-                  : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
               }`}
             >
               <FiMail size={16} />
@@ -268,17 +268,17 @@ const Contact = () => {
         </div>
 
         {/* Card Frame */}
-        <div className="bg-white/90 dark:bg-[#111b2e]/90 backdrop-blur-2xl rounded-3xl border border-gray-200 dark:border-white/10 shadow-2xl shadow-blue-500/10 overflow-hidden min-h-[580px] flex flex-col">
+        <div className="bg-white dark:bg-[#111b2e] rounded-2xl border border-gray-200 dark:border-white/5 shadow-xl overflow-hidden min-h-[580px] flex flex-col">
           {/* Header Bar */}
-          <div className="px-6 py-4 bg-gray-100/90 dark:bg-white/5 border-b border-gray-200 dark:border-white/8 flex items-center justify-between">
+          <div className="px-6 py-4 bg-gray-50 dark:bg-[#0b1121]/50 border-b border-gray-200 dark:border-white/5 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="relative w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-blue-500 to-blue-400">
+              <div className="relative w-11 h-11 rounded-full p-0.5 border-2 border-blue-500/30">
                 <img
                   src={profileImg}
                   alt="Ashraful Islam"
                   className="w-full h-full object-cover rounded-full"
                 />
-                <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-gray-900 rounded-full"></span>
+                <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-[#0b1121] rounded-full"></span>
               </div>
 
               <div>
@@ -339,8 +339,8 @@ const Contact = () => {
                     <div
                       className={`max-w-[80%] sm:max-w-[70%] p-4 rounded-2xl shadow-sm text-sm leading-relaxed ${
                         msg.sender === "user"
-                          ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-br-none"
-                          : "bg-gray-100 dark:bg-[#111b2e]/90 text-gray-800 dark:text-gray-100 rounded-bl-none border border-gray-200 dark:border-white/8"
+                          ? "bg-blue-600 text-white rounded-br-none"
+                          : "bg-gray-50 dark:bg-[#0b1121] text-gray-800 dark:text-gray-100 rounded-bl-none border border-gray-100 dark:border-white/5"
                       }`}
                     >
                       <p className="whitespace-pre-line">{msg.text}</p>
@@ -388,7 +388,7 @@ const Contact = () => {
                     <button
                       key={idx}
                       onClick={() => handleQuickPrompt(prompt.text)}
-                      className="text-xs font-medium px-3 py-1.5 rounded-full bg-white dark:bg-white/5 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all duration-200 shadow-sm"
+                      className="text-xs font-medium px-3 py-1.5 rounded-full bg-gray-50 dark:bg-white/5 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/5 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors duration-200"
                     >
                       {prompt.label}
                     </button>
@@ -430,10 +430,10 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={!inputValue.trim()}
-                    className={`px-5 py-3.5 rounded-xl font-semibold text-white flex items-center gap-2 transition-all shadow-md ${
+                    className={`px-5 py-3.5 rounded-xl font-semibold text-white flex items-center gap-2 transition-colors ${
                       inputValue.trim()
-                        ? "bg-gradient-to-r from-blue-600 to-blue-500 hover:scale-105 shadow-blue-500/30"
-                        : "bg-gray-400 dark:bg-white/5 cursor-not-allowed opacity-60"
+                        ? "bg-blue-600 hover:bg-blue-700 shadow-sm"
+                        : "bg-gray-300 dark:bg-white/5 cursor-not-allowed opacity-60 text-gray-500 dark:text-gray-400"
                     }`}
                   >
                     <span>Send</span>
@@ -530,7 +530,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSending}
-                  className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-teal-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/50 hover:scale-[1.01] flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-300 shadow-sm flex items-center justify-center gap-2"
                 >
                   {isSending ? (
                     <>

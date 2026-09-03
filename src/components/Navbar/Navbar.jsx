@@ -120,9 +120,9 @@ const Navbar = () => {
             <li key={item.id}>
               <button
                 onClick={() => handleMenuItemClick(item.id)}
-                className={`px-3 py-1.5 rounded-full text-sm transition-all duration-300 ${activeSection === item.id
-                  ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                  : "hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10"
+                className={`px-3 py-1.5 rounded-lg text-sm transition-all duration-300 ${activeSection === item.id
+                  ? "text-blue-600 dark:text-blue-400 font-bold bg-gray-50 dark:bg-white/5"
+                  : "hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5"
                   }`}
               >
                 {item.label}
@@ -138,15 +138,14 @@ const Navbar = () => {
           {/* Docs CTA */}
           <a
             href={DOCS_URL}
-            className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold
-              bg-blue-50 dark:bg-blue-500/10
-              border border-blue-200 dark:border-blue-500/30
-              text-blue-700 dark:text-blue-300
-              hover:bg-blue-600 hover:text-white hover:border-transparent
-              hover:shadow-lg hover:shadow-blue-500/20
+            className="group inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-semibold
+              bg-gray-50 dark:bg-white/5
+              border border-gray-200 dark:border-white/5
+              text-gray-700 dark:text-gray-300
+              hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-500/30
               transition-all duration-300"
           >
-            <FiBookOpen size={15} className="transition-transform duration-300 group-hover:rotate-12" />
+            <FiBookOpen size={14} className="transition-transform duration-300 group-hover:rotate-12" />
             <span>Docs</span>
             <FiArrowUpRight size={12} className="opacity-60 group-hover:opacity-100 transition-all duration-300" />
           </a>
@@ -204,8 +203,8 @@ const Navbar = () => {
               <button
                 onClick={() => handleMenuItemClick(item.id)}
                 className={`block w-full py-3 px-6 text-sm font-medium transition-all duration-300 ${activeSection === item.id
-                  ? "text-blue-600 dark:text-blue-400 font-semibold bg-blue-50 dark:bg-blue-500/10"
-                  : "hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-500/5"
+                  ? "text-blue-600 dark:text-blue-400 font-bold bg-gray-50 dark:bg-white/5"
+                  : "hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5"
                   }`}
               >
                 {item.label}
@@ -218,10 +217,10 @@ const Navbar = () => {
             <a
               href={DOCS_URL}
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold
-                bg-blue-50 dark:bg-blue-500/10
-                border border-blue-200 dark:border-blue-500/30
-                text-blue-700 dark:text-blue-300
-                hover:bg-blue-600 hover:text-white hover:border-transparent
+                bg-gray-50 dark:bg-white/5
+                border border-gray-200 dark:border-white/5
+                text-gray-700 dark:text-gray-300
+                hover:text-blue-600 dark:hover:text-blue-400
                 transition-all duration-300"
             >
               <FiBookOpen size={16} />
