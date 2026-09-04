@@ -116,18 +116,18 @@ const getVenueTag = (conference) => {
 };
 
 // Highlight the user's name in author list
-const highlightAuthors = (authors, myName = "Ashraful Islam") => {
-  const parts = authors.split(myName);
+const highlightAuthors = (authors) => {
+  const regex = /(Ashraful Islam|Ashraf-ul-Islam|Ashraf-Ul-Islam)/i;
+  const parts = authors.split(regex);
   if (parts.length === 1) return <span>{authors}</span>;
   return (
     <span>
       {parts.map((part, i) => (
-        <React.Fragment key={i}>
-          {part}
-          {i < parts.length - 1 && (
-            <span className="text-blue-600 dark:text-blue-400 font-bold">{myName}</span>
-          )}
-        </React.Fragment>
+        i % 2 === 1 ? (
+          <span key={i} className="text-blue-600 dark:text-blue-400 font-bold">{part}</span>
+        ) : (
+          <React.Fragment key={i}>{part}</React.Fragment>
+        )
       ))}
     </span>
   );
