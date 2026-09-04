@@ -37,11 +37,11 @@ const About = () => {
           </div>
 
           {/* Name — serif academic style */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-5 leading-tight tracking-tight">
             <span className="text-gray-700 dark:text-gray-300">Hi, I'm</span>
             <br />
-            <span className="font-serif italic text-blue-600 dark:text-blue-400">
-              Ashraful Islam
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+              Ashraful Islam<span className="text-blue-600 dark:text-blue-400">.</span>
             </span>
           </h1>
 
@@ -188,7 +188,7 @@ const About = () => {
               </div>
               <div className="flex flex-col text-left">
                 <span className="text-[10px] uppercase tracking-wider text-gray-500 mb-0.5">Status</span>
-                <span className="font-serif leading-none">Available for work</span>
+                <span className="font-semibold leading-none">Available for work</span>
               </div>
             </div>
           </div>
