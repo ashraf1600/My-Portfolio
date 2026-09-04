@@ -452,6 +452,42 @@ export const research = [
     abstract: "We propose a hybrid stacking ensemble for predicting traffic rules violations, combining gradient boosting, random forests, and a deep tabular model. SHAP analysis isolates the contextual and behavioral factors that drive high-risk predictions.",
     category: "Machine Learning",
   },
+  {
+    id: 5,
+    title: "CCMK-RAG: Content-Conditioned Multi-Key Watermarking for Passage-Level Attribution in Retrieval-Augmented Generation",
+    authors: "Towhidul Islam, Ashraful Islam, Mahfuzul Hoq Chowdhury",
+    conference: "IEEE OMLET 2026",
+    year: 2026,
+    status: "Accepted",
+    tags: [
+      "Retrieval-Augmented Generation",
+      "Watermarking",
+      "Passage-Level Attribution",
+      "Natural Language Processing",
+      "Machine Learning"
+    ],
+    link: "#",
+    abstract: "This paper proposes CCMK-RAG, a content-conditioned multi-key watermarking approach designed for passage-level attribution in Retrieval-Augmented Generation (RAG) models. It provides a rigorously evaluated solution for recovering high-precision watermarks in LLM-generated text.",
+    category: "Machine Learning",
+  },
+  {
+    id: 6,
+    title: "Section-Aware Retrieval-Augmented Generation for Bangladesh Labour Law Question Answering: A Comparative Study",
+    authors: "Towhidul Islam, Ashraf-Ul-Islam, Mahfuzulhoq Chowdhury",
+    conference: "IEEE OMLET 2026",
+    year: 2026,
+    status: "Accepted",
+    tags: [
+      "Retrieval-Augmented Generation",
+      "Question Answering",
+      "Labour Law",
+      "Natural Language Processing",
+      "Machine Learning"
+    ],
+    link: "#",
+    abstract: "This study presents a comprehensive comparison of different RAG pipelines tailored for Bangladesh Labour Law Question Answering. By employing section-aware retrieval mechanisms, the paper demonstrates improved accuracy and contextual relevance in domain-specific legal QA systems.",
+    category: "Machine Learning",
+  },
 ];
 
 // Research Impact Metrics

@@ -1,5 +1,23 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { SkillsInfo } from "../../constants";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.5, type: "spring", bounce: 0.3 } 
+  },
+};
 import {
   SiLeetcode,
   SiCodeforces,
@@ -115,7 +133,7 @@ const totalProblems = problemSolvingPlatforms.reduce(
 const SkillCard = ({ category, meta }) => {
   const Icon = meta.icon;
   return (
-    <div className="group h-full bg-white dark:bg-[#111b2e] rounded-xl border border-gray-200 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col">
+    <motion.div variants={cardVariants} className="group h-full bg-white dark:bg-[#111b2e] rounded-xl border border-gray-200 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col">
       {/* Header Area */}
       <div className="flex items-center gap-4 mb-4">
         <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center border ${meta.bgClass}`}>
@@ -153,14 +171,15 @@ const SkillCard = ({ category, meta }) => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 const PlatformCard = ({ platform }) => {
   const Icon = platform.icon;
   return (
-    <a
+    <motion.a
+      variants={cardVariants}
       href={platform.link}
       target="_blank"
       rel="noopener noreferrer"
@@ -189,7 +208,7 @@ const PlatformCard = ({ platform }) => {
         size={18}
         className="text-gray-300 dark:text-gray-600 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300"
       />
-    </a>
+    </motion.a>
   );
 };
 
@@ -227,7 +246,13 @@ const Skills = () => {
         <p className="text-sm text-gray-500 dark:text-gray-400">The frameworks and languages I use to build systems.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-20">
+      <motion.div 
+        variants={containerVariants} 
+        initial="hidden" 
+        whileInView="visible" 
+        viewport={{ once: true, amount: 0.1 }}
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-20"
+      >
         {SkillsInfo.map((category) => (
           <SkillCard
             key={category.title}
@@ -242,7 +267,7 @@ const Skills = () => {
             }
           />
         ))}
-      </div>
+      </motion.div>
 
       {/* PROBLEM SOLVING */}
       <div className="mb-6">
@@ -252,11 +277,17 @@ const Skills = () => {
         <p className="text-sm text-gray-500 dark:text-gray-400">My track record in algorithmic problem solving.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden" 
+        whileInView="visible" 
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
         {problemSolvingPlatforms.map((platform) => (
           <PlatformCard key={platform.name} platform={platform} />
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -12,6 +12,31 @@ import {
   SiCodeforces,
 } from 'react-icons/si';
 import profileImage from '../../assets/dp.png';
+import { motion } from 'framer-motion';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+    },
+  },
+};
 
 const focusAreas = [
   { num: '01', label: 'ML Research' },
@@ -28,25 +53,31 @@ const About = () => {
     >
       <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-12 lg:gap-20 relative z-10">
         {/* Left Side - Content */}
-        <div className="lg:w-1/2 text-center lg:text-left">
+        <motion.div 
+          className="lg:w-1/2 text-center lg:text-left"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {/* Greeting badge */}
-          <div className="mb-5">
+          <motion.div variants={itemVariants} className="mb-5">
             <span className="inline-block bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-300 text-sm font-medium px-4 py-2 rounded-full">
               👋 Welcome to my portfolio
             </span>
-          </div>
+          </motion.div>
 
           {/* Name — serif academic style */}
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-5 leading-tight tracking-tight">
+          <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-5 leading-tight tracking-tight">
             <span className="text-gray-700 dark:text-gray-300">Hi, I'm</span>
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
               Ashraful Islam<span className="text-blue-600 dark:text-blue-400">.</span>
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Typing Effect */}
-          <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-6 min-h-[2.5rem]">
+          <motion.div variants={itemVariants} className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-6 min-h-[2.5rem]">
             <span className="text-gray-500 dark:text-gray-400">I'm a </span>
             <ReactTypingEffect
               text={[
@@ -64,10 +95,10 @@ const About = () => {
               )}
               className="inline-block text-amber-500 dark:text-amber-400"
             />
-          </div>
+          </motion.div>
 
           {/* Focus Area Chips */}
-          <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6">
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6">
             {focusAreas.map((area) => (
               <span
                 key={area.num}
@@ -77,20 +108,20 @@ const About = () => {
                 {area.label}
               </span>
             ))}
-          </div>
+          </motion.div>
 
           {/* Description */}
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+          <motion.p variants={itemVariants} className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
             I'm a passionate <span className="text-blue-700 dark:text-blue-300 font-medium">Machine Learning</span> researcher and{' '}
             <span className="text-blue-700 dark:text-blue-300 font-medium">Generative AI</span> enthusiast with a foundation in Software Engineering.
             Currently expanding my expertise in full-stack development using{' '}
             <span className="text-blue-700 dark:text-blue-300 font-medium">Django, DRF</span> and{' '}
             <span className="text-blue-700 dark:text-blue-300 font-medium">React</span>, combining web development
             skills with AI technologies to create intelligent applications.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 hover:scale-105"
@@ -107,10 +138,10 @@ const About = () => {
               <FaDownload />
               View Resume
             </a>
-          </div>
+          </motion.div>
 
           {/* Social Links */}
-          <div className="flex gap-3 justify-center lg:justify-start">
+          <motion.div variants={itemVariants} className="flex gap-3 justify-center lg:justify-start">
             <a
               href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
               target="_blank"
@@ -156,11 +187,17 @@ const About = () => {
             >
               <SiCodeforces size={18} />
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Right Side - Profile Picture */}
-        <div className="lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
+        <motion.div 
+          className="lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0"
+          initial={{ opacity: 0, scale: 0.8, x: 50 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+        >
           <div className="relative group">
             {/* Soft background glow to blend */}
             <div className="absolute -inset-4 bg-blue-500/5 rounded-3xl blur-2xl opacity-50 transition-opacity duration-700 group-hover:opacity-70"></div>
@@ -192,7 +229,7 @@ const About = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { experiences } from "../../constants";
 import { HiOfficeBuilding, HiCalendar, HiChip } from "react-icons/hi";
 import { FiBriefcase } from "react-icons/fi";
@@ -32,10 +33,23 @@ const Experience = () => {
 
         <div className="space-y-8">
           {experiences.map((exp, index) => (
-            <div key={exp.id} className="relative flex gap-6 md:gap-8 group">
+            <motion.div 
+              key={exp.id} 
+              className="relative flex gap-6 md:gap-8 group"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
+            >
               {/* Timeline dot with logo */}
               <div className="relative flex-shrink-0 z-10">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-gray-200 dark:border-white/10 shadow-sm flex items-center justify-center overflow-hidden group-hover:border-blue-300 transition-colors duration-300">
+                <motion.div 
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-gray-200 dark:border-white/10 shadow-sm flex items-center justify-center overflow-hidden group-hover:border-blue-300 transition-colors duration-300"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 200, damping: 12, delay: 0.1 }}
+                >
                   {exp.img ? (
                     <img
                       src={exp.img}
@@ -52,7 +66,7 @@ const Experience = () => {
                   >
                     {exp.company?.[0] || "P"}
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Card */}
@@ -102,7 +116,7 @@ const Experience = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
