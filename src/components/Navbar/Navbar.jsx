@@ -109,8 +109,8 @@ const Navbar = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <span className="font-serif text-xl font-bold italic text-gray-900 dark:text-white">
-            Ashraful Islam
+          <span className="font-sans text-xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            Ashraful Islam<span className="text-blue-600 dark:text-blue-400">.</span>
           </span>
         </div>
 
@@ -120,12 +120,15 @@ const Navbar = () => {
             <li key={item.id}>
               <button
                 onClick={() => handleMenuItemClick(item.id)}
-                className={`px-3 py-1.5 rounded-lg text-sm transition-all duration-300 ${activeSection === item.id
-                  ? "text-blue-600 dark:text-blue-400 font-bold bg-gray-50 dark:bg-white/5"
-                  : "hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5"
+                className={`relative px-3 py-1.5 text-sm transition-colors duration-300 ${activeSection === item.id
+                  ? "text-blue-600 dark:text-blue-400 font-semibold"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
                   }`}
               >
                 {item.label}
+                {activeSection === item.id && (
+                  <span className="absolute left-1/2 -bottom-1 h-0.5 w-1/2 -translate-x-1/2 bg-blue-600 dark:bg-blue-400 rounded-full" />
+                )}
               </button>
             </li>
           ))}
@@ -138,10 +141,11 @@ const Navbar = () => {
           {/* Docs CTA */}
           <a
             href={DOCS_URL}
-            className="group inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-semibold
-              bg-gray-50 dark:bg-white/5
-              border border-gray-200 dark:border-white/5
+            className="group inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium
+              bg-white dark:bg-white/5
+              border border-gray-200 dark:border-white/10
               text-gray-700 dark:text-gray-300
+              shadow-sm hover:shadow-md
               hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-500/30
               transition-all duration-300"
           >
@@ -202,9 +206,9 @@ const Navbar = () => {
             >
               <button
                 onClick={() => handleMenuItemClick(item.id)}
-                className={`block w-full py-3 px-6 text-sm font-medium transition-all duration-300 ${activeSection === item.id
-                  ? "text-blue-600 dark:text-blue-400 font-bold bg-gray-50 dark:bg-white/5"
-                  : "hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5"
+                className={`block w-full py-3 px-6 text-sm transition-all duration-300 ${activeSection === item.id
+                  ? "text-blue-600 dark:text-blue-400 font-semibold bg-blue-50/50 dark:bg-blue-900/20"
+                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5"
                   }`}
               >
                 {item.label}

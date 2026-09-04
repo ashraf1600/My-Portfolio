@@ -146,7 +146,7 @@ INFO:     Application startup complete.
 def generate_ai():
     return {
         "model": "NexGen-GPT-v1",
-        "result": "⚡ Live Hot-Reloading worked without image rebuild!"
+        "result": " Live Hot-Reloading worked without image rebuild!"
     }
 ```
 

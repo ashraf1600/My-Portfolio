@@ -56,8 +56,8 @@ import streamlitLogo from './assets/tech_logo/streamlit.svg';
 
 // Education Section Logo's
 import cuetLogo from './assets/education_logo/Cover.png';
-import dccLogo from './assets/education_logo/dcc_logo.svg';
-import cghsLogo from './assets/education_logo/cghs_logo.svg';
+import dccLogo from './assets/education_logo/dcc_logo.png';
+import cghsLogo from './assets/education_logo/cghs_logo.png';
 
 // Project Section Logo's
 import CUET_Hos from './assets/work_logo/CUET_Hos.png';
