@@ -52,7 +52,8 @@ export default withMermaid(
             { text: 'Overview', link: '/mlops/' },
             { text: 'MLflow', link: '/mlflow/' },
             { text: 'Docker', link: '/docker/' },
-            { text: 'AWS', link: '/aws/' }
+            { text: 'AWS', link: '/aws/' },
+            { text: 'Feast (Feature Store)', link: '/mlops/dockerizing-feast-local-feature-store-lab' }
           ]
         },
         {
