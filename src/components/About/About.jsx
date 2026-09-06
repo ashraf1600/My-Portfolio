@@ -12,6 +12,7 @@ import {
   SiCodeforces,
 } from 'react-icons/si';
 import profileImage from '../../assets/dp.png';
+import heroBg from '../../assets/hero-bg.jpg';
 import { motion } from 'framer-motion';
 
 const containerVariants = {
@@ -46,12 +47,62 @@ const focusAreas = [
 ];
 
 const About = () => {
+  // Subtle floating particles
+  const particleCount = 20;
+  const particles = React.useMemo(() =>
+    Array.from({ length: particleCount }, (_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      size: Math.random() * 2.5 + 1,
+      duration: Math.random() * 8 + 6,
+      delay: Math.random() * 5,
+      opacity: Math.random() * 0.4 + 0.1,
+    })), []
+  );
+
   return (
     <section
       id="about"
-      className="relative pt-10 pb-20 px-[5vw] md:px-[8vw] lg:px-[12vw] font-sans overflow-hidden"
+      className="relative pt-10 pb-32 px-[5vw] md:px-[8vw] lg:px-[12vw] font-sans overflow-hidden"
     >
-      <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-12 lg:gap-20 relative z-10">
+      {/* Full-bleed background image */}
+      <img
+        src={heroBg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-center select-none pointer-events-none opacity-30 dark:opacity-70"
+      />
+
+      {/* Dark mode overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0b1121]/20 via-[#0b1121]/40 to-[#0b1121] pointer-events-none hidden dark:block" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0b1121] to-transparent pointer-events-none hidden dark:block" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#0b1121] to-transparent pointer-events-none hidden dark:block" />
+
+      {/* Light mode overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#f8f9fa]/40 via-[#f8f9fa]/70 to-[#f8f9fa] pointer-events-none dark:hidden" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f8f9fa] to-transparent pointer-events-none dark:hidden" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#f8f9fa] to-transparent pointer-events-none dark:hidden" />
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-[5]">
+        {particles.map((p) => (
+          <div
+            key={p.id}
+            className="absolute rounded-full bg-blue-400/60 dark:bg-blue-400/40"
+            style={{
+              left: p.left,
+              top: p.top,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              opacity: p.opacity,
+              animation: `heroFloat ${p.duration}s ease-in-out ${p.delay}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-12 lg:gap-20 relative z-10 dark:[text-shadow:_0_2px_20px_rgba(0,0,0,0.8),_0_0_40px_rgba(0,0,0,0.5)]">
         {/* Left Side - Content */}
         <motion.div 
           className="lg:w-1/2 text-center lg:text-left"
@@ -198,27 +249,31 @@ const About = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
         >
-          <div className="relative group">
-            {/* Soft background glow to blend */}
-            <div className="absolute -inset-4 bg-blue-500/5 rounded-3xl blur-2xl opacity-50 transition-opacity duration-700 group-hover:opacity-70"></div>
+          <div className="relative group flex justify-center items-center">
+            {/* Subtle blue glow behind the subject */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-[60px] lg:blur-[80px] opacity-70 transition-opacity duration-700 group-hover:opacity-100 pointer-events-none z-0"></div>
 
             {/* Main image container */}
             <div 
-              className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[26rem] z-10 flex items-center justify-center bg-[#0b1121]"
+              className="relative w-[280px] h-[340px] sm:w-[320px] sm:h-[400px] lg:w-[400px] lg:h-[500px] z-10 flex items-center justify-center"
               style={{
-                maskImage: "radial-gradient(circle at center, black 40%, transparent 100%)",
-                WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 100%)"
+                maskImage: "radial-gradient(ellipse at 50% 40%, black 40%, transparent 70%)",
+                WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 40%, transparent 70%)"
               }}
             >
               <img
                 src={profileImage}
                 alt="Ashraful Islam"
-                className="w-full h-full object-cover transition-all duration-700 mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 filter grayscale-[80%] contrast-[1.1] brightness-[0.85] group-hover:grayscale-[40%] mix-blend-normal z-0"
               />
+              
+              {/* Overlay gradients to blend image seamlessly into the background */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#f8f9fa] dark:from-[#0b1121] via-transparent to-transparent opacity-90 z-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-60"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_35%,#f8f9fa_85%)] dark:bg-[radial-gradient(circle_at_50%_40%,transparent_35%,#0b1121_85%)] opacity-80 z-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-50"></div>
             </div>
 
             {/* Status badge - Floating, Minimalist */}
-            <div className="absolute -left-6 bottom-12 z-20 bg-white dark:bg-[#111b2e] border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200 px-5 py-3 rounded-xl shadow-lg flex items-center gap-3 text-sm font-medium transition-transform duration-500 group-hover:-translate-y-2">
+            <div className="absolute bottom-8 lg:bottom-16 left-0 lg:-left-6 z-20 bg-white/90 dark:bg-[#111b2e]/90 backdrop-blur-md border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200 px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 text-sm font-medium transition-transform duration-500 group-hover:-translate-y-2">
               <div className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
