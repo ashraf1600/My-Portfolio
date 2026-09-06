@@ -282,6 +282,7 @@ export default withMermaid(
               { text: 'MLflow Experiment Tracking & Registry', link: '/mlflow/' },
               { text: 'Docker for MLOps & AI Infrastructure', link: '/docker/' },
               { text: 'Full-Stack ML Docker + AWS Deployment', link: '/docker/fullstack-ml-aws' },
+              { text: 'Dockerizing Feast Feature Store Lab', link: '/mlops/dockerizing-feast-local-feature-store-lab' },
             ]
           }
         ],
