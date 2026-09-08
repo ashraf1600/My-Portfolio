@@ -311,7 +311,8 @@ export default withMermaid(
               { text: 'What is a Network?', link: '/networking-fundamentals/what-is-a-network' },
               { text: 'Network Devices', link: '/networking-fundamentals/network-devices' },
               { text: 'OSI Model', link: '/networking-fundamentals/osi-model' },
-              { text: 'Transport Layer & Encapsulation', link: '/networking-fundamentals/transport-layer-and-encapsulation' }
+              { text: 'Transport Layer & Encapsulation', link: '/networking-fundamentals/transport-layer-and-encapsulation' },
+              { text: 'Foreign Network Communication', link: '/networking-fundamentals/foreign-network-communication' }
             ]
           }
         ],
