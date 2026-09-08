@@ -45,6 +45,23 @@ iptables -t nat -S
 
 Namespace-এর ভিতরে একই command চালালে আলাদা result পাওয়া যাবে। এটাই container network isolation-এর ভিত্তি।
 
+```mermaid
+flowchart TB
+  subgraph R[Root network namespace]
+    RLO[lo]
+    RNIC[Host NIC]
+    RRT[Host routes]
+    RF[Host firewall rules]
+  end
+  subgraph N[demo0 network namespace]
+    NLO[lo - initially down]
+    NNIC[No Ethernet device yet]
+    NRT[Empty route table]
+    NF[Independent firewall rules]
+  end
+  R -. isolated from .- N
+```
+
 ## 2. Network Namespace তৈরি
 
 একটি namespace তৈরি করলে নতুন network stack পাওয়া যায়। শুরুতে সেখানে শুধু down অবস্থায় loopback থাকে।
@@ -65,6 +82,17 @@ sudo ip netns exec demo0 ip route show
 ## 3. একটি Namespace-কে Host-এর সঙ্গে যুক্ত করা
 
 `veth` সবসময় pair হিসেবে তৈরি হয়। এক প্রান্তে packet ঢুকলে অন্য প্রান্তে packet দেখা যায়। আমরা host-side interface-টি root namespace-এ এবং peer-টি `demo0`-এ রাখব।
+
+```mermaid
+flowchart LR
+  subgraph Root[Root network namespace]
+    V[veth-demo<br/>172.30.0.1/24]
+  end
+  V ===|virtual Ethernet cable| E
+  subgraph Demo[demo0 network namespace]
+    E[eth-demo<br/>172.30.0.2/24]
+  end
+```
 
 ```bash
 sudo ip link add veth-demo type veth peer name eth-demo
@@ -98,6 +126,15 @@ sudo ip netns exec demo0 ip route show
 দুটি namespace-কে একই subnet-এ রাখতে চাইলে host-এর দুই veth interface-এ একই subnet-এর address বসানো tempting মনে হয়। কিন্তু root namespace তখন একই destination network-এর জন্য একাধিক competing route পায়। কোন interface দিয়ে packet যাবে, তা নির্ভরযোগ্য থাকে না।
 
 এই সমস্যার সমাধান হলো host-side veth interface-এ container IP না বসিয়ে সেগুলোকে একটি Layer 2 bridge-এর port হিসেবে ব্যবহার করা। Bridge MAC address দেখে frame forward করবে; প্রতিটি container নিজের namespace-এ IP রাখবে।
+
+```mermaid
+flowchart LR
+  A[demo0<br/>172.18.0.10] --> V0[veth0]
+  V0 --> R[Root namespace routing table<br/>172.18.0.0/16 via veth0]
+  B[demo1<br/>172.18.0.20] --> V1[veth1]
+  V1 --> R
+  R -. "same destination network: route selection conflict" .-> X[Unreliable path]
+```
 
 ## 5. Linux Bridge দিয়ে Container Network
 
@@ -150,6 +187,18 @@ sudo ip netns exec demo1 ip neigh show
 
 Bridge নিজে router নয়। তাই এটি একই Ethernet segment-এর endpoints-কে যুক্ত করে, কিন্তু অন্য network-এ packet পাঠানোর জন্য একটি Layer 3 gateway প্রয়োজন।
 
+```mermaid
+sequenceDiagram
+  participant C1 as demo1
+  participant BR as br-demo
+  participant C2 as demo2
+  C1->>BR: Ethernet frame for 172.31.0.20
+  BR->>C2: Forward by destination MAC
+  Note over BR: Layer 2 switching only
+  C1->>BR: Packet for another subnet
+  BR-->>C1: Needs a Layer 3 gateway
+```
+
 ## 6. Host Gateway ও Default Route
 
 Bridge interface-এ host-এর gateway address বসান:
@@ -175,6 +224,13 @@ sudo sysctl -w net.ipv4.ip_forward=1
 :::warning Forwarding স্থায়ী করা
 `sysctl -w` সাধারণত runtime-only পরিবর্তন। Production host-এ স্থায়ী configuration করার আগে security policy, firewall এবং distribution-specific sysctl configuration যাচাই করুন।
 :::
+
+```mermaid
+flowchart LR
+  C[demo1<br/>172.31.0.10] -->|default route via 172.31.0.1| G[br-demo<br/>172.31.0.1]
+  G -->|IP forwarding| H[Host routing table]
+  H --> NIC[Host external NIC]
+```
 
 ## 7. Internet Access-এর জন্য NAT
 
@@ -271,6 +327,19 @@ Port publishing-এর মূল ধারণা:
 | Container reply-এর address ঠিক রাখা | Connection tracking এবং reverse NAT |
 | External network-এ container reply পাঠানো | Routing ও forwarding |
 
+```mermaid
+sequenceDiagram
+  participant Client as External client
+  participant Host as Host:5000
+  participant NAT as iptables DNAT
+  participant C as demo1:5000
+  Client->>Host: TCP SYN to HOST_IP:5000
+  Host->>NAT: PREROUTING / OUTPUT
+  NAT->>C: Rewrite destination to 172.31.0.10:5000
+  C-->>NAT: HTTP response
+  NAT-->>Client: Reverse NAT to HOST_IP:5000
+```
+
 ## 9. Docker Network Modes-এর সঙ্গে সম্পর্ক
 
 এই low-level lab Docker-এর network modes বোঝার ভিত্তি তৈরি করে:
@@ -282,6 +351,25 @@ Port publishing-এর মূল ধারণা:
 | `--network bridge` | Namespace + veth pair + Linux bridge + routing/NAT |
 
 Docker এগুলো manually নয়, daemon ও network driver-এর মাধ্যমে তৈরি এবং পরিচালনা করে। User-defined bridge network-এ Docker আরও DNS-based service discovery যোগ করে, তাই application-এ static container IP ব্যবহার করা উচিত নয়।
+
+```mermaid
+flowchart TB
+  subgraph Host[Docker host]
+    BR[docker0 or user-defined bridge]
+    NAT[iptables NAT]
+  end
+  subgraph C1[Container namespace]
+    E1[eth0]
+  end
+  subgraph C2[Container namespace]
+    E2[eth0]
+  end
+  E1 --- V1[veth pair] --- BR
+  E2 --- V2[veth pair] --- BR
+  BR --> NAT
+  H[host mode: no separate netns] -.-> Host
+  Z[none mode: loopback only] -.-> C1
+```
 
 ## 10. Debugging Checklist
 
