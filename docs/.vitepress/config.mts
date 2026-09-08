@@ -53,7 +53,9 @@ export default withMermaid(
             { text: 'MLflow', link: '/mlflow/' },
             { text: 'Docker', link: '/docker/' },
             { text: 'AWS', link: '/aws/' },
-            { text: 'Feast (Feature Store)', link: '/mlops/dockerizing-feast-local-feature-store-lab' }
+            { text: 'Networking Fundamentals', link: '/networking-fundamentals/what-is-a-network' },
+            
+            // { text: 'Feast (Feature Store)', link: '/mlops/dockerizing-feast-local-feature-store-lab' }
           ]
         },
         {
@@ -298,6 +300,15 @@ export default withMermaid(
               { text: 'MLflow Autologging', link: '/mlflow/mlflow-autologging' },
               { text: 'Serving with FastAPI', link: '/mlflow/mlflow-model-serving-fastapi' },
               { text: 'Model Evaluation', link: '/mlflow/mlflow-model-evaluation' }
+            ]
+          }
+        ],
+        '/networking-fundamentals/': [
+          {
+            text: 'Networking Fundamentals',
+            collapsed: false,
+            items: [
+              { text: 'What is a Network?', link: '/networking-fundamentals/what-is-a-network' }
             ]
           }
         ],
