@@ -308,7 +308,8 @@ export default withMermaid(
             text: 'Networking Fundamentals',
             collapsed: false,
             items: [
-              { text: 'What is a Network?', link: '/networking-fundamentals/what-is-a-network' }
+              { text: 'What is a Network?', link: '/networking-fundamentals/what-is-a-network' },
+              { text: 'Network Devices', link: '/networking-fundamentals/network-devices' }
             ]
           }
         ],
