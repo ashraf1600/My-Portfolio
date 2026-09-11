@@ -50,10 +50,11 @@ export default withMermaid(
           text: 'MLOps/LLMOps',
           items: [
             { text: 'Overview', link: '/mlops/' },
+            { text: 'Linux Fundamentals', link: '/linux-fundamentals/' },
+            { text: 'Networking Fundamentals', link: '/networking-fundamentals/what-is-a-network' },
             { text: 'MLflow', link: '/mlflow/' },
             { text: 'Docker', link: '/docker/' },
             { text: 'AWS', link: '/aws/' },
-            { text: 'Networking Fundamentals', link: '/networking-fundamentals/what-is-a-network' },
             
             // { text: 'Feast (Feature Store)', link: '/mlops/dockerizing-feast-local-feature-store-lab' }
           ]
@@ -552,6 +553,24 @@ export default withMermaid(
             collapsed: true,
             items: [
               { text: 'Introduction', link: '/Agentic_ai/' }
+            ]
+          }
+        ],
+
+        '/linux-fundamentals/': [
+          {
+            text: 'Linux Fundamentals',
+            collapsed: false,
+            items: [
+              { text: 'File System Navigation', link: '/linux-fundamentals/' },
+              { text: 'User and Group Management', link: '/linux-fundamentals/user-group-management' },
+              { text: 'User Account Management', link: '/linux-fundamentals/user-account-management' },
+              { text: 'Sudo Access Management', link: '/linux-fundamentals/sudo-access-management' },
+              { text: 'Understanding /etc/skel/', link: '/linux-fundamentals/etc-skel' },
+              { text: 'User Modification', link: '/linux-fundamentals/user-modification' },
+              { text: 'File Permissions', link: '/linux-fundamentals/file-permissions' },
+              { text: 'Performance Analysis', link: '/linux-fundamentals/performance-analysis' },
+              { text: 'Logging and Monitoring', link: '/linux-fundamentals/logging-monitoring' }
             ]
           }
         ]
