@@ -1,0 +1,147 @@
+\documentclass[a4paper,9.5pt]{article}
+
+\usepackage[left=0.48in,right=0.48in,top=0.4in,bottom=0.4in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{Calibri}
+\usepackage{fontawesome5}
+
+% Colors
+\definecolor{primary}{HTML}{0b4f9c}
+\definecolor{charcoal}{HTML}{222222}
+
+% Section format
+\titleformat{\section}{
+  \vspace{-5pt}\raggedright\normalsize\bfseries\color{primary}
+}{}{0em}{\uppercase}[\color{primary}\titlerule \vspace{-3pt}]
+
+\newcommand{\projectEntry}[4]{
+  \vspace{2pt}
+  \noindent\textbf{\color{primary}#1} \hfill \href{#3}{\color{primary}\textbf{\faGithub~GitHub}} \\
+  \noindent\textit{\footnotesize #2}
+  \begin{itemize}[leftmargin=10pt, topsep=1pt, itemsep=1pt]
+    #4
+  \end{itemize}
+}
+
+\newcommand{\experienceEntry}[5]{
+  \vspace{2pt}
+  \noindent\textbf{#1} \hfill \textbf{\small #2} \\
+  \noindent\textit{\small #3} \hfill \textit{\small #4}
+  \begin{itemize}[leftmargin=10pt, topsep=1pt, itemsep=1pt]
+    #5
+  \end{itemize}
+}
+
+\pagestyle{empty}
+
+\begin{document}
+
+%----------HEADER----------
+\begin{center}
+    {\LARGE \textbf{Ashraful Islam}} \\[3pt]
+    \footnotesize \textbf{\color{charcoal}AI Engineer $|$ Machine Learning \& DataOps Intern $|$ Generative AI \& Agentic Systems} \\[2pt]
+    \footnotesize
+    \faMapMarker*~Chittagong, Bangladesh (Open to Relocation / Pune) \ $|$ \ 
+    \faPhone*~+8801935188137 \ $|$ \ 
+    \faEnvelope~\href{mailto:ashrafdcc1502@gmail.com}{ashrafdcc1502@gmail.com} \\[1.5pt]
+    \faLinkedin~\href{https://www.linkedin.com/in/ashraful-islam-a31268226/}{ashraful-islam} \ $|$ \ 
+    \faGithub~\href{https://github.com/ashraf1600}{github.com/ashraf1600} \ $|$ \ 
+    \faGlobe~\href{https://ashraf1600.github.io}{Portfolio} \ $|$ \ 
+    \faGraduationCap~\href{https://scholar.google.com/citations?user=ashraf1600}{Google Scholar}
+\end{center}
+
+\vspace{-6pt}
+
+%-----------SUMMARY-----------
+\section{Summary}
+\footnotesize{
+Aspiring \textbf{AI Engineer} and CSE student at CUET with research publications in \textbf{RAG, Agentic AI, and Computer Vision}, and industry experience in \textbf{Machine Learning \& DataOps at Poridhi.io}. Proficient in \textbf{Python}, \textbf{Generative AI}, \textbf{Agentic AI (LangChain, LangGraph)}, \textbf{LLM Fine-Tuning}, and \textbf{MLOps (Docker, FastAPI, CI/CD)}. Proven track record of developing scalable data pipelines and deploying production-ready AI services.
+}
+
+%-----------WORK EXPERIENCE-----------
+\section{Work Experience}
+\experienceEntry
+  {Poridhi.io}{Dhaka, Bangladesh (Hybrid)}
+  {Machine Learning \& DataOps Intern}{August 2026 -- Present}
+  {
+    \item Engineered automated \textbf{DataOps pipelines} for data ingestion, quality validation, and preprocessing for ML workflows.
+    \item Developed and containerized intelligent AI microservices and model inference REST APIs using \textbf{Python}, \textbf{FastAPI}, and \textbf{Docker}.
+    \item Implemented \textbf{MLOps} workflows, including experiment tracking, containerized environments, and automated CI/CD deployment.
+    \item Researched and prototyped \textbf{Agentic AI} and \textbf{LLM} workflows (LangChain, LangGraph) for internal automation and developer tooling.
+  }
+
+%-----------EDUCATION-----------
+\section{Education}
+\vspace{1pt}
+\noindent\textbf{Chittagong University of Engineering and Technology (CUET)} \hfill \textit{2023 -- Present} \\
+\textit{\small B.Sc. in Computer Science and Engineering -- CGPA: 3.52 / 4.00 (122 Credits Completed)} \hfill \textit{\small Chittagong, Bangladesh} \\
+\footnotesize \textbf{Undergraduate Thesis}: \textit{BondhuAI-BN: Bengali Mental Health Counseling via Scoped Multi-Agent RAG with LoRA Fine-Tuning}.
+
+\vspace{1pt}
+\noindent\textbf{Dhaka City College} \hfill \textit{2019 -- 2021} \\
+\textit{\small Higher Secondary Certificate (HSC) -- Science -- GPA: 5.00 / 5.00} \hfill \textit{\small Dhaka, Bangladesh}
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=10pt, label={$\bullet$}, topsep=1pt, itemsep=1pt]
+  \footnotesize{
+    \item \textbf{Programming Languages}: Python, C++, C, JavaScript, SQL
+    \item \textbf{Generative AI \& LLMs}: Agentic AI, LangChain, LangGraph, Multi-Agent Systems, RAG, Prompt Engineering, LLM Fine-Tuning (LoRA), Vector DBs (FAISS, Chroma), Hugging Face, Gemini API
+    \item \textbf{Machine Learning \& Deep Learning}: PyTorch, TensorFlow, Scikit-Learn, XGBoost, Computer Vision (Vision Transformers/DeiT), NLP, Reinforcement Learning (DQN), Explainable AI (SHAP)
+    \item \textbf{MLOps \& DataOps}: Docker, FastAPI, MLflow, CI/CD Pipelines, Data Engineering, Optuna, Model Deployment, Linux, Git/GitHub
+    \item \textbf{Backend \& Databases}: Django, Django REST Framework, PostgreSQL, MySQL, SQLite, MongoDB, RESTful APIs, React
+  }
+\end{itemize}
+
+%-----------FEATURED AI/ML PROJECTS-----------
+\section{Featured AI / ML Projects}
+
+\projectEntry
+  {BondhuAI-BN: Scoped Multi-Agent RAG System}
+  {Python, LangChain, LangGraph, LoRA Fine-Tuning, Hugging Face, PyTorch, FastAPI}
+  {https://github.com/ashraf1600}
+  {
+    \item Architected a culturally-aware Bengali mental health support system using an \textbf{Agentic AI} multi-agent orchestration framework for intent routing, empathetic response synthesis, and clinical safety guardrails.
+    \item Implemented domain-adaptive fine-tuning (LoRA) on open LLMs with scoped vector retrieval to eliminate hallucinations.
+  }
+
+\projectEntry
+  {CCMK-RAG: Content-Conditioned Watermarked RAG}
+  {Python, PyTorch, Transformers, FAISS, LangChain, RAG Pipelines}
+  {https://github.com/ashraf1600}
+  {
+    \item Developed a passage-level attribution scheme using content-conditioned multi-key watermarks for source provenance in LLM answers.
+    \item Demonstrated state-of-the-art attribution precision across legal corpora; accepted at \textbf{IEEE OMLET 2026}.
+  }
+
+\projectEntry
+  {Personal AI Assistant: Agentic Workflows \& Automation}
+  {Gemini API, LangChain, Streamlit, OOP Architecture, Vector Search, Tool Calling}
+  {https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main}
+  {
+    \item Built an interactive conversational agent featuring multi-turn memory, tool execution, and dynamic context grounding via Streamlit.
+  }
+
+\projectEntry
+  {Intelligent Traffic Light Control via Deep Reinforcement Learning}
+  {Python, Deep Q-Networks (DQN), SUMO Simulator, PyTorch/TensorFlow, NumPy}
+  {https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning}
+  {
+    \item Implemented adaptive traffic signal optimization using DQN in SUMO simulator, reducing vehicle wait times by over 25\%.
+  }
+
+%-----------PUBLICATIONS & CERTIFICATIONS-----------
+\section{Selected Publications, Certifications \& Leadership}
+\begin{itemize}[leftmargin=10pt, topsep=1pt, itemsep=1.5pt]
+  \footnotesize{
+    \item \textbf{Accepted IEEE Papers}: \textit{CCMK-RAG: Watermarking for Attribution in RAG} (IEEE OMLET 2026) $|$ \textit{Section-Aware RAG for Labour Law QA} (IEEE OMLET 2026) $|$ \textit{Cyber Attack Detection in IoT Networks} (IEEE ICDSBS 2026) $|$ \textit{Counterfeit Banknote Detection via DeiT-Tiny} (ICCPCT 2026).
+    \item \textbf{Certifications}: Full Stack Data Science with GenAI (Inception BD) $|$ Complete Data Science, ML, DL, NLP Bootcamp (Udemy) $|$ SQL Intermediate \& Basic (HackerRank) $|$ Database Structures with MySQL (Meta).
+    \item \textbf{Competitive Programming \& Leadership}: Solved \textbf{500+ problems} across Codeforces (\textit{The\_phoenix}, rating: 1133), LeetCode, and HackerRank $|$ \textbf{General Secretary}, Cox's Bazar Student Forum, CUET.
+  }
+\end{itemize}
+
+\end{document}

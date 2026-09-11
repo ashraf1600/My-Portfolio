@@ -1,0 +1,210 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[left=0.55in,right=0.55in,top=0.45in,bottom=0.45in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{Calibri}
+\usepackage{fontawesome5}
+
+% Colors
+\definecolor{primary}{HTML}{0b4f9c}
+\definecolor{charcoal}{HTML}{222222}
+\definecolor{subtext}{HTML}{444444}
+
+% Section format
+\titleformat{\section}{
+  \vspace{-3pt}\raggedright\large\bfseries\color{primary}
+}{}{0em}{\uppercase}[\color{primary}\titlerule \vspace{-2pt}]
+
+\newcommand{\projectEntry}[4]{
+  \vspace{3pt}
+  \noindent\textbf{\color{primary}#1} \hfill \href{#3}{\color{primary}\textbf{\faGithub~GitHub}} \\
+  \noindent\textit{\footnotesize #2}
+  \begin{itemize}[leftmargin=12pt, topsep=1pt, itemsep=1.5pt]
+    #4
+  \end{itemize}
+}
+
+\newcommand{\experienceEntry}[5]{
+  \vspace{3pt}
+  \noindent\textbf{\large #1} \hfill \textbf{\small #2} \\
+  \noindent\textit{\small #3} \hfill \textit{\small #4}
+  \begin{itemize}[leftmargin=12pt, topsep=1pt, itemsep=1.5pt]
+    #5
+  \end{itemize}
+}
+
+\pagestyle{empty}
+
+\begin{document}
+
+%----------HEADER----------
+\begin{center}
+    {\Huge \textbf{Ashraful Islam}} \\[4pt]
+    \small \textbf{\color{charcoal}AI Engineer $|$ Machine Learning \& DataOps Intern $|$ Generative AI \& Agentic Systems} \\[3pt]
+    \small
+    \faMapMarker*~Chittagong, Bangladesh (Open to Relocation / Pune) \ $|$ \ 
+    \faPhone*~+8801935188137 \ $|$ \ 
+    \faEnvelope~\href{mailto:ashrafdcc1502@gmail.com}{ashrafdcc1502@gmail.com} \\[2pt]
+    \faLinkedin~\href{https://www.linkedin.com/in/ashraful-islam-a31268226/}{ashraful-islam} \ $|$ \ 
+    \faGithub~\href{https://github.com/ashraf1600}{github.com/ashraf1600} \ $|$ \ 
+    \faGlobe~\href{https://ashraf1600.github.io}{Portfolio} \ $|$ \ 
+    \faGraduationCap~\href{https://scholar.google.com/citations?user=ashraf1600}{Google Scholar}
+\end{center}
+
+\vspace{-6pt}
+
+%-----------SUMMARY-----------
+\section{Professional Summary}
+\small{
+Aspiring \textbf{AI Engineer} and CSE undergraduate at CUET with research publications in \textbf{RAG, Agentic AI, and Computer Vision}, and industry experience in \textbf{Machine Learning \& DataOps at Poridhi.io}. Proficient in \textbf{Python}, \textbf{Generative AI}, \textbf{Agentic AI (LangChain, LangGraph)}, \textbf{LLM Fine-Tuning}, and \textbf{MLOps (Docker, FastAPI, CI/CD)}. Proven track record of architecting scalable intelligent data pipelines, optimizing inference endpoints, and delivering production-ready AI systems.
+}
+
+%-----------WORK EXPERIENCE-----------
+\section{Work Experience}
+\experienceEntry
+  {Poridhi.io}{Dhaka, Bangladesh (Hybrid)}
+  {Machine Learning \& DataOps Intern}{August 2026 -- Present}
+  {
+    \item Engineered end-to-end automated \textbf{DataOps pipelines} for data ingestion, quality validation, and feature preprocessing, supporting scalable machine learning model training workflows.
+    \item Developed and containerized intelligent AI microservices and RESTful inference endpoints using \textbf{Python}, \textbf{FastAPI}, and \textbf{Docker}, ensuring high availability and low latency.
+    \item Implemented \textbf{MLOps} workflows, including experiment tracking, Dockerized reproducible runtime environments, and automated CI/CD deployment pipelines for model artifacts.
+    \item Researched and integrated emerging \textbf{GenAI} and \textbf{Agentic AI} frameworks (LangChain, LLM APIs) for internal automation and intelligent developer tools.
+  }
+
+%-----------EDUCATION-----------
+\section{Education}
+\vspace{2pt}
+\noindent\textbf{Chittagong University of Engineering and Technology (CUET)} \hfill \textbf{Chittagong, Bangladesh} \\
+\textit{B.Sc. in Computer Science and Engineering -- CGPA: 3.52 / 4.00 (122 Credits Completed)} \hfill \textit{2023 -- Present}
+\begin{itemize}[leftmargin=12pt, topsep=1pt, itemsep=1.5pt]
+  \item \textbf{Undergraduate Thesis}: \textit{BondhuAI-BN: Culturally-Aware Bengali Mental Health Support via Scoped Multi-Agent RAG with Domain-Adaptive Fine-Tuning}.
+\end{itemize}
+
+\vspace{2pt}
+\noindent\textbf{Dhaka City College} \hfill \textbf{Dhaka, Bangladesh} \\
+\textit{Higher Secondary Certificate (HSC) -- Science -- GPA: 5.00 / 5.00} \hfill \textit{2019 -- 2021}
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=12pt, label={$\bullet$}, topsep=1pt, itemsep=2pt]
+  \small{
+    \item \textbf{Programming Languages}: Python, C++, C, JavaScript, SQL, C\#
+    \item \textbf{Generative AI \& LLMs}: Agentic AI, LangChain, LangGraph, Multi-Agent Systems, RAG, Prompt Engineering, LLM Fine-Tuning (LoRA), Vector DBs (FAISS, Chroma), Hugging Face, Gemini API
+    \item \textbf{Machine Learning \& Deep Learning}: PyTorch, TensorFlow, Scikit-Learn, XGBoost, Computer Vision (Vision Transformers/DeiT), NLP, Reinforcement Learning (DQN), Explainable AI (SHAP)
+    \item \textbf{MLOps \& DataOps}: Docker, FastAPI, MLflow, CI/CD Pipelines, Data Engineering, Optuna, Model Deployment, Linux, Git/GitHub
+    \item \textbf{Backend \& Databases}: Django, Django REST Framework, PostgreSQL, MySQL, SQLite, MongoDB, RESTful APIs, React
+  }
+\end{itemize}
+
+%-----------FEATURED AI/ML PROJECTS (PAGE 1)-----------
+\section{Featured AI / ML Projects}
+
+\projectEntry
+  {BondhuAI-BN: Scoped Multi-Agent RAG \& Fine-Tuning}
+  {Tech: Python, LangChain, LangGraph, LoRA, Hugging Face, PyTorch, FastAPI}
+  {https://github.com/ashraf1600}
+  {
+    \item Architected a culturally-aware Bengali mental health counseling support system utilizing an \textbf{Agentic AI} multi-agent framework for intent routing, empathetic response synthesis, and safety guardrails.
+    \item Implemented domain-adaptive fine-tuning (LoRA) on open-source LLMs and integrated scoped vector retrieval over domain corpora to minimize hallucinations and enhance contextual relevance.
+  }
+
+\projectEntry
+  {CCMK-RAG: Content-Conditioned Watermarked RAG}
+  {Tech: Python, PyTorch, Transformers, FAISS, LangChain, RAG Pipelines}
+  {https://github.com/ashraf1600}
+  {
+    \item Developed a passage-level attribution framework using content-conditioned multi-key watermarking in Retrieval-Augmented Generation to verify source text provenance in LLM outputs.
+    \item Achieved high watermark recovery and attribution precision across benchmark document collections; accepted for presentation at \textbf{IEEE OMLET 2026}.
+  }
+
+\newpage
+
+%-----------PAGE 2: MORE PROJECTS, PUBLICATIONS, CERTIFICATIONS-----------
+\section{Featured AI / ML \& Engineering Projects (Continued)}
+
+\projectEntry
+  {Personal AI Assistant: Agentic Workflows \& Automation}
+  {Tech: Gemini API, LangChain, Streamlit, OOP Architecture, Vector Search, Tool Calling}
+  {https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main}
+  {
+    \item Built an interactive AI assistant featuring multi-turn conversational memory, external tool integration, and document search leveraging Gemini API and LangChain.
+    \item Designed with extensible OOP patterns, enabling automated task execution, query routing, and real-time streaming responses in a clean Streamlit interface.
+  }
+
+\projectEntry
+  {Intelligent Traffic Light Control via Reinforcement Learning}
+  {Tech: Python, Deep Q-Networks (DQN), SUMO Simulator, PyTorch/TensorFlow, NumPy}
+  {https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning}
+  {
+    \item Formulated an adaptive traffic signal control system using Deep Q-Networks (DQN) integrated with the SUMO simulator to dynamically adjust phase duration based on queue density.
+    \item Reduced average vehicle wait times and urban intersection congestion by over 25\% compared to static signal timing baselines.
+  }
+
+\projectEntry
+  {E-Commerce Fraud Detection Platform}
+  {Tech: Python, Scikit-Learn, XGBoost, SMOTE-Tomek, Optuna, Flask, Docker}
+  {https://github.com/ashraf1600/Fraud-Detection-ML}
+  {
+    \item Developed an end-to-end fraud classification engine handling extreme tabular class imbalance via SMOTE-Tomek resampling and Optuna hyperparameter optimization.
+    \item Packaged model pipelines into a containerized Flask REST API delivering sub-100ms real-time transaction scoring.
+  }
+
+\projectEntry
+  {ResQNet: Real-Time Disaster Resource Coordination Platform}
+  {Tech: Django REST Framework, React, PostgreSQL, Docker, Concurrency Control}
+  {https://github.com/Towhid454/Resqnet/tree/backend}
+  {
+    \item Engineered a disaster resource coordination platform with an auditable need-lifecycle (pending $\rightarrow$ open $\rightarrow$ committed $\rightarrow$ resolved) and atomic conditional updates to prevent race conditions.
+    \item Enforced server-side role-based access control (RBAC) and packaged services with Docker Compose for production deployment.
+  }
+
+%-----------RESEARCH PUBLICATIONS-----------
+\section{Research Publications}
+\begin{itemize}[leftmargin=12pt, topsep=1pt, itemsep=2.5pt]
+  \small{
+    \item \textbf{CCMK-RAG: Content-Conditioned Multi-Key Watermarking for Passage-Level Attribution in Retrieval-Augmented Generation} \\
+    Towhidul Islam, \textbf{Ashraful Islam}, Mahfuzul Hoq Chowdhury -- \textit{IEEE OMLET 2026} (\textbf{Accepted}).
+    
+    \item \textbf{Section-Aware Retrieval-Augmented Generation for Bangladesh Labour Law Question Answering: A Comparative Study} \\
+    Towhidul Islam, \textbf{Ashraf-Ul-Islam}, Mahfuzulhoq Chowdhury -- \textit{IEEE OMLET 2026} (\textbf{Accepted}).
+    
+    \item \textbf{An Explainable Machine Learning and Ensemble Voting Classifier for Cyber Attack Detection in Highly Imbalanced IoT Networks} \\
+    \textbf{Ashraful Islam}, Towhidul Islam, Dr. Mahfuzulhoq Chowdhury -- \textit{IEEE 2026 3rd International Conference on Data Science and Business Systems (ICDSBS 2026)} (\textbf{Accepted}).
+    
+    \item \textbf{Vision Transformer-Based Detection of Counterfeit Bangladeshi Banknotes Using the DeiT-Tiny Architecture} \\
+    \textbf{Ashraful Islam}, Dr. Mahfuzulhoq Chowdhury, Towhidul Islam -- \textit{International Conference on Circuit Power \& Computing Technologies (ICCPCT-2026)} (\textbf{Accepted}).
+    
+    \item \textbf{A Double Layer Stacking Classifier Based Explainable Tax Evasion Fraud Prediction with Optuna and SMOTE-Tomek} \\
+    Dr. Mahfuzulhoq Chowdhury, Saklain Ahmed, \textbf{Ashraful Islam} -- \textit{1st International Conference on Next-Generation Electrical \& Electronics, Computer Systems, and Technologies (iCONEECT 2026)} (\textbf{Submitted}).
+    
+    \item \textbf{A Traffic Rules Violation Prediction Scheme Based on Hybrid Stacking Ensemble Classifier and SHAP Analysis} \\
+    Dr. Mahfuzul Hoq Chowdhury, Oarisa Rebayet, Ifath Jeba Chowdhury, \textbf{Ashraf-ul-Islam}, Isnat Mehrin Sami, Snaholata Mondal -- \textit{2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence \& Networking (QPAIN)} (\textbf{Copyright Confirmed}).
+  }
+\end{itemize}
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications \& Training}
+\begin{itemize}[leftmargin=12pt, topsep=1pt, itemsep=1.5pt]
+  \small{
+    \item \textbf{Full Stack Data Science with Generative AI Bootcamp 1.0} -- Inception BD
+    \item \textbf{Complete Data Science, Machine Learning, DL, NLP Bootcamp} -- Udemy (\textit{October 2025})
+    \item \textbf{SQL (Intermediate) \& SQL (Basic)} -- HackerRank (\textit{December 2024, Valid to 2034})
+    \item \textbf{Database Structures and Management with MySQL} -- Meta Professional Certificate
+    \item \textbf{Exploratory Data Analysis in Python} -- Udemy (\textit{February 2026})
+  }
+\end{itemize}
+
+%-----------COMPETITIVE PROGRAMMING & LEADERSHIP-----------
+\section{Competitive Programming \& Leadership}
+\begin{itemize}[leftmargin=12pt, topsep=1pt, itemsep=1.5pt]
+  \small{
+    \item \textbf{Competitive Programming}: Solved \textbf{500+ problems} across platforms -- Codeforces (\textit{The\_phoenix}, Max Rating: 1133, 335+ solved), LeetCode (\textit{noobashraf21}, 120+ solved), and HackerRank.
+    \item \textbf{Leadership \& Extracurriculars}: \textbf{General Secretary} -- Cox's Bazar Student Forum, CUET; \textbf{Coordinator} -- Cox's Bazar Student Society. Organized tech seminars, student welfare initiatives, and academic mentoring.
+  }
+\end{itemize}
+
+\end{document}

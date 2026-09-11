@@ -145,11 +145,11 @@ export const experiences = [
   {
     id: 0,
     img: '/image.png',
-    role: 'Machine Learning Intern',
+    role: 'Machine Learning & DataOps Intern',
     company: 'Poridhi.io',
     date: 'August 2026 – Present',
-    desc: 'Working as an ML Intern at Poridhi.io, contributing to machine learning model development, AI research, and building intelligent data-driven pipelines. Collaborating with engineers and researchers on applied ML problems in a fast-paced product environment.',
-    skills: [],
+    desc: 'Working in the ML/DataOps team at Poridhi.io, engineering automated data ingestion, validation, and feature preprocessing pipelines for machine learning workflows. Developing containerized AI microservices and inference endpoints with FastAPI and Docker, implementing MLOps tracking and CI/CD automation, and prototyping Agentic AI and LLM workflows.',
+    skills: ['Python', 'Machine Learning', 'DataOps', 'MLOps', 'FastAPI', 'Docker', 'Agentic AI', 'CI/CD'],
   },
 ];
 
@@ -185,9 +185,62 @@ export const education = [
 ];
 
 export const projects = [
-  // Newest & Most Advanced Work
+  // AI & Machine Learning (Featured & Top Priority)
   {
     id: 0,
+    title: "Personal AI Assistant",
+    description: "An intelligent personal AI assistant and agentic workflow engine built with Gemini API, LangChain, Streamlit, and OOP principles. Features multi-turn conversational AI capabilities, dynamic tool execution, memory retention, and document querying.",
+    image: Personal_AI,
+    screenshots: [Personal_AI],
+    tags: ["Gemini API", "LangChain", "Agentic AI", "Streamlit", "Python", "OOP"],
+    github: "https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main",
+    webapp: "https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main",
+    featured: true,
+    highlights: [
+      "Conversational Agentic AI powered by Gemini API & LangChain",
+      "Object-oriented modular architecture for dynamic tool calling",
+      "Context-aware document retrieval and streaming inference",
+    ],
+    category: ["Machine Learning", "Academic Project"],
+  },
+  {
+    id: 1,
+    title: "Traffic Light Control with RL",
+    description: "An intelligent urban traffic light control system using Deep Reinforcement Learning (DQN) integrated with the SUMO traffic simulator. Dynamically adjusts signal phases to minimize vehicular wait times and alleviate congestion.",
+    image: Traffic,
+    screenshots: [Traffic],
+    tags: ["Reinforcement Learning", "DQN", "SUMO Simulator", "PyTorch", "Python"],
+    github: "https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning",
+    webapp: "https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning",
+    featured: true,
+    highlights: [
+      "Deep Q-Learning (DQN) agent for real-time signal control",
+      "Adaptive timing reducing intersection wait times by >25%",
+      "Integrated with SUMO micro-traffic simulator for urban mobility",
+    ],
+    category: ["Machine Learning", "Academic Project"],
+  },
+  {
+    id: 2,
+    title: "E-commerce Fraud Detection",
+    description: "An end-to-end machine learning system for real-time e-commerce transaction fraud detection. Handles extreme class imbalance using SMOTE-Tomek, tunes hyperparameters via Optuna, and serves sub-100ms predictions through a containerized Flask API.",
+    image: Fraud,
+    screenshots: [Fraud, Fraud],
+    tags: ["Machine Learning", "XGBoost", "SMOTE-Tomek", "Flask", "Docker", "Python"],
+    github: "https://github.com/ashraf1600/Fraud-Detection-ML",
+    webapp: "https://github.com/ashraf1600/Fraud-Detection-ML",
+    featured: true,
+    highlights: [
+      "Extreme class imbalance handled with SMOTE-Tomek & Optuna",
+      "Containerized Flask REST API delivering real-time scoring",
+      "Robust evaluation with ROC-AUC and Precision-Recall metrics",
+    ],
+    category: ["Machine Learning", "Personal Project"],
+  },
+
+  // Distributed Systems & Full-Stack Engineering
+  {
+    id: 3,
     title: "ResQNet",
     description: "A real-time disaster and emergency resource coordination platform connecting Requesters, Responders, and Coordinators. Features an auditable need-lifecycle (pending → open → committed → resolved), atomic conditional updates to prevent duplicate commitments, server-side role enforcement, and a locked API contract enabling parallel frontend/backend development.",
     image: ResQNet,
@@ -205,7 +258,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 1,
+    id: 4,
     title: "Stacks — A Library Management System",
     description: "A modular-monolith library management system built with Django + DRF, built as hackathon rehearsal practice. Implements concurrency-safe borrow/return via row-level locking (select_for_update), role-based access control, book reservations with waitlisting, and in-app notifications. 35/35 tests passing against live PostgreSQL, fully containerized and deployed.",
     image: Stacks,
@@ -223,7 +276,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 2,
+    id: 5,
     title: "ExportMart",
     description: "A full-stack e-commerce platform with a Django REST Framework API and a React + Vite storefront. Features product/category browsing, cart and wishlist workflows, JWT authentication via Djoser, checkout and order management, product reviews, and Swagger/Redoc API docs. Fully Dockerized for local dev and deployment.",
     image: ExportMart,
@@ -231,7 +284,7 @@ export const projects = [
     tags: ["Django REST Framework", "React", "Vite", "Tailwind CSS", "Docker", "E-commerce"],
     github: "https://github.com/ashraf1600/ExportMart-Full",
     webapp: "https://github.com/ashraf1600/ExportMart-Full",
-    featured: true,
+    featured: false,
     highlights: [
       "JWT authentication with Djoser for secure sessions",
       "Cart, wishlist, checkout, and order management",
@@ -241,7 +294,7 @@ export const projects = [
     category: ["Web Development", "Personal Project"],
   },
   {
-    id: 3,
+    id: 6,
     title: "CSF-CUET — Cox's Bazar Student Forum",
     description: "A community platform for Cox's Bazar district students and alumni at CUET. Includes user registration with admin approval, a public community feed with posts/likes/comments, event and announcement management, committee/department organization, and a full Django admin moderation panel. Live in production on Render.",
     image: CoxsBazar,
@@ -249,7 +302,7 @@ export const projects = [
     tags: ["Django", "Bootstrap", "SQLite", "Community Platform"],
     github: "https://github.com/ashraf1600/Cox-s-Bazar-Student-Forum-CUET",
     webapp: "https://cox-s-bazar-student-forum-cuet.onrender.com",
-    featured: true,
+    featured: false,
     highlights: [
       "Admin-approved registration and moderation pipeline",
       "Public feed with posts, likes, and comments",
@@ -258,10 +311,8 @@ export const projects = [
     ],
     category: ["Web Development", "Personal Project"],
   },
-
-  // Web Development
   {
-    id: 4,
+    id: 7,
     title: "CUET Hospital Management System",
     description: "A comprehensive hospital management system built for CUET. Features patient registration, appointment scheduling, doctor management, medical records tracking, and administrative functions for efficient healthcare facility operations.",
     image: CUET_Hos,
@@ -278,7 +329,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 5,
+    id: 8,
     title: "CUET Peer Delivery",
     description: "A peer-to-peer delivery platform designed specifically for CUET students. Built with the MERN stack, this application enables students to send and receive items within the campus community safely and efficiently.",
     image: CUET_Peer,
@@ -295,7 +346,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 6,
+    id: 9,
     title: "MultiMart E-commerce",
     description: "A dynamic e-commerce marketplace built with Django and Bootstrap. Features product browsing, detailed views, user authentication, shopping cart functionality, and a seamless checkout process for an intuitive online shopping experience.",
     image: Multi,
@@ -310,59 +361,6 @@ export const projects = [
       "Streamlined checkout experience",
     ],
     category: "Web Development",
-  },
-
-  // Machine Learning / AI
-  {
-    id: 7,
-    title: "Personal AI Assistant",
-    description: "An intelligent personal AI assistant built with Gemini API, Streamlit, and OOP principles. Features conversational AI capabilities, task automation, and a clean Streamlit interface for seamless user interaction.",
-    image: Personal_AI,
-    screenshots: [Personal_AI],
-    tags: ["Gemini API", "Streamlit", "Python", "AI", "OOP"],
-    github: "https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main",
-    webapp: "https://github.com/ashraf1600/Personal-AI-Assistant-Gemini-API-OOP-Streamlit-/tree/main",
-    featured: false,
-    highlights: [
-      "Conversational AI powered by Gemini API",
-      "Object-oriented architecture for extensibility",
-      "Clean Streamlit UI for instant interaction",
-    ],
-    category: "Machine Learning",
-  },
-  {
-    id: 8,
-    title: "Traffic Light Control with RL",
-    description: "An intelligent traffic light control system using Reinforcement Learning. Optimizes traffic flow, reduces congestion, and improves urban mobility through adaptive signal timing.",
-    image: Traffic,
-    screenshots: [Traffic],
-    tags: ["Reinforcement Learning", "AI", "Smart City", "Python"],
-    github: "https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning",
-    webapp: "https://github.com/ashraf1600/Traffic_Light_Control_using_Reinforcement_Learning",
-    featured: false,
-    highlights: [
-      "Reinforcement learning agent for signal control",
-      "Adaptive timing to reduce congestion",
-      "Urban mobility optimization for smart cities",
-    ],
-    category: "Machine Learning",
-  },
-  {
-    id: 9,
-    title: "E-commerce Fraud Detection",
-    description: "Machine learning-based fraud detection system for e-commerce transactions. Utilizes supervised learning algorithms to identify fraudulent activities and protect customers.",
-    image: Fraud,
-    screenshots: [Fraud, Fraud],
-    tags: ["Supervised Learning", "Flask", "Python", "ML"],
-    github: "https://github.com/ashraf1600/Fraud-Detection-ML",
-    webapp: "https://github.com/ashraf1600/Fraud-Detection-ML",
-    featured: false,
-    highlights: [
-      "Supervised learning classifiers on transaction data",
-      "Flask API for real-time scoring",
-      "Productionized fraud alerts for end users",
-    ],
-    category: "Machine Learning",
   },
 ];
 

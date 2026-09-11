@@ -40,10 +40,10 @@ const itemVariants = {
 };
 
 const focusAreas = [
-  { num: '01', label: 'ML Research' },
-  { num: '02', label: 'Full-Stack Dev' },
-  { num: '03', label: 'AI Engineering' },
-  { num: '04', label: 'Django & React' },
+  { num: '01', label: 'GenAI & LLMs' },
+  { num: '02', label: 'ML & DataOps' },
+  { num: '03', label: 'Agentic AI' },
+  { num: '04', label: 'AI Engineering' },
 ];
 
 const About = () => {
@@ -129,13 +129,13 @@ const About = () => {
 
           {/* Typing Effect */}
           <motion.div variants={itemVariants} className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-6 min-h-[2.5rem]">
-            <span className="text-gray-500 dark:text-gray-400">I'm a </span>
+            <span className="text-gray-500 dark:text-gray-400">I'm an </span>
             <ReactTypingEffect
               text={[
-                'CSE Student',
-                'ML Researcher',
-                'AI Engineer Aspirant',
-                'Django Developer',
+                'AI Engineer',
+                'ML & DataOps Intern',
+                'GenAI Researcher',
+                'Applied ML Engineer',
               ]}
               speed={100}
               eraseSpeed={50}
@@ -163,12 +163,10 @@ const About = () => {
 
           {/* Description */}
           <motion.p variants={itemVariants} className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            I'm a passionate <span className="text-blue-700 dark:text-blue-300 font-medium">Machine Learning</span> researcher and{' '}
-            <span className="text-blue-700 dark:text-blue-300 font-medium">Generative AI</span> enthusiast with a foundation in Software Engineering.
-            Currently expanding my expertise in full-stack development using{' '}
-            <span className="text-blue-700 dark:text-blue-300 font-medium">Django, DRF</span> and{' '}
-            <span className="text-blue-700 dark:text-blue-300 font-medium">React</span>, combining web development
-            skills with AI technologies to create intelligent applications.
+            I'm an <span className="text-blue-700 dark:text-blue-300 font-medium">AI Engineer</span> and{' '}
+            <span className="text-blue-700 dark:text-blue-300 font-medium">Machine Learning & DataOps Intern</span> at Poridhi.io.
+            Passionate about <span className="text-blue-700 dark:text-blue-300 font-medium">Generative AI</span>,{' '}
+            <span className="text-blue-700 dark:text-blue-300 font-medium">Agentic Systems</span>, and production MLOps, combining published research in RAG and computer vision with scalable engineering to build intelligent end-to-end applications.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -187,7 +185,7 @@ const About = () => {
               className="inline-flex items-center gap-2 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 backdrop-blur-sm border border-gray-300 dark:border-white/15 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
             >
               <FaDownload />
-              View Resume
+              View CV / Resume
             </a>
           </motion.div>
 
