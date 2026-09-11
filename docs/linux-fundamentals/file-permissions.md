@@ -2,79 +2,64 @@
 
 ## কী এবং কেন
 
-Linux-এ প্রতিটি file বা directory তার নিজস্ব permission set রাখে: owner, group, এবং others। এই permission গুলো ঠিক রাখলে আপনি team members কে ঠিকন মতো access দিতে পারেন, কিন্তু system security নষ্ট করেন না।
+Linux-এ প্রতিটি file এবং directory তার নিজস্ব access policy রাখে: owner, group, এবং others। এই permission ঠিক রাখলে একই সার্ভারে একাধিক team কাজ করতে পারে, কিন্তু অপ্রয়োজনীয় access ছড়িয়ে পড়ে না।
 
-File permissions মূলত ৩ ধরনের:
-- `r` = read
-- `w` = write
-- `x` = execute
+`umask`, `chmod`, আর `setfacl`—এই তিনটি tool মূলত permission control করে। `umask` নতুন file/dir-এর default permission ঠিক করে, `chmod` existing file-এর permission বদলে, আর `setfacl` একটার বেশি user/group-কে আলাদা access দেয় যখন base model যথেষ্ট হয় না।
 
-এগুলোর combination owner/group/others এর জন্য আলাদা হতে পারে।
+## মূল Command/Concept
 
-উদাহরণ:
+| Command/Concept | কী করে | উদাহরণ |
+|-----------------|---------|--------|
+| `ls -l` | permission string দেখা | `ls -l app.sh` |
+| `chmod` | file permission বদলানো | `chmod 755 app.sh` |
+| `umask` | default permission নির্ধারণ | `umask 022` |
+| `chown` | owner বদলানো | `sudo chown dev:dev app.sh` |
+| `chgrp` | group বদলানো | `sudo chgrp dev app.sh` |
+| `setfacl` | ACL-based fine-grained permission | `setfacl -m g:ops:rx app.sh` |
+| `getfacl` | ACL verify করা | `getfacl app.sh` |
+
+### Permission bits
+
+```text
+r = read
+w = write
+x = execute
+```
+
+Permission string সাধারণত এই format-এ থাকে:
 
 ```bash
 -rwxr-xr--
 ```
 
-এই string মানে:
-- owner: `rwx`
-- group: `r-x`
-- others: `r--`
+আর্থাৎ:
+- owner = `rwx`
+- group = `r-x`
+- others = `r--`
 
-## মূল Command/Concept
-
-| Command/Concept | ব্যবহার | উদাহরণ |
-|-----------------|--------|--------|
-| `ls -l` | file permissions দেখা | `ls -l /etc/passwd` |
-| `chmod` | permission change করা | `chmod 755 script.sh` |
-| `umask` | default permissions নির্ধারণ | `umask 022` |
-| `chown` | owner change করা | `sudo chown ashraf:dev app.log` |
-| `chgrp` | group change করা | `sudo chgrp dev app.log` |
-| `setfacl` | advanced per-user/per-group permissions | `setfacl -m u:ashraf:rwx file.txt` |
-| `getfacl` | ACL review করা | `getfacl file.txt` |
-
-## Permission Bit বোঝা
-
-Linux-এ permission octal format সাধারণত:
+Octal format:
 
 - `7` = `rwx`
 - `6` = `rw-`
 - `5` = `r-x`
 - `4` = `r--`
-- `3` = `-wx`
-- `2` = `-w-`
-- `1` = `--x`
 - `0` = `---`
 
-### Common examples
+## ছোট, বাস্তব উদাহরণ
 
 ```bash
-chmod 755 script.sh
-# owner: rwx, group: r-x, others: r-x
-
-chmod 644 config.txt
-# owner: rw-, group: r--, others: r--
-
-chmod 700 private_dir
-# owner: rwx, group: ---, others: ---
-```
-
-## ছোট বাস্তব উদাহরণ
-
-```bash
-# ১. একটা ফাইল তৈরি করা
+# ১. ফাইল তৈরি
 cd ~
 touch app.log
 ls -l app.log
 # Output: -rw-r--r-- 1 ashraf ashraf 0 Jun 11 12:00 app.log
 
-# ২. permission বদলানো
+# ২. stricter permission সেট
 chmod 640 app.log
 ls -l app.log
 # Output: -rw-r----- 1 ashraf ashraf 0 Jun 11 12:00 app.log
 
-# ৩. script executable করা
+# ৩. executable script বানানো
 cat > deploy.sh <<'EOF'
 #!/bin/bash
 echo "Deploy started"
@@ -83,56 +68,75 @@ chmod 755 deploy.sh
 ./deploy.sh
 # Output: Deploy started
 
-# ৪. default umask পরীক্ষা
+# ৪. default umask দেখা
 umask
-# Typical output: 0022
+# সাধারণ output: 0022
 
-# ৫. stricter default permissions
+# ৫. stricter default permission সেট
 umask 027
 touch report.txt
 ls -l report.txt
 # Output: -rw-r-----
 ```
 
-## Permission Model Visualization
+## umask কীভাবে কাজ করে?
+
+`umask` নতুন file/dir create করার সময় default permission থেকে কিছু bits remove করে।
 
 ```text
-User/Owner      Group            Others
-   rwx             r-x              r--
-    |               |                |
-    +--- owner access to file/dir
-    +--- group access
-    +--- everyone else
+Normal max for file: 666
+Normal max for dir : 777
+
+umask 022
+=> file: 644 => rw-r--r--
+=> dir : 755 => rwxr-xr-x
 ```
+
+কেন এটা গুরুত্বপূর্ণ?
+- new files automatically safe default পায়
+- everyoneকে `777` বা `666` দিয়ে ছেড়ে দেয় না
+- team project-এ consistency থাকে
 
 ## ACL (Advanced Permission)
 
-`chmod` শুধু owner, group, এবং others manage করে। কিন্তু অনেক সময় একই file-এ একাধিক user/group আলাদা access চাইতে হয়। সেই সময় `setfacl` লাগে।
+`chmod`-এ শুধু one owner, one group, and others থাকে। কিন্তু অনেক project-এ একই directory-তে multiple group ভিন্ন access পায়। তখন `setfacl` লাগে।
 
 ```bash
-# install ACL support
+# ACL support install
 sudo apt update
 sudo apt install -y acl
 
-# example: Ashraf কে read/write access দিন
+# user-specific access
 sudo setfacl -m u:ashraf:rw /shared/project.txt
 
-# group access দিন
+# group-specific access
 sudo setfacl -m g:devs:r-x /shared/project.txt
 
-# verification
+# verify
 getfacl /shared/project.txt
 ```
 
+### ACL visual idea
+
+```text
+file.txt
+├── owner: rw-
+├── group: r--
+├── others: ---
+└── extra ACL entries:
+    ├── user:ashraf:rw
+    └── group:devs:r-x
+```
+
 :::warning
-`chmod`/`setfacl` ব্যবহার করার সময় access policy খুব scherp রাখুন। Sensitive files এ `777` বা `chmod -R 777` ব্যবহার করা ঠিক নয় — এটা system security খারাপ করে দেয়। Always follow the least privilege rule.
+`chmod -R 777` বা `chmod 777` ব্যবহার করবেন না। একবার ভুল permission দিলে sensitive config, secrets, বা application data public হয়ে যেতে পারে। Production environment-এ always follow least privilege.
 :::
 
 ## সংক্ষিপ্ত সারসংক্ষেপ
 
-- `ls -l` দেখলে file permission বুঝতে পারবেন
-- `chmod` দিয়ে permission change করুন; octal format (`755`, `644`, `700`) খুবই common
-- `umask` default কীভাবে file তৈরি হবে সেটি ঠিক করে
-- `chown`/`chgrp` দিয়ে owner ও group ঠিক করুন
-- `setfacl`/`getfacl` দিয়ে advanced access control apply ও verify করুন
-- Security এর জন্য `777` এড়িয়ে চলুন; minimum required permission দিন
+- `ls -l` দিয়ে file permission string দেখা যায়
+- `chmod` দিয়ে access level set করা হয়: `755`, `644`, `700` ইত্যাদি
+- `umask` default security baseline ঠিক করে
+- `chown`/`chgrp` দিয়ে owner/group নিয়ন্ত্রণ করা হয়
+- `setfacl`/`getfacl` দিয়ে advanced permission control করা হয়
+- Production-এ minimum necessary permission দিন; `777` কখনো不要
