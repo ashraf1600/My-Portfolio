@@ -179,7 +179,7 @@ const About = () => {
               Get In Touch
             </a>
             <a
-              href="/Resume_1.pdf"
+              href="/Ashraf_CV_1.1.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 backdrop-blur-sm border border-gray-300 dark:border-white/15 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
