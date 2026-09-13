@@ -345,6 +345,7 @@ export default withMermaid(
             collapsed: true,
             items: [
               { text: 'Day 09: VPC Fundamentals', link: '/aws/day-09-vpc-fundamentals' },
+              { text: 'AWS Basic Networking Lab', link: '/aws/aws-basic-networking-lab' },
               { text: 'Day 10: Firewall & Elastic IP', link: '/aws/day-10-firewall-elastic-ip' },
               { text: 'Day 11: VPC Peering', link: '/aws/day-11-vpc-peering' },
               { text: 'Day 12: Load Balancer (ALB, NLB)', link: '/aws/day-12-load-balancer' }
