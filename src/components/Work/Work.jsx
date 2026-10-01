@@ -29,6 +29,7 @@ import {
 
 const CATEGORIES = [
   "All",
+  "Client Project",
   "Web Development",
   "Machine Learning",
   "Academic Project",
@@ -91,7 +92,7 @@ const ProjectModal = ({ project, onClose }) => {
               </span>
             )}
             <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[11px] font-medium">
-              {Array.isArray(project.category) ? project.category.join(" Â· ") : project.category}
+              {Array.isArray(project.category) ? project.category.join(" • ") : project.category}
             </span>
           </div>
 
@@ -277,12 +278,18 @@ const CompactSpotlightCard = ({ project, isEven, onOpenModal }) => {
           <div>
             {/* Header badges */}
             <div className="flex items-center gap-2 mb-3 flex-wrap">
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                <HiStar size={11} /> Flagship
-              </span>
-              <span className="text-xs text-gray-400 dark:text-gray-500">â€¢</span>
+              {project.category?.includes?.("Client Project") ? (
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  <FiBookmark size={11} /> Client Project
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  <HiStar size={11} /> Flagship
+                </span>
+              )}
+              <span className="text-xs text-gray-400 dark:text-gray-500">•</span>
               <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                {Array.isArray(project.category) ? project.category.join(" Â· ") : project.category}
+                {Array.isArray(project.category) ? project.category.join(" • ") : project.category}
               </span>
             </div>
 

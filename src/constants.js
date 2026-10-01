@@ -60,6 +60,13 @@ import dccLogo from './assets/education_logo/dcc_logo.png';
 import cghsLogo from './assets/education_logo/cghs_logo.png';
 
 // Project Section Logo's
+import Flembe_Essence from './assets/work_logo/Flembe_Essence.png';
+import Flembe_Shop from './assets/work_logo/flembe/shop.png';
+import Flembe_Product from './assets/work_logo/flembe/product_detail.png';
+import Flembe_Contact from './assets/work_logo/flembe/contact.png';
+import Clinisync_Img from './assets/work_logo/Clinisync.png';
+import Clinisync_Booking from './assets/work_logo/clinisync_booking.png';
+import Clinisync_Tracker from './assets/work_logo/clinisync_tracker.png';
 import CUET_Hos from './assets/work_logo/CUET_Hos.png';
 import CUET_Peer from './assets/work_logo/CUET_Peer.png';
 import Multi from './assets/work_logo/Multi.png';
@@ -185,9 +192,47 @@ export const education = [
 ];
 
 export const projects = [
-  // AI & Machine Learning (Featured & Top Priority)
+  // Flagship Client & Healthcare Platforms (Top Priority)
   {
     id: 0,
+    title: "Flembe Essence — E-Commerce Platform",
+    description: "An elegant, production client e-commerce platform built for an affordable fashion and jewellery brand. Features dynamic catalog browsing, responsive mobile-first storefront, instant Cash on Delivery (COD) and campus delivery checkout, WhatsApp customer support, and a robust Django REST Framework backend with Cloudinary media optimization.",
+    image: Flembe_Essence,
+    screenshots: [Flembe_Essence, Flembe_Shop, Flembe_Product, Flembe_Contact],
+    tags: ["Client Project", "React 19", "Django REST Framework", "PostgreSQL", "Tailwind CSS", "TanStack Query", "Cloudinary"],
+    github: "https://github.com/ashraf1600/FLEMBE-ESSENCE",
+    webapp: "https://flembe-essence-frontend.onrender.com/",
+    featured: true,
+    highlights: [
+      "Production client e-commerce platform with elegant mobile-first shopping experience",
+      "Django REST Framework backend with JWT security & Cloudinary asset pipeline",
+      "Seamless checkout supporting Cash on Delivery (COD) and campus-specific delivery",
+      "Integrated product categories, shopping cart, and WhatsApp direct client support",
+    ],
+    category: ["Web Development", "Client Project"],
+  },
+  {
+    id: 1,
+    title: "CliniSync — Smart Clinic & Queue System",
+    description: "An enterprise-grade, bilingual (Bangla & English) hospital and doctor chamber appointment management platform. Features real-time live queue tracking with estimated wait times, doctor multi-chamber scheduling, PostgreSQL GiST exclusion concurrency protection to eliminate double-booking, and digital QR-ready chamber passes. Deployed on AWS with CloudFront CDN and S3.",
+    image: Clinisync_Img,
+    screenshots: [Clinisync_Img, Clinisync_Booking, Clinisync_Tracker],
+    tags: ["FastAPI", "React", "TypeScript", "PostgreSQL", "AWS CloudFront", "Tailwind CSS", "Docker", "Healthcare"],
+    github: "https://github.com/ashraf1600/Clinisync",
+    webapp: "https://d15yucoed6jmf7.cloudfront.net/#home",
+    featured: true,
+    highlights: [
+      "Real-time live queue tracker with dynamic token updates & estimated wait time",
+      "PostgreSQL GiST exclusion constraint preventing double-booking race conditions",
+      "Multi-chamber doctor scheduling with digital chamber passes & printable receipts",
+      "Production AWS deployment with CloudFront CDN caching, S3, Docker, and CI/CD",
+    ],
+    category: ["Web Development", "Academic Project"],
+  },
+
+  // AI & Machine Learning (Featured)
+  {
+    id: 2,
     title: "Personal AI Assistant",
     description: "An intelligent personal AI assistant and agentic workflow engine built with Gemini API, LangChain, Streamlit, and OOP principles. Features multi-turn conversational AI capabilities, dynamic tool execution, memory retention, and document querying.",
     image: Personal_AI,
@@ -204,7 +249,7 @@ export const projects = [
     category: ["Machine Learning", "Academic Project"],
   },
   {
-    id: 1,
+    id: 3,
     title: "Traffic Light Control with RL",
     description: "An intelligent urban traffic light control system using Deep Reinforcement Learning (DQN) integrated with the SUMO traffic simulator. Dynamically adjusts signal phases to minimize vehicular wait times and alleviate congestion.",
     image: Traffic,
@@ -221,7 +266,7 @@ export const projects = [
     category: ["Machine Learning", "Academic Project"],
   },
   {
-    id: 2,
+    id: 4,
     title: "E-commerce Fraud Detection",
     description: "An end-to-end machine learning system for real-time e-commerce transaction fraud detection. Handles extreme class imbalance using SMOTE-Tomek, tunes hyperparameters via Optuna, and serves sub-100ms predictions through a containerized Flask API.",
     image: Fraud,
@@ -240,7 +285,7 @@ export const projects = [
 
   // Distributed Systems & Full-Stack Engineering
   {
-    id: 3,
+    id: 5,
     title: "ResQNet",
     description: "A real-time disaster and emergency resource coordination platform connecting Requesters, Responders, and Coordinators. Features an auditable need-lifecycle (pending → open → committed → resolved), atomic conditional updates to prevent duplicate commitments, server-side role enforcement, and a locked API contract enabling parallel frontend/backend development.",
     image: ResQNet,
@@ -258,7 +303,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 4,
+    id: 6,
     title: "Stacks — A Library Management System",
     description: "A modular-monolith library management system built with Django + DRF, built as hackathon rehearsal practice. Implements concurrency-safe borrow/return via row-level locking (select_for_update), role-based access control, book reservations with waitlisting, and in-app notifications. 35/35 tests passing against live PostgreSQL, fully containerized and deployed.",
     image: Stacks,
@@ -276,7 +321,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 5,
+    id: 7,
     title: "ExportMart",
     description: "A full-stack e-commerce platform with a Django REST Framework API and a React + Vite storefront. Features product/category browsing, cart and wishlist workflows, JWT authentication via Djoser, checkout and order management, product reviews, and Swagger/Redoc API docs. Fully Dockerized for local dev and deployment.",
     image: ExportMart,
@@ -294,7 +339,7 @@ export const projects = [
     category: ["Web Development", "Personal Project"],
   },
   {
-    id: 6,
+    id: 8,
     title: "CSF-CUET — Cox's Bazar Student Forum",
     description: "A community platform for Cox's Bazar district students and alumni at CUET. Includes user registration with admin approval, a public community feed with posts/likes/comments, event and announcement management, committee/department organization, and a full Django admin moderation panel. Live in production on Render.",
     image: CoxsBazar,
@@ -312,7 +357,7 @@ export const projects = [
     category: ["Web Development", "Personal Project"],
   },
   {
-    id: 7,
+    id: 9,
     title: "CUET Hospital Management System",
     description: "A comprehensive hospital management system built for CUET. Features patient registration, appointment scheduling, doctor management, medical records tracking, and administrative functions for efficient healthcare facility operations.",
     image: CUET_Hos,
@@ -329,7 +374,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 8,
+    id: 10,
     title: "CUET Peer Delivery",
     description: "A peer-to-peer delivery platform designed specifically for CUET students. Built with the MERN stack, this application enables students to send and receive items within the campus community safely and efficiently.",
     image: CUET_Peer,
@@ -346,7 +391,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 9,
+    id: 11,
     title: "MultiMart E-commerce",
     description: "A dynamic e-commerce marketplace built with Django and Bootstrap. Features product browsing, detailed views, user authentication, shopping cart functionality, and a seamless checkout process for an intuitive online shopping experience.",
     image: Multi,

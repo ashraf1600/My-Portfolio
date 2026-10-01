@@ -47,7 +47,7 @@ const FloatingChat = () => {
       const lower = userText.toLowerCase();
 
       if (lower.includes("project") || lower.includes("work")) {
-        reply = "Ashraf has built ResQNet, Stacks, ExportMart, and many full-stack & ML apps! Check the Projects section for live demos.";
+        reply = "Ashraf has built Flembe Essence (client e-commerce), CliniSync (smart clinic queue & booking), ResQNet, Stacks, and many AI/ML & full-stack apps! Check the Projects section for live demos.";
       } else if (lower.includes("research") || lower.includes("paper")) {
         reply = "Ashraf has peer-reviewed research accepted at IEEE & international conferences covering explainable IoT security, vision transformers, and fraud detection!";
       } else if (lower.includes("contact") || lower.includes("email") || lower.includes("hire")) {
