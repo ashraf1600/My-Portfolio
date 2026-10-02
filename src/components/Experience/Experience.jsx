@@ -44,7 +44,7 @@ const Experience = () => {
               {/* Timeline dot with logo */}
               <div className="relative flex-shrink-0 z-10">
                 <motion.div 
-                  className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-lg shadow-blue-500/10 flex items-center justify-center overflow-hidden p-2 group-hover:border-blue-400 group-hover:scale-105 transition-all duration-300"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-slate-200 dark:border-white/20 shadow-md shadow-blue-500/10 flex items-center justify-center overflow-hidden p-2 group-hover:border-blue-400 group-hover:scale-105 transition-all duration-300"
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
