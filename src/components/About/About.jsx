@@ -145,8 +145,9 @@ const About = () => {
 
           {/* Bio Description */}
           <motion.p variants={itemVariants} className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-            CSE undergrad at <strong className="text-slate-900 dark:text-white font-semibold">CUET</strong> and{' '}
-            <strong className="text-blue-600 dark:text-blue-400 font-semibold">ML & DataOps Intern</strong> at Poridhi.io.
+            CSE undergrad at <strong className="text-slate-900 dark:text-white font-semibold">CUET</strong>,{' '}
+            <strong className="text-blue-600 dark:text-blue-400 font-semibold">ML & DataOps Intern</strong> at Poridhi.io, and Industrial Attachment Trainee at{' '}
+            <strong className="text-cyan-600 dark:text-cyan-400 font-semibold">Synesis IT PLC</strong>.
             I bridge the gap between academic AI research and high-performance engineering—from published works in RAG and Vision Transformers to containerized microservices and client-facing web applications.
           </motion.p>
 

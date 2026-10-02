@@ -4,9 +4,10 @@ import { HiSparkles } from "react-icons/hi2";
 
 const PRESET_COMMANDS = [
   { cmd: "benchmark", label: "⚡ Run Benchmark", desc: "Test inference throughput & latency" },
+  { cmd: "notecheck", label: "💵 NoteCheck ViT", desc: "Synesis IT AI Banknote Authenticator" },
   { cmd: "neofetch", label: "📊 Neofetch", desc: "System specs & affiliations" },
   { cmd: "papers", label: "🔬 Publications", desc: "IEEE & International papers" },
-  { cmd: "poridhi", label: "💼 Poridhi Ops", desc: "Current ML & DataOps role" },
+  { cmd: "poridhi", label: "💼 Industry Roles", desc: "Poridhi.io & Synesis IT experience" },
   { cmd: "stack", label: "🛠️ Active Stack", desc: "Core toolchains & frameworks" },
 ];
 
@@ -88,11 +89,28 @@ export const HeroTerminal = () => {
       ( o.o )       ----------------------
        > ^ <        OS: Ubuntu 22.04 LTS (x86_64)
       /|   |\\       Affiliation: CUET CSE Dept ('25)
-     (_|   |_)      Current: ML & DataOps Intern @ Poridhi.io
+     (_|   |_)      Roles: ML Intern @ Poridhi.io | Synesis IT PLC
+                    Flagship AI: NoteCheck (DeiT ViT ~97.88% Acc)
                     Research: 7+ IEEE & International Papers
                     CP: Codeforces Specialist (1450 Peak)
-                    Primary Stack: PyTorch, CUDA, FastAPI, Docker, Next.js
-                    Status: Open for High-Impact AI Roles 🟢`,
+                    Stack: PyTorch, DeiT, CUDA, FastAPI, Docker, React
+                    Status: Available for AI/ML Roles 🟢`,
+        },
+      ]);
+      return;
+    }
+
+    if (cmd === "notecheck" || cmd === "synesis" || cmd === "banknote") {
+      setHistory((prev) => [
+        ...prev,
+        {
+          type: "output",
+          content: `💵 NoteCheck — Banknote Counterfeit Detector (Synesis IT PLC):
+• Architecture: DeiT-Tiny Vision Transformer (ViT) fine-tuned on Bangladeshi currency (~97.88% accuracy)
+• Preprocessing: Automated OpenCV 4-point homography perspective warping & CLAHE lighting equalization
+• Serving: High-throughput asynchronous FastAPI REST microservice + React 18 dashboard
+• GitHub: https://github.com/CUET-Synesis-IT/NoteCheck
+• Live Demo: https://notecheck-frontend.onrender.com/`,
         },
       ]);
       return;
@@ -104,25 +122,29 @@ export const HeroTerminal = () => {
         {
           type: "output",
           content: `📄 Accepted & Published Research Works:
-1. Multi-Modal Brain Tumor Detection via Modified ResNet-50 & Saliency Maps [IEEE Accepted]
-2. Fast-SCNN Based Real-Time High-Resolution Retinal Vessel Segmentation [IEEE Accepted]
-3. Explainable AI for Early Detection of Chronic Kidney Disease (XGBoost + SHAP)
-4. Comparative Assessment of RAG architectures across Biomedical NLP datasets
+1. Vision Transformer-Based Detection of Counterfeit Bangladeshi Banknotes Using DeiT [ICCPCT Accepted]
+2. Multi-Modal Brain Tumor Detection via Modified ResNet-50 & Saliency Maps [IEEE Accepted]
+3. Fast-SCNN Based Real-Time High-Resolution Retinal Vessel Segmentation [IEEE Accepted]
+4. Explainable AI for Early Detection of Chronic Kidney Disease (XGBoost + SHAP)
+5. Comparative Assessment of RAG architectures across Biomedical NLP datasets
 (Total: 7+ manuscripts authored/co-authored at CUET AI Research Labs)`,
         },
       ]);
       return;
     }
 
-    if (cmd === "poridhi" || cmd === "internship" || cmd === "experience") {
+    if (cmd === "poridhi" || cmd === "internship" || cmd === "experience" || cmd === "roles") {
       setHistory((prev) => [
         ...prev,
         {
           type: "output",
-          content: `💼 Poridhi.io — ML & DataOps Engineering Intern:
-• Designing automated data ingestion and validation pipelines for enterprise ML workloads.
-• Containerizing machine learning inference services with Docker & FastAPI for sub-50ms responses.
-• Implementing continuous monitoring and model checkpoint evaluation pipelines.`,
+          content: `💼 Industry Roles & Experience:
+1. Synesis IT PLC. (September 2026) — Industrial Attachment Trainee
+   • Researched & engineered "NoteCheck", an AI-powered Bangladeshi banknote counterfeit detection platform.
+   • Built OpenCV 4-point homography & CLAHE preprocessing + DeiT Vision Transformer serving real-time predictions.
+2. Poridhi.io (August 2026 – Present) — ML & DataOps Engineering Intern
+   • Designing automated data ingestion & validation pipelines for enterprise ML workflows.
+   • Containerizing inference microservices with Docker & FastAPI for sub-50ms responses.`,
         },
       ]);
       return;

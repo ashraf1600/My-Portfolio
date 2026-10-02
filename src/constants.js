@@ -52,6 +52,7 @@ import expressjsLogo from './assets/tech_logo/express.svg';
 import streamlitLogo from './assets/tech_logo/streamlit.svg';
 
 // Experience Section Logo's
+import synesisLogo from './assets/company_logo/synesis_it_logo.png';
 // import webverseLogo from './assets/company_logo/webverse_logo.png';
 
 // Education Section Logo's
@@ -60,6 +61,7 @@ import dccLogo from './assets/education_logo/dcc_logo.png';
 import cghsLogo from './assets/education_logo/cghs_logo.png';
 
 // Project Section Logo's
+import NoteCheck from './assets/work_logo/NoteCheck.png';
 import Flembe_Essence from './assets/work_logo/Flembe_Essence.png';
 import Flembe_Shop from './assets/work_logo/flembe/shop.png';
 import Flembe_Product from './assets/work_logo/flembe/product_detail.png';
@@ -155,8 +157,19 @@ export const experiences = [
     role: 'Machine Learning & DataOps Intern',
     company: 'Poridhi.io',
     date: 'August 2026 – Present',
+    badge: 'Current Position',
     desc: 'Working in the ML/DataOps team at Poridhi.io, engineering automated data ingestion, validation, and feature preprocessing pipelines for machine learning workflows. Developing containerized AI microservices and inference endpoints with FastAPI and Docker, implementing MLOps tracking and CI/CD automation, and prototyping Agentic AI and LLM workflows.',
     skills: ['Python', 'Machine Learning', 'DataOps', 'MLOps', 'FastAPI', 'Docker', 'Agentic AI', 'CI/CD'],
+  },
+  {
+    id: 1,
+    img: synesisLogo,
+    role: 'Industrial Attachment Trainee (AI & Software Engineering)',
+    company: 'Synesis IT PLC.',
+    date: 'September 2026',
+    badge: 'Industrial Attachment',
+    desc: 'Completed an intensive industrial attachment at Synesis IT PLC, researching and engineering NoteCheck — an AI-powered counterfeit Bangladeshi banknote authentication system. Developed an automated OpenCV computer vision pipeline (bilateral filtering, Canny edge detection, 4-point homography perspective warping, and CLAHE lighting normalization) coupled with a fine-tuned DeiT-Tiny Vision Transformer (ViT) achieving ~97.88% accuracy. Deployed the system as a high-throughput asynchronous FastAPI microservice with an interactive React dashboard.',
+    skills: ['Vision Transformer (DeiT)', 'Computer Vision', 'OpenCV', 'PyTorch', 'FastAPI', 'React 18', 'Docker', 'Authentication'],
   },
 ];
 
@@ -192,9 +205,27 @@ export const education = [
 ];
 
 export const projects = [
-  // Flagship Client & Healthcare Platforms (Top Priority)
+  // Flagship AI Systems & Production Platforms (Top Priority)
   {
     id: 0,
+    title: "NoteCheck — AI Banknote Counterfeit Authenticator",
+    description: "An end-to-end computer vision and deep learning platform built during industrial attachment at Synesis IT PLC to verify Bangladeshi banknote authenticity in real-time with ~97.88% accuracy. Resolves distorted angles and harsh shadows using automated 4-point homography perspective rectification and CLAHE lighting normalization, feeding into a fine-tuned DeiT (Data-efficient Image Transformer) Vision Transformer backend with an interactive React dashboard.",
+    image: NoteCheck,
+    screenshots: [NoteCheck],
+    tags: ["Vision Transformer", "DeiT", "PyTorch", "OpenCV", "FastAPI", "React 18", "CLAHE", "Render"],
+    github: "https://github.com/CUET-Synesis-IT/NoteCheck",
+    webapp: "https://notecheck-frontend.onrender.com/",
+    featured: true,
+    highlights: [
+      "DeiT-Tiny Vision Transformer backbone fine-tuned for micro-print, watermark & texture discrimination (~97.88% accuracy)",
+      "Automated OpenCV pipeline: bilateral filtering, Canny edges, Otsu gradients & 4-point homography perspective rectification",
+      "CLAHE lighting normalization in LAB color space to equalize shadows, reflections, and ambient illumination variance",
+      "High-throughput asynchronous FastAPI REST backend with JWT authentication and live cloud deployment on Render",
+    ],
+    category: ["Machine Learning", "Academic Project"],
+  },
+  {
+    id: 1,
     title: "Flembe Essence — E-Commerce Platform",
     description: "An elegant, production client e-commerce platform built for an affordable fashion and jewellery brand. Features dynamic catalog browsing, responsive mobile-first storefront, instant Cash on Delivery (COD) and campus delivery checkout, WhatsApp customer support, and a robust Django REST Framework backend with Cloudinary media optimization.",
     image: Flembe_Essence,
@@ -212,7 +243,7 @@ export const projects = [
     category: ["Web Development", "Client Project"],
   },
   {
-    id: 1,
+    id: 2,
     title: "CliniSync — Smart Clinic & Queue System",
     description: "An enterprise-grade, bilingual (Bangla & English) hospital and doctor chamber appointment management platform. Features real-time live queue tracking with estimated wait times, doctor multi-chamber scheduling, PostgreSQL GiST exclusion concurrency protection to eliminate double-booking, and digital QR-ready chamber passes. Deployed on AWS with CloudFront CDN and S3.",
     image: Clinisync_Img,
@@ -232,7 +263,7 @@ export const projects = [
 
   // AI & Machine Learning (Featured)
   {
-    id: 2,
+    id: 3,
     title: "Personal AI Assistant",
     description: "An intelligent personal AI assistant and agentic workflow engine built with Gemini API, LangChain, Streamlit, and OOP principles. Features multi-turn conversational AI capabilities, dynamic tool execution, memory retention, and document querying.",
     image: Personal_AI,
@@ -249,7 +280,7 @@ export const projects = [
     category: ["Machine Learning", "Academic Project"],
   },
   {
-    id: 3,
+    id: 4,
     title: "Traffic Light Control with RL",
     description: "An intelligent urban traffic light control system using Deep Reinforcement Learning (DQN) integrated with the SUMO traffic simulator. Dynamically adjusts signal phases to minimize vehicular wait times and alleviate congestion.",
     image: Traffic,
@@ -266,7 +297,7 @@ export const projects = [
     category: ["Machine Learning", "Academic Project"],
   },
   {
-    id: 4,
+    id: 5,
     title: "E-commerce Fraud Detection",
     description: "An end-to-end machine learning system for real-time e-commerce transaction fraud detection. Handles extreme class imbalance using SMOTE-Tomek, tunes hyperparameters via Optuna, and serves sub-100ms predictions through a containerized Flask API.",
     image: Fraud,
@@ -285,7 +316,7 @@ export const projects = [
 
   // Distributed Systems & Full-Stack Engineering
   {
-    id: 5,
+    id: 6,
     title: "ResQNet",
     description: "A real-time disaster and emergency resource coordination platform connecting Requesters, Responders, and Coordinators. Features an auditable need-lifecycle (pending → open → committed → resolved), atomic conditional updates to prevent duplicate commitments, server-side role enforcement, and a locked API contract enabling parallel frontend/backend development.",
     image: ResQNet,
@@ -303,7 +334,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 6,
+    id: 7,
     title: "Stacks — A Library Management System",
     description: "A modular-monolith library management system built with Django + DRF, built as hackathon rehearsal practice. Implements concurrency-safe borrow/return via row-level locking (select_for_update), role-based access control, book reservations with waitlisting, and in-app notifications. 35/35 tests passing against live PostgreSQL, fully containerized and deployed.",
     image: Stacks,
@@ -321,7 +352,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 7,
+    id: 8,
     title: "ExportMart",
     description: "A full-stack e-commerce platform with a Django REST Framework API and a React + Vite storefront. Features product/category browsing, cart and wishlist workflows, JWT authentication via Djoser, checkout and order management, product reviews, and Swagger/Redoc API docs. Fully Dockerized for local dev and deployment.",
     image: ExportMart,
@@ -339,7 +370,7 @@ export const projects = [
     category: ["Web Development", "Personal Project"],
   },
   {
-    id: 8,
+    id: 9,
     title: "CSF-CUET — Cox's Bazar Student Forum",
     description: "A community platform for Cox's Bazar district students and alumni at CUET. Includes user registration with admin approval, a public community feed with posts/likes/comments, event and announcement management, committee/department organization, and a full Django admin moderation panel. Live in production on Render.",
     image: CoxsBazar,
@@ -357,7 +388,7 @@ export const projects = [
     category: ["Web Development", "Personal Project"],
   },
   {
-    id: 9,
+    id: 10,
     title: "CUET Hospital Management System",
     description: "A comprehensive hospital management system built for CUET. Features patient registration, appointment scheduling, doctor management, medical records tracking, and administrative functions for efficient healthcare facility operations.",
     image: CUET_Hos,
@@ -374,7 +405,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 10,
+    id: 11,
     title: "CUET Peer Delivery",
     description: "A peer-to-peer delivery platform designed specifically for CUET students. Built with the MERN stack, this application enables students to send and receive items within the campus community safely and efficiently.",
     image: CUET_Peer,
@@ -391,7 +422,7 @@ export const projects = [
     category: ["Web Development", "Academic Project"],
   },
   {
-    id: 11,
+    id: 12,
     title: "MultiMart E-commerce",
     description: "A dynamic e-commerce marketplace built with Django and Bootstrap. Features product browsing, detailed views, user authentication, shopping cart functionality, and a seamless checkout process for an intuitive online shopping experience.",
     image: Multi,

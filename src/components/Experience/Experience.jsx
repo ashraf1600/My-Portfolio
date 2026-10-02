@@ -79,7 +79,7 @@ const Experience = () => {
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                     <div>
                       <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 px-2.5 py-0.5 rounded-full mb-1.5">
-                        Current Position
+                        {exp.badge || (exp.date?.includes("Present") ? "Current Position" : "Industry Experience")}
                       </span>
                       <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white font-outfit leading-tight">
                         {exp.role}
