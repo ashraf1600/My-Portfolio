@@ -37,7 +37,7 @@ const providerPalette = {
 const getProvider = (cert) => providerPalette[cert.issuer] || {
   tint: "bg-gray-500/10 text-gray-600 dark:text-gray-300 border-gray-500/30",
   accent: "from-gray-500 to-gray-500",
-  initial: cert.issuer?.[0] || "â€¢",
+  initial: cert.issuer?.[0] || "•",
 };
 
 const isExpired = (date) => {
@@ -59,39 +59,41 @@ const CertCard = ({ cert, index, onOpen }) => {
 
   return (
     <div
-      className="group bg-white dark:bg-[#111b2e] rounded-xl border border-gray-200 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col"
+      className="group bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-200/80 dark:border-white/10 shadow-sm hover:border-blue-500/40 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 p-6 flex flex-col relative overflow-hidden"
       style={{ animationDelay: `${index * 80}ms` }}
     >
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+
       {/* Header: logo + provider chip */}
       <div className="flex items-start justify-between gap-3 mb-5">
         <div
-          className={`shrink-0 w-12 h-12 rounded-lg flex items-center justify-center border ${provider.tint} overflow-hidden bg-white dark:bg-[#0b1121]`}
+          className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center border shadow-sm ${provider.tint} overflow-hidden bg-white dark:bg-slate-900 p-2 group-hover:scale-105 transition-transform`}
         >
           <img
             src={cert.logo}
             alt={cert.issuer}
-            className="w-7 h-7 object-contain mix-blend-multiply dark:mix-blend-normal"
+            className="w-full h-full object-contain filter-none"
             onError={(e) => {
               e.currentTarget.style.display = "none";
             }}
           />
         </div>
         <span
-          className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider rounded-md px-2 py-1 border ${provider.tint}`}
+          className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider rounded-full px-2.5 py-1 border shadow-sm ${provider.tint}`}
         >
           {cert.issuer}
         </span>
       </div>
 
       {/* Title */}
-      <h3 className="text-lg font-bold font-serif text-gray-900 dark:text-white leading-tight mb-3 line-clamp-3">
+      <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white leading-tight mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
         {cert.title}
       </h3>
 
       {/* Meta */}
-      <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 mb-5 flex-wrap">
+      <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-5 flex-wrap">
         <div className="flex items-center gap-1.5">
-          <FaCalendarAlt size={10} className="opacity-70" />
+          <FaCalendarAlt size={10} className="text-blue-500" />
           <span>Issued {issuedFormatted}</span>
         </div>
         {cert.expiryDate && (

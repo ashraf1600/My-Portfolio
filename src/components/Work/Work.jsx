@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { createPortal } from "react-dom";
+import Tilt from "react-parallax-tilt";
 
 import { projects } from "../../constants";
 import {
@@ -237,8 +238,8 @@ const CompactSpotlightCard = ({ project, isEven, onOpenModal }) => {
   const hasLiveDemo = project.webapp && project.webapp !== project.github;
 
   return (
-    <div className="group relative bg-white dark:bg-[#111b2e] backdrop-blur-md rounded-3xl border border-gray-200/80 dark:border-white/5 hover:border-blue-500/40 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 overflow-hidden reveal-section">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-transparent to-blue-400/0 group-hover:from-blue-500/5 group-hover:to-blue-400/5 transition-all duration-500 pointer-events-none" />
+    <div className="group relative bg-white dark:bg-[#0f172a]/90 backdrop-blur-xl rounded-3xl border border-gray-200/80 dark:border-white/10 hover:border-blue-500/50 shadow-lg hover:shadow-2xl hover:shadow-blue-500/15 transition-all duration-500 overflow-hidden reveal-section before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-blue-500/80 before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-500">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-transparent to-blue-400/0 group-hover:from-blue-500/5 group-hover:to-cyan-400/5 transition-all duration-500 pointer-events-none" />
 
       <div className={`flex flex-col lg:flex-row relative ${isEven ? "" : "lg:flex-row-reverse"}`}>
         {/* Compact Visual Preview */}
@@ -279,16 +280,27 @@ const CompactSpotlightCard = ({ project, isEven, onOpenModal }) => {
             {/* Header badges */}
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               {project.category?.includes?.("Client Project") ? (
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
                   <FiBookmark size={11} /> Client Project
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                  <HiStar size={11} /> Flagship
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  <HiStar size={11} /> Flagship Architecture
                 </span>
               )}
+
+              {hasLiveDemo && (
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-500"></span>
+                  </span>
+                  Live Deployment
+                </span>
+              )}
+
               <span className="text-xs text-gray-400 dark:text-gray-500">•</span>
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+              <span className="text-xs font-medium text-gray-500 dark:text-gray-400 font-mono">
                 {Array.isArray(project.category) ? project.category.join(" • ") : project.category}
               </span>
             </div>
@@ -296,7 +308,7 @@ const CompactSpotlightCard = ({ project, isEven, onOpenModal }) => {
             {/* Title */}
             <h3
               onClick={() => onOpenModal(project)}
-              className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 leading-tight tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+              className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white mb-3 leading-tight tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer font-outfit"
             >
               {project.title}
             </h3>

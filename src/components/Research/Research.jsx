@@ -57,15 +57,17 @@ const MetricCard = ({ metric, index }) => {
   const Icon = metric.icon;
   return (
     <div
-      className="group bg-white dark:bg-[#111b2e] rounded-xl border border-gray-200 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col"
+      className="group bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-200/80 dark:border-white/10 shadow-sm hover:border-blue-500/40 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 p-6 flex flex-col relative overflow-hidden"
       style={{ animationDelay: `${index * 80}ms` }}
     >
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity" />
+
       <div className="flex items-center justify-between mb-4">
-        <div className="shrink-0">
-          <Icon size={24} className="text-blue-500 dark:text-blue-400" />
+        <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform">
+          <Icon size={22} />
         </div>
         {metric.trend && (
-          <span className="inline-flex items-center gap-1 text-[10px] font-bold text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full px-2 py-0.5">
+          <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 rounded-full px-2.5 py-0.5">
             <HiSparkles size={11} className="text-amber-500" />
             {metric.trend}
           </span>
@@ -73,14 +75,14 @@ const MetricCard = ({ metric, index }) => {
       </div>
 
       <div className="flex items-baseline gap-1 mb-1">
-        <span className="text-3xl md:text-4xl font-bold font-serif text-gray-900 dark:text-white">
+        <span className="text-3xl md:text-4xl font-black font-outfit text-slate-900 dark:text-white">
           <Counter value={metric.value} suffix={metric.suffix || ""} />
         </span>
       </div>
-      <h4 className="text-sm font-bold text-gray-900 dark:text-white mt-1">
+      <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 mt-1">
         {metric.label}
       </h4>
-      <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">
+      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
         {metric.description}
       </p>
     </div>
@@ -280,20 +282,19 @@ const Research = () => {
   return (
     <section
       id="research"
-      className="py-24 px-[8vw] md:px-[6vw] lg:px-[12vw] font-sans relative"
+      className="py-24 px-[5vw] md:px-[8vw] lg:px-[10vw] font-sans relative"
     >
-      {/* Section Title — Serif academic */}
+      {/* Section Title */}
       <div className="text-center mb-14">
-        <span className="inline-block text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 uppercase mb-3">
-          By the Numbers
+        <span className="inline-block text-xs font-bold tracking-[0.25em] text-blue-600 dark:text-blue-400 uppercase mb-2">
+          Academic Track Record
         </span>
-        <h2 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3">
-          Research & Impact
+        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 font-outfit">
+          Research & Publications
         </h2>
-        <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-5"></div>
-        <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-          My research contributions in Machine Learning, AI, and Computer
-          Science — and a snapshot of the academic footprint they form.
+        <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full mb-5"></div>
+        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+          Peer-reviewed research across IEEE venues in Explainable AI, Vision Transformers, IoT security, and Retrieval-Augmented Generation.
         </p>
       </div>
 
@@ -307,12 +308,12 @@ const Research = () => {
       {/* Publications Header */}
       <div className="flex items-center gap-3 mb-6">
         <div className="flex items-center gap-2">
-          <span className="inline-block w-1.5 h-6 bg-blue-600 rounded-full" />
-          <h3 className="text-gray-900 dark:text-white text-xl md:text-2xl font-bold font-serif">
-            Publications
+          <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-blue-600 to-cyan-500 rounded-full" />
+          <h3 className="text-slate-900 dark:text-white text-xl md:text-2xl font-bold font-outfit">
+            Peer-Reviewed Papers
           </h3>
         </div>
-        <div className="flex-1 h-px bg-gradient-to-r from-gray-200 dark:from-white/10 to-transparent ml-2" />
+        <div className="flex-1 h-px bg-gradient-to-r from-slate-200 dark:from-white/10 to-transparent ml-2" />
       </div>
 
       {/* Category Filters */}
@@ -321,10 +322,10 @@ const Research = () => {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
               selectedCategory === category
-                ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/8 hover:bg-blue-50 dark:hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400"
+                ? "bg-blue-600 text-white shadow-md shadow-blue-500/25 scale-105"
+                : "bg-white/80 dark:bg-white/5 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 hover:text-blue-600"
             }`}
           >
             {category}
@@ -338,11 +339,11 @@ const Research = () => {
           <div key={year}>
             {/* Year header */}
             <div className="flex items-center gap-3 mb-5">
-              <span className="text-2xl font-bold font-serif text-blue-600 dark:text-blue-400">
+              <span className="text-2xl font-extrabold font-outfit text-blue-600 dark:text-cyan-400">
                 {year}
               </span>
-              <div className="flex-1 h-px bg-blue-200 dark:bg-blue-500/20" />
-              <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-white/5 px-2.5 py-1 rounded-full border border-gray-200 dark:border-white/8">
+              <div className="flex-1 h-px bg-blue-200/60 dark:bg-blue-500/20" />
+              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-white/5 px-3 py-1 rounded-full border border-slate-200 dark:border-white/10">
                 {papersByYear[year].length} paper{papersByYear[year].length > 1 ? 's' : ''}
               </span>
             </div>
@@ -352,75 +353,78 @@ const Research = () => {
               {papersByYear[year].map((paper) => (
                 <div
                   key={paper.id}
-                  className="group flex flex-col md:flex-row bg-white dark:bg-[#111b2e] border border-gray-200 dark:border-white/5 rounded-xl hover:shadow-md transition-all duration-300 overflow-hidden"
+                  className="group flex flex-col md:flex-row bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-2xl hover:border-blue-500/40 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden relative"
                 >
-                    {/* Left venue tag */}
-                    <div className="md:w-40 shrink-0 border-b md:border-b-0 md:border-r border-gray-100 dark:border-white/5 flex flex-col justify-center p-5">
-                        <span className="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">
-                          {getVenueTag(paper.conference)}
-                        </span>
-                        <div className="text-sm font-serif text-gray-400 dark:text-gray-500">
-                          {paper.year}
-                        </div>
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  {/* Left venue tag */}
+                  <div className="md:w-44 shrink-0 border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/5 flex flex-col justify-center p-6 bg-slate-50/50 dark:bg-white/[0.02]">
+                    <span className="inline-block text-xs font-black uppercase tracking-wider text-blue-600 dark:text-cyan-400 mb-1">
+                      {getVenueTag(paper.conference)}
+                    </span>
+                    <div className="text-xs font-mono text-slate-400 dark:text-slate-500">
+                      {paper.year}
+                    </div>
+                  </div>
+
+                  {/* Paper content */}
+                  <div className="flex-1 p-6 md:p-7">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+                      <h3 className="font-outfit text-lg md:text-xl font-bold text-slate-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {paper.title}
+                      </h3>
+                      <span
+                        className={`inline-block shrink-0 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border shadow-sm ${getStatusColor(
+                          paper.status
+                        )}`}
+                      >
+                        {paper.status}
+                      </span>
                     </div>
 
-                    {/* Paper content */}
-                    <div className="flex-1 p-6">
-                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
-                        <h3 className="font-serif text-lg md:text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                          {paper.title}
-                        </h3>
+                    {/* Authors with highlighted name */}
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-2 font-medium">
+                      {highlightAuthors(paper.authors)}
+                    </p>
+
+                    {/* Conference */}
+                    <p className="text-xs text-blue-600 dark:text-cyan-400/90 font-medium mb-3">
+                      {paper.conference}
+                    </p>
+
+                    {/* Abstract preview */}
+                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4 line-clamp-2">
+                      {paper.abstract}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {paper.tags.slice(0, 4).map((tag, index) => (
                         <span
-                          className={`inline-block shrink-0 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider border ${getStatusColor(
-                            paper.status
-                          )}`}
+                          key={index}
+                          className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 bg-slate-100/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-lg px-2.5 py-0.5"
                         >
-                          {paper.status}
+                          {tag}
                         </span>
-                      </div>
-
-                      {/* Authors with highlighted name */}
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                        {highlightAuthors(paper.authors)}
-                      </p>
-
-                      {/* Conference */}
-                      <p className="text-xs text-gray-500 dark:text-gray-500 font-medium mb-4 italic">
-                        {paper.conference}
-                      </p>
-
-                      {/* Abstract preview */}
-                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5 line-clamp-2">
-                        {paper.abstract}
-                      </p>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2 mb-5">
-                        {paper.tags.slice(0, 4).map((tag, index) => (
-                          <span
-                            key={index}
-                            className="text-[11px] font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-white/5 rounded-full px-3 py-1 transition-colors hover:bg-gray-100 dark:hover:bg-white/10"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                        {paper.tags.length > 4 && (
-                          <span className="text-[11px] text-gray-400 self-center">
-                            +{paper.tags.length - 4}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Action buttons */}
-                      <div className="flex flex-wrap gap-3 mt-auto">
-                        <button
-                          onClick={() => setSelectedPaper(paper)}
-                          className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                        >
-                          Details & Citation <HiArrowUpRight size={14} />
-                        </button>
-                      </div>
+                      ))}
+                      {paper.tags.length > 4 && (
+                        <span className="text-[11px] text-slate-400 self-center">
+                          +{paper.tags.length - 4}
+                        </span>
+                      )}
                     </div>
+
+                    {/* Action buttons */}
+                    <div className="flex flex-wrap items-center gap-3 pt-2">
+                      <button
+                        onClick={() => setSelectedPaper(paper)}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-cyan-400 hover:text-blue-700 dark:hover:text-cyan-300 transition-colors group/btn"
+                      >
+                        <span>Details & Citation</span>
+                        <HiArrowUpRight size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

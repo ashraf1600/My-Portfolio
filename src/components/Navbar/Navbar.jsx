@@ -94,177 +94,139 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ease-out px-4 md:px-8 lg:px-12 ${isScrolled
-        ? "bg-white/90 dark:bg-[#0b1121]/90 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-black/20 border-b border-gray-200/50 dark:border-white/5"
-        : "bg-transparent"
+    <nav className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 pt-3 pb-2 transition-all duration-300">
+      <div
+        className={`max-w-6xl mx-auto rounded-full transition-all duration-300 px-4 sm:px-6 py-2.5 flex items-center justify-between ${
+          isScrolled
+            ? "bg-white/85 dark:bg-[#0a1122]/85 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-xl shadow-slate-900/5 dark:shadow-black/40"
+            : "bg-white/50 dark:bg-[#0a1122]/50 backdrop-blur-md border border-slate-200/40 dark:border-white/5 shadow-sm"
         }`}
-    >
-      <div className="text-gray-900 dark:text-white py-4 flex justify-between items-center">
-        {/* Logo — Academic serif brand */}
+      >
+        {/* Brand Logo */}
         <div
-          className="cursor-pointer transition-all duration-300 hover:opacity-80"
+          className="cursor-pointer flex items-center gap-2 group"
           onClick={() => {
             window.history.pushState(null, "", "/");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <span className="font-sans text-xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-            Ashraful Islam<span className="text-blue-600 dark:text-blue-400">.</span>
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 p-[1.5px] shadow-sm shadow-blue-500/20 group-hover:scale-105 transition-transform">
+            <div className="w-full h-full rounded-full bg-white dark:bg-[#0b1121] flex items-center justify-center">
+              <span className="text-xs font-black bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">AI</span>
+            </div>
+          </div>
+          <span className="font-outfit font-extrabold text-base tracking-tight text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            Ashraful<span className="text-blue-500">.</span>
           </span>
         </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-1 text-gray-600 dark:text-gray-400 font-medium items-center">
-          {menuItems.map((item) => (
-            <li key={item.id}>
-              <button
-                onClick={() => handleMenuItemClick(item.id)}
-                className={`relative px-3 py-1.5 text-sm transition-colors duration-300 ${activeSection === item.id
-                  ? "text-blue-600 dark:text-blue-400 font-semibold"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+        {/* Desktop Menu Pills */}
+        <ul className="hidden lg:flex items-center gap-1 bg-slate-100/60 dark:bg-white/5 px-2 py-1 rounded-full border border-slate-200/60 dark:border-white/5">
+          {menuItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <li key={item.id}>
+                <button
+                  onClick={() => handleMenuItemClick(item.id)}
+                  className={`relative px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 ${
+                    isActive
+                      ? "text-white dark:text-white bg-blue-600 dark:bg-blue-600 shadow-md shadow-blue-500/30"
+                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/10"
                   }`}
-              >
-                {item.label}
-                {activeSection === item.id && (
-                  <span className="absolute left-1/2 -bottom-1 h-0.5 w-1/2 -translate-x-1/2 bg-blue-600 dark:bg-blue-400 rounded-full" />
-                )}
-              </button>
-            </li>
-          ))}
+                >
+                  {item.label}
+                </button>
+              </li>
+            );
+          })}
         </ul>
 
-        {/* Right side: Docs CTA + Social Icons */}
-        <div className="hidden md:flex gap-3 items-center">
-          <ThemeToggle />
-
-          {/* Docs CTA */}
+        {/* Right Action Icons & Theme Toggle */}
+        <div className="flex items-center gap-2.5">
+          {/* Docs button */}
           <a
             href={DOCS_URL}
-            className="group inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium
-              bg-white dark:bg-white/5
-              border border-gray-200 dark:border-white/10
-              text-gray-700 dark:text-gray-300
-              shadow-sm hover:shadow-md
-              hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-500/30
-              transition-all duration-300"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105 active:scale-95"
           >
-            <FiBookOpen size={14} className="transition-transform duration-300 group-hover:rotate-12" />
+            <FiBookOpen size={13} />
             <span>Docs</span>
-            <FiArrowUpRight size={12} className="opacity-60 group-hover:opacity-100 transition-all duration-300" />
+            <FiArrowUpRight size={11} className="opacity-70" />
           </a>
 
-          <div className="w-px h-5 bg-gray-300 dark:bg-gray-700" />
-
-          <a
-            href="https://github.com/ashraf1600"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
-            aria-label="GitHub"
-          >
-            <FaGithub size={19} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin size={19} />
-          </a>
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center gap-3">
           <ThemeToggle />
+
+          {/* Socials */}
+          <div className="hidden sm:flex items-center gap-1 pl-1 border-l border-slate-200 dark:border-white/10">
+            <a
+              href="https://github.com/ashraf1600"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+              aria-label="GitHub"
+            >
+              <FaGithub size={16} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={16} />
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="text-2xl text-gray-900 dark:text-white p-1"
+            className="lg:hidden p-2 rounded-full text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5 transition"
             aria-label="Toggle menu"
           >
-            {isOpen ? <FiX /> : <FiMenu />}
+            {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`absolute top-full left-4 right-4 bg-white/95 dark:bg-[#0e1729]/95 backdrop-filter backdrop-blur-xl z-50 rounded-2xl shadow-2xl shadow-black/10 dark:shadow-black/30 md:hidden overflow-hidden border border-gray-200 dark:border-white/10 transition-all duration-300 origin-top ${
-          isOpen
-            ? "opacity-100 scale-y-100 translate-y-0"
-            : "opacity-0 scale-y-95 -translate-y-2 pointer-events-none"
-        }`}
-      >
-        <ul className="flex flex-col items-center py-6 text-gray-700 dark:text-gray-300">
-          {menuItems.map((item, index) => (
-            <li
-              key={item.id}
-              className="w-full text-center"
-              style={{ animationDelay: isOpen ? `${index * 40}ms` : "0ms" }}
-            >
-              <button
-                onClick={() => handleMenuItemClick(item.id)}
-                className={`block w-full py-3 px-6 text-sm transition-all duration-300 ${activeSection === item.id
-                  ? "text-blue-600 dark:text-blue-400 font-semibold bg-blue-50/50 dark:bg-blue-900/20"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5"
+      {/* Mobile Menu Drawer */}
+      {isOpen && (
+        <div className="lg:hidden max-w-6xl mx-auto mt-2 p-4 bg-white/95 dark:bg-[#0e172a]/95 backdrop-blur-2xl rounded-2xl border border-slate-200 dark:border-white/10 shadow-2xl animate-fadeIn">
+          <ul className="grid grid-cols-2 gap-1.5 pb-3">
+            {menuItems.map((item) => (
+              <li key={item.id}>
+                <button
+                  onClick={() => handleMenuItemClick(item.id)}
+                  className={`w-full py-2.5 px-3 rounded-xl text-xs font-semibold transition-all ${
+                    activeSection === item.id
+                      ? "bg-blue-600 text-white shadow-md shadow-blue-500/25"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5"
                   }`}
-              >
-                {item.label}
-              </button>
-            </li>
-          ))}
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
+          </ul>
 
-          {/* Docs CTA */}
-          <li className="w-full px-6 pt-3">
+          <div className="pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
             <a
               href={DOCS_URL}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold
-                bg-gray-50 dark:bg-white/5
-                border border-gray-200 dark:border-white/5
-                text-gray-700 dark:text-gray-300
-                hover:text-blue-600 dark:hover:text-blue-400
-                transition-all duration-300"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20"
             >
-              <FiBookOpen size={16} />
+              <FiBookOpen size={14} />
               <span>NextGen AI Docs</span>
-              <FiArrowUpRight size={13} className="opacity-60" />
+              <FiArrowUpRight size={12} />
             </a>
-          </li>
-
-          {/* Social Icons */}
-          <li className="w-full flex justify-center pt-4 mt-3 border-t border-gray-200/50 dark:border-gray-700/50">
-            <div className="flex items-center gap-5">
-              <a
-                href="https://github.com/ashraf1600"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
-                aria-label="GitHub"
-              >
-                <FaGithub size={20} />
+            <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <a href="https://github.com/ashraf1600" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5">
+                <FaGithub size={18} />
               </a>
-              <a
-                href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin size={20} />
+              <a href="https://www.linkedin.com/in/ashraful-islam-a31268226/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5">
+                <FaLinkedin size={18} />
               </a>
             </div>
-          </li>
-        </ul>
-      </div>
-
-      {/* Backdrop overlay for mobile menu */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden -z-10"
-          onClick={() => setIsOpen(false)}
-        />
+          </div>
+        </div>
       )}
     </nav>
   );

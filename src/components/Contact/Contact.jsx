@@ -16,17 +16,17 @@ import { HiSparkles } from "react-icons/hi2";
 import { FaLinkedin, FaGithub, FaPaperPlane } from "react-icons/fa";
 
 const QUICK_PROMPTS = [
-  { label: "ðŸ’¼ Hire for Project", text: "Hi Ashraf, I'd like to discuss a potential project collaboration with you." },
-  { label: "ðŸ¤– AI / ML Research", text: "Hello! I saw your research work in AI & ML and would love to collaborate." },
-  { label: "ðŸ“„ Request Resume", text: "Hi! Can you share more details about your full-stack & AI background?" },
-  { label: "â˜• Say Hello", text: "Hey Ashraf! Just wanted to say hello and connect with you." },
+  { label: "💼 Hire for Project", text: "Hi Ashraf, I'd like to discuss a potential project collaboration with you." },
+  { label: "🤖 AI / ML Research", text: "Hello! I saw your research work in AI & ML and would love to collaborate." },
+  { label: "📄 Request Resume", text: "Hi! Can you share more details about your full-stack & AI background?" },
+  { label: "☕ Say Hello", text: "Hey Ashraf! Just wanted to say hello and connect with you." },
 ];
 
 const INITIAL_MESSAGES = [
   {
     id: 1,
     sender: "assistant",
-    text: "ðŸ‘‹ Hi there! Welcome to my portfolio. How can I help you today?",
+    text: "👋 Hi there! Welcome to my portfolio. How can I help you today?",
     time: "Just now",
   },
 ];
@@ -179,7 +179,7 @@ const Contact = () => {
             setIsSending(false);
             if (form.current) form.current.reset();
             setEmailFormData({ name: "", email: "", title: "", message: "" });
-            toast.success("Message sent successfully! ðŸš€", {
+            toast.success("Message sent successfully! 🚀", {
               position: "top-right",
               autoClose: 3000,
               theme: theme === "light" ? "light" : "dark",
@@ -188,7 +188,7 @@ const Contact = () => {
           (error) => {
             console.error("EmailJS error:", error);
             setIsSending(false);
-            toast.success("Message submitted! Thank you for reaching out. âœ…", {
+            toast.success("Message submitted! Thank you for reaching out. ✅", {
               position: "top-right",
               autoClose: 3000,
               theme: theme === "light" ? "light" : "dark",
@@ -201,7 +201,7 @@ const Contact = () => {
         setIsSending(false);
         if (form.current) form.current.reset();
         setEmailFormData({ name: "", email: "", title: "", message: "" });
-        toast.success("Message sent successfully! ðŸš€", {
+        toast.success("Message sent successfully! 🚀", {
           position: "top-right",
           autoClose: 3000,
           theme: theme === "light" ? "light" : "dark",
@@ -288,9 +288,9 @@ const Contact = () => {
                     <HiSparkles size={11} /> AI / Full Stack
                   </span>
                 </h3>
-                <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                  Online & Active â€¢ Responds within 24 hours
+                <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Online & Active • Fast Response
                 </p>
               </div>
             </div>
