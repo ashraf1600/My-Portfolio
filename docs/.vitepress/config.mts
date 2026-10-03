@@ -180,7 +180,14 @@ export default withMermaid(
               { text: '৭. Conversational RAG ও Chat History', link: '/rag-beginner/conversational-rag-chat-history' },
               { text: '৮. Text Chunking Strategies', link: '/rag-beginner/chunking-strategies' },
               { text: '৯. Advanced Text Splitting (LangChain)', link: '/rag-beginner/advanced-text-splitting' },
-              { text: '১০. Semantic Chunking পদ্ধতি', link: '/rag-beginner/semantic-chunking' }
+              { text: '১০. Semantic Chunking পদ্ধতি', link: '/rag-beginner/semantic-chunking' },
+              { text: '১১. AI Agent-ভিত্তিক Chunking', link: '/rag-beginner/agentic-chunking' },
+              { text: '১২. Multi-Modal RAG (ইমেজ ও ডক)', link: '/rag-beginner/multimodal-rag' },
+              { text: '১৩. Advanced Retrieval Techniques', link: '/rag-beginner/advanced-retrieval-techniques' },
+              { text: '১৪. Multi-Query RAG ও Search Expansion', link: '/rag-beginner/multi-query-rag' },
+              { text: '১৫. Reciprocal Rank Fusion (RRF)', link: '/rag-beginner/reciprocal-rank-fusion' },
+              { text: '১৬. Hybrid Search (Vector + Keyword)', link: '/rag-beginner/hybrid-search' },
+              { text: '১৭. RAG Reranking ও পরবর্তী ধাপ', link: '/rag-beginner/rag-reranking' }
             ]
           }
         ],
