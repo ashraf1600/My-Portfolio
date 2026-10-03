@@ -47,20 +47,125 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
 
 ---
 
-## ৫. Architecture Diagram (রিট্রিভাল ফ্লো)
+## ৫. Architecture Diagram (রিট্রিভাল ফ্লো আর্কিটেকচার)
 
-```mermaid
-flowchart TD
-    UserQuery["ব্যবহারকারীর কুয়েরি\n'অফিস টাইমিং কত?'"] --> Retriever["LangChain Retriever\n(as_retriever)"]
-    Retriever -->|সিমিলারিটি সার্চ| VectorDB[("Vector Store\n(FAISS / Chroma)")]
-    VectorDB -->|শীর্ষ প্রাসঙ্গিক ডকুমেন্টসমূহ| DocList["[Document 1, Document 2]\npage_content + metadata"]
-    DocList --> OutputConsole["আউটপুট প্রসেসিং / LLM প্রম্পট"]
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="100%" height="auto" style="max-width: 900px; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.15)); border-radius: 18px; background: linear-gradient(135deg, #0b0f19 0%, #151d2e 100%);">
+  <defs>
+    <filter id="v4Shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="v4Glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    style UserQuery fill:#e6f7ff,stroke:#1890ff,stroke-width:2px,color:#000
-    style Retriever fill:#fff7e6,stroke:#fa8c16,stroke-width:2px,color:#000
-    style VectorDB fill:#f6ffed,stroke:#52c41a,stroke-width:2px,color:#000
-    style DocList fill:#f9f0ff,stroke:#722ed1,stroke-width:2px,color:#000
-```
+    <linearGradient id="v4QueryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="v4RetrieverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="v4VectorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0e7490"/>
+    </linearGradient>
+    <linearGradient id="v4DocGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="v4ConsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+
+    <marker id="v4ArrowRose" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#fb7185"/>
+    </marker>
+    <marker id="v4ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
+    </marker>
+    <marker id="v4ArrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#67e8f9"/>
+    </marker>
+    <marker id="v4ArrowPurple" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#c084fc"/>
+    </marker>
+
+    <style>
+      .v4-pulse-rose { stroke-dasharray: 8, 8; animation: v4Anim 1.4s linear infinite; }
+      .v4-pulse-amber { stroke-dasharray: 8, 8; animation: v4Anim 1.3s linear infinite; }
+      .v4-pulse-cyan { stroke-dasharray: 8, 8; animation: v4Anim 1.3s linear infinite; }
+      .v4-pulse-purple { stroke-dasharray: 8, 8; animation: v4Anim 1.2s linear infinite; }
+      @keyframes v4Anim { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
+    </style>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="470" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">LangChain Document Retrieval Architecture</text>
+  <text x="470" y="64" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Unifying Vector Search, Query Execution &amp; Context Pipeline</text>
+
+  <!-- Flow Connectors -->
+  <!-- 1. Query to Retriever -->
+  <path d="M 160 200 L 220 200" fill="none" stroke="#fb7185" stroke-width="2.5" class="v4-pulse-rose" marker-end="url(#v4ArrowRose)"/>
+  <!-- 2. Retriever to Vector Store (top branch) -->
+  <path d="M 390 170 L 440 140 L 485 140" fill="none" stroke="#fcd34d" stroke-width="2.5" class="v4-pulse-amber" marker-end="url(#v4ArrowAmber)"/>
+  <!-- 3. Vector Store back to Doc List -->
+  <path d="M 645 140 L 690 140 L 735 170" fill="none" stroke="#67e8f9" stroke-width="2.5" class="v4-pulse-cyan" marker-end="url(#v4ArrowCyan)"/>
+  <!-- 4. Retriever directly to Doc List (Bottom return coordinate flow) -->
+  <path d="M 390 230 L 485 260 L 645 260 L 735 230" fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4,4" opacity="0.6"/>
+  <!-- 5. Doc List to LLM / Prompt -->
+  <path d="M 740 280 L 740 330 L 600 330" fill="none" stroke="#c084fc" stroke-width="2.5" class="v4-pulse-purple" marker-end="url(#v4ArrowPurple)"/>
+
+  <!-- Step 1: User Query -->
+  <g transform="translate(30, 150)">
+    <rect width="130" height="100" rx="14" fill="url(#v4QueryGrad)" filter="url(#v4Shadow)"/>
+    <text x="65" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffe4e6" text-anchor="middle" letter-spacing="1">STEP 01</text>
+    <text x="65" y="55" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">User Query</text>
+    <rect x="12" y="68" width="106" height="22" rx="6" fill="#881337" opacity="0.6"/>
+    <text x="65" y="83" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecdd3" text-anchor="middle">"অফিস টাইমিং কত?"</text>
+  </g>
+
+  <!-- Step 2: LangChain Retriever Engine -->
+  <g transform="translate(225, 140)">
+    <rect width="165" height="120" rx="14" fill="url(#v4RetrieverGrad)" filter="url(#v4Shadow)"/>
+    <text x="82" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fef3c7" text-anchor="middle" letter-spacing="1">ORCHESTRATOR</text>
+    <text x="82" y="50" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">LangChain Retriever</text>
+    <rect x="15" y="62" width="135" height="46" rx="8" fill="#78350f" opacity="0.55"/>
+    <text x="82" y="80" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#fde68a" text-anchor="middle">`as_retriever()`</text>
+    <text x="82" y="98" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fef3c7" text-anchor="middle">k=2, similarity search</text>
+  </g>
+
+  <!-- Step 3: Vector Store -->
+  <g transform="translate(490, 85)">
+    <rect width="155" height="110" rx="14" fill="url(#v4VectorGrad)" filter="url(#v4Shadow)"/>
+    <text x="77" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#cffafe" text-anchor="middle" letter-spacing="1">INDEXED STORE</text>
+    <text x="77" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Vector Store</text>
+    <rect x="15" y="58" width="125" height="42" rx="8" fill="#155e75" opacity="0.6"/>
+    <text x="77" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#a5f3fc" text-anchor="middle">FAISS / Chroma DB</text>
+    <text x="77" y="92" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e0f2fe" text-anchor="middle">Embedding Cosine Match</text>
+  </g>
+
+  <!-- Step 4: Retrieved Documents -->
+  <g transform="translate(740, 140)">
+    <rect width="165" height="120" rx="14" fill="url(#v4DocGrad)" filter="url(#v4Shadow)"/>
+    <text x="82" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ede9fe" text-anchor="middle" letter-spacing="1">RESULT OBJECTS</text>
+    <text x="82" y="50" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Top-K Documents</text>
+    <rect x="12" y="62" width="141" height="46" rx="8" fill="#4c1d95" opacity="0.55"/>
+    <text x="82" y="80" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ddd6fe" text-anchor="middle">[Document(page_content=...)]</text>
+    <text x="82" y="97" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#ede9fe" text-anchor="middle">metadata={'source': 'policy.md'}</text>
+  </g>
+
+  <!-- Step 5: Consumer / Prompt Assembly -->
+  <g transform="translate(380, 305)">
+    <rect width="215" height="60" rx="12" fill="url(#v4ConsGrad)" filter="url(#v4Shadow)"/>
+    <text x="107" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#d1fae5" text-anchor="middle" letter-spacing="1">DOWNSTREAM LLM PIPELINE</text>
+    <text x="107" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Prompt Context + LLM Answer</text>
+  </g>
+</svg>
+</div>
 
 ---
 
