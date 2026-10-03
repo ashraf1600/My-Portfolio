@@ -59,30 +59,215 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
 
 ---
 
-## ৫. Architecture Diagram (ফ্লোচার্ট)
+## ৫. Architecture Diagram (অ্যানিমেটেড এসভিজি আর্কিটেকচার)
 
-```mermaid
-flowchart TD
-    subgraph Ingestion ["১. ডেটা ইনজেশন ধাপ (Offline / Setup)"]
-        A[নথিপত্র / Documents] --> B[Text Chunking]
-        B --> C[Embedding Model]
-        C --> D[(Vector Database)]
-    end
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" width="100%" height="auto" style="max-width: 900px; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.15)); border-radius: 18px; background: linear-gradient(135deg, #0b0f19 0%, #151d2e 100%);">
+  <defs>
+    <!-- গ্লো এবং শ্যাডো ফিল্টার -->
+    <filter id="ragShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="ragGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    subgraph Runtime ["২. রানটাইম কুয়েরি ও জেনারেশন ধাপ"]
-        User([ব্যবহারকারী]) -->|১. প্রশ্ন করে| Query[User Query]
-        Query -->|২. ভেক্টর সার্চ| D
-        D -->|৩. প্রাসঙ্গিক তথ্য Context| AugmentedPrompt[Augmented Prompt\nContext + Question]
-        Query --> AugmentedPrompt
-        AugmentedPrompt -->|৪. সমৃদ্ধ প্রম্পট পাঠায়| LLM[LLM / Generator]
-        LLM -->|৫. সঠিক উত্তর| Response([ব্যবহারকারীকে উত্তর প্রদর্শন])
-    end
+    <!-- কালার গ্রেডিয়েন্টসমূহ -->
+    <linearGradient id="docGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="chunkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="vectorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="queryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#db2777"/>
+    </linearGradient>
+    <linearGradient id="promptGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="llmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
 
-    style Ingestion fill:#f0f7ff,stroke:#0066cc,stroke-width:2px,color:#000
-    style Runtime fill:#f6ffed,stroke:#52c41a,stroke-width:2px,color:#000
-    style D fill:#fff7e6,stroke:#d46b08,stroke-width:2px,color:#000
-    style LLM fill:#fff0f6,stroke:#eb2f96,stroke-width:2px,color:#000
-```
+    <!-- অ্যানিমেশন স্টাইল -->
+    <style>
+      .flow-cyan {
+        stroke-dasharray: 8, 8;
+        animation: pulseCyan 1.4s linear infinite;
+      }
+      .flow-purple {
+        stroke-dasharray: 8, 8;
+        animation: pulsePurple 1.4s linear infinite;
+      }
+      .flow-green {
+        stroke-dasharray: 8, 8;
+        animation: pulseGreen 1.1s linear infinite;
+      }
+      @keyframes pulseCyan {
+        from { stroke-dashoffset: 32; }
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes pulsePurple {
+        from { stroke-dashoffset: 32; }
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes pulseGreen {
+        from { stroke-dashoffset: 32; }
+        to { stroke-dashoffset: 0; }
+      }
+      .node-card {
+        transition: transform 0.25s ease;
+      }
+      .node-card:hover {
+        transform: translateY(-3px);
+      }
+    </style>
+  </defs>
+
+  <!-- হেডার ও ফেজ লেবেল -->
+  <g>
+    <!-- সেকশন ১: ইনজেশন ব্যাকগ্রাউন্ড -->
+    <rect x="25" y="25" width="890" height="195" rx="14" fill="#0f172a" fill-opacity="0.6" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="40" y="38" width="220" height="26" rx="6" fill="#1e293b"/>
+    <text x="50" y="55" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#38bdf8">১. অফলাইন ইনজেশন ফেজ (Data Ingestion)</text>
+
+    <!-- সেকশন ২: রানটাইম ব্যাকগ্রাউন্ড -->
+    <rect x="25" y="240" width="890" height="245" rx="14" fill="#0f172a" fill-opacity="0.6" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="40" y="253" width="250" height="26" rx="6" fill="#1e293b"/>
+    <text x="50" y="270" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#34d399">২. রানটাইম রিট্রিভাল ও জেনারেশন ফেজ (Runtime)</text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- ইনজেশন নোডসমূহ -->
+  <!-- ============================================== -->
+  <!-- ১. কাঁচা নথিপত্র -->
+  <g class="node-card">
+    <rect x="50" y="85" width="160" height="105" rx="12" fill="#1e293b" stroke="url(#docGrad)" stroke-width="2" filter="url(#ragShadow)"/>
+    <rect x="65" y="100" width="30" height="30" rx="6" fill="url(#docGrad)"/>
+    <text x="80" y="120" font-family="system-ui, sans-serif" font-size="15" fill="#fff" text-anchor="middle">📄</text>
+    <text x="105" y="112" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">নথিপত্র</text>
+    <text x="105" y="127" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">PDF / TXT Docs</text>
+    <rect x="65" y="142" width="130" height="22" rx="4" fill="#0f172a"/>
+    <text x="130" y="157" font-family="monospace" font-size="9.5" fill="#38bdf8" text-anchor="middle">TechNova Handbook</text>
+  </g>
+
+  <!-- ফ্লো ১: নথিপত্র -> চাংকিং -->
+  <path d="M 210 138 L 270 138" fill="none" stroke="#38bdf8" stroke-width="2.5" class="flow-cyan" filter="url(#ragGlow)"/>
+
+  <!-- ২. টেক্সট চাংকিং -->
+  <g class="node-card">
+    <rect x="270" y="85" width="160" height="105" rx="12" fill="#1e293b" stroke="url(#chunkGrad)" stroke-width="2" filter="url(#ragShadow)"/>
+    <rect x="285" y="100" width="30" height="30" rx="6" fill="url(#chunkGrad)"/>
+    <text x="300" y="120" font-family="system-ui, sans-serif" font-size="15" fill="#fff" text-anchor="middle">✂️</text>
+    <text x="325" y="112" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">Text Chunking</text>
+    <text x="325" y="127" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">ছোট খণ্ডে বিভাজন</text>
+    <rect x="285" y="142" width="130" height="22" rx="4" fill="#0f172a"/>
+    <text x="350" y="157" font-family="monospace" font-size="9.5" fill="#818cf8" text-anchor="middle">Chunk Size: 200</text>
+  </g>
+
+  <!-- ফ্লো ২: চাংকিং -> এম্বেডিং -->
+  <path d="M 430 138 L 490 138" fill="none" stroke="#818cf8" stroke-width="2.5" class="flow-cyan" filter="url(#ragGlow)"/>
+
+  <!-- ৩. এম্বেডিং মডেল -->
+  <g class="node-card">
+    <rect x="490" y="85" width="160" height="105" rx="12" fill="#1e293b" stroke="url(#promptGrad)" stroke-width="2" filter="url(#ragShadow)"/>
+    <rect x="505" y="100" width="30" height="30" rx="6" fill="url(#promptGrad)"/>
+    <text x="520" y="120" font-family="system-ui, sans-serif" font-size="15" fill="#fff" text-anchor="middle">🧠</text>
+    <text x="545" y="112" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">Embedding Model</text>
+    <text x="545" y="127" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">টেক্সট ➔ ভেক্টর সংখ্যা</text>
+    <rect x="505" y="142" width="130" height="22" rx="4" fill="#0f172a"/>
+    <text x="570" y="157" font-family="monospace" font-size="9.5" fill="#c084fc" text-anchor="middle">[0.12, -0.45, ...]</text>
+  </g>
+
+  <!-- ফ্লো ৩: এম্বেডিং -> ভেক্টর ডিবি -->
+  <path d="M 650 138 L 710 138" fill="none" stroke="#c084fc" stroke-width="2.5" class="flow-cyan" filter="url(#ragGlow)"/>
+
+  <!-- ৪. ভেক্টর ডাটাবেস -->
+  <g class="node-card">
+    <rect x="710" y="70" width="180" height="135" rx="14" fill="#1e293b" stroke="url(#vectorGrad)" stroke-width="2.5" filter="url(#ragShadow)"/>
+    <rect x="725" y="85" width="32" height="32" rx="6" fill="url(#vectorGrad)"/>
+    <text x="741" y="107" font-family="system-ui, sans-serif" font-size="16" fill="#fff" text-anchor="middle">🗄️</text>
+    <text x="765" y="99" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#fbbf24">Vector Database</text>
+    <text x="765" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">Chroma / FAISS / Pinecone</text>
+    <rect x="725" y="130" width="150" height="22" rx="4" fill="#0f172a"/>
+    <text x="800" y="145" font-family="monospace" font-size="9.5" fill="#fde68a" text-anchor="middle">Vector Embeddings Store</text>
+    <text x="800" y="180" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#fbbf24" text-anchor="middle">⚡ Indexed for Fast Search</text>
+  </g>
+
+  <!-- ============================================== -->
+  <!-- রানটাইম ফেজ নোডসমূহ -->
+  <!-- ============================================== -->
+  <!-- ৫. ব্যবহারকারী ও প্রশ্ন -->
+  <g class="node-card">
+    <rect x="50" y="315" width="160" height="110" rx="12" fill="#1e293b" stroke="url(#queryGrad)" stroke-width="2" filter="url(#ragShadow)"/>
+    <circle cx="75" cy="342" r="14" fill="url(#queryGrad)"/>
+    <text x="75" y="347" font-family="system-ui, sans-serif" font-size="14" fill="#fff" text-anchor="middle">👤</text>
+    <text x="98" y="340" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">User Query</text>
+    <text x="98" y="355" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">ব্যবহারকারীর প্রশ্ন</text>
+    <rect x="65" y="375" width="130" height="22" rx="4" fill="#0f172a"/>
+    <text x="130" y="390" font-family="monospace" font-size="9.5" fill="#f472b6" text-anchor="middle">"ছুটির নিয়ম কী?"</text>
+  </g>
+
+  <!-- ফ্লো ৪: User Query -> Vector DB (Search) -->
+  <path d="M 210 370 L 800 370 L 800 205" fill="none" stroke="#f472b6" stroke-width="2.5" class="flow-purple" filter="url(#ragGlow)"/>
+
+  <!-- ফ্লো ৫: Vector DB -> Augmented Prompt (Context Return) -->
+  <path d="M 760 205 L 760 330 L 490 330" fill="none" stroke="#fbbf24" stroke-width="2.5" class="flow-purple" filter="url(#ragGlow)"/>
+
+  <!-- ৬. অগমেন্টেড প্রম্পট -->
+  <g class="node-card">
+    <rect x="310" y="295" width="180" height="145" rx="14" fill="#1e293b" stroke="url(#promptGrad)" stroke-width="2" filter="url(#ragShadow)"/>
+    <rect x="325" y="310" width="30" height="30" rx="6" fill="url(#promptGrad)"/>
+    <text x="340" y="330" font-family="system-ui, sans-serif" font-size="15" fill="#fff" text-anchor="middle">🧩</text>
+    <text x="365" y="322" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#c084fc">Augmented Prompt</text>
+    <text x="365" y="337" font-family="system-ui, sans-serif" font-size="9.5" fill="#94a3b8">Context + User Question</text>
+    <rect x="325" y="355" width="150" height="22" rx="4" fill="#0f172a"/>
+    <text x="400" y="370" font-family="monospace" font-size="8.5" fill="#a78bfa" text-anchor="middle">Context: "২০ দিন ছুটি..."</text>
+    <rect x="325" y="382" width="150" height="22" rx="4" fill="#0f172a"/>
+    <text x="400" y="397" font-family="monospace" font-size="8.5" fill="#f472b6" text-anchor="middle">Question: "ছুটির নিয়ম..."</text>
+  </g>
+
+  <!-- ফ্লো ৬: Query -> Augmented Prompt -->
+  <path d="M 210 350 L 310 350" fill="none" stroke="#f472b6" stroke-width="2" class="flow-purple"/>
+
+  <!-- ফ্লো ৭: Augmented Prompt -> LLM -->
+  <path d="M 490 370 L 560 370" fill="none" stroke="#34d399" stroke-width="3" class="flow-green" filter="url(#ragGlow)"/>
+
+  <!-- ৭. LLM Generator -->
+  <g class="node-card">
+    <rect x="560" y="305" width="150" height="125" rx="14" fill="#1e293b" stroke="url(#llmGrad)" stroke-width="2.5" filter="url(#ragShadow)"/>
+    <circle cx="585" cy="335" r="14" fill="url(#llmGrad)"/>
+    <text x="585" y="340" font-family="system-ui, sans-serif" font-size="14" fill="#fff" text-anchor="middle">🤖</text>
+    <text x="608" y="334" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#34d399">LLM Engine</text>
+    <text x="608" y="349" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">GPT-4 / Claude / LLaMA</text>
+    <rect x="575" y="370" width="120" height="22" rx="4" fill="#0f172a"/>
+    <text x="635" y="385" font-family="monospace" font-size="9" fill="#6ee7b7" text-anchor="middle">Grounded Answer Gen</text>
+  </g>
+
+  <!-- ফ্লো ৮: LLM -> Final Response -->
+  <path d="M 710 370 L 760 370" fill="none" stroke="#34d399" stroke-width="3" class="flow-green" filter="url(#ragGlow)"/>
+
+  <!-- ৮. ফাইনাল রেসপন্স -->
+  <g class="node-card">
+    <rect x="760" y="315" width="135" height="105" rx="12" fill="#064e3b" stroke="#34d399" stroke-width="2" filter="url(#ragShadow)"/>
+    <circle cx="785" cy="340" r="12" fill="#34d399"/>
+    <text x="785" y="345" font-family="system-ui, sans-serif" font-size="12" fill="#064e3b" text-anchor="middle">✓</text>
+    <text x="805" y="344" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#a7f3d0">সঠিক উত্তর</text>
+    <text x="770" y="372" font-family="system-ui, sans-serif" font-size="9" fill="#cbd5e1">নথির ভিত্তিতে নিখুঁত</text>
+    <text x="770" y="387" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#34d399">Zero Hallucination!</text>
+  </g>
+</svg>
+</div>
 
 ---
 
