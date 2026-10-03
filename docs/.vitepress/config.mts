@@ -178,7 +178,9 @@ export default withMermaid(
               { text: '৫. Cosine Similarity ও Vector Search', link: '/rag-beginner/cosine-similarity-vector-search' },
               { text: '৬. প্রথম RAG অ্যাপ তৈরি', link: '/rag-beginner/first-rag-application' },
               { text: '৭. Conversational RAG ও Chat History', link: '/rag-beginner/conversational-rag-chat-history' },
-              { text: '৮. Text Chunking Strategies', link: '/rag-beginner/chunking-strategies' }
+              { text: '৮. Text Chunking Strategies', link: '/rag-beginner/chunking-strategies' },
+              { text: '৯. Advanced Text Splitting (LangChain)', link: '/rag-beginner/advanced-text-splitting' },
+              { text: '১০. Semantic Chunking পদ্ধতি', link: '/rag-beginner/semantic-chunking' }
             ]
           }
         ],
