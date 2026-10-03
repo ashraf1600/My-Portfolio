@@ -5,7 +5,7 @@ description: "HR Hiring পাইপলাইনের বাস্তব উদ
 
 # Generative AI থেকে Agentic AI এর বিবর্তন (The Evolution of AI Systems)
 
-> **Module 1: Foundations of Agentic AI** • Video 1
+> **Module 1: Foundations of Agentic AI**
 
 ---
 

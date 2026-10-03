@@ -5,7 +5,7 @@ description: "HR Hiring পাইপলাইনের বাস্তব উদ
 
 # Generative AI থেকে Agentic AI এর বিবর্তন (The Evolution of AI Systems)
 
-> **Module 1: Foundations of Agentic AI** • Video 1
+> **Module 1: Foundations of Agentic AI**
 
 ---
 
@@ -446,6 +446,6 @@ Function Calling (বা Tool Augmentation) হলো মডেলের শু�
 
 ## ১২. পরবর্তী ধাপ (What's Next?)
 
-পরবর্তী টিউটোরিয়ালে আমরা আলোচনা করব **Module 1 - Topic 2: Anatomy of an AI Agent (একটি এজেন্টের অভ্যন্তরীণ শারীরস্থান)**। সেখানে আমরা দেখব:
+পরবর্তী পর্বে আমরা আলোচনা করব **Anatomy of an AI Agent (একটি এজেন্টের অভ্যন্তরীণ শারীরস্থান)**। সেখানে আমরা দেখব:
 - কীভাবে একজন মানুষের মস্তিষ্কের মতো এজেন্টের **Perception, Working Memory, Long-term Memory, Planning Module, Action Engine** কাজ করে।
 - এই আর্কিটেকচারটি কীভাবে LangGraph-এর স্টেট এবং নোড স্ট্রাকচারের সাথে সরাসরি মানানসই হয়।
