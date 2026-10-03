@@ -56,31 +56,145 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
 
 ---
 
-## ৫. Architecture Diagram (মাল্টি-কুয়েরি পাইপলাইন)
+## ৫. Architecture Diagram (মাল্টি-কুয়েরি ও প্যারালাল সার্চ আর্কিটেকচার)
 
-```mermaid
-flowchart TD
-    UserQ["ব্যবহারকারীর মূল প্রশ্ন:\n'অফিসে না আসলে কি জরিমানা হবে?'"] --> MultiGen["🤖 LLM Query Generator\n(৩টি ভিন্ন বিকল্প প্রশ্ন তৈরি)"]
-    
-    MultiGen --> Q1["Query 1: অনুপস্থিতির ক্ষেত্রে বেতন কর্তন নীতি"]
-    MultiGen --> Q2["Query 2: TechNova ছুটির নীতিমালা ও জরিমানা"]
-    MultiGen --> Q3["Query 3: অনুমোদনহীন ছুটির ফলাফল ও এইচআর রুলস"]
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 480" width="100%" height="auto" style="max-width: 900px; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.15)); border-radius: 18px; background: linear-gradient(135deg, #0b0f19 0%, #151d2e 100%);">
+  <defs>
+    <filter id="v14Shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="v14Glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    Q1 --> VDB[("Vector Database\n(প্যারালাল সার্চ)")]
-    Q2 --> VDB
-    Q3 --> VDB
+    <linearGradient id="v14UserGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="v14GenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="v14VdbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0e7490"/>
+    </linearGradient>
+    <linearGradient id="v14DedupGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="v14FinalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
 
-    VDB --> Dedup["ডুপ্লিকেট দূরীকরণ ও ইউনিয়ন\n(Unique Retrieved Chunks)"]
-    Dedup --> Prompt["Augmented Prompt"]
-    UserQ --> Prompt
-    Prompt --> LLM["🤖 Final LLM Generator"]
-    LLM --> Response["চূড়ান্ত নিখুঁত উত্তর"]
+    <marker id="v14ArrowPink" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#f472b6"/>
+    </marker>
+    <marker id="v14ArrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#67e8f9"/>
+    </marker>
+    <marker id="v14ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
+    </marker>
+    <marker id="v14ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
+    </marker>
 
-    style UserQ fill:#e6f7ff,stroke:#1890ff,stroke-width:2px,color:#000
-    style MultiGen fill:#fff0f6,stroke:#eb2f96,stroke-width:2px,color:#000
-    style VDB fill:#fffbe6,stroke:#faad14,stroke-width:2px,color:#000
-    style Dedup fill:#f6ffed,stroke:#52c41a,stroke-width:2px,color:#000
-```
+    <style>
+      .v14-pulse-pink { stroke-dasharray: 6, 6; animation: v14Anim 1.4s linear infinite; }
+      .v14-pulse-cyan { stroke-dasharray: 6, 6; animation: v14Anim 1.3s linear infinite; }
+      .v14-pulse-amber { stroke-dasharray: 6, 6; animation: v14Anim 1.3s linear infinite; }
+      .v14-pulse-green { stroke-dasharray: 6, 6; animation: v14Anim 1.2s linear infinite; }
+      @keyframes v14Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+    </style>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Multi-Query RAG: Query Expansion &amp; Parallel Retrieval</text>
+  <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Generating diverse perspectives to overcome distance bias and merge unique knowledge chunks</text>
+
+  <!-- Node 1: Original User Query -->
+  <g transform="translate(30, 175)">
+    <rect width="150" height="95" rx="14" fill="url(#v14UserGrad)" filter="url(#v14Shadow)"/>
+    <text x="75" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ffe4e6" text-anchor="middle" letter-spacing="1">ORIGINAL QUERY</text>
+    <text x="75" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">ব্যবহারকারীর প্রশ্ন</text>
+    <rect x="10" y="58" width="130" height="25" rx="6" fill="#881337" opacity="0.6"/>
+    <text x="75" y="74" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fecdd3" text-anchor="middle">"অফিসে না আসলে জরিমানা?"</text>
+  </g>
+
+  <!-- Node 2: Query Generator (LLM) -->
+  <g transform="translate(220, 150)">
+    <rect width="165" height="145" rx="14" fill="url(#v14GenGrad)" filter="url(#v14Shadow)"/>
+    <text x="82" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#fce7f3" text-anchor="middle" letter-spacing="1">EXPANSION ENGINE</text>
+    <text x="82" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff" text-anchor="middle">🤖 Multi-Query LLM</text>
+    <rect x="12" y="60" width="141" height="68" rx="8" fill="#831843" opacity="0.6"/>
+    <text x="82" y="78" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fbcfe8" text-anchor="middle">উৎপন্ন ৩টি বিকল্প দৃষ্টিভঙ্গি:</text>
+    <text x="82" y="94" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#ffffff" text-anchor="middle">1. বেতন কর্তন নিয়ম</text>
+    <text x="82" y="108" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#ffffff" text-anchor="middle">2. ছুটির জরিমানা পলিসি</text>
+    <text x="82" y="122" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#ffffff" text-anchor="middle">3. অনুমোদনহীন ছুটি বিধান</text>
+  </g>
+
+  <!-- Parallel Queries (3 Lanes) -->
+  <!-- Lane 1 (Top) -->
+  <g transform="translate(430, 95)">
+    <rect width="180" height="50" rx="8" fill="#1e1b4b" stroke="#818cf8"/>
+    <text x="90" y="22" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#c7d2fe" text-anchor="middle">Q1: বেতন কর্তন সংক্রান্ত নিয়ম</text>
+    <text x="90" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#94a3b8" text-anchor="middle">Vector Match: Chunk #4, #7</text>
+  </g>
+
+  <!-- Lane 2 (Middle) -->
+  <g transform="translate(430, 195)">
+    <rect width="180" height="50" rx="8" fill="#1e1b4b" stroke="#818cf8"/>
+    <text x="90" y="22" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#c7d2fe" text-anchor="middle">Q2: TechNova জরিমানা পলিসি</text>
+    <text x="90" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#94a3b8" text-anchor="middle">Vector Match: Chunk #2, #4</text>
+  </g>
+
+  <!-- Lane 3 (Bottom) -->
+  <g transform="translate(430, 295)">
+    <rect width="180" height="50" rx="8" fill="#1e1b4b" stroke="#818cf8"/>
+    <text x="90" y="22" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#c7d2fe" text-anchor="middle">Q3: অনুমোদনহীন অনুপস্থিতি</text>
+    <text x="90" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#94a3b8" text-anchor="middle">Vector Match: Chunk #9, #2</text>
+  </g>
+
+  <!-- Node 4: Deduplication & Union Store -->
+  <g transform="translate(650, 155)">
+    <rect width="130" height="135" rx="14" fill="url(#v14DedupGrad)" filter="url(#v14Shadow)"/>
+    <text x="65" y="25" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#fef3c7" text-anchor="middle" letter-spacing="1">DEDUPLICATION</text>
+    <text x="65" y="46" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Set Union</text>
+    <rect x="10" y="58" width="110" height="64" rx="6" fill="#78350f" opacity="0.6"/>
+    <text x="65" y="75" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fde68a" text-anchor="middle">ডুপ্লিকেট ছাঁটাই:</text>
+    <text x="65" y="90" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#ffffff" text-anchor="middle">Unique Chunks:</text>
+    <text x="65" y="105" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#a7f3d0" text-anchor="middle">[#2, #4, #7, #9]</text>
+  </g>
+
+  <!-- Node 5: Final LLM Generator -->
+  <g transform="translate(820, 165)">
+    <rect width="90" height="115" rx="12" fill="url(#v14FinalGrad)" filter="url(#v14Shadow)"/>
+    <text x="45" y="25" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#d1fae5" text-anchor="middle" letter-spacing="1">GENERATOR</text>
+    <text x="45" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" text-anchor="middle">🤖</text>
+    <text x="45" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Final LLM</text>
+    <text x="45" y="85" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#a7f3d0" text-anchor="middle">Full Truth</text>
+    <text x="45" y="98" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#d1fae5" text-anchor="middle">Answer</text>
+  </g>
+
+  <!-- Connectors -->
+  <!-- User to MultiGen -->
+  <path d="M 180 220 L 220 220" fill="none" stroke="#f472b6" stroke-width="2.5" class="v14-pulse-pink" marker-end="url(#v14ArrowPink)"/>
+  <!-- MultiGen to Lanes -->
+  <path d="M 385 180 L 430 120" fill="none" stroke="#67e8f9" stroke-width="2" class="v14-pulse-cyan" marker-end="url(#v14ArrowCyan)"/>
+  <path d="M 385 220 L 430 220" fill="none" stroke="#67e8f9" stroke-width="2" class="v14-pulse-cyan" marker-end="url(#v14ArrowCyan)"/>
+  <path d="M 385 260 L 430 320" fill="none" stroke="#67e8f9" stroke-width="2" class="v14-pulse-cyan" marker-end="url(#v14ArrowCyan)"/>
+  <!-- Lanes to Dedup -->
+  <path d="M 610 120 L 650 180" fill="none" stroke="#fcd34d" stroke-width="2" class="v14-pulse-amber" marker-end="url(#v14ArrowAmber)"/>
+  <path d="M 610 220 L 650 220" fill="none" stroke="#fcd34d" stroke-width="2" class="v14-pulse-amber" marker-end="url(#v14ArrowAmber)"/>
+  <path d="M 610 320 L 650 260" fill="none" stroke="#fcd34d" stroke-width="2" class="v14-pulse-amber" marker-end="url(#v14ArrowAmber)"/>
+  <!-- Dedup to LLM -->
+  <path d="M 780 220 L 820 220" fill="none" stroke="#34d399" stroke-width="2.5" class="v14-pulse-green" marker-end="url(#v14ArrowGreen)"/>
+</svg>
+</div>
 
 ---
 

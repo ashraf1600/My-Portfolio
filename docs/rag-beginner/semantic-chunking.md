@@ -54,38 +54,128 @@
 
 ---
 
-## ৫. Architecture Diagram (সিমিলারিটি ড্রপ ভিজ্যুয়ালাইজেশন)
+## ৫. Architecture Diagram (সিমিলারিটি কার্ভ ও ব্রেকপয়েন্ট স্প্লিট আর্কিটেকচার)
 
-```mermaid
-flowchart TD
-    S1["বাক্য ১: TechNova কর্মীগণ ২০ দিন ক্যাজুয়াল ছুটি পান।"]
-    S2["বাক্য ২: অসুস্থ হলে ডাক্তারের প্রেসক্রিপশন জমা দিতে হবে।"]
-    S3["বাক্য ৩: ছুটি নিতে হলে পোর্টালে ৩ দিন আগে জানাতে হয়।"]
-    
-    Drop{{"⚠️ মিলের তীব্র পতন! (Sim: 0.12)\nটপিক পরিবর্তন শনাক্ত!"}}
-    
-    S4["বাক্য ৪: আমাদের ক্লাউড সার্ভার AWS ইউএস-ইস্ট অঞ্চলে চলে।"]
-    S5["বাক্য ৫: সার্ভারের ব্যাকআপ প্রতিদিন রাত ১২টায় নেওয়া হয়।"]
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 460" width="100%" height="auto" style="max-width: 900px; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.15)); border-radius: 18px; background: linear-gradient(135deg, #0b0f19 0%, #151d2e 100%);">
+  <defs>
+    <filter id="v10Shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="v10Glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    S1 --> S2 --> S3
-    S3 -.-> Drop -.-> S4
-    S4 --> S5
+    <linearGradient id="v10ChunkAGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="v10ChunkBGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="v10CutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
 
-    subgraph ChunkA ["চ্যাঙ্ক ১ (বিষয়: ছুটির নীতিমালা)"]
-        S1
-        S2
-        S3
-    end
+    <marker id="v10ArrowRose" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#fb7185"/>
+    </marker>
 
-    subgraph ChunkB ["চ্যাঙ্ক ২ (বিষয়: ক্লাউড ইনফ্রাস্ট্রাকচার)"]
-        S4
-        S5
-    end
+    <style>
+      .v10-pulse-cyan { stroke-dasharray: 6, 6; animation: v10Anim 1.4s linear infinite; }
+      .v10-pulse-green { stroke-dasharray: 6, 6; animation: v10Anim 1.4s linear infinite; }
+      .v10-pulse-rose { stroke-dasharray: 6, 6; animation: v10Anim 1.2s linear infinite; }
+      @keyframes v10Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+    </style>
+  </defs>
 
-    style Drop fill:#ffeef0,stroke:#f5222d,stroke-width:2px,color:#000
-    style ChunkA fill:#f6ffed,stroke:#52c41a,stroke-width:2px,color:#000
-    style ChunkB fill:#e6f7ff,stroke:#1890ff,stroke-width:2px,color:#000
-```
+  <!-- Title & Subtitle -->
+  <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Semantic Chunking: Embedding Similarity Curve &amp; Breakpoints</text>
+  <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Automatic chunk boundary split when adjacent sentence similarity falls below threshold</text>
+
+  <!-- Top Graph Section: Similarity Curve -->
+  <g transform="translate(60, 85)">
+    <rect width="820" height="150" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+
+    <!-- Y-axis reference levels -->
+    <line x1="60" y1="25" x2="790" y2="25" stroke="#334155" stroke-dasharray="3,3"/>
+    <text x="50" y="29" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="end">1.0</text>
+
+    <!-- Threshold Line (0.50) -->
+    <line x1="60" y1="75" x2="790" y2="75" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4"/>
+    <text x="50" y="79" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#f59e0b" font-weight="700" text-anchor="end">0.50</text>
+    <text x="785" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24" font-weight="600" text-anchor="end">✂️ Split Threshold (0.50)</text>
+
+    <line x1="60" y1="125" x2="790" y2="125" stroke="#334155" stroke-dasharray="3,3"/>
+    <text x="50" y="129" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="end">0.0</text>
+
+    <!-- Similarity Plot Curve -->
+    <path d="M 140 34 L 290 37 L 440 115 L 590 31 L 740 33" fill="none" stroke="#38bdf8" stroke-width="3"/>
+
+    <!-- Data points -->
+    <circle cx="140" cy="34" r="6" fill="#38bdf8"/>
+    <text x="140" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Sim: 0.91</text>
+    <text x="140" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">S1 ⇄ S2 (ছুটি)</text>
+
+    <circle cx="290" cy="37" r="6" fill="#38bdf8"/>
+    <text x="290" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Sim: 0.88</text>
+    <text x="290" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">S2 ⇄ S3 (অসুস্থতা)</text>
+
+    <!-- Point 3: DROP (S3-S4) -->
+    <circle cx="440" cy="115" r="8" fill="#f43f5e" filter="url(#v10Glow)"/>
+    <text x="440" y="103" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f43f5e" text-anchor="middle">⚠️ Sim: 0.12 (DROP!)</text>
+    <text x="440" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#f87171" text-anchor="middle">S3 ⇄ S4 (টপিক বদল)</text>
+
+    <circle cx="590" cy="31" r="6" fill="#34d399"/>
+    <text x="590" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">Sim: 0.94</text>
+    <text x="590" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">S4 ⇄ S5 (ক্লাউড)</text>
+
+    <circle cx="740" cy="33" r="6" fill="#34d399"/>
+    <text x="740" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">Sim: 0.92</text>
+    <text x="740" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">S5 ⇄ S6 (ব্যাকআপ)</text>
+  </g>
+
+  <!-- Downward Split Arrows -->
+  <path d="M 310 240 L 260 270" fill="none" stroke="#38bdf8" stroke-width="2.5" class="v10-pulse-cyan"/>
+  <path d="M 500 240 L 500 265" fill="none" stroke="#f43f5e" stroke-width="2.5" class="v10-pulse-rose" marker-end="url(#v10ArrowRose)"/>
+  <path d="M 680 240 L 730 270" fill="none" stroke="#34d399" stroke-width="2.5" class="v10-pulse-green"/>
+
+  <!-- Resulting Chunks -->
+  <!-- Chunk 1: HR Policy (Blue) -->
+  <g transform="translate(60, 275)">
+    <rect width="380" height="155" rx="14" fill="#131d36" stroke="#0284c7" stroke-width="2" filter="url(#v10Shadow)"/>
+    <rect x="15" y="15" width="350" height="30" rx="8" fill="url(#v10ChunkAGrad)"/>
+    <text x="190" y="35" font-family="'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Chunk 1: ছুটির নীতিমালা (Sentences 1 - 3)</text>
+    <text x="25" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#bae6fd">• S1: কর্মীগণ বছরে ২০ দিন ক্যাজুয়াল ছুটি পান।</text>
+    <text x="25" y="90" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#bae6fd">• S2: অসুস্থ হলে ডাক্তারের প্রেসক্রিপশন জমা দিতে হবে।</text>
+    <text x="25" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#bae6fd">• S3: ছুটি নিতে হলে পোর্টালে ৩ দিন আগে জানাতে হয়।</text>
+    <rect x="25" y="124" width="330" height="20" rx="4" fill="#0c4a6e"/>
+    <text x="190" y="138" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#7dd3fc" text-anchor="middle">✓ অভ্যন্তরীণ সিমিলারিটি &gt; 0.88 (অর্থগতভাবে সুসংবদ্ধ)</text>
+  </g>
+
+  <!-- Cut Divider Indicator -->
+  <g transform="translate(450, 310)">
+    <rect width="90" height="70" rx="10" fill="url(#v10CutGrad)" filter="url(#v10Shadow)"/>
+    <text x="45" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" text-anchor="middle">✂️</text>
+    <text x="45" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">SPLIT HERE</text>
+    <text x="45" y="60" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fecdd3" text-anchor="middle">Sim &lt; 0.50</text>
+  </g>
+
+  <!-- Chunk 2: Cloud Infra (Green) -->
+  <g transform="translate(550, 275)">
+    <rect width="330" height="155" rx="14" fill="#132328" stroke="#059669" stroke-width="2" filter="url(#v10Shadow)"/>
+    <rect x="15" y="15" width="300" height="30" rx="8" fill="url(#v10ChunkBGrad)"/>
+    <text x="165" y="35" font-family="'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Chunk 2: ক্লাউড ইনফ্রাস্ট্রাকচার (Sentences 4 - 5)</text>
+    <text x="25" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#a7f3d0">• S4: আমাদের ক্লাউড সার্ভার AWS ইউএস-ইস্টে চলে।</text>
+    <text x="25" y="90" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#a7f3d0">• S5: সার্ভারের ব্যাকআপ প্রতিদিন রাত ১২টায় নেওয়া হয়।</text>
+    <rect x="25" y="124" width="280" height="20" rx="4" fill="#064e3b"/>
+    <text x="165" y="138" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#6ee7b7" text-anchor="middle">✓ অভ্যন্তরীণ সিমিলারিটি &gt; 0.92 (অর্থগতভাবে সুসংবদ্ধ)</text>
+  </g>
+</svg>
+</div>
 
 ---
 

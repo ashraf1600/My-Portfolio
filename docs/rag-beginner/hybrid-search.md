@@ -52,33 +52,134 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
 
 ---
 
-## ৫. Architecture Diagram (হাইব্রিড সার্চ ফ্লো)
+## ৫. Architecture Diagram (হাইব্রিড সার্চ: ডেন্স + স্পার্স আর্কিটেকচার)
 
-```mermaid
-flowchart TD
-    UserQuery["ব্যবহারকারীর প্রশ্ন:\n'TN-POL-404 কোডের ছুটির নিয়ম কী?'"] --> SplitEngine{কুয়েরি ব্রডকাস্ট}
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 480" width="100%" height="auto" style="max-width: 900px; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.15)); border-radius: 18px; background: linear-gradient(135deg, #0b0f19 0%, #151d2e 100%);">
+  <defs>
+    <filter id="v16Shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="v16Glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    subgraph DenseBranch ["১. Dense Vector Search (Semantic)"]
-        SplitEngine --> EmbedModel[Embedding Model]
-        EmbedModel --> VectorSearch[Semantic Cosine Search]
-    end
+    <linearGradient id="v16UserGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="v16DenseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="v16SparseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="v16FusionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="v16LlmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
 
-    subgraph SparseBranch ["২. Sparse Keyword Search (Lexical)"]
-        SplitEngine --> BM25Search["BM25 / Exact Keyword Search\n('TN-POL-404' হুবহু ম্যাচ)"]
-    end
+    <marker id="v16ArrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#67e8f9"/>
+    </marker>
+    <marker id="v16ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
+    </marker>
+    <marker id="v16ArrowPurple" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#c084fc"/>
+    </marker>
+    <marker id="v16ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
+    </marker>
 
-    VectorSearch --> Fusion["🔄 Reciprocal Rank Fusion (RRF)\nউভয় তালিকার র‍্যাঙ্ক সংমিশ্রণ"]
-    BM25Search --> Fusion
+    <style>
+      .v16-pulse-cyan { stroke-dasharray: 6, 6; animation: v16Anim 1.4s linear infinite; }
+      .v16-pulse-amber { stroke-dasharray: 6, 6; animation: v16Anim 1.3s linear infinite; }
+      .v16-pulse-purple { stroke-dasharray: 6, 6; animation: v16Anim 1.4s linear infinite; }
+      .v16-pulse-green { stroke-dasharray: 6, 6; animation: v16Anim 1.2s linear infinite; }
+      @keyframes v16Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+    </style>
+  </defs>
 
-    Fusion --> TopContext["সর্বোচ্চ নিখুঁত শীর্ষ ডকুমেন্টস"]
-    TopContext --> LLM["🤖 LLM Generator"]
-    LLM --> FinalAnswer["নিখুঁত ও সুনির্দিষ্ট উত্তর"]
+  <!-- Title & Subtitle -->
+  <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Hybrid Search: Parallel Dense &amp; Sparse Retrieval with RRF</text>
+  <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Unifying semantic vector embeddings with exact BM25 keyword matching for ultimate accuracy</text>
 
-    style DenseBranch fill:#e6f7ff,stroke:#1890ff,stroke-width:2px,color:#000
-    style SparseBranch fill:#fffbe6,stroke:#faad14,stroke-width:2px,color:#000
-    style Fusion fill:#f6ffed,stroke:#52c41a,stroke-width:2px,color:#000
-    style LLM fill:#fff0f6,stroke:#eb2f96,stroke-width:2px,color:#000
-```
+  <!-- Node 1: Input Query (Mixed type) -->
+  <g transform="translate(30, 185)">
+    <rect width="170" height="100" rx="14" fill="url(#v16UserGrad)" filter="url(#v16Shadow)"/>
+    <text x="85" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ffe4e6" text-anchor="middle" letter-spacing="1">HYBRID QUERY</text>
+    <text x="85" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">মিশ্র কুয়েরি</text>
+    <rect x="10" y="60" width="150" height="28" rx="6" fill="#881337" opacity="0.6"/>
+    <text x="85" y="74" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fecdd3" text-anchor="middle">"TN-POL-404 কোডের</text>
+    <text x="85" y="85" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fecdd3" text-anchor="middle">ছুটির নিয়ম কী?"</text>
+  </g>
+
+  <!-- Branch 1: Dense Vector Branch (Top) -->
+  <g transform="translate(260, 95)">
+    <rect width="250" height="120" rx="14" fill="#131d36" stroke="#0284c7" stroke-width="2" filter="url(#v16Shadow)"/>
+    <rect x="12" y="12" width="226" height="26" rx="6" fill="url(#v16DenseGrad)"/>
+    <text x="125" y="29" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">১. Dense Vector Search (Semantic)</text>
+    <text x="20" y="58" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#bae6fd">• Embedding Cosine Distance</text>
+    <text x="20" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#bae6fd">• বুঝবে: "ছুটির নিয়ম", "ক্যাজুয়াল নীতি"</text>
+    <rect x="18" y="86" width="214" height="20" rx="4" fill="#0c4a6e"/>
+    <text x="125" y="100" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#7dd3fc" text-anchor="middle">⚠️ কিন্তু কোড "TN-POL-404" মিস করতে পারে</text>
+  </g>
+
+  <!-- Branch 2: Sparse BM25 Keyword Branch (Bottom) -->
+  <g transform="translate(260, 255)">
+    <rect width="250" height="120" rx="14" fill="#251d10" stroke="#f59e0b" stroke-width="2" filter="url(#v16Shadow)"/>
+    <rect x="12" y="12" width="226" height="26" rx="6" fill="url(#v16SparseGrad)"/>
+    <text x="125" y="29" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">২. Sparse BM25 Search (Lexical)</text>
+    <text x="20" y="58" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fde68a">• Inverted Token Frequency Index</text>
+    <text x="20" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fde68a">• হুবহু ম্যাচ: "TN-POL-404" আলফানিউমেরিক</text>
+    <rect x="18" y="86" width="214" height="20" rx="4" fill="#78350f"/>
+    <text x="125" y="100" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fef08a" text-anchor="middle">✓ নিখুঁত কিওয়ার্ড শনাক্তকরণ</text>
+  </g>
+
+  <!-- Node 3: RRF Fusion Engine -->
+  <g transform="translate(570, 165)">
+    <rect width="180" height="140" rx="14" fill="url(#v16FusionGrad)" filter="url(#v16Shadow)"/>
+    <text x="90" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ede9fe" text-anchor="middle" letter-spacing="1">RRF FUSION</text>
+    <text x="90" y="50" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">🔄 Rank Fusion</text>
+    <rect x="12" y="62" width="156" height="64" rx="8" fill="#4c1d95" opacity="0.6"/>
+    <text x="90" y="80" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#ddd6fe" text-anchor="middle">Score = Σ 1/(60+r)</text>
+    <text x="90" y="96" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#c4b5fd" text-anchor="middle">দুই শাখার সেরা অংশ</text>
+    <text x="90" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">একত্রে সেরা র‍্যাঙ্কিং</text>
+  </g>
+
+  <!-- Node 4: LLM Generator -->
+  <g transform="translate(800, 175)">
+    <rect width="110" height="120" rx="14" fill="url(#v16LlmGrad)" filter="url(#v16Shadow)"/>
+    <text x="55" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#d1fae5" text-anchor="middle" letter-spacing="1">GENERATION</text>
+    <text x="55" y="50" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" text-anchor="middle">🤖</text>
+    <text x="55" y="72" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">LLM Engine</text>
+    <rect x="10" y="82" width="90" height="26" rx="4" fill="#064e3b" opacity="0.7"/>
+    <text x="55" y="98" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#a7f3d0" text-anchor="middle">নিখুঁত উত্তর</text>
+  </g>
+
+  <!-- Connectors -->
+  <!-- Split Query to Dense Branch -->
+  <path d="M 200 215 L 230 215 L 230 155 L 260 155" fill="none" stroke="#67e8f9" stroke-width="2.5" class="v16-pulse-cyan" marker-end="url(#v16ArrowCyan)"/>
+  <!-- Split Query to Sparse Branch -->
+  <path d="M 200 255 L 230 255 L 230 315 L 260 315" fill="none" stroke="#fcd34d" stroke-width="2.5" class="v16-pulse-amber" marker-end="url(#v16ArrowAmber)"/>
+
+  <!-- Dense Branch to Fusion Engine -->
+  <path d="M 510 155 L 540 155 L 540 215 L 570 215" fill="none" stroke="#c084fc" stroke-width="2.5" class="v16-pulse-purple" marker-end="url(#v16ArrowPurple)"/>
+  <!-- Sparse Branch to Fusion Engine -->
+  <path d="M 510 315 L 540 315 L 540 255 L 570 255" fill="none" stroke="#c084fc" stroke-width="2.5" class="v16-pulse-purple" marker-end="url(#v16ArrowPurple)"/>
+
+  <!-- Fusion Engine to LLM -->
+  <path d="M 750 235 L 800 235" fill="none" stroke="#34d399" stroke-width="2.8" class="v16-pulse-green" marker-end="url(#v16ArrowGreen)"/>
+</svg>
+</div>
 
 ---
 

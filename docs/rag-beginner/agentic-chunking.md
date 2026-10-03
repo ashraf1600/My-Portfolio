@@ -48,25 +48,130 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
 
 ---
 
-## ৫. Architecture Diagram (এজেন্টিক চাংকিং পাইপলাইন)
+## ৫. Architecture Diagram (এজেন্টিক চাংকিং ও মেটাডেটা সমৃদ্ধকরণ আর্কিটেকচার)
 
-```mermaid
-flowchart TD
-    RawDoc["কাঁচা জটিল নথি\n(TechNova Annual Policy)"] --> Agent["🤖 LLM Agent\n(Context & Reasoning Engine)"]
-    
-    Agent --> Decision{"নথির প্রতিটি বাক্য বিশ্লেষণ:\nএটি কি আগের প্রসঙ্গের অংশ\nনাকি সম্পূর্ণ নতুন টপিক?"}
-    
-    Decision --> Chunk1["📦 Chunk 1\n• Title: ছুটির নীতিমালা\n• Content: ২০ দিন ক্যাজুয়াল ছুটি...\n• Tags: HR, Leave"]
-    Decision --> Chunk2["📦 Chunk 2\n• Title: ক্লাউড নিরাপত্তা\n• Content: AWS ডাটা সেন্টার...\n• Tags: Devops, Security"]
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 450" width="100%" height="auto" style="max-width: 900px; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.15)); border-radius: 18px; background: linear-gradient(135deg, #0b0f19 0%, #151d2e 100%);">
+  <defs>
+    <filter id="v11Shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="v11Glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    Chunk1 --> VectorDB[("ভেক্টর স্টোরে সংরক্ষণ\nউচ্চমানের সমৃদ্ধ মেটাডেটা সহ")]
-    Chunk2 --> VectorDB
+    <linearGradient id="v11RawGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="v11AgentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="v11Chunk1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="v11Chunk2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="v11VdbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
 
-    style RawDoc fill:#e6f7ff,stroke:#1890ff,stroke-width:2px,color:#000
-    style Agent fill:#fff0f6,stroke:#eb2f96,stroke-width:2px,color:#000
-    style Decision fill:#fffbe6,stroke:#faad14,stroke-width:2px,color:#000
-    style VectorDB fill:#f6ffed,stroke:#52c41a,stroke-width:2px,color:#000
-```
+    <marker id="v11ArrowPink" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#f472b6"/>
+    </marker>
+    <marker id="v11ArrowPurple" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#c084fc"/>
+    </marker>
+    <marker id="v11ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
+    </marker>
+    <marker id="v11ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
+    </marker>
+
+    <style>
+      .v11-pulse-pink { stroke-dasharray: 8, 8; animation: v11Anim 1.4s linear infinite; }
+      .v11-pulse-purple { stroke-dasharray: 8, 8; animation: v11Anim 1.3s linear infinite; }
+      .v11-pulse-amber { stroke-dasharray: 8, 8; animation: v11Anim 1.3s linear infinite; }
+      .v11-pulse-green { stroke-dasharray: 8, 8; animation: v11Anim 1.2s linear infinite; }
+      @keyframes v11Anim { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
+    </style>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Agentic Chunking Pipeline with LLM-Driven Synthesis</text>
+  <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">LLM dynamically reasons about context, auto-generates titles and metadata tags</text>
+
+  <!-- Node 1: Raw Document -->
+  <g transform="translate(30, 160)">
+    <rect width="160" height="110" rx="14" fill="url(#v11RawGrad)" filter="url(#v11Shadow)"/>
+    <text x="80" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#e0f2fe" text-anchor="middle" letter-spacing="1">RAW DOCUMENT</text>
+    <text x="80" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff" text-anchor="middle">TechNova Policy</text>
+    <rect x="15" y="64" width="130" height="34" rx="6" fill="#0369a1" opacity="0.6"/>
+    <text x="80" y="80" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#bae6fd" text-anchor="middle">মিশ্র ও জটিল কনটেন্ট</text>
+    <text x="80" y="93" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#e0f2fe" text-anchor="middle">(HR + Cloud + Admin)</text>
+  </g>
+
+  <!-- Node 2: LLM Reasoning Agent -->
+  <g transform="translate(250, 140)">
+    <rect width="190" height="150" rx="14" fill="url(#v11AgentGrad)" filter="url(#v11Shadow)"/>
+    <text x="95" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fce7f3" text-anchor="middle" letter-spacing="1">REASONING ENGINE</text>
+    <text x="95" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">🤖 LLM Agent</text>
+    <rect x="15" y="66" width="160" height="62" rx="8" fill="#831843" opacity="0.65"/>
+    <text x="95" y="84" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#fbcfe8" text-anchor="middle">• প্রসঙ্গ বিশ্লেষণ করে</text>
+    <text x="95" y="101" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#fbcfe8" text-anchor="middle">• স্বয়ংসম্পূর্ণ ইউনিট শনাক্ত</text>
+    <text x="95" y="118" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#fbcfe8" text-anchor="middle">• Title &amp; Tags সিন্থেসিস</text>
+  </g>
+
+  <!-- Node 3A: Enriched Chunk 1 (Top) -->
+  <g transform="translate(500, 90)">
+    <rect width="220" height="110" rx="12" fill="#1e1838" stroke="#8b5cf6" stroke-width="2" filter="url(#v11Shadow)"/>
+    <rect x="10" y="10" width="200" height="26" rx="6" fill="url(#v11Chunk1Grad)"/>
+    <text x="110" y="27" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">📦 Chunk 1: ছুটির নীতিমালা</text>
+    <text x="18" y="55" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#ddd6fe">Content: ২০ দিন ক্যাজুয়াল ছুটি...</text>
+    <rect x="15" y="68" width="190" height="22" rx="4" fill="#3b0764"/>
+    <text x="110" y="83" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#e9d5ff" text-anchor="middle">🏷️ Tags: ["HR", "Leave", "Casual"]</text>
+  </g>
+
+  <!-- Node 3B: Enriched Chunk 2 (Bottom) -->
+  <g transform="translate(500, 230)">
+    <rect width="220" height="110" rx="12" fill="#251d10" stroke="#f59e0b" stroke-width="2" filter="url(#v11Shadow)"/>
+    <rect x="10" y="10" width="200" height="26" rx="6" fill="url(#v11Chunk2Grad)"/>
+    <text x="110" y="27" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">📦 Chunk 2: ক্লাউড ইনফ্রা</text>
+    <text x="18" y="55" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fde68a">Content: AWS ইউএস-ইস্ট ক্লাউড...</text>
+    <rect x="15" y="68" width="190" height="22" rx="4" fill="#451a03"/>
+    <text x="110" y="83" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fef3c7" text-anchor="middle">🏷️ Tags: ["DevOps", "AWS", "Infra"]</text>
+  </g>
+
+  <!-- Node 4: Vector DB Store -->
+  <g transform="translate(770, 150)">
+    <rect width="145" height="130" rx="14" fill="url(#v11VdbGrad)" filter="url(#v11Shadow)"/>
+    <text x="72" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#d1fae5" text-anchor="middle" letter-spacing="1">INDEXED STORE</text>
+    <text x="72" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Vector DB</text>
+    <rect x="12" y="66" width="121" height="50" rx="6" fill="#064e3b" opacity="0.65"/>
+    <text x="72" y="84" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#a7f3d0" text-anchor="middle">Hybrid Filtering</text>
+    <text x="72" y="98" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#d1fae5" text-anchor="middle">+ Vector Cosine</text>
+  </g>
+
+  <!-- Connectors -->
+  <!-- Raw to Agent -->
+  <path d="M 190 215 L 250 215" fill="none" stroke="#f472b6" stroke-width="2.5" class="v11-pulse-pink" marker-end="url(#v11ArrowPink)"/>
+  <!-- Agent to Chunk 1 -->
+  <path d="M 440 180 L 500 145" fill="none" stroke="#c084fc" stroke-width="2.5" class="v11-pulse-purple" marker-end="url(#v11ArrowPurple)"/>
+  <!-- Agent to Chunk 2 -->
+  <path d="M 440 250 L 500 285" fill="none" stroke="#fcd34d" stroke-width="2.5" class="v11-pulse-amber" marker-end="url(#v11ArrowAmber)"/>
+  <!-- Chunk 1 to VectorDB -->
+  <path d="M 720 145 L 770 190" fill="none" stroke="#34d399" stroke-width="2.5" class="v11-pulse-green" marker-end="url(#v11ArrowGreen)"/>
+  <!-- Chunk 2 to VectorDB -->
+  <path d="M 720 285 L 770 240" fill="none" stroke="#34d399" stroke-width="2.5" class="v11-pulse-green" marker-end="url(#v11ArrowGreen)"/>
+</svg>
+</div>
 
 ---
 

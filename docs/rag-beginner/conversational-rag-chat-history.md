@@ -58,28 +58,129 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
 
 ---
 
-## ৫. Architecture Diagram (কনভারসেশনাল ফ্লো)
+## ৫. Architecture Diagram (কনভারসেশনাল RAG ও কুয়েরি রি-রাইট আর্কিটেকচার)
 
-```mermaid
-flowchart TD
-    User([ব্যবহারকারী]) -->|নতুন প্রশ্ন: 'সেটা কি পেইড?'| QueryContext["১. Query Contextualizer\n(LLM Rewriter)"]
-    History[("চ্যাট মেমোরি বাফার\nChat History")] -->|পূর্ববর্তী বার্তা| QueryContext
-    
-    QueryContext -->|স্বয়ংসম্পূর্ণ প্রশ্ন:\n'ক্যাজুয়াল ছুটি কি পেইড ছুটি?'| Retriever["২. Vector Retriever"]
-    VectorDB[(Vector Store)] -->|প্রাসঙ্গিক কনটেক্সট| Retriever
-    
-    Retriever --> FinalPrompt["৩. Augmented Prompt\nContext + History + Query"]
-    History --> FinalPrompt
-    FinalPrompt --> Generator["৪. LLM Generator"]
-    
-    Generator --> Response([উত্তর প্রদান])
-    Response -->|নতুন বার্তা যোগ| History
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 480" width="100%" height="auto" style="max-width: 900px; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.15)); border-radius: 18px; background: linear-gradient(135deg, #0b0f19 0%, #151d2e 100%);">
+  <defs>
+    <filter id="v7Shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="v7Glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    style QueryContext fill:#e6f7ff,stroke:#1890ff,stroke-width:2px,color:#000
-    style History fill:#fffbe6,stroke:#faad14,stroke-width:2px,color:#000
-    style Retriever fill:#f6ffed,stroke:#52c41a,stroke-width:2px,color:#000
-    style Generator fill:#fff0f6,stroke:#eb2f96,stroke-width:2px,color:#000
-```
+    <linearGradient id="v7UserGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="v7MemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="v7RewriteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0e7490"/>
+    </linearGradient>
+    <linearGradient id="v7RetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="v7GenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+
+    <marker id="v7ArrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#67e8f9"/>
+    </marker>
+    <marker id="v7ArrowPurple" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#c084fc"/>
+    </marker>
+    <marker id="v7ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
+    </marker>
+    <marker id="v7ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
+    </marker>
+
+    <style>
+      .v7-pulse-cyan { stroke-dasharray: 8, 8; animation: v7Anim 1.4s linear infinite; }
+      .v7-pulse-purple { stroke-dasharray: 8, 8; animation: v7Anim 1.3s linear infinite; }
+      .v7-pulse-green { stroke-dasharray: 8, 8; animation: v7Anim 1.2s linear infinite; }
+      .v7-pulse-amber { stroke-dasharray: 8, 8; animation: v7Anim 1.5s linear infinite; }
+      @keyframes v7Anim { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
+    </style>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Conversational RAG &amp; Contextual Query Rewriter</text>
+  <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Transforming ambiguous pronouns into standalone search queries using Chat Memory Buffer</text>
+
+  <!-- Connectors -->
+  <!-- 1. User Query to Rewriter -->
+  <path d="M 180 150 L 250 150" fill="none" stroke="#67e8f9" stroke-width="2.5" class="v7-pulse-cyan" marker-end="url(#v7ArrowCyan)"/>
+  <!-- 2. Memory to Rewriter (Top down) -->
+  <path d="M 450 110 L 360 110 L 360 125" fill="none" stroke="#fcd34d" stroke-width="2" class="v7-pulse-amber" marker-end="url(#v7ArrowAmber)"/>
+  <!-- 3. Rewriter to Retriever -->
+  <path d="M 460 180 L 530 180" fill="none" stroke="#c084fc" stroke-width="2.5" class="v7-pulse-purple" marker-end="url(#v7ArrowPurple)"/>
+  <!-- 4. Retriever down to Generator -->
+  <path d="M 630 240 L 630 310" fill="none" stroke="#34d399" stroke-width="2.5" class="v7-pulse-green" marker-end="url(#v7ArrowGreen)"/>
+  <!-- 5. Memory down to Generator (Direct context) -->
+  <path d="M 540 145 L 540 330 L 460 350" fill="none" stroke="#fcd34d" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+  <!-- 6. Generator back into Memory (Loopback) -->
+  <path d="M 270 350 L 190 350 L 190 280 L 480 280 L 480 160" fill="none" stroke="#fcd34d" stroke-width="2" class="v7-pulse-amber" marker-end="url(#v7ArrowAmber)"/>
+
+  <!-- Node 1: User Query -->
+  <g transform="translate(30, 105)">
+    <rect width="150" height="90" rx="14" fill="url(#v7UserGrad)" filter="url(#v7Shadow)"/>
+    <text x="75" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ffe4e6" text-anchor="middle" letter-spacing="1">USER QUERY</text>
+    <text x="75" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">অস্পষ্ট অনুপ্রশ্ন</text>
+    <rect x="12" y="58" width="126" height="22" rx="6" fill="#881337" opacity="0.65"/>
+    <text x="75" y="73" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecdd3" text-anchor="middle">"সেটা কি বেতনসহ?"</text>
+  </g>
+
+  <!-- Node 2: Memory Buffer -->
+  <g transform="translate(450, 75)">
+    <rect width="210" height="85" rx="14" fill="url(#v7MemGrad)" filter="url(#v7Shadow)"/>
+    <text x="105" y="25" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#fef3c7" text-anchor="middle" letter-spacing="1">CHAT MEMORY BUFFER</text>
+    <text x="105" y="46" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff" text-anchor="middle">পূর্ববর্তী কথোপকথন ইতিহাস</text>
+    <rect x="15" y="55" width="180" height="22" rx="6" fill="#78350f" opacity="0.6"/>
+    <text x="105" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fde68a" text-anchor="middle">Turn 1: "ক্যাজুয়াল ছুটি কতদিন?"</text>
+  </g>
+
+  <!-- Node 3: Query Contextualizer -->
+  <g transform="translate(250, 125)">
+    <rect width="210" height="110" rx="14" fill="url(#v7RewriteGrad)" filter="url(#v7Shadow)"/>
+    <text x="105" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#cffafe" text-anchor="middle" letter-spacing="1">STEP 1: CONTEXTUALIZER</text>
+    <text x="105" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff" text-anchor="middle">LLM Query Rewriter</text>
+    <rect x="12" y="60" width="186" height="40" rx="6" fill="#155e75" opacity="0.65"/>
+    <text x="105" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#67e8f9" text-anchor="middle">Standalone Query তৈরি:</text>
+    <text x="105" y="92" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#ffffff" text-anchor="middle">"ক্যাজুয়াল ছুটি কি বেতনসহ?"</text>
+  </g>
+
+  <!-- Node 4: Vector Retriever -->
+  <g transform="translate(530, 180)">
+    <rect width="200" height="100" rx="14" fill="url(#v7RetGrad)" filter="url(#v7Shadow)"/>
+    <text x="100" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ede9fe" text-anchor="middle" letter-spacing="1">STEP 2: RETRIEVER</text>
+    <text x="100" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff" text-anchor="middle">Vector Store Search</text>
+    <rect x="12" y="58" width="176" height="32" rx="6" fill="#4c1d95" opacity="0.65"/>
+    <text x="100" y="74" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ddd6fe" text-anchor="middle">Relevant Policy Docs</text>
+    <text x="100" y="86" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#c4b5fd" text-anchor="middle">"ক্যাজুয়াল ছুটি পূর্ণ বেতনসহ বরাদ্দ..."</text>
+  </g>
+
+  <!-- Node 5: LLM Generator & Response -->
+  <g transform="translate(270, 310)">
+    <rect width="460" height="110" rx="14" fill="url(#v7GenGrad)" filter="url(#v7Shadow)"/>
+    <text x="230" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#d1fae5" text-anchor="middle" letter-spacing="1">STEP 3: AUGMENTED GENERATOR &amp; MEMORY SYNC</text>
+    <text x="230" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="700" fill="#ffffff" text-anchor="middle">LLM Response Generation &amp; State Update</text>
+    <rect x="25" y="64" width="410" height="34" rx="8" fill="#064e3b" opacity="0.7"/>
+    <text x="230" y="80" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#a7f3d0" text-anchor="middle">"হ্যাঁ, TechNova পলিসি অনুযায়ী ক্যাজুয়াল ছুটি সম্পূর্ণ বেতনসহ প্রাপ্য।"</text>
+    <text x="230" y="94" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">(স্মৃতি বাফারে নতুন উত্তর যুক্ত হলো)</text>
+  </g>
+</svg>
+</div>
 
 ---
 

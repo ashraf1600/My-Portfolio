@@ -49,24 +49,126 @@
 
 ---
 
-## ৫. Architecture Diagram (সিকোয়েন্স ডায়াগ্রাম)
+## ৫. Architecture Diagram (এন্ড-টু-এন্ড RAG সিকোয়েন্স আর্কিটেকচার)
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User as ব্যবহারকারী
-    participant App as TechNova RAG App
-    participant VectorDB as Vector Store
-    participant LLM as LLM Engine
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 460" width="100%" height="auto" style="max-width: 900px; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.15)); border-radius: 18px; background: linear-gradient(135deg, #0b0f19 0%, #151d2e 100%);">
+  <defs>
+    <filter id="v6Shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="v6Glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    User->>App: প্রশ্ন করে ("ইন্টারনেট বিলের নিয়ম কী?")
-    App->>VectorDB: কুয়েরি ভেক্টরের ভিত্তিতে সার্চ
-    VectorDB-->>App: প্রাসঙ্গিক কনটেক্সট ("মাসিক ১৫০০ টাকা...")
-    App->>LLM: Augmented Prompt পাঠায় (Context + System Prompt + Question)
-    Note over LLM: কনটেক্সট যাচাই করে উত্তর প্রস্তুত
-    LLM-->>App: সঠিক ও তথ্যভিত্তিক উত্তর
-    App-->>User: স্ক্রিনে চূড়ান্ত উত্তর প্রদর্শন
-```
+    <linearGradient id="v6UserGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="v6AppGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="v6VdbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0e7490"/>
+    </linearGradient>
+    <linearGradient id="v6LlmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <marker id="v6ArrowRose" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#fb7185"/>
+    </marker>
+    <marker id="v6ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
+    </marker>
+    <marker id="v6ArrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#67e8f9"/>
+    </marker>
+    <marker id="v6ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
+    </marker>
+
+    <style>
+      .v6-pulse-rose { stroke-dasharray: 8, 8; animation: v6Anim 1.4s linear infinite; }
+      .v6-pulse-amber { stroke-dasharray: 8, 8; animation: v6Anim 1.3s linear infinite; }
+      .v6-pulse-cyan { stroke-dasharray: 8, 8; animation: v6Anim 1.3s linear infinite; }
+      .v6-pulse-green { stroke-dasharray: 8, 8; animation: v6Anim 1.2s linear infinite; }
+      @keyframes v6Anim { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
+    </style>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">End-to-End RAG Application Sequence Flow</text>
+  <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Interaction pipeline across User, Orchestrator App, Vector DB, and LLM</text>
+
+  <!-- Lifeline Columns Headers -->
+  <!-- Column 1: User -->
+  <g transform="translate(60, 85)">
+    <rect width="160" height="48" rx="10" fill="url(#v6UserGrad)" filter="url(#v6Shadow)"/>
+    <text x="80" y="29" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">User / Employee</text>
+    <!-- Lifeline -->
+    <line x1="80" y1="52" x2="80" y2="340" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,4" opacity="0.4"/>
+  </g>
+
+  <!-- Column 2: TechNova App -->
+  <g transform="translate(290, 85)">
+    <rect width="160" height="48" rx="10" fill="url(#v6AppGrad)" filter="url(#v6Shadow)"/>
+    <text x="80" y="29" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">TechNova RAG App</text>
+    <!-- Lifeline -->
+    <line x1="80" y1="52" x2="80" y2="340" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4" opacity="0.4"/>
+  </g>
+
+  <!-- Column 3: Vector Store -->
+  <g transform="translate(520, 85)">
+    <rect width="160" height="48" rx="10" fill="url(#v6VdbGrad)" filter="url(#v6Shadow)"/>
+    <text x="80" y="29" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Vector Database</text>
+    <!-- Lifeline -->
+    <line x1="80" y1="52" x2="80" y2="340" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,4" opacity="0.4"/>
+  </g>
+
+  <!-- Column 4: LLM Engine -->
+  <g transform="translate(740, 85)">
+    <rect width="160" height="48" rx="10" fill="url(#v6LlmGrad)" filter="url(#v6Shadow)"/>
+    <text x="80" y="29" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LLM Engine</text>
+    <!-- Lifeline -->
+    <line x1="80" y1="52" x2="80" y2="340" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" opacity="0.4"/>
+  </g>
+
+  <!-- Interaction 1: User to App -->
+  <path d="M 140 170 L 365 170" fill="none" stroke="#fb7185" stroke-width="2.5" class="v6-pulse-rose" marker-end="url(#v6ArrowRose)"/>
+  <rect x="170" y="148" width="165" height="20" rx="4" fill="#1e1b4b" opacity="0.8"/>
+  <text x="252" y="162" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#fecdd3" text-anchor="middle">1. "ইন্টারনেট বিলের নিয়ম কী?"</text>
+
+  <!-- Interaction 2: App to VectorDB (Query Search) -->
+  <path d="M 370 215 L 595 215" fill="none" stroke="#fcd34d" stroke-width="2.5" class="v6-pulse-amber" marker-end="url(#v6ArrowAmber)"/>
+  <rect x="400" y="193" width="165" height="20" rx="4" fill="#1e1b4b" opacity="0.8"/>
+  <text x="482" y="207" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#fef08a" text-anchor="middle">2. Embedding Cosine Search</text>
+
+  <!-- Interaction 3: VectorDB returns context to App -->
+  <path d="M 600 260 L 375 260" fill="none" stroke="#67e8f9" stroke-width="2.5" class="v6-pulse-cyan" marker-end="url(#v6ArrowCyan)"/>
+  <rect x="400" y="238" width="175" height="20" rx="4" fill="#1e1b4b" opacity="0.8"/>
+  <text x="487" y="252" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#a5f3fc" text-anchor="middle">3. Return: "১৫০০ টাকা বিল ভাতা..."</text>
+
+  <!-- Interaction 4: App to LLM (Augmented Prompt) -->
+  <path d="M 370 305 L 815 305" fill="none" stroke="#a78bfa" stroke-width="2.5" class="v6-pulse-amber" marker-end="url(#v6ArrowAmber)"/>
+  <rect x="495" y="283" width="200" height="20" rx="4" fill="#1e1b4b" opacity="0.8"/>
+  <text x="595" y="297" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#ddd6fe" text-anchor="middle">4. Augmented Prompt [Context+Question]</text>
+
+  <!-- Interaction 5: LLM returns response to App -->
+  <path d="M 820 350 L 375 350" fill="none" stroke="#34d399" stroke-width="2.5" class="v6-pulse-green" marker-end="url(#v6ArrowGreen)"/>
+  <rect x="500" y="328" width="190" height="20" rx="4" fill="#1e1b4b" opacity="0.8"/>
+  <text x="595" y="342" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#a7f3d0" text-anchor="middle">5. Synthesized Accurate Answer</text>
+
+  <!-- Interaction 6: App displays response to User -->
+  <path d="M 370 395 L 145 395" fill="none" stroke="#34d399" stroke-width="2.5" class="v6-pulse-green" marker-end="url(#v6ArrowGreen)"/>
+  <rect x="175" y="373" width="165" height="20" rx="4" fill="#064e3b" opacity="0.9"/>
+  <text x="257" y="387" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#d1fae5" text-anchor="middle">6. স্ক্রিনে সঠিক উত্তর প্রদর্শন</text>
+</svg>
+</div>
 
 ---
 
