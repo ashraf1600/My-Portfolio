@@ -176,7 +176,9 @@ export default withMermaid(
               { text: '৩. Data Ingestion Pipeline তৈরি', link: '/rag-beginner/data-ingestion-pipeline' },
               { text: '৪. LangChain দিয়ে Document Retrieval', link: '/rag-beginner/document-retrieval-langchain' },
               { text: '৫. Cosine Similarity ও Vector Search', link: '/rag-beginner/cosine-similarity-vector-search' },
-              { text: '৬. প্রথম RAG অ্যাপ তৈরি', link: '/rag-beginner/first-rag-application' }
+              { text: '৬. প্রথম RAG অ্যাপ তৈরি', link: '/rag-beginner/first-rag-application' },
+              { text: '৭. Conversational RAG ও Chat History', link: '/rag-beginner/conversational-rag-chat-history' },
+              { text: '৮. Text Chunking Strategies', link: '/rag-beginner/chunking-strategies' }
             ]
           }
         ],
