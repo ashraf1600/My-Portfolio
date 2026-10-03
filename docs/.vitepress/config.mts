@@ -30,7 +30,13 @@ export default withMermaid(
           text: 'LLM Engineering',
           items: [
             { text: 'Prompt Engineering', link: '/prompt-engineering/' },
-            { text: 'Advanced RAG', link: '/rag-advanced/' },
+            {
+              text: 'RAG',
+              items: [
+                { text: 'Beginner RAG', link: '/rag-beginner/' },
+                { text: 'Advanced RAG', link: '/rag-advanced/' }
+              ]
+            },
             { text: 'Fine-tuning (LoRA/QLoRA, PEFT)', link: '/fine-tuning/' },
             { text: 'Function Calling / Tool Use', link: '/tool-use/' },
             { text: 'Evaluation & Guardrails', link: '/evaluation/' }
@@ -155,6 +161,17 @@ export default withMermaid(
               { text: 'Overview', link: '/orchestration/' },
               { text: 'Choosing the Right Framework', link: '/orchestration/comparison' },
               { text: 'CrewAI', link: '/orchestration/crewai' }
+            ]
+          }
+        ],
+
+        '/rag-beginner/': [
+          {
+            text: 'Beginner RAG — Complete Tutorial',
+            collapsed: false,
+            items: [
+              { text: 'কোর্স ওভারভিউ (Overview)', link: '/rag-beginner/' },
+              { text: '১. RAG কী এবং কেন? (Introduction)', link: '/rag-beginner/what-is-rag' }
             ]
           }
         ],
