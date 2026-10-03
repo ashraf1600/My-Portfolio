@@ -62,7 +62,6 @@ Parent Document Retriever ঠিক এই কাজটিই স্বয়ং
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v13ParentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
@@ -83,7 +82,6 @@ Parent Document Retriever ঠিক এই কাজটিই স্বয়ং
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v13ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
     </marker>
@@ -96,7 +94,6 @@ Parent Document Retriever ঠিক এই কাজটিই স্বয়ং
     <marker id="v13ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
     </marker>
-
     <style>
       .v13-pulse-amber { stroke-dasharray: 6, 6; animation: v13Anim 1.4s linear infinite; }
       .v13-pulse-pink { stroke-dasharray: 6, 6; animation: v13Anim 1.3s linear infinite; }
@@ -105,72 +102,58 @@ Parent Document Retriever ঠিক এই কাজটিই স্বয়ং
       @keyframes v13Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Small-to-Big (Parent Document Retriever) Architecture</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Search fine-grained Child Chunks for pinpoint accuracy $\rightarrow$ Return full Parent Document for LLM context</text>
-
   <!-- Left: Ingestion & Parent-Child Hierarchy -->
   <g transform="translate(40, 85)">
     <rect width="400" height="365" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
     <text x="200" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle" letter-spacing="1">INGESTION &amp; DOCSTORE MAPPING</text>
-
     <!-- Parent Document Node -->
     <rect x="25" y="45" width="350" height="70" rx="10" fill="url(#v13ParentGrad)" filter="url(#v13Shadow)"/>
     <text x="200" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">📄 Parent Document (ID: P-101)</text>
     <text x="200" y="88" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e0f2fe" text-anchor="middle">TechNova ছুটির পূর্ণাঙ্গ নীতিমালা (১০০০ ক্যারেক্টার)</text>
     <text x="200" y="102" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#bae6fd" text-anchor="middle">Stored in: InMemoryDocstore</text>
-
     <!-- Splitting lines into 3 Children -->
     <path d="M 90 115 L 90 160" fill="none" stroke="#f59e0b" stroke-width="2" class="v13-pulse-amber" marker-end="url(#v13ArrowAmber)"/>
     <path d="M 200 115 L 200 160" fill="none" stroke="#f59e0b" stroke-width="2" class="v13-pulse-amber" marker-end="url(#v13ArrowAmber)"/>
     <path d="M 310 115 L 310 160" fill="none" stroke="#f59e0b" stroke-width="2" class="v13-pulse-amber" marker-end="url(#v13ArrowAmber)"/>
-
     <!-- Child Chunks in Vector DB -->
     <rect x="25" y="150" width="350" height="185" rx="12" fill="#181528" stroke="#f59e0b" stroke-width="1.5"/>
     <text x="200" y="172" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24" text-anchor="middle">Vector Store: Granular Child Chunks (200 char)</text>
-
     <!-- Child 1 -->
     <rect x="35" y="185" width="330" height="38" rx="6" fill="#1e293b"/>
     <text x="45" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#cbd5e1">Child 1: কর্মীগণ বছরে ২০ দিন ক্যাজুয়াল ছুটি পান...</text>
     <text x="45" y="215" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#94a3b8">metadata: {"parent_id": "P-101"}</text>
-
     <!-- Child 2 (TARGET MATCH) -->
     <rect x="35" y="232" width="330" height="42" rx="6" fill="#451a03" stroke="#f59e0b" stroke-width="1.5"/>
     <text x="45" y="250" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#fef08a">⭐ Child 2: অসুস্থ হলে ডাক্তারের প্রেসক্রিপশন জমা...</text>
     <text x="45" y="265" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fde68a">metadata: {"parent_id": "P-101"} (Target Match!)</text>
-
     <!-- Child 3 -->
     <rect x="35" y="282" width="330" height="38" rx="6" fill="#1e293b"/>
     <text x="45" y="299" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#cbd5e1">Child 3: ছুটির আবেদন পোর্টালে ৩ দিন পূর্বে পেশ...</text>
     <text x="45" y="312" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#94a3b8">metadata: {"parent_id": "P-101"}</text>
   </g>
-
   <!-- Center Bridge: Vector Match to Docstore Resolver -->
   <path d="M 400 325 L 480 325 L 480 200 L 515 200" fill="none" stroke="#ec4899" stroke-width="2.5" class="v13-pulse-pink" marker-end="url(#v13ArrowPink)"/>
-
   <!-- Right: Search Runtime & Parent Resolution -->
   <g transform="translate(500, 85)">
     <rect width="400" height="365" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
     <text x="200" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#34d399" text-anchor="middle" letter-spacing="1">SEARCH &amp; PARENT RESOLUTION</text>
-
     <!-- User Query -->
     <rect x="25" y="45" width="350" height="50" rx="10" fill="url(#v13MatchGrad)" filter="url(#v13Shadow)"/>
     <text x="200" y="67" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">User Query</text>
     <text x="200" y="83" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fce7f3" text-anchor="middle">"অসুস্থ হলে ডাক্তারের সার্টিফিকেট কবে দিতে হয়?"</text>
-
     <!-- Step 1: Hit Child -->
     <path d="M 200 95 L 200 130" fill="none" stroke="#f472b6" stroke-width="2" class="v13-pulse-pink" marker-end="url(#v13ArrowPink)"/>
     <rect x="40" y="130" width="320" height="42" rx="8" fill="#1e1b4b" stroke="#818cf8"/>
     <text x="200" y="148" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#c7d2fe" text-anchor="middle">1. Pinpoint Match in Vector Store</text>
     <text x="200" y="162" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Child Chunk 2 Matches (High cosine similarity)</text>
-
     <!-- Step 2: Parent ID Resolver -->
     <path d="M 200 172 L 200 205" fill="none" stroke="#c084fc" stroke-width="2.5" class="v13-pulse-purple" marker-end="url(#v13ArrowPurple)"/>
     <rect x="40" y="205" width="320" height="55" rx="8" fill="url(#v13DocstoreGrad)" filter="url(#v13Shadow)"/>
     <text x="200" y="227" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">2. 🔗 Parent ID Resolver</text>
     <text x="200" y="244" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#ede9fe" text-anchor="middle">Look up 'P-101' in Docstore $\rightarrow$ Fetch FULL Parent Doc!</text>
-
     <!-- Step 3: LLM Prompt with Parent Context -->
     <path d="M 200 260 L 200 285" fill="none" stroke="#34d399" stroke-width="2.5" class="v13-pulse-green" marker-end="url(#v13ArrowGreen)"/>
     <rect x="30" y="285" width="340" height="52" rx="10" fill="url(#v13LlmGrad)" filter="url(#v13Shadow)"/>

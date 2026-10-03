@@ -71,7 +71,6 @@ $$\text{RRF Score}(d) = \sum_{m \in M} \frac{1}{k + r_m(d)}$$
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v15List1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
@@ -92,25 +91,21 @@ $$\text{RRF Score}(d) = \sum_{m \in M} \frac{1}{k + r_m(d)}$$
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v15ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
     </marker>
     <marker id="v15ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
     </marker>
-
     <style>
       .v15-pulse-amber { stroke-dasharray: 6, 6; animation: v15Anim 1.4s linear infinite; }
       .v15-pulse-green { stroke-dasharray: 6, 6; animation: v15Anim 1.2s linear infinite; }
       @keyframes v15Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Reciprocal Rank Fusion (RRF) Architecture</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Score-agnostic, rank-based reciprocal algorithm fusing diverse retrieval pipelines</text>
-
   <!-- Left: 3 Input Ranked Candidate Lists -->
   <!-- List 1: Dense Vector Search -->
   <g transform="translate(40, 85)">
@@ -121,7 +116,6 @@ $$\text{RRF Score}(d) = \sum_{m \in M} \frac{1}{k + r_m(d)}$$
     <text x="20" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">2. Doc B <tspan fill="#38bdf8" font-weight="700">(Rank 2)</tspan></text>
     <text x="20" y="88" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">3. Doc C <tspan fill="#38bdf8" font-weight="700">(Rank 3)</tspan></text>
   </g>
-
   <!-- List 2: Sparse BM25 Keyword Search -->
   <g transform="translate(40, 205)">
     <rect width="240" height="105" rx="12" fill="#1a1838" stroke="#4f46e5" stroke-width="1.8" filter="url(#v15Shadow)"/>
@@ -131,7 +125,6 @@ $$\text{RRF Score}(d) = \sum_{m \in M} \frac{1}{k + r_m(d)}$$
     <text x="20" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">2. Doc A <tspan fill="#818cf8" font-weight="700">(Rank 2)</tspan></text>
     <text x="20" y="88" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">3. Doc D <tspan fill="#818cf8" font-weight="700">(Rank 3)</tspan></text>
   </g>
-
   <!-- List 3: Multi-Query Expansion -->
   <g transform="translate(40, 325)">
     <rect width="240" height="105" rx="12" fill="#281525" stroke="#be185d" stroke-width="1.8" filter="url(#v15Shadow)"/>
@@ -141,57 +134,46 @@ $$\text{RRF Score}(d) = \sum_{m \in M} \frac{1}{k + r_m(d)}$$
     <text x="20" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">2. Doc C <tspan fill="#f472b6" font-weight="700">(Rank 2)</tspan></text>
     <text x="20" y="88" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">3. Doc A <tspan fill="#f472b6" font-weight="700">(Rank 3)</tspan></text>
   </g>
-
   <!-- Center: RRF Calculation Engine -->
   <g transform="translate(340, 140)">
     <rect width="260" height="230" rx="16" fill="url(#v15FormulaGrad)" filter="url(#v15Shadow)"/>
     <text x="130" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fef3c7" text-anchor="middle" letter-spacing="1">FUSION ENGINE (k = 60)</text>
     <text x="130" y="58" font-family="'Courier New', monospace" font-size="14.5" font-weight="700" fill="#ffffff" text-anchor="middle">Score(d) = Σ 1/(60 + r)</text>
-
     <!-- Detailed score breakdown -->
     <rect x="15" y="75" width="230" height="135" rx="8" fill="#78350f" opacity="0.6"/>
     <text x="25" y="96" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#fef08a">Doc B Calculation:</text>
     <text x="25" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#ffffff">1/62 + 1/61 + 1/61 = <tspan font-weight="700" fill="#a7f3d0">0.0490</tspan></text>
-
     <text x="25" y="134" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#fde68a">Doc A Calculation:</text>
     <text x="25" y="150" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#ffffff">1/61 + 1/62 + 1/63 = <tspan font-weight="700" fill="#fef08a">0.0484</tspan></text>
-
     <text x="25" y="172" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#fde68a">Doc C Calculation:</text>
     <text x="25" y="188" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#ffffff">1/63 + 0 + 1/62 = <tspan font-weight="700" fill="#cbd5e1">0.0320</tspan></text>
   </g>
-
   <!-- Right: Final Unified Ranking -->
   <g transform="translate(660, 110)">
     <rect width="240" height="280" rx="14" fill="#0f172a" stroke="#10b981" stroke-width="2" filter="url(#v15Shadow)"/>
     <rect x="12" y="12" width="216" height="30" rx="8" fill="url(#v15FinalGrad)"/>
     <text x="120" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">🏆 Unified Master Ranking</text>
-
     <!-- 1st Rank -->
     <rect x="15" y="55" width="210" height="46" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1.5"/>
     <text x="25" y="74" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff">🥇 Rank 1: Doc B</text>
     <text x="25" y="90" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#a7f3d0">Score: 0.0490 (All-List Consensus)</text>
-
     <!-- 2nd Rank -->
     <rect x="15" y="110" width="210" height="44" rx="6" fill="#1e293b"/>
     <text x="25" y="129" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ffffff">🥈 Rank 2: Doc A</text>
     <text x="25" y="144" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#cbd5e1">Score: 0.0484 (Strong Runner Up)</text>
-
     <!-- 3rd Rank -->
     <rect x="15" y="162" width="210" height="44" rx="6" fill="#1e293b"/>
     <text x="25" y="181" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ffffff">🥉 Rank 3: Doc C</text>
     <text x="25" y="196" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#cbd5e1">Score: 0.0320 (Appeared in 2 Lists)</text>
-
     <!-- 4th Rank -->
     <rect x="15" y="214" width="210" height="44" rx="6" fill="#1e293b"/>
     <text x="25" y="233" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ffffff">4. Rank 4: Doc D</text>
     <text x="25" y="248" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#94a3b8">Score: 0.0158 (Single list only)</text>
   </g>
-
   <!-- Connectors from 3 lists to Fusion Engine -->
   <path d="M 280 135 L 340 180" fill="none" stroke="#fcd34d" stroke-width="2" class="v15-pulse-amber" marker-end="url(#v15ArrowAmber)"/>
   <path d="M 280 255 L 340 255" fill="none" stroke="#fcd34d" stroke-width="2" class="v15-pulse-amber" marker-end="url(#v15ArrowAmber)"/>
   <path d="M 280 375 L 340 330" fill="none" stroke="#fcd34d" stroke-width="2" class="v15-pulse-amber" marker-end="url(#v15ArrowAmber)"/>
-
   <!-- Connector from Fusion Engine to Final List -->
   <path d="M 600 255 L 660 255" fill="none" stroke="#34d399" stroke-width="2.8" class="v15-pulse-green" marker-end="url(#v15ArrowGreen)"/>
 </svg>

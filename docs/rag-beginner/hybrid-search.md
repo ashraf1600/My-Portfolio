@@ -64,7 +64,6 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v16UserGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f43f5e"/>
       <stop offset="100%" stop-color="#be123c"/>
@@ -85,7 +84,6 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v16ArrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#67e8f9"/>
     </marker>
@@ -98,7 +96,6 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
     <marker id="v16ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
     </marker>
-
     <style>
       .v16-pulse-cyan { stroke-dasharray: 6, 6; animation: v16Anim 1.4s linear infinite; }
       .v16-pulse-amber { stroke-dasharray: 6, 6; animation: v16Anim 1.3s linear infinite; }
@@ -107,11 +104,9 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
       @keyframes v16Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Hybrid Search: Parallel Dense &amp; Sparse Retrieval with RRF</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Unifying semantic vector embeddings with exact BM25 keyword matching for ultimate accuracy</text>
-
   <!-- Node 1: Input Query (Mixed type) -->
   <g transform="translate(30, 185)">
     <rect width="170" height="100" rx="14" fill="url(#v16UserGrad)" filter="url(#v16Shadow)"/>
@@ -121,7 +116,6 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
     <text x="85" y="74" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fecdd3" text-anchor="middle">"TN-POL-404 কোডের</text>
     <text x="85" y="85" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fecdd3" text-anchor="middle">ছুটির নিয়ম কী?"</text>
   </g>
-
   <!-- Branch 1: Dense Vector Branch (Top) -->
   <g transform="translate(260, 95)">
     <rect width="250" height="120" rx="14" fill="#131d36" stroke="#0284c7" stroke-width="2" filter="url(#v16Shadow)"/>
@@ -132,7 +126,6 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
     <rect x="18" y="86" width="214" height="20" rx="4" fill="#0c4a6e"/>
     <text x="125" y="100" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#7dd3fc" text-anchor="middle">⚠️ কিন্তু কোড "TN-POL-404" মিস করতে পারে</text>
   </g>
-
   <!-- Branch 2: Sparse BM25 Keyword Branch (Bottom) -->
   <g transform="translate(260, 255)">
     <rect width="250" height="120" rx="14" fill="#251d10" stroke="#f59e0b" stroke-width="2" filter="url(#v16Shadow)"/>
@@ -143,7 +136,6 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
     <rect x="18" y="86" width="214" height="20" rx="4" fill="#78350f"/>
     <text x="125" y="100" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fef08a" text-anchor="middle">✓ নিখুঁত কিওয়ার্ড শনাক্তকরণ</text>
   </g>
-
   <!-- Node 3: RRF Fusion Engine -->
   <g transform="translate(570, 165)">
     <rect width="180" height="140" rx="14" fill="url(#v16FusionGrad)" filter="url(#v16Shadow)"/>
@@ -154,7 +146,6 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
     <text x="90" y="96" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#c4b5fd" text-anchor="middle">দুই শাখার সেরা অংশ</text>
     <text x="90" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">একত্রে সেরা র‍্যাঙ্কিং</text>
   </g>
-
   <!-- Node 4: LLM Generator -->
   <g transform="translate(800, 175)">
     <rect width="110" height="120" rx="14" fill="url(#v16LlmGrad)" filter="url(#v16Shadow)"/>
@@ -164,18 +155,15 @@ Hybrid Search হলো আপনার এআই-এর সেই নিখু�
     <rect x="10" y="82" width="90" height="26" rx="4" fill="#064e3b" opacity="0.7"/>
     <text x="55" y="98" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#a7f3d0" text-anchor="middle">নিখুঁত উত্তর</text>
   </g>
-
   <!-- Connectors -->
   <!-- Split Query to Dense Branch -->
   <path d="M 200 215 L 230 215 L 230 155 L 260 155" fill="none" stroke="#67e8f9" stroke-width="2.5" class="v16-pulse-cyan" marker-end="url(#v16ArrowCyan)"/>
   <!-- Split Query to Sparse Branch -->
   <path d="M 200 255 L 230 255 L 230 315 L 260 315" fill="none" stroke="#fcd34d" stroke-width="2.5" class="v16-pulse-amber" marker-end="url(#v16ArrowAmber)"/>
-
   <!-- Dense Branch to Fusion Engine -->
   <path d="M 510 155 L 540 155 L 540 215 L 570 215" fill="none" stroke="#c084fc" stroke-width="2.5" class="v16-pulse-purple" marker-end="url(#v16ArrowPurple)"/>
   <!-- Sparse Branch to Fusion Engine -->
   <path d="M 510 315 L 540 315 L 540 255 L 570 255" fill="none" stroke="#c084fc" stroke-width="2.5" class="v16-pulse-purple" marker-end="url(#v16ArrowPurple)"/>
-
   <!-- Fusion Engine to LLM -->
   <path d="M 750 235 L 800 235" fill="none" stroke="#34d399" stroke-width="2.8" class="v16-pulse-green" marker-end="url(#v16ArrowGreen)"/>
 </svg>

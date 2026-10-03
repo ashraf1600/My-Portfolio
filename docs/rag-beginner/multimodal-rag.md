@@ -62,7 +62,6 @@
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v12DocGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
@@ -79,7 +78,6 @@
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v12ArrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#67e8f9"/>
     </marker>
@@ -92,7 +90,6 @@
     <marker id="v12ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
     </marker>
-
     <style>
       .v12-pulse-cyan { stroke-dasharray: 6, 6; animation: v12Anim 1.4s linear infinite; }
       .v12-pulse-pink { stroke-dasharray: 6, 6; animation: v12Anim 1.3s linear infinite; }
@@ -101,27 +98,22 @@
       @keyframes v12Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Multimodal RAG Architecture (Vision Summaries + Text)</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Extracting diagrams &amp; tables via Vision LLM into unified text embeddings with image references</text>
-
   <!-- Zone 1: Ingestion Phase (Left Side) -->
   <g transform="translate(40, 85)">
     <rect width="420" height="365" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
     <text x="210" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle" letter-spacing="1">PHASE 1: MULTIMODAL INGESTION</text>
-
     <!-- Raw PDF Box -->
     <rect x="25" y="45" width="370" height="50" rx="10" fill="url(#v12DocGrad)" filter="url(#v12Shadow)"/>
     <text x="210" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">📄 Corporate Tech Document (PDF)</text>
     <text x="210" y="84" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e0f2fe" text-anchor="middle">Contains System Architecture Diagrams, Flowcharts &amp; Text</text>
-
     <!-- Branch A: Text Chunks -->
     <path d="M 120 95 L 120 145" fill="none" stroke="#67e8f9" stroke-width="2" class="v12-pulse-cyan" marker-end="url(#v12ArrowCyan)"/>
     <rect x="35" y="145" width="165" height="55" rx="8" fill="#1e293b" stroke="#38bdf8"/>
     <text x="117" y="168" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#67e8f9" text-anchor="middle">Pure Text Chunks</text>
     <text x="117" y="186" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Paragraphs &amp; Articles</text>
-
     <!-- Branch B: Raw Images to Vision LLM -->
     <path d="M 300 95 L 300 130" fill="none" stroke="#f472b6" stroke-width="2" class="v12-pulse-pink" marker-end="url(#v12ArrowPink)"/>
     <rect x="215" y="130" width="180" height="90" rx="10" fill="url(#v12VisionGrad)" filter="url(#v12Shadow)"/>
@@ -130,36 +122,29 @@
     <rect x="225" y="176" width="160" height="34" rx="6" fill="#831843" opacity="0.6"/>
     <text x="305" y="192" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#fbcfe8" text-anchor="middle">"Architecture shows Redis"</text>
     <text x="305" y="204" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#fbcfe8" text-anchor="middle">image_path: 'infra.png'</text>
-
     <!-- Merging into Unified Vector Store -->
     <path d="M 120 200 L 120 250 L 170 250" fill="none" stroke="#67e8f9" stroke-width="2" class="v12-pulse-cyan"/>
     <path d="M 305 220 L 305 250 L 260 250" fill="none" stroke="#f472b6" stroke-width="2" class="v12-pulse-pink"/>
-
     <rect x="75" y="270" width="270" height="70" rx="12" fill="url(#v12VdbGrad)" filter="url(#v12Shadow)"/>
     <text x="210" y="295" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Unified Vector Database</text>
     <text x="210" y="312" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cffafe" text-anchor="middle">Stores text chunks + Image Vision Summaries</text>
     <text x="210" y="326" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#a5f3fc" text-anchor="middle">(All searchable via standard semantic similarity)</text>
   </g>
-
   <!-- Flow bridge from DB to Runtime Phase -->
   <path d="M 385 390 L 480 390 L 480 250 L 510 250" fill="none" stroke="#fcd34d" stroke-width="2.5" class="v12-pulse-amber" marker-end="url(#v12ArrowAmber)"/>
-
   <!-- Zone 2: Query Runtime Phase (Right Side) -->
   <g transform="translate(500, 85)">
     <rect width="400" height="365" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
     <text x="200" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#34d399" text-anchor="middle" letter-spacing="1">PHASE 2: RETRIEVAL &amp; MULTIMODAL SYNTHESIS</text>
-
     <!-- User Query -->
     <rect x="25" y="45" width="350" height="50" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
     <text x="200" y="67" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#a5b4fc" text-anchor="middle">User Question</text>
     <text x="200" y="83" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e0e7ff" text-anchor="middle">"আমাদের AWS সার্ভারের সাথে কি Redis ক্লাস্টার যুক্ত?"</text>
-
     <!-- Vector Retriever Match -->
     <path d="M 200 95 L 200 135" fill="none" stroke="#67e8f9" stroke-width="2" class="v12-pulse-cyan" marker-end="url(#v12ArrowCyan)"/>
     <rect x="40" y="135" width="320" height="55" rx="8" fill="#132328" stroke="#059669"/>
     <text x="200" y="157" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#34d399" text-anchor="middle">Retriever Match: Image Summary Chunk</text>
     <text x="200" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#a7f3d0" text-anchor="middle">Matched Architecture Diagram + Retrieved image 'infra.png'</text>
-
     <!-- Prompt Assembly + Multimodal LLM -->
     <path d="M 200 190 L 200 230" fill="none" stroke="#34d399" stroke-width="2" class="v12-pulse-green" marker-end="url(#v12ArrowGreen)"/>
     <rect x="30" y="230" width="340" height="105" rx="12" fill="url(#v12MmLlmGrad)" filter="url(#v12Shadow)"/>

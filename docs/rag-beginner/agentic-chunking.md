@@ -60,7 +60,6 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v11RawGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
@@ -81,7 +80,6 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v11ArrowPink" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#f472b6"/>
     </marker>
@@ -94,7 +92,6 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
     <marker id="v11ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
     </marker>
-
     <style>
       .v11-pulse-pink { stroke-dasharray: 8, 8; animation: v11Anim 1.4s linear infinite; }
       .v11-pulse-purple { stroke-dasharray: 8, 8; animation: v11Anim 1.3s linear infinite; }
@@ -103,11 +100,9 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
       @keyframes v11Anim { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Agentic Chunking Pipeline with LLM-Driven Synthesis</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">LLM dynamically reasons about context, auto-generates titles and metadata tags</text>
-
   <!-- Node 1: Raw Document -->
   <g transform="translate(30, 160)">
     <rect width="160" height="110" rx="14" fill="url(#v11RawGrad)" filter="url(#v11Shadow)"/>
@@ -117,7 +112,6 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
     <text x="80" y="80" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#bae6fd" text-anchor="middle">মিশ্র ও জটিল কনটেন্ট</text>
     <text x="80" y="93" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#e0f2fe" text-anchor="middle">(HR + Cloud + Admin)</text>
   </g>
-
   <!-- Node 2: LLM Reasoning Agent -->
   <g transform="translate(250, 140)">
     <rect width="190" height="150" rx="14" fill="url(#v11AgentGrad)" filter="url(#v11Shadow)"/>
@@ -128,7 +122,6 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
     <text x="95" y="101" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#fbcfe8" text-anchor="middle">• স্বয়ংসম্পূর্ণ ইউনিট শনাক্ত</text>
     <text x="95" y="118" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#fbcfe8" text-anchor="middle">• Title &amp; Tags সিন্থেসিস</text>
   </g>
-
   <!-- Node 3A: Enriched Chunk 1 (Top) -->
   <g transform="translate(500, 90)">
     <rect width="220" height="110" rx="12" fill="#1e1838" stroke="#8b5cf6" stroke-width="2" filter="url(#v11Shadow)"/>
@@ -138,7 +131,6 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
     <rect x="15" y="68" width="190" height="22" rx="4" fill="#3b0764"/>
     <text x="110" y="83" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#e9d5ff" text-anchor="middle">🏷️ Tags: ["HR", "Leave", "Casual"]</text>
   </g>
-
   <!-- Node 3B: Enriched Chunk 2 (Bottom) -->
   <g transform="translate(500, 230)">
     <rect width="220" height="110" rx="12" fill="#251d10" stroke="#f59e0b" stroke-width="2" filter="url(#v11Shadow)"/>
@@ -148,7 +140,6 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
     <rect x="15" y="68" width="190" height="22" rx="4" fill="#451a03"/>
     <text x="110" y="83" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fef3c7" text-anchor="middle">🏷️ Tags: ["DevOps", "AWS", "Infra"]</text>
   </g>
-
   <!-- Node 4: Vector DB Store -->
   <g transform="translate(770, 150)">
     <rect width="145" height="130" rx="14" fill="url(#v11VdbGrad)" filter="url(#v11Shadow)"/>
@@ -158,7 +149,6 @@ Agentic Chunking বুঝতে সবচেয়ে দারুণ উপম
     <text x="72" y="84" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#a7f3d0" text-anchor="middle">Hybrid Filtering</text>
     <text x="72" y="98" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#d1fae5" text-anchor="middle">+ Vector Cosine</text>
   </g>
-
   <!-- Connectors -->
   <!-- Raw to Agent -->
   <path d="M 190 215 L 250 215" fill="none" stroke="#f472b6" stroke-width="2.5" class="v11-pulse-pink" marker-end="url(#v11ArrowPink)"/>

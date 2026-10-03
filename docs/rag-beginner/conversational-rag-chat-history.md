@@ -70,7 +70,6 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v7UserGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f43f5e"/>
       <stop offset="100%" stop-color="#be123c"/>
@@ -91,7 +90,6 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v7ArrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#67e8f9"/>
     </marker>
@@ -104,7 +102,6 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
     <marker id="v7ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#fcd34d"/>
     </marker>
-
     <style>
       .v7-pulse-cyan { stroke-dasharray: 8, 8; animation: v7Anim 1.4s linear infinite; }
       .v7-pulse-purple { stroke-dasharray: 8, 8; animation: v7Anim 1.3s linear infinite; }
@@ -113,11 +110,9 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
       @keyframes v7Anim { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Conversational RAG &amp; Contextual Query Rewriter</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Transforming ambiguous pronouns into standalone search queries using Chat Memory Buffer</text>
-
   <!-- Connectors -->
   <!-- 1. User Query to Rewriter -->
   <path d="M 180 150 L 250 150" fill="none" stroke="#67e8f9" stroke-width="2.5" class="v7-pulse-cyan" marker-end="url(#v7ArrowCyan)"/>
@@ -131,7 +126,6 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
   <path d="M 540 145 L 540 330 L 460 350" fill="none" stroke="#fcd34d" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
   <!-- 6. Generator back into Memory (Loopback) -->
   <path d="M 270 350 L 190 350 L 190 280 L 480 280 L 480 160" fill="none" stroke="#fcd34d" stroke-width="2" class="v7-pulse-amber" marker-end="url(#v7ArrowAmber)"/>
-
   <!-- Node 1: User Query -->
   <g transform="translate(30, 105)">
     <rect width="150" height="90" rx="14" fill="url(#v7UserGrad)" filter="url(#v7Shadow)"/>
@@ -140,7 +134,6 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
     <rect x="12" y="58" width="126" height="22" rx="6" fill="#881337" opacity="0.65"/>
     <text x="75" y="73" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecdd3" text-anchor="middle">"সেটা কি বেতনসহ?"</text>
   </g>
-
   <!-- Node 2: Memory Buffer -->
   <g transform="translate(450, 75)">
     <rect width="210" height="85" rx="14" fill="url(#v7MemGrad)" filter="url(#v7Shadow)"/>
@@ -149,7 +142,6 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
     <rect x="15" y="55" width="180" height="22" rx="6" fill="#78350f" opacity="0.6"/>
     <text x="105" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fde68a" text-anchor="middle">Turn 1: "ক্যাজুয়াল ছুটি কতদিন?"</text>
   </g>
-
   <!-- Node 3: Query Contextualizer -->
   <g transform="translate(250, 125)">
     <rect width="210" height="110" rx="14" fill="url(#v7RewriteGrad)" filter="url(#v7Shadow)"/>
@@ -159,7 +151,6 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
     <text x="105" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#67e8f9" text-anchor="middle">Standalone Query তৈরি:</text>
     <text x="105" y="92" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#ffffff" text-anchor="middle">"ক্যাজুয়াল ছুটি কি বেতনসহ?"</text>
   </g>
-
   <!-- Node 4: Vector Retriever -->
   <g transform="translate(530, 180)">
     <rect width="200" height="100" rx="14" fill="url(#v7RetGrad)" filter="url(#v7Shadow)"/>
@@ -169,7 +160,6 @@ Conversational RAG-এর মূল ম্যাজিক ঘটে **Query Refo
     <text x="100" y="74" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ddd6fe" text-anchor="middle">Relevant Policy Docs</text>
     <text x="100" y="86" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#c4b5fd" text-anchor="middle">"ক্যাজুয়াল ছুটি পূর্ণ বেতনসহ বরাদ্দ..."</text>
   </g>
-
   <!-- Node 5: LLM Generator & Response -->
   <g transform="translate(270, 310)">
     <rect width="460" height="110" rx="14" fill="url(#v7GenGrad)" filter="url(#v7Shadow)"/>

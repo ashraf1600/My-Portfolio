@@ -59,7 +59,6 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v4QueryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f43f5e"/>
       <stop offset="100%" stop-color="#be123c"/>
@@ -80,7 +79,6 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v4ArrowRose" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#fb7185"/>
     </marker>
@@ -93,7 +91,6 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
     <marker id="v4ArrowPurple" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#c084fc"/>
     </marker>
-
     <style>
       .v4-pulse-rose { stroke-dasharray: 8, 8; animation: v4Anim 1.4s linear infinite; }
       .v4-pulse-amber { stroke-dasharray: 8, 8; animation: v4Anim 1.3s linear infinite; }
@@ -102,11 +99,9 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
       @keyframes v4Anim { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">LangChain Document Retrieval Architecture</text>
   <text x="470" y="64" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Unifying Vector Search, Query Execution &amp; Context Pipeline</text>
-
   <!-- Flow Connectors -->
   <!-- 1. Query to Retriever -->
   <path d="M 160 200 L 220 200" fill="none" stroke="#fb7185" stroke-width="2.5" class="v4-pulse-rose" marker-end="url(#v4ArrowRose)"/>
@@ -118,7 +113,6 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
   <path d="M 390 230 L 485 260 L 645 260 L 735 230" fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4,4" opacity="0.6"/>
   <!-- 5. Doc List to LLM / Prompt -->
   <path d="M 740 280 L 740 330 L 600 330" fill="none" stroke="#c084fc" stroke-width="2.5" class="v4-pulse-purple" marker-end="url(#v4ArrowPurple)"/>
-
   <!-- Step 1: User Query -->
   <g transform="translate(30, 150)">
     <rect width="130" height="100" rx="14" fill="url(#v4QueryGrad)" filter="url(#v4Shadow)"/>
@@ -127,7 +121,6 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
     <rect x="12" y="68" width="106" height="22" rx="6" fill="#881337" opacity="0.6"/>
     <text x="65" y="83" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecdd3" text-anchor="middle">"অফিস টাইমিং কত?"</text>
   </g>
-
   <!-- Step 2: LangChain Retriever Engine -->
   <g transform="translate(225, 140)">
     <rect width="165" height="120" rx="14" fill="url(#v4RetrieverGrad)" filter="url(#v4Shadow)"/>
@@ -137,7 +130,6 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
     <text x="82" y="80" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#fde68a" text-anchor="middle">`as_retriever()`</text>
     <text x="82" y="98" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fef3c7" text-anchor="middle">k=2, similarity search</text>
   </g>
-
   <!-- Step 3: Vector Store -->
   <g transform="translate(490, 85)">
     <rect width="155" height="110" rx="14" fill="url(#v4VectorGrad)" filter="url(#v4Shadow)"/>
@@ -147,7 +139,6 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
     <text x="77" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#a5f3fc" text-anchor="middle">FAISS / Chroma DB</text>
     <text x="77" y="92" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e0f2fe" text-anchor="middle">Embedding Cosine Match</text>
   </g>
-
   <!-- Step 4: Retrieved Documents -->
   <g transform="translate(740, 140)">
     <rect width="165" height="120" rx="14" fill="url(#v4DocGrad)" filter="url(#v4Shadow)"/>
@@ -157,7 +148,6 @@ LangChain-এর **Retriever** ঠিক এই লাইব্রেরিয�
     <text x="82" y="80" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ddd6fe" text-anchor="middle">[Document(page_content=...)]</text>
     <text x="82" y="97" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#ede9fe" text-anchor="middle">metadata={'source': 'policy.md'}</text>
   </g>
-
   <!-- Step 5: Consumer / Prompt Assembly -->
   <g transform="translate(380, 305)">
     <rect width="215" height="60" rx="12" fill="url(#v4ConsGrad)" filter="url(#v4Shadow)"/>

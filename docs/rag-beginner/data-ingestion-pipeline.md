@@ -67,7 +67,6 @@
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="iFileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
@@ -88,7 +87,6 @@
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <style>
       .flow-pulse-line {
         stroke-dasharray: 8, 8;
@@ -106,12 +104,10 @@
       }
     </style>
   </defs>
-
   <!-- হেডার টাইটেল বার -->
   <rect x="35" y="25" width="870" height="32" rx="8" fill="#0f172a" stroke="#1e293b"/>
   <circle cx="55" cy="41" r="5" fill="#38bdf8"/>
   <text x="70" y="46" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#f8fafc">TechNova Automated Data Ingestion Pipeline (ফাইল রিড থেকে ভেক্টর ব্যাচ)</text>
-
   <!-- ধাপ ১: ফাইলসমূহ -->
   <g class="node-step">
     <rect x="35" y="100" width="145" height="180" rx="14" fill="#1e293b" stroke="url(#iFileGrad)" stroke-width="2" filter="url(#ingestShadow)"/>
@@ -124,10 +120,8 @@
     <text x="55" y="236" font-family="monospace" font-size="9" fill="#38bdf8">• HR Policy.txt</text>
     <text x="55" y="252" font-family="monospace" font-size="9" fill="#38bdf8">• Guides.md</text>
   </g>
-
   <!-- ফ্লো ১ -> ২ -->
   <path d="M 180 190 L 215 190" fill="none" stroke="#38bdf8" stroke-width="2.5" class="flow-pulse-line" filter="url(#ingestGlow)"/>
-
   <!-- ধাপ ২: টেক্সট ক্লিনিং -->
   <g class="node-step">
     <rect x="215" y="100" width="150" height="180" rx="14" fill="#1e293b" stroke="url(#iCleanGrad)" stroke-width="2" filter="url(#ingestShadow)"/>
@@ -140,10 +134,8 @@
     <text x="235" y="236" font-family="monospace" font-size="9" fill="#c084fc">✓ নিউলাইন নরমালাইজ</text>
     <text x="235" y="252" font-family="monospace" font-size="9" fill="#c084fc">✓ পাইপলাইন ক্লিনিং</text>
   </g>
-
   <!-- ফ্লো ২ -> ৩ -->
   <path d="M 365 190 L 400 190" fill="none" stroke="#a855f7" stroke-width="2.5" class="flow-pulse-line" filter="url(#ingestGlow)"/>
-
   <!-- ধাপ ৩: স্লাইডিং উইন্ডো চাংকিং -->
   <g class="node-step">
     <rect x="400" y="100" width="150" height="180" rx="14" fill="#1e293b" stroke="url(#iChunkGrad)" stroke-width="2" filter="url(#ingestShadow)"/>
@@ -155,10 +147,8 @@
     <text x="420" y="222" font-family="monospace" font-size="9" fill="#fde68a">Chunk: 180 char</text>
     <text x="420" y="240" font-family="monospace" font-size="9" font-weight="bold" fill="#fbbf24">Overlap: 40 char</text>
   </g>
-
   <!-- ফ্লো ৩ -> ৪ -->
   <path d="M 550 190 L 585 190" fill="none" stroke="#fbbf24" stroke-width="2.5" class="flow-pulse-line" filter="url(#ingestGlow)"/>
-
   <!-- ধাপ ৪: মেটাডেটা এনরিচমেন্ট -->
   <g class="node-step">
     <rect x="585" y="100" width="155" height="180" rx="14" fill="#1e293b" stroke="url(#iMetaGrad)" stroke-width="2" filter="url(#ingestShadow)"/>
@@ -171,10 +161,8 @@
     <text x="605" y="236" font-family="monospace" font-size="9" fill="#f472b6">source: "policy.txt"</text>
     <text x="605" y="252" font-family="monospace" font-size="9" fill="#f472b6">created_at: 2026</text>
   </g>
-
   <!-- ফ্লো ৪ -> ৫ -->
   <path d="M 740 190 L 775 190" fill="none" stroke="#ec4899" stroke-width="2.5" class="flow-pulse-line" filter="url(#ingestGlow)"/>
-
   <!-- ধাপ ৫: ভেক্টর ব্যাচ রেডি -->
   <g class="node-step">
     <rect x="775" y="90" width="135" height="200" rx="14" fill="#064e3b" stroke="url(#iBatchGrad)" stroke-width="2.5" filter="url(#ingestShadow)"/>
@@ -186,7 +174,6 @@
     <text x="842" y="225" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#34d399" text-anchor="middle">Ready for DB!</text>
     <text x="842" y="245" font-family="monospace" font-size="8.5" fill="#a7f3d0" text-anchor="middle">Pinecone / Chroma</text>
   </g>
-
   <!-- ফুটার বার -->
   <rect x="250" y="320" width="440" height="32" rx="16" fill="#0f172a" stroke="#334155"/>
   <circle cx="270" cy="336" r="4" fill="#38bdf8"/>

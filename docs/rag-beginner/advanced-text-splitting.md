@@ -53,7 +53,6 @@ separators = ["\n\n", "\n", " ", ""]
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v9RawGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
@@ -66,7 +65,6 @@ separators = ["\n\n", "\n", " ", ""]
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v9ArrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#38bdf8"/>
     </marker>
@@ -76,7 +74,6 @@ separators = ["\n\n", "\n", " ", ""]
     <marker id="v9ArrowAmber" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#fbbf24"/>
     </marker>
-
     <style>
       .v9-pulse-cyan { stroke-dasharray: 6, 6; animation: v9Anim 1.4s linear infinite; }
       .v9-pulse-green { stroke-dasharray: 6, 6; animation: v9Anim 1.2s linear infinite; }
@@ -84,11 +81,9 @@ separators = ["\n\n", "\n", " ", ""]
       @keyframes v9Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">RecursiveCharacterTextSplitter Decision Flow</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Graceful hierarchical fallback from paragraph breaks down to raw characters</text>
-
   <!-- Left: Raw Input Document -->
   <g transform="translate(40, 160)">
     <rect width="160" height="110" rx="14" fill="url(#v9RawGrad)" filter="url(#v9Shadow)"/>
@@ -97,7 +92,6 @@ separators = ["\n\n", "\n", " ", ""]
     <rect x="15" y="66" width="130" height="28" rx="6" fill="#0369a1" opacity="0.6"/>
     <text x="80" y="84" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#bae6fd" text-anchor="middle">len &gt; chunk_size</text>
   </g>
-
   <!-- Central Column: 4-Tier Separator Fallback Hierarchy -->
   <!-- Level 1: \n\n -->
   <g transform="translate(260, 95)">
@@ -107,7 +101,6 @@ separators = ["\n\n", "\n", " ", ""]
     <text x="100" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff">লেভেল ১: ডাবল নিউলাইন (অনুচ্ছেদ)</text>
     <text x="100" y="50" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#a5b4fc">Paragraph Boundary বজায় রাখার চেষ্টা করে</text>
   </g>
-
   <!-- Level 2: \n -->
   <g transform="translate(260, 185)">
     <rect width="360" height="70" rx="12" fill="#131d36" stroke="#4f46e5" stroke-width="2" filter="url(#v9Shadow)"/>
@@ -116,7 +109,6 @@ separators = ["\n\n", "\n", " ", ""]
     <text x="100" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff">লেভেল ২: সিঙ্গেল নিউলাইন (বাক্য)</text>
     <text x="100" y="50" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#a5b4fc">প্যারাগ্রাফ অতিরিক্ত বড় হলে বাক্য বরাবর কাটে</text>
   </g>
-
   <!-- Level 3: " " -->
   <g transform="translate(260, 275)">
     <rect width="360" height="70" rx="12" fill="#131d36" stroke="#4f46e5" stroke-width="2" filter="url(#v9Shadow)"/>
@@ -125,7 +117,6 @@ separators = ["\n\n", "\n", " ", ""]
     <text x="100" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff">লেভেল ৩: শব্দের ফাঁকা স্পেস</text>
     <text x="100" y="50" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#a5b4fc">বাক্য বড় হলে অন্তত শব্দ ভাঙা এড়ায়</text>
   </g>
-
   <!-- Level 4: "" -->
   <g transform="translate(260, 365)">
     <rect width="360" height="70" rx="12" fill="#131d36" stroke="#be123c" stroke-width="2" filter="url(#v9Shadow)"/>
@@ -134,7 +125,6 @@ separators = ["\n\n", "\n", " ", ""]
     <text x="100" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff">লেভেল ৪: ক্যারেক্টার লেভেল (চরম বিকল্প)</text>
     <text x="100" y="50" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#fda4af">কোনো স্পেস না থাকলে বাধ্য হয়ে হরফ অনুযায়ী কাটে</text>
   </g>
-
   <!-- Right: Resulting Clean Chunks Store -->
   <g transform="translate(710, 160)">
     <rect width="190" height="180" rx="14" fill="url(#v9StoreGrad)" filter="url(#v9Shadow)"/>
@@ -145,7 +135,6 @@ separators = ["\n\n", "\n", " ", ""]
     <text x="95" y="104" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#6ee7b7" text-anchor="middle">✓ Overlap = 50 chars</text>
     <text x="95" y="140" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#ecfdf5" text-anchor="middle">Ready for Embeddings</text>
   </g>
-
   <!-- Connectors -->
   <!-- Raw to Level 1 -->
   <path d="M 200 200 L 260 135" fill="none" stroke="#38bdf8" stroke-width="2.5" class="v9-pulse-cyan" marker-end="url(#v9ArrowCyan)"/>
@@ -153,7 +142,6 @@ separators = ["\n\n", "\n", " ", ""]
   <path d="M 440 165 L 440 185" fill="none" stroke="#fbbf24" stroke-width="2" class="v9-pulse-amber" marker-end="url(#v9ArrowAmber)"/>
   <path d="M 440 255 L 440 275" fill="none" stroke="#fbbf24" stroke-width="2" class="v9-pulse-amber" marker-end="url(#v9ArrowAmber)"/>
   <path d="M 440 345 L 440 365" fill="none" stroke="#fbbf24" stroke-width="2" class="v9-pulse-amber" marker-end="url(#v9ArrowAmber)"/>
-
   <!-- Success branches to Output Store -->
   <path d="M 620 130 L 710 190" fill="none" stroke="#34d399" stroke-width="2" class="v9-pulse-green" marker-end="url(#v9ArrowGreen)"/>
   <path d="M 620 220 L 710 240" fill="none" stroke="#34d399" stroke-width="2" class="v9-pulse-green" marker-end="url(#v9ArrowGreen)"/>

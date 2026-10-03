@@ -66,7 +66,6 @@
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v10ChunkAGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
@@ -79,11 +78,9 @@
       <stop offset="0%" stop-color="#f43f5e"/>
       <stop offset="100%" stop-color="#be123c"/>
     </linearGradient>
-
     <marker id="v10ArrowRose" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#fb7185"/>
     </marker>
-
     <style>
       .v10-pulse-cyan { stroke-dasharray: 6, 6; animation: v10Anim 1.4s linear infinite; }
       .v10-pulse-green { stroke-dasharray: 6, 6; animation: v10Anim 1.4s linear infinite; }
@@ -91,58 +88,45 @@
       @keyframes v10Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Semantic Chunking: Embedding Similarity Curve &amp; Breakpoints</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Automatic chunk boundary split when adjacent sentence similarity falls below threshold</text>
-
   <!-- Top Graph Section: Similarity Curve -->
   <g transform="translate(60, 85)">
     <rect width="820" height="150" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
-
     <!-- Y-axis reference levels -->
     <line x1="60" y1="25" x2="790" y2="25" stroke="#334155" stroke-dasharray="3,3"/>
     <text x="50" y="29" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="end">1.0</text>
-
     <!-- Threshold Line (0.50) -->
     <line x1="60" y1="75" x2="790" y2="75" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4"/>
     <text x="50" y="79" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#f59e0b" font-weight="700" text-anchor="end">0.50</text>
     <text x="785" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24" font-weight="600" text-anchor="end">✂️ Split Threshold (0.50)</text>
-
     <line x1="60" y1="125" x2="790" y2="125" stroke="#334155" stroke-dasharray="3,3"/>
     <text x="50" y="129" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="end">0.0</text>
-
     <!-- Similarity Plot Curve -->
     <path d="M 140 34 L 290 37 L 440 115 L 590 31 L 740 33" fill="none" stroke="#38bdf8" stroke-width="3"/>
-
     <!-- Data points -->
     <circle cx="140" cy="34" r="6" fill="#38bdf8"/>
     <text x="140" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Sim: 0.91</text>
     <text x="140" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">S1 ⇄ S2 (ছুটি)</text>
-
     <circle cx="290" cy="37" r="6" fill="#38bdf8"/>
     <text x="290" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Sim: 0.88</text>
     <text x="290" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">S2 ⇄ S3 (অসুস্থতা)</text>
-
     <!-- Point 3: DROP (S3-S4) -->
     <circle cx="440" cy="115" r="8" fill="#f43f5e" filter="url(#v10Glow)"/>
     <text x="440" y="103" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f43f5e" text-anchor="middle">⚠️ Sim: 0.12 (DROP!)</text>
     <text x="440" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#f87171" text-anchor="middle">S3 ⇄ S4 (টপিক বদল)</text>
-
     <circle cx="590" cy="31" r="6" fill="#34d399"/>
     <text x="590" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">Sim: 0.94</text>
     <text x="590" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">S4 ⇄ S5 (ক্লাউড)</text>
-
     <circle cx="740" cy="33" r="6" fill="#34d399"/>
     <text x="740" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">Sim: 0.92</text>
     <text x="740" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">S5 ⇄ S6 (ব্যাকআপ)</text>
   </g>
-
   <!-- Downward Split Arrows -->
   <path d="M 310 240 L 260 270" fill="none" stroke="#38bdf8" stroke-width="2.5" class="v10-pulse-cyan"/>
   <path d="M 500 240 L 500 265" fill="none" stroke="#f43f5e" stroke-width="2.5" class="v10-pulse-rose" marker-end="url(#v10ArrowRose)"/>
   <path d="M 680 240 L 730 270" fill="none" stroke="#34d399" stroke-width="2.5" class="v10-pulse-green"/>
-
   <!-- Resulting Chunks -->
   <!-- Chunk 1: HR Policy (Blue) -->
   <g transform="translate(60, 275)">
@@ -155,7 +139,6 @@
     <rect x="25" y="124" width="330" height="20" rx="4" fill="#0c4a6e"/>
     <text x="190" y="138" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#7dd3fc" text-anchor="middle">✓ অভ্যন্তরীণ সিমিলারিটি &gt; 0.88 (অর্থগতভাবে সুসংবদ্ধ)</text>
   </g>
-
   <!-- Cut Divider Indicator -->
   <g transform="translate(450, 310)">
     <rect width="90" height="70" rx="10" fill="url(#v10CutGrad)" filter="url(#v10Shadow)"/>
@@ -163,7 +146,6 @@
     <text x="45" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">SPLIT HERE</text>
     <text x="45" y="60" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fecdd3" text-anchor="middle">Sim &lt; 0.50</text>
   </g>
-
   <!-- Chunk 2: Cloud Infra (Green) -->
   <g transform="translate(550, 275)">
     <rect width="330" height="155" rx="14" fill="#132328" stroke="#059669" stroke-width="2" filter="url(#v10Shadow)"/>

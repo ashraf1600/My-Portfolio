@@ -68,7 +68,6 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v14UserGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f43f5e"/>
       <stop offset="100%" stop-color="#be123c"/>
@@ -89,7 +88,6 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v14ArrowPink" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#f472b6"/>
     </marker>
@@ -102,7 +100,6 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
     <marker id="v14ArrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
     </marker>
-
     <style>
       .v14-pulse-pink { stroke-dasharray: 6, 6; animation: v14Anim 1.4s linear infinite; }
       .v14-pulse-cyan { stroke-dasharray: 6, 6; animation: v14Anim 1.3s linear infinite; }
@@ -111,11 +108,9 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
       @keyframes v14Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Multi-Query RAG: Query Expansion &amp; Parallel Retrieval</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Generating diverse perspectives to overcome distance bias and merge unique knowledge chunks</text>
-
   <!-- Node 1: Original User Query -->
   <g transform="translate(30, 175)">
     <rect width="150" height="95" rx="14" fill="url(#v14UserGrad)" filter="url(#v14Shadow)"/>
@@ -124,7 +119,6 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
     <rect x="10" y="58" width="130" height="25" rx="6" fill="#881337" opacity="0.6"/>
     <text x="75" y="74" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fecdd3" text-anchor="middle">"অফিসে না আসলে জরিমানা?"</text>
   </g>
-
   <!-- Node 2: Query Generator (LLM) -->
   <g transform="translate(220, 150)">
     <rect width="165" height="145" rx="14" fill="url(#v14GenGrad)" filter="url(#v14Shadow)"/>
@@ -136,7 +130,6 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
     <text x="82" y="108" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#ffffff" text-anchor="middle">2. ছুটির জরিমানা পলিসি</text>
     <text x="82" y="122" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#ffffff" text-anchor="middle">3. অনুমোদনহীন ছুটি বিধান</text>
   </g>
-
   <!-- Parallel Queries (3 Lanes) -->
   <!-- Lane 1 (Top) -->
   <g transform="translate(430, 95)">
@@ -144,21 +137,18 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
     <text x="90" y="22" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#c7d2fe" text-anchor="middle">Q1: বেতন কর্তন সংক্রান্ত নিয়ম</text>
     <text x="90" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#94a3b8" text-anchor="middle">Vector Match: Chunk #4, #7</text>
   </g>
-
   <!-- Lane 2 (Middle) -->
   <g transform="translate(430, 195)">
     <rect width="180" height="50" rx="8" fill="#1e1b4b" stroke="#818cf8"/>
     <text x="90" y="22" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#c7d2fe" text-anchor="middle">Q2: TechNova জরিমানা পলিসি</text>
     <text x="90" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#94a3b8" text-anchor="middle">Vector Match: Chunk #2, #4</text>
   </g>
-
   <!-- Lane 3 (Bottom) -->
   <g transform="translate(430, 295)">
     <rect width="180" height="50" rx="8" fill="#1e1b4b" stroke="#818cf8"/>
     <text x="90" y="22" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#c7d2fe" text-anchor="middle">Q3: অনুমোদনহীন অনুপস্থিতি</text>
     <text x="90" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#94a3b8" text-anchor="middle">Vector Match: Chunk #9, #2</text>
   </g>
-
   <!-- Node 4: Deduplication & Union Store -->
   <g transform="translate(650, 155)">
     <rect width="130" height="135" rx="14" fill="url(#v14DedupGrad)" filter="url(#v14Shadow)"/>
@@ -169,7 +159,6 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
     <text x="65" y="90" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#ffffff" text-anchor="middle">Unique Chunks:</text>
     <text x="65" y="105" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#a7f3d0" text-anchor="middle">[#2, #4, #7, #9]</text>
   </g>
-
   <!-- Node 5: Final LLM Generator -->
   <g transform="translate(820, 165)">
     <rect width="90" height="115" rx="12" fill="url(#v14FinalGrad)" filter="url(#v14Shadow)"/>
@@ -179,7 +168,6 @@ Multi-Query RAG বুঝতে সবচেয়ে দারুণ উপম�
     <text x="45" y="85" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#a7f3d0" text-anchor="middle">Full Truth</text>
     <text x="45" y="98" font-family="'Segoe UI', Roboto, sans-serif" font-size="8.5" fill="#d1fae5" text-anchor="middle">Answer</text>
   </g>
-
   <!-- Connectors -->
   <!-- User to MultiGen -->
   <path d="M 180 220 L 220 220" fill="none" stroke="#f472b6" stroke-width="2.5" class="v14-pulse-pink" marker-end="url(#v14ArrowPink)"/>

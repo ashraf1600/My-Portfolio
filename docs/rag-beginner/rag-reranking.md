@@ -58,33 +58,27 @@ Two-Stage Reranking বুঝতে সবচেয়ে সেরা উপম
       <feGaussianBlur stdDeviation="4" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
-    
     <!-- ড্রপ শ্যাডো ফিল্টার -->
     <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
       <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
     </filter>
-
     <!-- গ্রেডিয়েন্টসমূহ -->
     <linearGradient id="queryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
     </linearGradient>
-
     <linearGradient id="biEncoderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#818cf8"/>
       <stop offset="100%" stop-color="#4f46e5"/>
     </linearGradient>
-
     <linearGradient id="rerankerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f472b6"/>
       <stop offset="100%" stop-color="#db2777"/>
     </linearGradient>
-
     <linearGradient id="llmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#34d399"/>
       <stop offset="100%" stop-color="#059669"/>
     </linearGradient>
-
     <!-- অ্যানিমেশন স্টাইল -->
     <style>
       .flow-pulse {
@@ -107,7 +101,6 @@ Two-Stage Reranking বুঝতে সবচেয়ে সেরা উপম
       }
     </style>
   </defs>
-
   <!-- কার্ড ১: ব্যবহারকারীর প্রশ্ন -->
   <g class="card-hover">
     <rect x="40" y="190" width="160" height="100" rx="14" fill="#1e293b" stroke="url(#queryGrad)" stroke-width="2" filter="url(#cardShadow)"/>
@@ -118,56 +111,42 @@ Two-Stage Reranking বুঝতে সবচেয়ে সেরা উপম
     <rect x="55" y="260" width="130" height="18" rx="6" fill="#0f172a"/>
     <text x="120" y="273" font-family="monospace" font-size="10" fill="#38bdf8" text-anchor="middle">"ছুটির নিয়ম কী?"</text>
   </g>
-
   <!-- ফ্লো লাইন ১: Query -> Stage 1 -->
   <path d="M 200 240 L 270 240" fill="none" stroke="#38bdf8" stroke-width="3" class="flow-pulse" filter="url(#glow)"/>
-
   <!-- কার্ড ২: Stage 1 Bi-Encoder Retrieval -->
   <g class="card-hover">
     <rect x="270" y="130" width="200" height="220" rx="16" fill="#1e293b" stroke="url(#biEncoderGrad)" stroke-width="2" filter="url(#cardShadow)"/>
     <rect x="290" y="145" width="160" height="28" rx="8" fill="url(#biEncoderGrad)"/>
     <text x="370" y="164" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">STAGE 1: Bi-Encoder</text>
-    
     <text x="370" y="195" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Vector DB / Hybrid Search</text>
     <text x="370" y="210" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">High Recall • Fast (ms)</text>
-    
     <!-- ক্যান্ডিডেট আইটেমসমূহ -->
     <rect x="290" y="225" width="160" height="30" rx="6" fill="#0f172a" stroke="#334155"/>
     <text x="300" y="244" font-family="monospace" font-size="11" fill="#cbd5e1">Doc #14 (Score: 0.72)</text>
-    
     <rect x="290" y="262" width="160" height="30" rx="6" fill="#0f172a" stroke="#334155"/>
     <text x="300" y="281" font-family="monospace" font-size="11" fill="#cbd5e1">Doc #02 (Score: 0.69)</text>
-
     <text x="370" y="325" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#818cf8" text-anchor="middle">Top 20 Candidates ➔</text>
   </g>
-
   <!-- ফ্লো লাইন ২: Stage 1 -> Stage 2 Reranker -->
   <path d="M 470 240 L 530 240" fill="none" stroke="#818cf8" stroke-width="3" class="flow-pulse" filter="url(#glow)"/>
-
   <!-- কার্ড ৩: Stage 2 Cross-Encoder Reranker -->
   <g class="card-hover">
     <rect x="530" y="110" width="200" height="260" rx="16" fill="#1e293b" stroke="url(#rerankerGrad)" stroke-width="2.5" filter="url(#cardShadow)"/>
     <rect x="550" y="125" width="160" height="28" rx="8" fill="url(#rerankerGrad)"/>
     <text x="630" y="144" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">STAGE 2: Cross-Encoder</text>
-
     <text x="630" y="175" font-family="system-ui, sans-serif" font-size="11" fill="#f472b6" text-anchor="middle">Deep Cross-Attention</text>
     <text x="630" y="190" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Full Query-Doc Interaction</text>
-
     <!-- রি-র‍্যাঙ্কড ফলাফল -->
     <rect x="550" y="210" width="160" height="42" rx="8" fill="#831843" stroke="#f472b6" stroke-width="1.5"/>
     <text x="560" y="228" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#fff">🥇 Rank 1: Doc #02</text>
     <text x="560" y="244" font-family="monospace" font-size="10" fill="#fbcfe8">Relevance Score: 0.985</text>
-
     <rect x="550" y="260" width="160" height="38" rx="8" fill="#0f172a" stroke="#334155"/>
     <text x="560" y="278" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">🥈 Rank 2: Doc #14</text>
     <text x="560" y="292" font-family="monospace" font-size="10" fill="#94a3b8">Relevance Score: 0.412</text>
-
     <text x="630" y="345" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#f472b6" text-anchor="middle">Top 3 Gold Chunks ➔</text>
   </g>
-
   <!-- ফ্লো লাইন ৩: Reranker -> LLM -->
   <path d="M 730 240 L 780 240" fill="none" stroke="#f472b6" stroke-width="3" class="flow-pulse-fast" filter="url(#glow)"/>
-
   <!-- কার্ড ৪: LLM Generator -->
   <g class="card-hover">
     <rect x="780" y="180" width="95" height="120" rx="14" fill="#1e293b" stroke="url(#llmGrad)" stroke-width="2" filter="url(#cardShadow)"/>
@@ -177,7 +156,6 @@ Two-Stage Reranking বুঝতে সবচেয়ে সেরা উপম
     <text x="827" y="268" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Final</text>
     <text x="827" y="282" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Answer</text>
   </g>
-
   <!-- ফুটার স্ট্যাটাস বাটন -->
   <g>
     <rect x="250" y="420" width="400" height="34" rx="17" fill="#0f172a" stroke="#334155"/>

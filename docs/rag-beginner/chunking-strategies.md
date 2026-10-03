@@ -64,7 +64,6 @@
     <filter id="v8Shadow" x="-10%" y="-10%" width="120%" height="120%">
       <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
     </filter>
-
     <linearGradient id="v8RawGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
@@ -81,103 +80,83 @@
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <marker id="v8ArrowDown" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto">
       <path d="M1,0 L4.5,8 L8,0 Z" fill="#94a3b8"/>
     </marker>
-
     <style>
       .v8-pulse { stroke-dasharray: 6, 6; animation: v8Anim 1.4s linear infinite; }
       @keyframes v8Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title & Subtitle -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Chunking Strategies Comparative Architecture</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Fixed Length vs Sliding Window (Overlap) vs Paragraph Natural Boundary</text>
-
   <!-- Raw Input Document Block (Top) -->
   <g transform="translate(60, 85)">
     <rect width="820" height="60" rx="12" fill="url(#v8RawGrad)" filter="url(#v8Shadow)"/>
     <text x="25" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#e0f2fe" letter-spacing="1">RAW SOURCE DOCUMENT</text>
     <text x="25" y="46" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#ffffff">"TechNova Solutions নীতিমালা: কর্মীগণ বছরে ২০ দিন ক্যাজুয়াল ছুটি পাবেন। অফিস ৯:৩০ টায় শুরু এবং ৫:৩০ টায় শেষ হবে..."</text>
   </g>
-
   <!-- Flow Arrows connecting raw doc to 3 strategies -->
   <path d="M 200 145 L 200 185" fill="none" stroke="#f43f5e" stroke-width="2" class="v8-pulse" marker-end="url(#v8ArrowDown)"/>
   <path d="M 470 145 L 470 185" fill="none" stroke="#f59e0b" stroke-width="2" class="v8-pulse" marker-end="url(#v8ArrowDown)"/>
   <path d="M 740 145 L 740 185" fill="none" stroke="#10b981" stroke-width="2" class="v8-pulse" marker-end="url(#v8ArrowDown)"/>
-
   <!-- Strategy 1: Fixed Character Chunking (Poor) -->
   <g transform="translate(60, 195)">
     <rect width="255" height="245" rx="14" fill="#13192b" stroke="#f43f5e" stroke-width="1.8" filter="url(#v8Shadow)"/>
     <rect x="15" y="15" width="225" height="28" rx="8" fill="url(#v8FixedGrad)"/>
     <text x="127" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">1. Fixed-Size (No Overlap)</text>
-
     <!-- Chunk Visual 1 -->
     <rect x="15" y="55" width="225" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
     <text x="25" y="73" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#f87171" font-weight="600">Chunk 1 (Chop at char 40):</text>
     <text x="25" y="88" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">"...কর্মীগণ বছরে ২০ দিন ক্যাজু"</text>
-
     <!-- Cut indicator line -->
     <line x1="20" y1="104" x2="235" y2="104" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4,4"/>
     <text x="127" y="116" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fca5a5" text-anchor="middle">✂️ বাক্যের ঠিক মাঝখানে বিভক্ত!</text>
-
     <!-- Chunk Visual 2 -->
     <rect x="15" y="125" width="225" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
     <text x="25" y="143" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#f87171" font-weight="600">Chunk 2:</text>
     <text x="25" y="158" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">"য়াল ছুটি পাবেন। অফিস ৯:৩০..."</text>
-
     <!-- Badge -->
     <rect x="15" y="180" width="225" height="48" rx="8" fill="#4c0519" opacity="0.6"/>
     <text x="127" y="200" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#f43f5e" text-anchor="middle">⚠️ প্রসঙ্গ বিচ্ছিন্ন (Loss of Context)</text>
     <text x="127" y="218" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fca5a5" text-anchor="middle">সার্চে "ক্যাজুয়াল" কিওয়ার্ড অকার্যকর হয়</text>
   </g>
-
   <!-- Strategy 2: Sliding Window with Overlap (Better) -->
   <g transform="translate(345, 195)">
     <rect width="255" height="245" rx="14" fill="#13192b" stroke="#f59e0b" stroke-width="1.8" filter="url(#v8Shadow)"/>
     <rect x="15" y="15" width="225" height="28" rx="8" fill="url(#v8OverlapGrad)"/>
     <text x="127" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">2. Sliding Window (Overlap)</text>
-
     <!-- Chunk Visual 1 -->
     <rect x="15" y="55" width="225" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
     <text x="25" y="73" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fbbf24" font-weight="600">Chunk 1:</text>
     <text x="25" y="88" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">"...২০ দিন ক্যাজুয়াল ছুটি পাবেন।"</text>
-
     <!-- Overlap bridge connector -->
     <rect x="40" y="102" width="175" height="18" rx="4" fill="#78350f" opacity="0.8"/>
     <text x="127" y="115" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" fill="#fde68a" text-anchor="middle">⇄ ২০% ওভারল্যাপ শেয়ার্ড অংশ</text>
-
     <!-- Chunk Visual 2 -->
     <rect x="15" y="125" width="225" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
     <text x="25" y="143" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fbbf24" font-weight="600">Chunk 2:</text>
     <text x="25" y="158" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">"২০ দিন ক্যাজুয়াল ছুটি... অফিস ৯:৩০..."</text>
-
     <!-- Badge -->
     <rect x="15" y="180" width="225" height="48" rx="8" fill="#451a03" opacity="0.6"/>
     <text x="127" y="200" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#f59e0b" text-anchor="middle">✓ ধারাবাহিকতা অক্ষুণ্ণ থাকে</text>
     <text x="127" y="218" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fde68a" text-anchor="middle">সীমান্তবর্তী তথ্যের সংযোগ নষ্ট হয় না</text>
   </g>
-
   <!-- Strategy 3: Paragraph / Semantic Boundary (Best) -->
   <g transform="translate(630, 195)">
     <rect width="250" height="245" rx="14" fill="#13192b" stroke="#10b981" stroke-width="1.8" filter="url(#v8Shadow)"/>
     <rect x="15" y="15" width="220" height="28" rx="8" fill="url(#v8ParaGrad)"/>
     <text x="125" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">3. Paragraph / Natural Boundary</text>
-
     <!-- Paragraph 1 -->
     <rect x="15" y="55" width="220" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
     <text x="25" y="73" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#34d399" font-weight="600">প্যারাগ্রাফ ১ (\n\n সেপারেটর):</text>
     <text x="25" y="88" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">সম্পূর্ণ ক্যাজুয়াল ও মেটারনিটি পলিসি</text>
-
     <text x="125" y="115" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" fill="#6ee7b7" text-anchor="middle">🏷️ সম্পূর্ণ একটি স্বয়ংসম্পূর্ণ ভাবনা</text>
-
     <!-- Paragraph 2 -->
     <rect x="15" y="125" width="220" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
     <text x="25" y="143" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#34d399" font-weight="600">প্যারাগ্রাফ ২:</text>
     <text x="25" y="158" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e2e8f0">সম্পূর্ণ অফিস সময়সূচি ও লগইন নিয়ম</text>
-
     <!-- Badge -->
     <rect x="15" y="180" width="220" height="48" rx="8" fill="#064e3b" opacity="0.6"/>
     <text x="125" y="200" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">⭐ সর্বোচ্চ অর্থবহতা (Gold Standard)</text>

@@ -72,7 +72,6 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <!-- কালার গ্রেডিয়েন্টসমূহ -->
     <linearGradient id="docGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
@@ -98,7 +97,6 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
       <stop offset="0%" stop-color="#34d399"/>
       <stop offset="100%" stop-color="#059669"/>
     </linearGradient>
-
     <!-- অ্যানিমেশন স্টাইল -->
     <style>
       .flow-cyan {
@@ -133,20 +131,17 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
       }
     </style>
   </defs>
-
   <!-- হেডার ও ফেজ লেবেল -->
   <g>
     <!-- সেকশন ১: ইনজেশন ব্যাকগ্রাউন্ড -->
     <rect x="25" y="25" width="890" height="195" rx="14" fill="#0f172a" fill-opacity="0.6" stroke="#1e293b" stroke-width="1.5"/>
     <rect x="40" y="38" width="220" height="26" rx="6" fill="#1e293b"/>
     <text x="50" y="55" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#38bdf8">১. অফলাইন ইনজেশন ফেজ (Data Ingestion)</text>
-
     <!-- সেকশন ২: রানটাইম ব্যাকগ্রাউন্ড -->
     <rect x="25" y="240" width="890" height="245" rx="14" fill="#0f172a" fill-opacity="0.6" stroke="#1e293b" stroke-width="1.5"/>
     <rect x="40" y="253" width="250" height="26" rx="6" fill="#1e293b"/>
     <text x="50" y="270" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#34d399">২. রানটাইম রিট্রিভাল ও জেনারেশন ফেজ (Runtime)</text>
   </g>
-
   <!-- ============================================== -->
   <!-- ইনজেশন নোডসমূহ -->
   <!-- ============================================== -->
@@ -160,10 +155,8 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
     <rect x="65" y="142" width="130" height="22" rx="4" fill="#0f172a"/>
     <text x="130" y="157" font-family="monospace" font-size="9.5" fill="#38bdf8" text-anchor="middle">TechNova Handbook</text>
   </g>
-
   <!-- ফ্লো ১: নথিপত্র -> চাংকিং -->
   <path d="M 210 138 L 270 138" fill="none" stroke="#38bdf8" stroke-width="2.5" class="flow-cyan" filter="url(#ragGlow)"/>
-
   <!-- ২. টেক্সট চাংকিং -->
   <g class="node-card">
     <rect x="270" y="85" width="160" height="105" rx="12" fill="#1e293b" stroke="url(#chunkGrad)" stroke-width="2" filter="url(#ragShadow)"/>
@@ -174,10 +167,8 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
     <rect x="285" y="142" width="130" height="22" rx="4" fill="#0f172a"/>
     <text x="350" y="157" font-family="monospace" font-size="9.5" fill="#818cf8" text-anchor="middle">Chunk Size: 200</text>
   </g>
-
   <!-- ফ্লো ২: চাংকিং -> এম্বেডিং -->
   <path d="M 430 138 L 490 138" fill="none" stroke="#818cf8" stroke-width="2.5" class="flow-cyan" filter="url(#ragGlow)"/>
-
   <!-- ৩. এম্বেডিং মডেল -->
   <g class="node-card">
     <rect x="490" y="85" width="160" height="105" rx="12" fill="#1e293b" stroke="url(#promptGrad)" stroke-width="2" filter="url(#ragShadow)"/>
@@ -188,10 +179,8 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
     <rect x="505" y="142" width="130" height="22" rx="4" fill="#0f172a"/>
     <text x="570" y="157" font-family="monospace" font-size="9.5" fill="#c084fc" text-anchor="middle">[0.12, -0.45, ...]</text>
   </g>
-
   <!-- ফ্লো ৩: এম্বেডিং -> ভেক্টর ডিবি -->
   <path d="M 650 138 L 710 138" fill="none" stroke="#c084fc" stroke-width="2.5" class="flow-cyan" filter="url(#ragGlow)"/>
-
   <!-- ৪. ভেক্টর ডাটাবেস -->
   <g class="node-card">
     <rect x="710" y="70" width="180" height="135" rx="14" fill="#1e293b" stroke="url(#vectorGrad)" stroke-width="2.5" filter="url(#ragShadow)"/>
@@ -203,7 +192,6 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
     <text x="800" y="145" font-family="monospace" font-size="9.5" fill="#fde68a" text-anchor="middle">Vector Embeddings Store</text>
     <text x="800" y="180" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#fbbf24" text-anchor="middle">⚡ Indexed for Fast Search</text>
   </g>
-
   <!-- ============================================== -->
   <!-- রানটাইম ফেজ নোডসমূহ -->
   <!-- ============================================== -->
@@ -217,13 +205,10 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
     <rect x="65" y="375" width="130" height="22" rx="4" fill="#0f172a"/>
     <text x="130" y="390" font-family="monospace" font-size="9.5" fill="#f472b6" text-anchor="middle">"ছুটির নিয়ম কী?"</text>
   </g>
-
   <!-- ফ্লো ৪: User Query -> Vector DB (Search) -->
   <path d="M 210 370 L 800 370 L 800 205" fill="none" stroke="#f472b6" stroke-width="2.5" class="flow-purple" filter="url(#ragGlow)"/>
-
   <!-- ফ্লো ৫: Vector DB -> Augmented Prompt (Context Return) -->
   <path d="M 760 205 L 760 330 L 490 330" fill="none" stroke="#fbbf24" stroke-width="2.5" class="flow-purple" filter="url(#ragGlow)"/>
-
   <!-- ৬. অগমেন্টেড প্রম্পট -->
   <g class="node-card">
     <rect x="310" y="295" width="180" height="145" rx="14" fill="#1e293b" stroke="url(#promptGrad)" stroke-width="2" filter="url(#ragShadow)"/>
@@ -236,13 +221,10 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
     <rect x="325" y="382" width="150" height="22" rx="4" fill="#0f172a"/>
     <text x="400" y="397" font-family="monospace" font-size="8.5" fill="#f472b6" text-anchor="middle">Question: "ছুটির নিয়ম..."</text>
   </g>
-
   <!-- ফ্লো ৬: Query -> Augmented Prompt -->
   <path d="M 210 350 L 310 350" fill="none" stroke="#f472b6" stroke-width="2" class="flow-purple"/>
-
   <!-- ফ্লো ৭: Augmented Prompt -> LLM -->
   <path d="M 490 370 L 560 370" fill="none" stroke="#34d399" stroke-width="3" class="flow-green" filter="url(#ragGlow)"/>
-
   <!-- ৭. LLM Generator -->
   <g class="node-card">
     <rect x="560" y="305" width="150" height="125" rx="14" fill="#1e293b" stroke="url(#llmGrad)" stroke-width="2.5" filter="url(#ragShadow)"/>
@@ -253,10 +235,8 @@ RAG মূলত দুটি প্রধান ধাপে কাজ কর�
     <rect x="575" y="370" width="120" height="22" rx="4" fill="#0f172a"/>
     <text x="635" y="385" font-family="monospace" font-size="9" fill="#6ee7b7" text-anchor="middle">Grounded Answer Gen</text>
   </g>
-
   <!-- ফ্লো ৮: LLM -> Final Response -->
   <path d="M 710 370 L 760 370" fill="none" stroke="#34d399" stroke-width="3" class="flow-green" filter="url(#ragGlow)"/>
-
   <!-- ৮. ফাইনাল রেসপন্স -->
   <g class="node-card">
     <rect x="760" y="315" width="135" height="105" rx="12" fill="#064e3b" stroke="#34d399" stroke-width="2" filter="url(#ragShadow)"/>

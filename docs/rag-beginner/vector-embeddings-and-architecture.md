@@ -72,7 +72,6 @@
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="vDocGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#0284c7"/>
@@ -93,7 +92,6 @@
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="100%" stop-color="#047857"/>
     </linearGradient>
-
     <style>
       .flow-pulse-indigo {
         stroke-dasharray: 8, 8;
@@ -127,16 +125,13 @@
       }
     </style>
   </defs>
-
   <!-- ব্যাকগ্রাউন্ড কন্টেইনারসমূহ -->
   <rect x="25" y="25" width="890" height="185" rx="14" fill="#0f172a" fill-opacity="0.6" stroke="#1e293b" stroke-width="1.5"/>
   <rect x="40" y="38" width="260" height="24" rx="6" fill="#1e293b"/>
   <text x="50" y="54" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#818cf8">১. ইনডেক্সিং পাইপলাইন (Text ➔ Embeddings ➔ DB)</text>
-
   <rect x="25" y="235" width="890" height="235" rx="14" fill="#0f172a" fill-opacity="0.6" stroke="#1e293b" stroke-width="1.5"/>
   <rect x="40" y="248" width="280" height="24" rx="6" fill="#1e293b"/>
   <text x="50" y="264" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#34d399">২. রিট্রিভাল ও জেনারেশন (Query ➔ Embed ➔ Match ➔ LLM)</text>
-
   <!-- ধাপ ১: র' টেক্সট চ্যাঙ্ক -->
   <g class="card-box">
     <rect x="50" y="80" width="160" height="100" rx="12" fill="#1e293b" stroke="url(#vDocGrad)" stroke-width="2" filter="url(#vShadow)"/>
@@ -145,10 +140,8 @@
     <rect x="65" y="140" width="130" height="22" rx="4" fill="#0f172a"/>
     <text x="130" y="155" font-family="monospace" font-size="9" fill="#38bdf8" text-anchor="middle">"২০ দিন ক্যাজুয়াল ছুটি..."</text>
   </g>
-
   <!-- ফ্লো ১: চ্যাঙ্ক -> এম্বেডিং মডেল ১ -->
   <path d="M 210 130 L 280 130" fill="none" stroke="#38bdf8" stroke-width="2.5" class="flow-pulse-indigo" filter="url(#vGlow)"/>
-
   <!-- ধাপ ২: Embedding Model 1 -->
   <g class="card-box">
     <rect x="280" y="80" width="180" height="100" rx="12" fill="#1e293b" stroke="url(#vModelGrad)" stroke-width="2" filter="url(#vShadow)"/>
@@ -157,10 +150,8 @@
     <rect x="295" y="140" width="150" height="22" rx="4" fill="#0f172a"/>
     <text x="370" y="155" font-family="monospace" font-size="9" fill="#d8b4fe" text-anchor="middle">Vector: [0.12, -0.85, ...]</text>
   </g>
-
   <!-- ফ্লো ২: এম্বেডিং ১ -> ভেক্টর স্টোর -->
   <path d="M 460 130 L 530 130" fill="none" stroke="#a855f7" stroke-width="2.5" class="flow-pulse-indigo" filter="url(#vGlow)"/>
-
   <!-- ধাপ ৩: Vector Database (উভয় ফেজের সাধারণ কেন্দ্রবিন্দু) -->
   <g class="card-box">
     <rect x="530" y="70" width="220" height="120" rx="14" fill="#1e293b" stroke="url(#vStoreGrad)" stroke-width="2.5" filter="url(#vShadow)"/>
@@ -172,7 +163,6 @@
     <text x="640" y="152" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle">Doc Vector Array (1536 dim)</text>
     <text x="640" y="167" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#34d399" text-anchor="middle">Semantic Clusters Ready</text>
   </g>
-
   <!-- ======================== রানটাইম ফেজ ======================== -->
   <!-- ব্যবহারকারী ও প্রশ্ন -->
   <g class="card-box">
@@ -182,10 +172,8 @@
     <rect x="65" y="360" width="130" height="25" rx="4" fill="#0f172a"/>
     <text x="130" y="377" font-family="monospace" font-size="9" fill="#f472b6" text-anchor="middle">"ছুটি কীভাবে নেব?"</text>
   </g>
-
   <!-- ফ্লো ৩: ইউজার প্রশ্ন -> এম্বেডিং মডেল ২ (একই মডেল) -->
   <path d="M 210 350 L 280 350" fill="none" stroke="#f472b6" stroke-width="2.5" class="flow-pulse-pink" filter="url(#vGlow)"/>
-
   <!-- এম্বেডিং মডেল ২ (একই মডেল নিশ্চিতকরণ) -->
   <g class="card-box">
     <rect x="280" y="300" width="180" height="105" rx="12" fill="#1e293b" stroke="url(#vModelGrad)" stroke-width="2" filter="url(#vShadow)"/>
@@ -195,22 +183,17 @@
     <rect x="295" y="365" width="150" height="22" rx="4" fill="#0f172a"/>
     <text x="370" y="380" font-family="monospace" font-size="9" fill="#f472b6" text-anchor="middle">q_vec = [0.11, -0.82, ...]</text>
   </g>
-
   <!-- ফ্লো ৪: Query Vector -> Vector DB (Cosine Similarity Search) -->
   <path d="M 460 350 L 640 350 L 640 195" fill="none" stroke="#f472b6" stroke-width="2.5" class="flow-pulse-pink" filter="url(#vGlow)"/>
-
   <!-- ফ্লো ৫: Vector DB -> Augmented Prompt (Relevant Context) -->
   <path d="M 680 195 L 680 300" fill="none" stroke="#fbbf24" stroke-width="2.5" class="flow-pulse-indigo" filter="url(#vGlow)"/>
-
   <!-- Augmented Prompt & LLM -->
   <g class="card-box">
     <rect x="530" y="300" width="220" height="145" rx="14" fill="#1e293b" stroke="url(#vLlmGrad)" stroke-width="2" filter="url(#vShadow)"/>
     <text x="640" y="325" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">Nearest Match + LLM</text>
-    
     <rect x="545" y="338" width="190" height="35" rx="6" fill="#0f172a" stroke="#064e3b"/>
     <text x="555" y="354" font-family="system-ui, sans-serif" font-size="9.5" fill="#a7f3d0">🎯 Top Match (Cosine: 0.985)</text>
     <text x="555" y="367" font-family="monospace" font-size="8.5" fill="#6ee7b7">"২০ দিন পেইড ছুটি..."</text>
-
     <rect x="545" y="385" width="190" height="45" rx="6" fill="#064e3b" stroke="#34d399"/>
     <text x="640" y="405" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">LLM Grounded Response</text>
     <text x="640" y="420" font-family="system-ui, sans-serif" font-size="9" fill="#a7f3d0" text-anchor="middle">সঠিক ও নির্ভরযোগ্য উত্তর প্রদর্শন</text>

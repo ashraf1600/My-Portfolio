@@ -71,7 +71,6 @@ $$\text{Cosine Similarity}(\mathbf{A}, \mathbf{B}) = \frac{\mathbf{A} \cdot \mat
       <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
-
     <linearGradient id="v5AxisGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#475569"/>
       <stop offset="100%" stop-color="#334155"/>
@@ -88,7 +87,6 @@ $$\text{Cosine Similarity}(\mathbf{A}, \mathbf{B}) = \frac{\mathbf{A} \cdot \mat
       <stop offset="0%" stop-color="#6366f1"/>
       <stop offset="100%" stop-color="#4338ca"/>
     </linearGradient>
-
     <marker id="v5ArrowEmerald" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#34d399"/>
     </marker>
@@ -98,7 +96,6 @@ $$\text{Cosine Similarity}(\mathbf{A}, \mathbf{B}) = \frac{\mathbf{A} \cdot \mat
     <marker id="v5ArrowRose" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,1 L8,4.5 L0,8 Z" fill="#fb7185"/>
     </marker>
-
     <style>
       .v5-pulse-green { stroke-dasharray: 6, 6; animation: v5Anim 1.3s linear infinite; }
       .v5-pulse-cyan { stroke-dasharray: 6, 6; animation: v5Anim 1.4s linear infinite; }
@@ -106,54 +103,43 @@ $$\text{Cosine Similarity}(\mathbf{A}, \mathbf{B}) = \frac{\mathbf{A} \cdot \mat
       @keyframes v5Anim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
     </style>
   </defs>
-
   <!-- Title -->
   <text x="470" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">Cosine Similarity in Multi-Dimensional Vector Space</text>
   <text x="470" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Angle θ determines semantic similarity regardless of vector magnitude</text>
-
   <!-- Left: Vector Geometric Plane -->
   <g transform="translate(60, 90)">
     <!-- Plane background grid -->
     <rect width="360" height="300" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
     <path d="M 60 40 L 60 260 M 120 40 L 120 260 M 180 40 L 180 260 M 240 40 L 240 260 M 300 40 L 300 260" stroke="#1e293b" stroke-width="1" stroke-dasharray="3,3"/>
     <path d="M 40 80 L 320 80 M 40 140 L 320 140 M 40 200 L 320 200 M 40 260 L 320 260" stroke="#1e293b" stroke-width="1" stroke-dasharray="3,3"/>
-
     <!-- Coordinate Axes -->
     <!-- Y-axis -->
     <line x1="60" y1="260" x2="60" y2="40" stroke="#64748b" stroke-width="2"/>
     <polygon points="60,32 56,44 64,44" fill="#94a3b8"/>
     <text x="50" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8" text-anchor="end">Dimension 2</text>
-
     <!-- X-axis -->
     <line x1="60" y1="260" x2="330" y2="260" stroke="#64748b" stroke-width="2"/>
     <polygon points="338,260 326,256 326,264" fill="#94a3b8"/>
     <text x="330" y="280" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Dimension 1</text>
-
     <!-- Origin Dot -->
     <circle cx="60" cy="260" r="5" fill="#f8fafc"/>
     <text x="50" y="278" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1" font-weight="600">Origin (0,0)</text>
-
     <!-- Vector A: Query (Cyan) -->
     <line x1="60" y1="260" x2="260" y2="120" stroke="#38bdf8" stroke-width="3.5" marker-end="url(#v5ArrowCyan)"/>
     <text x="270" y="118" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#38bdf8">Vector A (Query: "ছুটির নিয়ম")</text>
-
     <!-- Vector B: Similar Doc (Emerald) -->
     <line x1="60" y1="260" x2="285" y2="155" stroke="#34d399" stroke-width="3" marker-end="url(#v5ArrowEmerald)"/>
     <text x="295" y="165" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#34d399">Vector B ("ভ্যাকেশন পলিসি")</text>
-
     <!-- Angle theta (Small) -->
     <path d="M 170 183 A 120 120 0 0 1 180 200" fill="none" stroke="#fef08a" stroke-width="2"/>
     <text x="195" y="195" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fef08a">θ ≈ 15°</text>
-
     <!-- Vector C: Unrelated Doc (Rose) at nearly 90 deg -->
     <line x1="60" y1="260" x2="80" y2="70" stroke="#fb7185" stroke-width="3" marker-end="url(#v5ArrowRose)"/>
     <text x="90" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fb7185">Vector C ("প্রিন্টার আইপি")</text>
-
     <!-- 90 deg indicator -->
     <rect x="60" y="246" width="14" height="14" fill="none" stroke="#f43f5e" stroke-width="1.5"/>
     <text x="80" y="240" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">θ ≈ 88°</text>
   </g>
-
   <!-- Right: Comparison & Formula Panels -->
   <!-- Formula Card (Top Right) -->
   <g transform="translate(460, 90)">
@@ -162,7 +148,6 @@ $$\text{Cosine Similarity}(\mathbf{A}, \mathbf{B}) = \frac{\mathbf{A} \cdot \mat
     <text x="215" y="52" font-family="'Courier New', monospace" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Cosine Sim = (A · B) / (||A|| × ||B||)</text>
     <text x="215" y="78" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#c7d2fe" text-anchor="middle">Range: -1.0 (Opposite) to 0.0 (Unrelated) to +1.0 (Identical)</text>
   </g>
-
   <!-- Card 1: High Similarity (Emerald) -->
   <g transform="translate(460, 205)">
     <rect width="430" height="85" rx="12" fill="url(#v5GreenCard)" filter="url(#v5Shadow)"/>
@@ -172,7 +157,6 @@ $$\text{Cosine Similarity}(\mathbf{A}, \mathbf{B}) = \frac{\mathbf{A} \cdot \mat
     <text x="70" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#d1fae5">Query ("ছুটির নিয়ম") vs Doc B ("ভ্যাকেশন পলিসি")</text>
     <text x="70" y="70" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#a7f3d0">ক্ষুদ্র কোণ = উচ্চ অর্থগত মিল (Vector Search Top Result)</text>
   </g>
-
   <!-- Card 2: Zero/Low Similarity (Rose) -->
   <g transform="translate(460, 305)">
     <rect width="430" height="85" rx="12" fill="url(#v5RedCard)" filter="url(#v5Shadow)"/>
