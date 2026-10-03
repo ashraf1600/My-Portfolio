@@ -175,7 +175,8 @@ export default withMermaid(
               { text: '২. Vector Embeddings ও Architecture', link: '/rag-beginner/vector-embeddings-and-architecture' },
               { text: '৩. Data Ingestion Pipeline তৈরি', link: '/rag-beginner/data-ingestion-pipeline' },
               { text: '৪. LangChain দিয়ে Document Retrieval', link: '/rag-beginner/document-retrieval-langchain' },
-              { text: '৫. Cosine Similarity ও Vector Search', link: '/rag-beginner/cosine-similarity-vector-search' }
+              { text: '৫. Cosine Similarity ও Vector Search', link: '/rag-beginner/cosine-similarity-vector-search' },
+              { text: '৬. প্রথম RAG অ্যাপ তৈরি', link: '/rag-beginner/first-rag-application' }
             ]
           }
         ],
