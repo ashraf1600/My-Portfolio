@@ -135,21 +135,43 @@ export default withMermaid(
 
         '/langgraph/': [
           {
-            text: 'LangGraph',
-            collapsed: true,
+            text: 'কোর্স ওভারভিউ (Overview)',
+            collapsed: false,
             items: [
-              { text: 'Introduction', link: '/langgraph/' },
-              { text: 'What is LangGraph?', link: '/langgraph/what-is-langgraph' },
-              { text: 'Installation', link: '/langgraph/installation' },
-              { text: 'Graphs & Nodes', link: '/langgraph/graphs-nodes' },
-              { text: 'State Management', link: '/langgraph/state-management' },
-              { text: 'Conditional Edges', link: '/langgraph/conditional-edges' },
-              { text: 'Cycles & Loops', link: '/langgraph/cycles-loops' },
-              { text: 'Human-in-the-Loop', link: '/langgraph/human-in-the-loop' },
-              { text: 'Persistence & Checkpoints', link: '/langgraph/persistence' },
-              { text: 'Multi-Agent Workflows', link: '/langgraph/multi-agent-workflows' },
-              { text: 'Projects', link: '/langgraph/projects' }
+              { text: 'মাস্টারক্লাস পরিচিতি ও সিলেবাস', link: '/langgraph/' }
             ]
+          },
+          {
+            text: 'Module 1 — Foundations of Agentic AI',
+            collapsed: false,
+            items: [
+              { text: '১. GenAI থেকে Agentic AI এর বিবর্তন', link: '/langgraph/evolution-from-genai-to-agentic-ai' }
+            ]
+          },
+          {
+            text: 'Module 2 — LangGraph Fundamentals',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'Module 3 — Advanced LangGraph Concepts',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'Module 4 — Building AI Agents',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'Module 5 — Agentic RAG Applications',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'Module 6 — Production & Deployment',
+            collapsed: true,
+            items: []
           }
         ],
 
