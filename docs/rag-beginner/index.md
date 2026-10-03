@@ -18,22 +18,22 @@
 ## 📚 টিউটোরিয়াল সূচিপত্র
 
 1. [১. RAG কী এবং কেন? (Introduction to RAG)](./what-is-rag.md)
-2. ২. Vector Embeddings ও RAG আর্কিটেকচার
-3. ৩. Python দিয়ে Data Ingestion Pipeline তৈরি
-4. ৪. LangChain দিয়ে Document Retrieval বাস্তবায়ন
-5. ৫. Vector Search-এ Cosine Similarity কীভাবে কাজ করে
-6. ৬. স্ক্র্যাচ থেকে আপনার প্রথম RAG অ্যাপ্লিকেশন তৈরি
-7. ৭. Chat History সহ Conversational RAG
-8. ৮. কার্যকর Text Chunking কৌশলসমূহ
-9. ৯. LangChain দিয়ে Advanced Text Splitting
-10. ১০. Semantic Chunking পদ্ধতি
-11. ১১. AI Agent-ভিত্তিক Document Chunking
-12. ১২. Multi-Modal RAG (ইমেজ এবং ডকুমেন্টস)
-13. ১৩. Advanced Document Retrieval Techniques
-14. ১৪. Multi-Query RAG দিয়ে উন্নত সার্চ
-15. ১৫. Reciprocal Rank Fusion (RRF)
-16. ১৬. Hybrid Search (Vector + Keyword Search)
-17. ১৭. RAG Reranking ও পরবর্তী ধাপ
+2. [২. Vector Embeddings ও RAG আর্কিটেকচার](./vector-embeddings-and-architecture.md)
+3. [৩. Python দিয়ে Data Ingestion Pipeline তৈরি](./data-ingestion-pipeline.md)
+4. [৪. LangChain দিয়ে Document Retrieval বাস্তবায়ন](./document-retrieval-langchain.md)
+5. [৫. Vector Search-এ Cosine Similarity কীভাবে কাজ করে](./cosine-similarity-vector-search.md)
+6. [৬. স্ক্র্যাচ থেকে আপনার প্রথম RAG অ্যাপ্লিকেশন তৈরি](./first-rag-application.md)
+7. [৭. Chat History সহ Conversational RAG](./conversational-rag-chat-history.md)
+8. [৮. কার্যকর Text Chunking কৌশলসমূহ](./chunking-strategies.md)
+9. [৯. LangChain দিয়ে Advanced Text Splitting](./advanced-text-splitting.md)
+10. [১০. Semantic Chunking পদ্ধতি](./semantic-chunking.md)
+11. [১১. AI Agent-ভিত্তিক Document Chunking](./agentic-chunking.md)
+12. [১২. Multi-Modal RAG (ইমেজ এবং ডকুমেন্টস)](./multimodal-rag.md)
+13. [১৩. Advanced Document Retrieval Techniques](./advanced-retrieval-techniques.md)
+14. [১৪. Multi-Query RAG দিয়ে উন্নত সার্চ](./multi-query-rag.md)
+15. [১৫. Reciprocal Rank Fusion (RRF)](./reciprocal-rank-fusion.md)
+16. [১৬. Hybrid Search (Vector + Keyword Search)](./hybrid-search.md)
+17. [১৭. RAG Reranking ও পরবর্তী ধাপ](./rag-reranking.md)
 
 ---
 
