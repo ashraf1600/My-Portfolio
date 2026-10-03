@@ -55,20 +55,144 @@
 
 ---
 
-## ৫. Architecture Diagram (ইনজেশন ফ্লো)
+## ৫. Architecture Diagram (ইনজেশন পাইপলাইন ফ্লো)
 
-```mermaid
-flowchart LR
-    A[কাঁচা ফাইলসমূহ\nTechNova HR Policy.txt] --> B[Document Loader]
-    B --> C[Text Cleaning\nঅতিরিক্ত স্পেস ও ফরম্যাট দূরীকরণ]
-    C --> D[Chunking Engine\nChunk Size: 200, Overlap: 50]
-    D --> E[Metadata Tagging\nSource, ID, CreatedAt]
-    E --> F[(Vector Ready Batches\nReady for Vector DB)]
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 380" width="100%" height="auto" style="max-width: 900px; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.15)); border-radius: 18px; background: linear-gradient(135deg, #0b0f19 0%, #151d2e 100%);">
+  <defs>
+    <filter id="ingestShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="ingestGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    style A fill:#e6f7ff,stroke:#1890ff,stroke-width:2px,color:#000
-    style D fill:#fffbe6,stroke:#faad14,stroke-width:2px,color:#000
-    style F fill:#f6ffed,stroke:#52c41a,stroke-width:2px,color:#000
-```
+    <linearGradient id="iFileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="iCleanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7e22ce"/>
+    </linearGradient>
+    <linearGradient id="iChunkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="iMetaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="iBatchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+
+    <style>
+      .flow-pulse-line {
+        stroke-dasharray: 8, 8;
+        animation: flowDash 1.2s linear infinite;
+      }
+      @keyframes flowDash {
+        from { stroke-dashoffset: 32; }
+        to { stroke-dashoffset: 0; }
+      }
+      .node-step {
+        transition: transform 0.25s ease;
+      }
+      .node-step:hover {
+        transform: translateY(-3px);
+      }
+    </style>
+  </defs>
+
+  <!-- হেডার টাইটেল বার -->
+  <rect x="35" y="25" width="870" height="32" rx="8" fill="#0f172a" stroke="#1e293b"/>
+  <circle cx="55" cy="41" r="5" fill="#38bdf8"/>
+  <text x="70" y="46" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#f8fafc">TechNova Automated Data Ingestion Pipeline (ফাইল রিড থেকে ভেক্টর ব্যাচ)</text>
+
+  <!-- ধাপ ১: ফাইলসমূহ -->
+  <g class="node-step">
+    <rect x="35" y="100" width="145" height="180" rx="14" fill="#1e293b" stroke="url(#iFileGrad)" stroke-width="2" filter="url(#ingestShadow)"/>
+    <rect x="50" y="115" width="32" height="32" rx="8" fill="url(#iFileGrad)"/>
+    <text x="66" y="136" font-family="system-ui, sans-serif" font-size="16" fill="#fff" text-anchor="middle">📂</text>
+    <text x="50" y="170" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">১. কাঁচা ফাইল</text>
+    <text x="50" y="186" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Document Loader</text>
+    <rect x="45" y="200" width="125" height="60" rx="6" fill="#0f172a"/>
+    <text x="55" y="220" font-family="monospace" font-size="9" fill="#38bdf8">• PDF Manuals</text>
+    <text x="55" y="236" font-family="monospace" font-size="9" fill="#38bdf8">• HR Policy.txt</text>
+    <text x="55" y="252" font-family="monospace" font-size="9" fill="#38bdf8">• Guides.md</text>
+  </g>
+
+  <!-- ফ্লো ১ -> ২ -->
+  <path d="M 180 190 L 215 190" fill="none" stroke="#38bdf8" stroke-width="2.5" class="flow-pulse-line" filter="url(#ingestGlow)"/>
+
+  <!-- ধাপ ২: টেক্সট ক্লিনিং -->
+  <g class="node-step">
+    <rect x="215" y="100" width="150" height="180" rx="14" fill="#1e293b" stroke="url(#iCleanGrad)" stroke-width="2" filter="url(#ingestShadow)"/>
+    <rect x="230" y="115" width="32" height="32" rx="8" fill="url(#iCleanGrad)"/>
+    <text x="246" y="136" font-family="system-ui, sans-serif" font-size="16" fill="#fff" text-anchor="middle">🧹</text>
+    <text x="230" y="170" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">২. টেক্সট ক্লিনিং</text>
+    <text x="230" y="186" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Sanitization Engine</text>
+    <rect x="225" y="200" width="130" height="60" rx="6" fill="#0f172a"/>
+    <text x="235" y="220" font-family="monospace" font-size="9" fill="#c084fc">✓ স্পেস ও ট্যাব ট্রিম</text>
+    <text x="235" y="236" font-family="monospace" font-size="9" fill="#c084fc">✓ নিউলাইন নরমালাইজ</text>
+    <text x="235" y="252" font-family="monospace" font-size="9" fill="#c084fc">✓ পাইপলাইন ক্লিনিং</text>
+  </g>
+
+  <!-- ফ্লো ২ -> ৩ -->
+  <path d="M 365 190 L 400 190" fill="none" stroke="#a855f7" stroke-width="2.5" class="flow-pulse-line" filter="url(#ingestGlow)"/>
+
+  <!-- ধাপ ৩: স্লাইডিং উইন্ডো চাংকিং -->
+  <g class="node-step">
+    <rect x="400" y="100" width="150" height="180" rx="14" fill="#1e293b" stroke="url(#iChunkGrad)" stroke-width="2" filter="url(#ingestShadow)"/>
+    <rect x="415" y="115" width="32" height="32" rx="8" fill="url(#iChunkGrad)"/>
+    <text x="431" y="136" font-family="system-ui, sans-serif" font-size="16" fill="#fff" text-anchor="middle">✂️</text>
+    <text x="415" y="170" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">৩. চাংকিং ইঞ্জিন</text>
+    <text x="415" y="186" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Sliding Window</text>
+    <rect x="410" y="200" width="130" height="60" rx="6" fill="#0f172a"/>
+    <text x="420" y="222" font-family="monospace" font-size="9" fill="#fde68a">Chunk: 180 char</text>
+    <text x="420" y="240" font-family="monospace" font-size="9" font-weight="bold" fill="#fbbf24">Overlap: 40 char</text>
+  </g>
+
+  <!-- ফ্লো ৩ -> ৪ -->
+  <path d="M 550 190 L 585 190" fill="none" stroke="#fbbf24" stroke-width="2.5" class="flow-pulse-line" filter="url(#ingestGlow)"/>
+
+  <!-- ধাপ ৪: মেটাডেটা এনরিচমেন্ট -->
+  <g class="node-step">
+    <rect x="585" y="100" width="155" height="180" rx="14" fill="#1e293b" stroke="url(#iMetaGrad)" stroke-width="2" filter="url(#ingestShadow)"/>
+    <rect x="600" y="115" width="32" height="32" rx="8" fill="url(#iMetaGrad)"/>
+    <text x="616" y="136" font-family="system-ui, sans-serif" font-size="16" fill="#fff" text-anchor="middle">🏷️</text>
+    <text x="600" y="170" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">৪. মেটাডেটা ট্যাগ</text>
+    <text x="600" y="186" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Metadata Enrichment</text>
+    <rect x="595" y="200" width="135" height="60" rx="6" fill="#0f172a"/>
+    <text x="605" y="220" font-family="monospace" font-size="9" fill="#f472b6">id: "handbook_c1"</text>
+    <text x="605" y="236" font-family="monospace" font-size="9" fill="#f472b6">source: "policy.txt"</text>
+    <text x="605" y="252" font-family="monospace" font-size="9" fill="#f472b6">created_at: 2026</text>
+  </g>
+
+  <!-- ফ্লো ৪ -> ৫ -->
+  <path d="M 740 190 L 775 190" fill="none" stroke="#ec4899" stroke-width="2.5" class="flow-pulse-line" filter="url(#ingestGlow)"/>
+
+  <!-- ধাপ ৫: ভেক্টর ব্যাচ রেডি -->
+  <g class="node-step">
+    <rect x="775" y="90" width="135" height="200" rx="14" fill="#064e3b" stroke="url(#iBatchGrad)" stroke-width="2.5" filter="url(#ingestShadow)"/>
+    <circle cx="842" cy="125" r="18" fill="url(#iBatchGrad)"/>
+    <text x="842" y="131" font-family="system-ui, sans-serif" font-size="16" fill="#fff" text-anchor="middle">📦</text>
+    <text x="842" y="165" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#a7f3d0" text-anchor="middle">৫. ভেক্টর রেডি</text>
+    <text x="842" y="182" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">Vector Ingest Batch</text>
+    <rect x="785" y="200" width="115" height="70" rx="6" fill="#022c22"/>
+    <text x="842" y="225" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#34d399" text-anchor="middle">Ready for DB!</text>
+    <text x="842" y="245" font-family="monospace" font-size="8.5" fill="#a7f3d0" text-anchor="middle">Pinecone / Chroma</text>
+  </g>
+
+  <!-- ফুটার বার -->
+  <rect x="250" y="320" width="440" height="32" rx="16" fill="#0f172a" stroke="#334155"/>
+  <circle cx="270" cy="336" r="4" fill="#38bdf8"/>
+  <text x="285" y="341" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Pipeline Output: <tspan fill="#38bdf8" font-weight="bold">Cleaned</tspan> • <tspan fill="#fbbf24" font-weight="bold">Overlapped Chunks</tspan> • <tspan fill="#f472b6" font-weight="bold">Metadata Tracked</tspan></text>
+</svg>
+</div>
 
 ---
 
