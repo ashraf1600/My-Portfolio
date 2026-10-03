@@ -172,7 +172,8 @@ export default withMermaid(
             items: [
               { text: 'কোর্স ওভারভিউ (Overview)', link: '/rag-beginner/' },
               { text: '১. RAG কী এবং কেন? (Introduction)', link: '/rag-beginner/what-is-rag' },
-              { text: '২. Vector Embeddings ও Architecture', link: '/rag-beginner/vector-embeddings-and-architecture' }
+              { text: '২. Vector Embeddings ও Architecture', link: '/rag-beginner/vector-embeddings-and-architecture' },
+              { text: '৩. Data Ingestion Pipeline তৈরি', link: '/rag-beginner/data-ingestion-pipeline' }
             ]
           }
         ],
