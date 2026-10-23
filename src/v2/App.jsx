@@ -11,6 +11,7 @@ import Certificates from "./components/Certificates";
 import QuickProfile from "./components/QuickProfile";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Cursor from "./components/Cursor";
 
 // Fades each section up as it scrolls into view (spring, once).
 const Reveal = ({ children }) => {
@@ -32,6 +33,7 @@ const Reveal = ({ children }) => {
 
 const App = () => (
   <>
+    <Cursor />
     <Header />
     <main>
       <Hero />
