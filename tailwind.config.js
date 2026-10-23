@@ -8,8 +8,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-        outfit: ['Outfit', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
+        poppins: ['Poppins', 'system-ui', 'sans-serif'],
+        mono: ['"Roboto Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        outfit: ['Poppins', 'sans-serif'],
+        grotesk: ['"Space Grotesk"', 'Poppins', 'sans-serif'],
+        jb: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
         serif: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
       },
       colors: {
@@ -32,6 +36,38 @@ export default {
           card: '#0e172a',
           hover: '#16233f',
           light: '#f8fafc',
+        },
+        nb: {
+          // theme-aware (flip in dark mode, see src/v2/v2.css)
+          paper: 'rgb(var(--nb-paper) / <alpha-value>)',
+          card: 'rgb(var(--nb-card) / <alpha-value>)',
+          ink: 'rgb(var(--nb-ink) / <alpha-value>)',
+          muted: 'rgb(var(--nb-muted) / <alpha-value>)',
+          // fixed
+          night: '#111111',
+          cream: '#F6F5F0',
+          lime: '#b8ff5a',
+          pink: '#FF90E8',
+          hot: '#f0447f',
+          violet: '#7c4dff',
+          sky: '#8ec5ff',
+        },
+        noir: {
+          canvas: '#1a191d',
+          deep: '#0f1016',
+          card: '#17161a',
+          raised: '#1e1e24',
+          line: '#24262b',
+          muted: '#838998',
+          soft: '#abb8c3',
+        },
+        brand: {
+          cyan: '#66d9ed',
+          magenta: '#DF058D',
+          cobalt: '#2C49D8',
+          amber: '#FF6B2B',
+          violet: '#9440e8',
+          plum: '#1e1338',
         },
         navy: {
           50: '#f0f4ff',

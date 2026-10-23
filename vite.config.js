@@ -2,9 +2,21 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+const root = path.dirname(fileURLToPath(import.meta.url))
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Two pages: index.html (developer-noir version) and v2.html (neo-brutalist version)
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(root, 'index.html'),
+        v2: path.resolve(root, 'v2.html'),
+      },
+    },
+  },
   plugins: [
     react(),
     // Serve compiled VitePress docs from public/NextGen-AI/ in dev mode

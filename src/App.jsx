@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import About from "./components/About/About";
+import Hero from "./components/Hero/Hero";
+import Cursor from "./components/Cursor/Cursor";
 import Skills from "./components/Skills/Skills";
 import Experience from "./components/Experience/Experience";
 import Work from "./components/Work/Work";
@@ -79,9 +80,9 @@ const ScrollProgress = () => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-1 z-[100] bg-transparent">
+    <div className="fixed top-0 left-0 right-0 h-[3px] z-[100] bg-transparent">
       <div
-        className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 shadow-[0_0_12px_rgba(59,130,246,0.6)] transition-all duration-100 ease-out"
+        className="h-full bg-gradient-to-r from-[#66d9ed] via-[#9440e8] to-[#DF058D] shadow-[0_0_10px_rgba(148,64,232,0.6)] transition-all duration-100 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
     </div>
@@ -120,30 +121,23 @@ const App = () => {
   }, []);
 
   return (
-    <div className="bg-[#f8fafc] dark:bg-[#080d1a] min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-300 relative selection:bg-blue-500/20 selection:text-blue-500">
+    <div className="bg-noir-canvas min-h-screen text-gray-200 relative selection:bg-brand-magenta/60 selection:text-white">
       <ScrollProgress />
-      
-      {/* Ambient background glows for high-tech aesthetic */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-600/10 dark:bg-blue-600/15 blur-[120px] animate-pulseGlow" />
-        <div className="absolute top-[35%] right-[-10%] w-[45vw] h-[45vw] rounded-full bg-indigo-600/10 dark:bg-indigo-600/15 blur-[140px] animate-pulseGlow" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-[10%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-cyan-600/10 dark:bg-cyan-600/10 blur-[130px] animate-pulseGlow" style={{ animationDelay: '4s' }} />
-        <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none" />
-      </div>
+      <Cursor />
 
-      <div className="relative z-10 pt-20">
-        <Navbar />
-        <About />
+      <Navbar />
+      <main className="relative z-10">
+        <Hero />
         <div className="reveal-section"><Skills /></div>
-        <div className="reveal-section"><Experience /></div>
         <div className="reveal-section"><Work /></div>
+        <div className="reveal-section"><Experience /></div>
         <div className="reveal-section"><Research /></div>
         <div className="reveal-section"><Certifications /></div>
         <div className="reveal-section"><Education /></div>
-        <div className="reveal-section"><Contact /></div>
-        <FloatingChat />
-        <Footer />
-      </div>
+        <Contact />
+      </main>
+      <FloatingChat />
+      <Footer />
     </div>
   );
 };

@@ -1,134 +1,131 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiMapPin, FiLink } from "react-icons/fi";
 import { experiences } from "../../constants";
-import { HiOfficeBuilding, HiCalendar, HiChip } from "react-icons/hi";
-import { FiBriefcase } from "react-icons/fi";
+
+const ExperienceItem = ({ item, isOpen, onToggle, index }) => {
+  const panelId = `exp-panel-${item.id}`;
+  return (
+    <motion.li
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className={`rounded-[5px] overflow-hidden transition-colors duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        isOpen ? "bg-[#3a1062]" : "bg-[#45136e] hover:bg-[#511883]"
+      }`}
+    >
+      <button
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        className="w-full px-5 sm:px-9 py-5 flex items-center gap-4 text-left"
+      >
+        <span className="flex-1 font-poppins font-semibold text-white text-[15px] sm:text-lg leading-snug">
+          {item.role} <span className="text-white/90">@ {item.company}</span>
+        </span>
+        <span className="hidden sm:block font-poppins font-semibold text-white text-base sm:text-lg whitespace-nowrap">
+          {item.date}
+        </span>
+        <span className="relative w-5 h-5 shrink-0 ml-2 sm:ml-8" aria-hidden="true">
+          <span className="absolute left-0 top-1/2 w-5 h-[2px] -translate-y-1/2 bg-white/90" />
+          <span
+            className={`absolute left-1/2 top-0 h-5 w-[2px] -translate-x-1/2 bg-white/90 transition-transform duration-300 ${
+              isOpen ? "scale-y-0" : "scale-y-100"
+            }`}
+          />
+        </span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id={panelId}
+            key="panel"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 sm:px-9 pb-8 pt-2 grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_200px] gap-8 items-center">
+              <div>
+                <ul className="flex flex-wrap gap-x-6 gap-y-1 font-poppins text-[15px] text-white/75">
+                  {item.location && (
+                    <li className="flex items-center gap-1.5">
+                      <FiMapPin aria-hidden="true" /> {item.location}
+                    </li>
+                  )}
+                  {item.website && (
+                    <li>
+                      <a
+                        href={item.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 hover:text-brand-cyan transition-colors"
+                      >
+                        <FiLink aria-hidden="true" /> {item.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+                      </a>
+                    </li>
+                  )}
+                  {item.badge && <li className="font-mono text-xs self-center text-brand-cyan">{"// "}{item.badge.toLowerCase()}</li>}
+                  <li className="sm:hidden font-mono text-xs self-center">{item.date}</li>
+                </ul>
+                <p className="mt-4 font-poppins text-[15px] leading-[1.65] text-white">{item.desc}</p>
+                {item.skills?.length > 0 && (
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {item.skills.map((s) => (
+                      <li key={s} className="font-mono text-[11px] px-2.5 py-1 rounded-full bg-black/25 border border-purple-400/25 text-purple-100">
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              {item.img && (
+                <div className="hidden md:flex items-center justify-center">
+                  <span className="w-40 h-40 rounded-full bg-white p-6 flex items-center justify-center shadow-[0_20px_50px_-15px_rgba(0,0,0,0.6)]">
+                    <img src={item.img} alt={`${item.company} logo`} className="max-w-full max-h-full object-contain" />
+                  </span>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.li>
+  );
+};
 
 const Experience = () => {
+  const [openId, setOpenId] = useState(experiences?.[0]?.id ?? null);
   if (!experiences || experiences.length === 0) return null;
 
   return (
-    <section
-      id="experience"
-      className="py-24 px-[5vw] md:px-[8vw] lg:px-[10vw] font-sans relative"
-    >
-      {/* Section Title */}
-      <div className="text-center mb-16 relative z-10">
-        <span className="inline-block text-xs font-bold tracking-[0.25em] text-blue-600 dark:text-blue-400 uppercase mb-2">
-          Career Milestone
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 font-outfit">
-          Work Experience
-        </h2>
-        <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full mb-5"></div>
-        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-          Applied engineering and machine learning workflows built for production environments.
-        </p>
-      </div>
+    <section id="experience" className="relative py-24 sm:py-32 px-5 sm:px-8">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="text-center font-poppins font-semibold text-white tracking-[-0.02em] text-[clamp(2.75rem,7vw,5.25rem)] leading-[1.05]"
+      >
+        Professional
+        <br />
+        Experience
+      </motion.h2>
 
-      {/* Timeline */}
-      <div className="relative max-w-3xl mx-auto">
-        {/* Animated Laser Gradient Line */}
-        <div className="absolute left-6 md:left-8 top-2 bottom-2 w-0.5 bg-gradient-to-b from-blue-500 via-cyan-400 to-indigo-500/20 rounded-full" />
-
-        <div className="space-y-8">
-          {experiences.map((exp) => (
-            <motion.div 
-              key={exp.id} 
-              className="relative flex gap-5 md:gap-8 group"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
-            >
-              {/* Timeline dot with logo */}
-              <div className="relative flex-shrink-0 z-10">
-                <motion.div 
-                  className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-slate-200 dark:border-white/20 shadow-md shadow-blue-500/10 flex items-center justify-center overflow-hidden p-2 group-hover:border-blue-400 group-hover:scale-105 transition-all duration-300"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: "spring", stiffness: 200, damping: 12, delay: 0.1 }}
-                >
-                  {exp.img ? (
-                    <img
-                      src={exp.img}
-                      alt={exp.company}
-                      className="w-full h-full object-contain filter-none"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none";
-                        e.currentTarget.nextSibling.style.display = "flex";
-                      }}
-                    />
-                  ) : null}
-                  <div
-                    className={`w-full h-full bg-blue-50 dark:bg-slate-800 flex items-center justify-center text-blue-600 dark:text-cyan-400 font-bold text-lg ${exp.img ? "hidden" : "flex"}`}
-                  >
-                    {exp.company?.[0] || "P"}
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Card */}
-              <div className="flex-1">
-                <div className="bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-200/80 dark:border-white/10 shadow-sm hover:border-blue-500/40 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 p-6 md:p-7 relative overflow-hidden">
-                  {/* Top indicator glow */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-transparent" />
-
-                  {/* Header row */}
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-                    <div>
-                      <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 px-2.5 py-0.5 rounded-full mb-1.5">
-                        {exp.badge || (exp.date?.includes("Present") ? "Current Position" : "Industry Experience")}
-                      </span>
-                      <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white font-outfit leading-tight">
-                        {exp.role}
-                      </h3>
-                      <div className="flex items-center gap-1.5 mt-1">
-                        <HiOfficeBuilding size={16} className="text-amber-500 flex-shrink-0" />
-                        <span className="text-slate-800 dark:text-slate-200 font-semibold text-sm">
-                          {exp.company}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-1.5 shrink-0 bg-slate-100 dark:bg-white/5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-white/5">
-                      <HiCalendar size={14} className="text-blue-500" />
-                      <span className="text-xs text-slate-600 dark:text-slate-300 font-medium">
-                        {exp.date}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  {exp.desc && (
-                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
-                      {exp.desc}
-                    </p>
-                  )}
-
-                  {/* Skills Pills */}
-                  {exp.skills && exp.skills.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-white/5">
-                      {exp.skills.map((skill, i) => (
-                        <span
-                          key={i}
-                          className="text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-lg px-2.5 py-1 hover:border-blue-400/40 transition-colors"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Timeline end cap */}
-        <div className="absolute left-[1.35rem] md:left-[1.85rem] bottom-0 w-3 h-3 rounded-full bg-cyan-400 border-2 border-white dark:border-[#080d1a] shadow-[0_0_8px_#22d3ee]" />
-      </div>
+      <ul className="mt-14 sm:mt-16 max-w-[920px] mx-auto space-y-3.5">
+        {experiences.map((item, i) => (
+          <ExperienceItem
+            key={item.id}
+            item={item}
+            index={i}
+            isOpen={openId === item.id}
+            onToggle={() => setOpenId((cur) => (cur === item.id ? null : item.id))}
+          />
+        ))}
+      </ul>
     </section>
   );
 };

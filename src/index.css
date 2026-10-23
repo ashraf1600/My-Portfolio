@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+body {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 html {
@@ -14,8 +14,8 @@ html {
 }
 
 html, body {
-  background-color: #080d1a;
-  color: #e2e8f0;
+  background-color: #1a191d;
+  color: #e5e7eb;
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
 }
@@ -32,7 +32,7 @@ html.light, html.light body {
 
 /* Academic blue text selection */
 ::selection {
-  background-color: rgba(59, 130, 246, 0.3);
+  background-color: rgba(223, 5, 141, 0.45);
   color: inherit;
 }
 
@@ -47,7 +47,7 @@ html.light ::selection {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b1121;
+  background: #0f1016;
 }
 
 html.light ::-webkit-scrollbar-track {
@@ -55,12 +55,12 @@ html.light ::-webkit-scrollbar-track {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e3a5f;
+  background: #2a2c36;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
+  background: #66d9ed;
 }
 
 html.light ::-webkit-scrollbar-thumb {
@@ -475,4 +475,136 @@ html.light ::-webkit-scrollbar-thumb:hover {
 .dark .vp-doc-container .custom-block.info {
   background-color: rgba(59, 130, 246, 0.08);
   color: #bfdbfe;
+}
+
+/* =====================================================================
+   Developer-noir design system (Poppins + Roboto Mono, cyan brand,
+   magenta / cobalt / amber / violet accents)
+   ===================================================================== */
+
+/* Chonky underline: a thick colour bar behind the text that grows into a
+   full highlighter on hover when .has-hover-anim is present. */
+.chonky {
+  position: relative;
+  z-index: 0;
+  color: #ffffff;
+  white-space: nowrap;
+}
+.chonky::after {
+  content: "";
+  position: absolute;
+  bottom: 13.5%;
+  left: -1%;
+  width: 104%;
+  height: 0.3em;
+  background: var(--chonky, #DF058D);
+  z-index: -1;
+  transition: all 0.1s ease-in-out;
+}
+.chonky.has-hover-anim:hover::after,
+.group:hover .chonky.has-group-anim::after {
+  height: 1em;
+}
+.chonky-magenta { --chonky: #DF058D; }
+.chonky-blue    { --chonky: #2C49D8; }
+.chonky-orange  { --chonky: #FF6B2B; }
+.chonky-violet  { --chonky: #9440e8; }
+.chonky-cyan    { --chonky: #1a8fa3; }
+
+/* Blinking terminal caret */
+@keyframes caretBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.caret-blink { animation: caretBlink 1s steps(1) infinite; }
+
+/* Hero 3D cubes (pure CSS) */
+.scene-3d { perspective: 1400px; }
+.cube {
+  position: absolute;
+  transform-style: preserve-3d;
+  width: var(--s);
+  height: var(--s);
+}
+.cube > i {
+  position: absolute;
+  inset: 0;
+  display: block;
+  backface-visibility: hidden;
+}
+.cube > .f-front  { transform: translateZ(calc(var(--s) / 2)); }
+.cube > .f-back   { transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); }
+.cube > .f-right  { transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); }
+.cube > .f-left   { transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); }
+.cube > .f-top    { transform: rotateX(90deg) translateZ(calc(var(--s) / 2)); }
+.cube > .f-bottom { transform: rotateX(-90deg) translateZ(calc(var(--s) / 2)); }
+
+@keyframes cubeDrift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz, 0deg)); }
+  50%      { transform: translate3d(0, -14px, 0) rotateX(calc(var(--rx) + 6deg)) rotateY(calc(var(--ry) + 10deg)) rotateZ(var(--rz, 0deg)); }
+}
+.cube-drift { animation: cubeDrift var(--dur, 12s) ease-in-out infinite; }
+
+@keyframes orbPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); filter: blur(0.5px); }
+  50%      { transform: translate(-50%, -54%) scale(1.06); filter: blur(1px); }
+}
+.light-orb { animation: orbPulse 6s ease-in-out infinite; }
+
+/* Mouse scroll indicator */
+@keyframes wheelDrop {
+  0%   { transform: translate(-50%, 0); opacity: 1; }
+  70%  { transform: translate(-50%, 14px); opacity: 0; }
+  100% { transform: translate(-50%, 0); opacity: 0; }
+}
+.mouse-wheel { animation: wheelDrop 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+@keyframes glowLine {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.4; }
+  50%      { transform: scaleY(1); opacity: 1; }
+}
+.glow-line { transform-origin: top; animation: glowLine 1.8s ease-in-out infinite; }
+
+/* Code watermark */
+.code-watermark { color: #838998; }
+.code-watermark .t { color: #DF058D; }
+.code-watermark .a { color: #66d9ed; }
+.code-watermark .v { color: #FF6B2B; }
+
+/* Thin hairline divider used across sections */
+.hairline { border-color: #24262b; }
+
+.cube { transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz, 0deg)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cube-drift, .light-orb, .mouse-wheel, .glow-line, .caret-blink { animation: none !important; }
+  .reveal-section { opacity: 1; transform: none; transition: none; }
+}
+
+/* Auto-scrolling logo carousel */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 32s linear infinite; }
+.marquee-mask:hover .marquee-track { animation-play-state: paused; }
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Custom cursor (desktop pointers only) */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor, html.has-custom-cursor a, html.has-custom-cursor button { cursor: none; }
+  html.has-custom-cursor input, html.has-custom-cursor textarea { cursor: text; }
+}
+.cursor-dot, .cursor-ring {
+  position: fixed; left: 0; top: 0; pointer-events: none; border-radius: 9999px; z-index: 10000;
+}
+.cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #66d9ed; }
+.cursor-ring {
+  width: 30px; height: 30px; margin: -15px 0 0 -15px; border: 1px solid #66d9ed; opacity: 0.5;
+  transition: width .2s ease-out, height .2s ease-out, margin .2s ease-out, border-color .2s, opacity .2s;
+}
+.cursor-ring.is-link { width: 46px; height: 46px; margin: -23px 0 0 -23px; border-color: #fff; opacity: 0.9; }
+.cursor-dot.is-link { opacity: 0.5; width: 20px; height: 20px; margin: -10px 0 0 -10px; background: #9440e8; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
 }

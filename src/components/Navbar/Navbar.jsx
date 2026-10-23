@@ -1,234 +1,168 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { FiMenu, FiX, FiBookOpen, FiArrowUpRight } from "react-icons/fi";
-import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import { FiMenu, FiX, FiArrowUpRight } from "react-icons/fi";
+import { profile } from "../../constants";
 
-const DOCS_URL = "/NextGen-AI/";
+const MENU = [
+  { id: "home", num: "01", label: "home" },
+  { id: "expertise", num: "02", label: "expertise" },
+  { id: "work", num: "03", label: "work" },
+  { id: "experience", num: "04", label: "experience" },
+  { id: "contact", num: "05", label: "contact" },
+];
+
+export const Brand = ({ className = "" }) => (
+  <span className={`font-mono text-[1.6rem] leading-none tracking-tight text-brand-cyan ${className}`}>
+    {profile.brand}
+    <span className="text-white">.</span>
+    <span className="caret-blink text-brand-violet">_</span>
+  </span>
+);
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [active, setActive] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  const menuItems = [
-    { id: "about", label: "Home" },
-    { id: "skills", label: "Skills" },
-    { id: "experience", label: "Experience" },
-    { id: "work", label: "Projects" },
-    { id: "research", label: "Research" },
-    { id: "certifications", label: "Certifications" },
-    { id: "education", label: "Education" },
-    { id: "contact", label: "Contact" },
-  ];
-
-  // Detect scroll and change navbar background
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scroll-spy: auto-highlight active section via IntersectionObserver
+  // Scroll-spy
   useEffect(() => {
-    const sectionIds = menuItems.map((item) => item.id);
-    const observers = [];
-
-    const handleIntersect = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    sectionIds.forEach((id) => {
+    const observers = MENU.map(({ id }) => {
       const el = document.getElementById(id);
-      if (!el) return;
-
-      const observer = new IntersectionObserver(handleIntersect, {
-        rootMargin: "-20% 0px -70% 0px",
-        threshold: 0,
-      });
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((obs) => obs.disconnect());
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => entry.isIntersecting && setActive(id),
+        { rootMargin: "-35% 0px -60% 0px", threshold: 0 }
+      );
+      obs.observe(el);
+      return obs;
+    }).filter(Boolean);
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
-  // Smooth scroll function
-  const handleMenuItemClick = useCallback((sectionId) => {
-    setActiveSection(sectionId);
+  const go = useCallback((id) => {
+    setActive(id);
     setIsOpen(false);
-
-    if (sectionId === "about") {
+    if (id === "home") {
       window.history.pushState(null, "", "/");
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) setIsOpen(false);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const onResize = () => window.innerWidth >= 768 && setIsOpen(false);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 pt-3 pb-2 transition-all duration-300">
-      <div
-        className={`max-w-6xl mx-auto rounded-full transition-all duration-300 px-4 sm:px-6 py-2.5 flex items-center justify-between ${
-          isScrolled
-            ? "bg-white/85 dark:bg-[#0a1122]/85 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-xl shadow-slate-900/5 dark:shadow-black/40"
-            : "bg-white/50 dark:bg-[#0a1122]/50 backdrop-blur-md border border-slate-200/40 dark:border-white/5 shadow-sm"
+    <>
+      <nav
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-[rgba(26,26,26,0.8)] backdrop-saturate-[1.8] backdrop-blur-[20px]"
+            : "bg-transparent"
         }`}
       >
-        {/* Brand Logo */}
-        <div
-          className="cursor-pointer flex items-center gap-2 group"
-          onClick={() => {
-            window.history.pushState(null, "", "/");
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-        >
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 p-[1.5px] shadow-sm shadow-blue-500/20 group-hover:scale-105 transition-transform">
-            <div className="w-full h-full rounded-full bg-white dark:bg-[#0b1121] flex items-center justify-center">
-              <span className="text-xs font-black bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">AI</span>
-            </div>
-          </div>
-          <span className="font-outfit font-extrabold text-base tracking-tight text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-            Ashraful<span className="text-blue-500">.</span>
-          </span>
-        </div>
-
-        {/* Desktop Menu Pills */}
-        <ul className="hidden lg:flex items-center gap-1 bg-slate-100/60 dark:bg-white/5 px-2 py-1 rounded-full border border-slate-200/60 dark:border-white/5">
-          {menuItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <li key={item.id}>
-                <button
-                  onClick={() => handleMenuItemClick(item.id)}
-                  className={`relative px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 ${
-                    isActive
-                      ? "text-white dark:text-white bg-blue-600 dark:bg-blue-600 shadow-md shadow-blue-500/30"
-                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/10"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Right Action Icons & Theme Toggle */}
-        <div className="flex items-center gap-2.5">
-          {/* Docs button */}
-          <a
-            href={DOCS_URL}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            <FiBookOpen size={13} />
-            <span>Docs</span>
-            <FiArrowUpRight size={11} className="opacity-70" />
-          </a>
-
-          <ThemeToggle />
-
-          {/* Socials */}
-          <div className="hidden sm:flex items-center gap-1 pl-1 border-l border-slate-200 dark:border-white/10">
-            <a
-              href="https://github.com/ashraf1600"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
-              aria-label="GitHub"
-            >
-              <FaGithub size={16} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ashraful-islam-a31268226/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin size={16} />
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className="lg:hidden p-2 rounded-full text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5 transition"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+        <div className={`max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 ${scrolled ? "h-[60px]" : "h-[88px]"} flex items-center justify-between transition-[height] duration-300`}>
+          <button onClick={() => go("home")} aria-label="Back to top" className="shrink-0">
+            <Brand />
           </button>
-        </div>
-      </div>
 
-      {/* Mobile Menu Drawer */}
-      {isOpen && (
-        <div className="lg:hidden max-w-6xl mx-auto mt-2 p-4 bg-white/95 dark:bg-[#0e172a]/95 backdrop-blur-2xl rounded-2xl border border-slate-200 dark:border-white/10 shadow-2xl animate-fadeIn">
-          <ul className="grid grid-cols-2 gap-1.5 pb-3">
-            {menuItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  onClick={() => handleMenuItemClick(item.id)}
-                  className={`w-full py-2.5 px-3 rounded-xl text-xs font-semibold transition-all ${
-                    activeSection === item.id
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-500/25"
-                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
+          <ul className="hidden md:flex items-end gap-6 lg:gap-11">
+            {MENU.map((item) => {
+              const isActive = active === item.id;
+              return (
+                <li key={item.id}>
+                  <button
+                    onClick={() => go(item.id)}
+                    className="group flex flex-col items-end font-mono leading-none"
+                  >
+                    <span className="text-[10px] font-medium text-brand-cyan/80 mb-1.5">{item.num}</span>
+                    <span
+                      className={`font-medium transition-all duration-300 ${
+                        scrolled ? "text-[14px] lg:text-[15px]" : "text-[15px] lg:text-[17px]"
+                      } ${
+                        scrolled || isActive ? "text-brand-cyan" : "text-white group-hover:text-brand-cyan"
+                      } ${scrolled && !isActive ? "opacity-80 group-hover:opacity-100" : ""}`}
+                    >
+                      {"//"} {item.label}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
 
-          <div className="pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+          <div className="flex items-center gap-4">
             <a
-              href={DOCS_URL}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20"
+              href={profile.docs}
+              className="hidden lg:inline-flex items-center gap-1 font-mono text-xs text-noir-muted hover:text-brand-cyan transition-colors"
             >
-              <FiBookOpen size={14} />
-              <span>NextGen AI Docs</span>
-              <FiArrowUpRight size={12} />
+              docs <FiArrowUpRight size={12} />
             </a>
-            <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
-              <a href="https://github.com/ashraf1600" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5">
-                <FaGithub size={18} />
-              </a>
-              <a href="https://www.linkedin.com/in/ashraful-islam-a31268226/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5">
-                <FaLinkedin size={18} />
-              </a>
-            </div>
+            <button
+              onClick={() => setIsOpen((o) => !o)}
+              className="md:hidden p-2 -mr-2 text-white hover:text-brand-cyan transition-colors"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </button>
           </div>
         </div>
-      )}
-    </nav>
+      </nav>
+
+      {/* Mobile overlay */}
+      <div
+        className={`md:hidden fixed inset-0 z-40 bg-noir-deep/95 backdrop-blur-xl transition-opacity duration-300 ${
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <ul className="h-full flex flex-col justify-center px-8 gap-7">
+          {MENU.map((item, i) => (
+            <li
+              key={item.id}
+              className="transition-all duration-500"
+              style={{
+                transitionDelay: isOpen ? `${80 + i * 50}ms` : "0ms",
+                transform: isOpen ? "none" : "translateY(16px)",
+                opacity: isOpen ? 1 : 0,
+              }}
+            >
+              <button onClick={() => go(item.id)} className="flex items-baseline gap-4 font-mono">
+                <span className="text-xs text-brand-cyan/80">{item.num}</span>
+                <span
+                  className={`text-3xl font-medium ${active === item.id ? "text-brand-cyan" : "text-white"}`}
+                >
+                  {"// "}{item.label}
+                </span>
+              </button>
+            </li>
+          ))}
+          <li className="pt-6 border-t hairline flex gap-6 font-mono text-sm">
+            <a href={profile.docs} className="text-noir-soft hover:text-brand-cyan">docs ↗</a>
+            <a href={profile.resume} target="_blank" rel="noopener noreferrer" className="text-noir-soft hover:text-brand-cyan">
+              resume ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 };
 

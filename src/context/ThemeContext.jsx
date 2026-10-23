@@ -13,8 +13,8 @@ export const useTheme = () => {
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
         // Check localStorage first, default to dark
-        const savedTheme = localStorage.getItem('portfolio-theme');
-        return savedTheme || 'dark';
+        // The developer-noir redesign is dark-only; ignore any saved light preference.
+        return 'dark';
     });
 
     useEffect(() => {

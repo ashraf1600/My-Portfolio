@@ -61,24 +61,24 @@ import dccLogo from './assets/education_logo/dcc_logo.png';
 import cghsLogo from './assets/education_logo/cghs_logo.png';
 
 // Project Section Logo's
-import NoteCheck from './assets/work_logo/NoteCheck.png';
-import Flembe_Essence from './assets/work_logo/Flembe_Essence.png';
-import Flembe_Shop from './assets/work_logo/flembe/shop.png';
-import Flembe_Product from './assets/work_logo/flembe/product_detail.png';
-import Flembe_Contact from './assets/work_logo/flembe/contact.png';
-import Clinisync_Img from './assets/work_logo/Clinisync.png';
-import Clinisync_Booking from './assets/work_logo/clinisync_booking.png';
-import Clinisync_Tracker from './assets/work_logo/clinisync_tracker.png';
-import CUET_Hos from './assets/work_logo/CUET_Hos.png';
-import CUET_Peer from './assets/work_logo/CUET_Peer.png';
-import Multi from './assets/work_logo/Multi.png';
-import Personal_AI from './assets/work_logo/Personal_AI.png';
-import Traffic from './assets/work_logo/Traffic.png';
-import Fraud from './assets/work_logo/Fraud.png';
-import ResQNet from './assets/work_logo/ResQNet.png';
-import Stacks from './assets/work_logo/Stacks.png';
-import ExportMart from './assets/work_logo/ExportMart.png';
-import CoxsBazar from './assets/work_logo/CoxsBazar.png';
+import NoteCheck from './assets/work_logo/NoteCheck.webp';
+import Flembe_Essence from './assets/work_logo/Flembe_Essence.webp';
+import Flembe_Shop from './assets/work_logo/flembe/shop.webp';
+import Flembe_Product from './assets/work_logo/flembe/product_detail.webp';
+import Flembe_Contact from './assets/work_logo/flembe/contact.webp';
+import Clinisync_Img from './assets/work_logo/Clinisync.webp';
+import Clinisync_Booking from './assets/work_logo/clinisync_booking.webp';
+import Clinisync_Tracker from './assets/work_logo/clinisync_tracker.webp';
+import CUET_Hos from './assets/work_logo/CUET_Hos.webp';
+import CUET_Peer from './assets/work_logo/CUET_Peer.webp';
+import Multi from './assets/work_logo/Multi.webp';
+import Personal_AI from './assets/work_logo/Personal_AI.webp';
+import Traffic from './assets/work_logo/Traffic.webp';
+import Fraud from './assets/work_logo/Fraud.webp';
+import ResQNet from './assets/work_logo/ResQNet.webp';
+import Stacks from './assets/work_logo/Stacks.webp';
+import ExportMart from './assets/work_logo/ExportMart.webp';
+import CoxsBazar from './assets/work_logo/CoxsBazar.webp';
 
 
 
@@ -157,6 +157,8 @@ export const experiences = [
     role: 'Machine Learning & DataOps Intern',
     company: 'Poridhi.io',
     date: 'August 2026 – Present',
+    website: 'https://poridhi.io',
+    location: '',
     badge: 'Current Position',
     desc: 'Working in the ML/DataOps team at Poridhi.io, engineering automated data ingestion, validation, and feature preprocessing pipelines for machine learning workflows. Developing containerized AI microservices and inference endpoints with FastAPI and Docker, implementing MLOps tracking and CI/CD automation, and prototyping Agentic AI and LLM workflows.',
     skills: ['Python', 'Machine Learning', 'DataOps', 'MLOps', 'FastAPI', 'Docker', 'Agentic AI', 'CI/CD'],
@@ -167,6 +169,8 @@ export const experiences = [
     role: 'Industrial Attachment Trainee (AI & Software Engineering)',
     company: 'Synesis IT PLC.',
     date: 'September 2026',
+    website: '',
+    location: '',
     badge: 'Industrial Attachment',
     desc: 'Completed an intensive industrial attachment at Synesis IT PLC, researching and engineering NoteCheck — an AI-powered counterfeit Bangladeshi banknote authentication system. Developed an automated OpenCV computer vision pipeline (bilateral filtering, Canny edge detection, 4-point homography perspective warping, and CLAHE lighting normalization) coupled with a fine-tuned DeiT-Tiny Vision Transformer (ViT) achieving ~97.88% accuracy. Deployed the system as a high-throughput asynchronous FastAPI microservice with an interactive React dashboard.',
     skills: ['Vision Transformer (DeiT)', 'Computer Vision', 'OpenCV', 'PyTorch', 'FastAPI', 'React 18', 'Docker', 'Authentication'],
@@ -385,7 +389,7 @@ export const projects = [
       "Event and announcement management",
       "Live in production on Render",
     ],
-    category: ["Web Development", "Personal Project"],
+    category: ["Web Development", "Client Project"],
   },
   {
     id: 10,
@@ -725,3 +729,65 @@ export const certifications = [
     skills: ["EDA", "Python"],
   },
 ];
+// ---------------------------------------------------------------------
+// Redesign data (developer-noir layout). Edit freely — components read
+// everything below, so no JSX changes are needed to update copy.
+// ---------------------------------------------------------------------
+
+export const profile = {
+  firstName: "Ashraful",
+  lastName: "Islam",
+  brand: "Ashraf",
+  tagline: "AI & ML Engineer, LLMOps & Full Stack Developer.",
+  // Public contact address shown as the large link in the Contact section.
+  // Leave empty to show a "send me a message" link to the contact form instead.
+  email: "",
+  resume: "/Ashraf_CV_1.1.pdf",
+  docs: "/NextGen-AI/",
+  availability: "Available for AI / ML roles, research collaborations & select freelance work",
+  socials: [
+    { name: "GitHub", url: "https://github.com/ashraf1600" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/ashraful-islam-a31268226/" },
+    { name: "Kaggle", url: "https://www.kaggle.com/ashraf1600" },
+    { name: "Codeforces", url: "https://codeforces.com/profile/ashraf1600" },
+    { name: "Facebook", url: "https://www.facebook.com/share/19gm9nUyqU/" },
+  ],
+};
+
+// Three columns of the "My Expertise" section.
+// accent: magenta | blue | orange | violet  (chonky underline colour)
+export const expertise = [
+  {
+    key: "ml",
+    title: "Machine Learning",
+    subtitle: "Deep Learning, CV",
+    accent: "magenta",
+    icon: "brain",
+    description:
+      "PyTorch, TensorFlow & Scikit-Learn. Vision Transformers, explainable ensembles, RL agents and imbalanced-data pipelines.",
+  },
+  {
+    key: "genai",
+    title: "GenAI & RAG",
+    subtitle: "LLMOps, Agents",
+    accent: "blue",
+    icon: "sparkles",
+    description:
+      "LangChain, LangGraph & Gemini. Retrieval-augmented generation, agentic workflows and passage-level attribution research.",
+  },
+  {
+    key: "fullstack",
+    title: "Full Stack",
+    subtitle: "Cloud & MLOps",
+    accent: "orange",
+    icon: "stack",
+    description:
+      "Django REST, FastAPI, React & PostgreSQL, shipped with Docker, AWS CloudFront and CI/CD to production.",
+  },
+];
+
+// Real endorsements only. Each entry renders as a coloured quote block in
+// the Contact section; while this list is empty, those blocks show
+// highlights from your experience and research instead.
+// { quote: "...", name: "Full Name", role: "Title @ Org", avatar: importedImageOrUrl }
+export const testimonials = [];

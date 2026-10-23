@@ -1,177 +1,89 @@
-import React, { useState, useEffect } from "react";
-import { FaFacebook, FaLinkedin, FaGithub, FaKaggle } from "react-icons/fa";
-import { SiCodeforces } from "react-icons/si";
-import { FiBookOpen, FiArrowUp, FiArrowUpRight } from "react-icons/fi";
+import React, { useEffect, useState } from "react";
+import { FiArrowUp } from "react-icons/fi";
+import { profile } from "../../constants";
+import { Brand } from "../Navbar/Navbar";
 
-const DOCS_URL = "/NextGen-AI/";
-
-const navItems = [
-  { name: "Home",           id: "about" },
-  { name: "Skills",         id: "skills" },
-  { name: "Experience",     id: "experience" },
-  { name: "Projects",       id: "work" },
-  { name: "Research",       id: "research" },
-  { name: "Certifications", id: "certifications" },
-  { name: "Education",      id: "education" },
-  { name: "Contact",        id: "contact" },
+const LINKS = [
+  { id: "home", label: "home" },
+  { id: "expertise", label: "expertise" },
+  { id: "work", label: "work" },
+  { id: "experience", label: "experience" },
+  { id: "research", label: "research" },
+  { id: "certifications", label: "certifications" },
+  { id: "education", label: "education" },
+  { id: "contact", label: "contact" },
 ];
 
-const socialLinks = [
-  {
-    icon: <FaGithub size={18} />,
-    href: "https://github.com/ashraf1600",
-    label: "GitHub",
-  },
-  {
-    icon: <FaLinkedin size={18} />,
-    href: "https://www.linkedin.com/in/ashraful-islam-a31268226/",
-    label: "LinkedIn",
-  },
-  {
-    icon: <FaFacebook size={18} />,
-    href: "https://www.facebook.com/share/19gm9nUyqU/",
-    label: "Facebook",
-  },
-  {
-    icon: <FaKaggle size={18} />,
-    href: "https://www.kaggle.com/ashraf1600",
-    label: "Kaggle",
-  },
-  {
-    icon: <SiCodeforces size={18} />,
-    href: "https://codeforces.com/profile/ashraf1600",
-    label: "Codeforces",
-  },
-];
-
-const Footer = () => {
-  const [showBackToTop, setShowBackToTop] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 600);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleScroll = (sectionId) => {
-    if (sectionId === "about") {
-      scrollToTop();
-      return;
-    }
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const scrollToTop = () => {
+const scrollTo = (id) => {
+  if (id === "home") {
     window.history.pushState(null, "", "/");
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    return;
+  }
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+};
+
+const Footer = () => {
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <footer className="relative border-t border-slate-200/80 dark:border-white/5 bg-slate-50 dark:bg-[#060a14]">
-      {/* Top glowing laser line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50" />
-
-      <div className="px-[5vw] md:px-[8vw] lg:px-[10vw] py-14">
-        {/* Top row: logo + nav */}
-        <div className="flex flex-col items-center gap-6 mb-10">
-          {/* Brand */}
-          <div
-            className="cursor-pointer flex items-center gap-2 group"
-            onClick={scrollToTop}
-          >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 p-[1.5px] group-hover:scale-110 transition-transform">
-              <div className="w-full h-full rounded-full bg-white dark:bg-[#0b1121] flex items-center justify-center">
-                <span className="text-xs font-black bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">AI</span>
-              </div>
-            </div>
-            <span className="font-outfit text-xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Ashraful Islam<span className="text-blue-500">.</span>
-            </span>
-          </div>
-
-          {/* Tagline */}
-          <p className="text-sm text-slate-500 dark:text-slate-400 text-center max-w-md">
-            Architecting intelligent applications, autonomous agentic systems, and high-performance ML pipelines.
+    <footer className="relative bg-noir-deep border-t hairline">
+      <div className="max-w-[1350px] mx-auto px-5 sm:px-8 lg:px-10 py-14 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10">
+        <div>
+          <Brand />
+          <p className="mt-4 font-mono text-sm text-noir-muted max-w-sm">
+            {profile.tagline}
           </p>
-
-          {/* Nav links */}
-          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleScroll(item.id)}
-                className="relative text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 group"
-              >
-                {item.name}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300 rounded-full" />
-              </button>
-            ))}
-          </nav>
-
-          {/* Docs link */}
-          <a
-            href={DOCS_URL}
-            className="group inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold
-              bg-blue-50 dark:bg-white/5
-              border border-blue-200/80 dark:border-white/10
-              text-blue-600 dark:text-cyan-400
-              hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white
-              transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-blue-500/25"
-          >
-            <FiBookOpen size={14} />
-            <span>NextGen AI Documentation & Study Hub</span>
-            <FiArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 font-mono text-sm">
+            <a href={profile.docs} className="text-brand-cyan hover:text-white transition-colors">
+              NextGen-AI docs ↗
+            </a>
+            <a href={profile.resume} target="_blank" rel="noopener noreferrer" className="text-noir-soft hover:text-brand-cyan transition-colors">
+              resume ↗
+            </a>
+          </div>
         </div>
 
-        {/* Divider */}
-        <div className="w-full h-px bg-slate-200/80 dark:border-white/5 mb-8" />
+        <nav aria-label="Footer" className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-2.5 font-mono text-sm">
+          {LINKS.map((l) => (
+            <button key={l.id} onClick={() => scrollTo(l.id)} className="text-left text-noir-soft hover:text-brand-cyan transition-colors">
+              <span className="text-white/30">{"// "}</span>
+              {l.label}
+            </button>
+          ))}
+        </nav>
+      </div>
 
-        {/* Bottom row: social icons + copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          {/* Social icons */}
-          <div className="flex items-center gap-2.5">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="w-9 h-9 flex items-center justify-center rounded-xl bg-white dark:bg-white/5 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/8 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all duration-300 hover:scale-110 shadow-sm"
-              >
-                {social.icon}
+      <div className="border-t hairline">
+        <div className="max-w-[1350px] mx-auto px-5 sm:px-8 lg:px-10 py-6 flex flex-col sm:flex-row gap-3 justify-between font-mono text-xs text-noir-muted">
+          <span>
+            © {new Date().getFullYear()} {profile.firstName} {profile.lastName}. All rights reserved.
+          </span>
+          <span className="flex flex-wrap gap-x-4 gap-y-1">
+            {profile.socials.map((s) => (
+              <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-brand-cyan transition-colors">
+                {s.name.toLowerCase()}
               </a>
             ))}
-          </div>
-
-          {/* Copyright */}
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-500 text-center sm:text-right">
-            © {new Date().getFullYear()}{" "}
-            <span className="text-slate-800 dark:text-slate-300 font-semibold">
-              Ashraful Islam
-            </span>
-            . Built with React 18, Vite & Tailwind CSS.
-          </p>
+          </span>
         </div>
       </div>
 
-      {/* Floating Back to Top Button */}
+      {/* Square back-to-top button */}
       <button
-        onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 text-white shadow-xl shadow-blue-500/30 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/40 active:scale-95 ${
-          showBackToTop
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-4 pointer-events-none"
-        }`}
+        onClick={() => scrollTo("home")}
         aria-label="Back to top"
+        className={`fixed bottom-6 left-6 z-40 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white text-brand-violet shadow-xl hover:bg-brand-cyan hover:text-black transition-all duration-300 ${
+          showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
       >
-        <FiArrowUp size={20} className="hover:-translate-y-0.5 transition-transform" />
+        <FiArrowUp size={22} strokeWidth={2.5} />
       </button>
     </footer>
   );
