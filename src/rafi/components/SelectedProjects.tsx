@@ -20,12 +20,12 @@ export default function SelectedProjects() {
         <h2 id="sw-title" className="sw__headline">THE WORK<br/><em>IN MOTION.</em></h2>
       </div>
       <div className="sw__intro-aside">
-        <span className="sw__intro-num">18<sup>PROJECTS</sup></span>
+        <span className="sw__intro-num">{selectedProjects.length}<sup>PROJECTS</sup></span>
         <p>Systems, platforms, useful tools and playful ideas, built to solve different kinds of problems.</p>
         <span>SCROLL TO EXPLORE <b>↘</b></span>
       </div>
     </header>
-    <p className="sw__visual-disclaimer" role="note"><span aria-hidden="true">✳</span> <strong>DEMO VISUALS ONLY</strong> — All project cover images are conceptual UI mockups for portfolio presentation. They are <strong>not screenshots of the actual products.</strong></p>
+    <p className="sw__visual-disclaimer" role="note"><span aria-hidden="true">✳</span> <strong>REAL PRODUCT VISUALS</strong> — Every project cover is a screenshot of the <strong>actual application I built.</strong></p>
     <div className="sw__filters" role="group" aria-label="Filter projects by category">
       <span className="sw__filters-label">FILTER THE ARCHIVE /</span>
       <div className="sw__filters-list">
@@ -68,7 +68,7 @@ export default function SelectedProjects() {
                   <div className="sw__plate-identity"><span className="sw__plate-kicker">ASHRAF / SELECTED WORK</span><strong>{project.title}</strong></div>
                   <span className="sw__plate-count">{String(index+1).padStart(2,'0')} — {String(selectedProjects.length).padStart(2,'0')}</span>
                 </div>
-                {/* Each of the 18 plates has a distinct project-specific UI illustration asset. */}
+                {/* Each plate shows a screenshot of that project. */}
                 <div className="sw__mockup" aria-hidden="true">
                   <img
                     src={cloudinaryProjectCover(project.slug)}
@@ -80,7 +80,7 @@ export default function SelectedProjects() {
                     width="1400"
                     height="788"
                   />
-                  <span className="sw__mockup-tag">DEMO UI MOCKUP · NOT ACTUAL PRODUCT UI</span>
+                  <span className="sw__mockup-tag">PRODUCT SCREENSHOT</span>
                 </div>
                 <div className="sw__plate-bottom"><div><small>{project.kicker}</small><strong>{project.title}</strong></div><span>VIEW PROJECT <b>↗</b></span></div>
               </div>
@@ -108,8 +108,8 @@ export default function SelectedProjects() {
       </div>
       <div className="sw__modal-body">
         <div className="sw__modal-art sw__modal-art--wine" data-sw-modal-art>
-          <img className="sw__modal-image" data-sw-modal-image src="/assets/project-covers/make-my-event.webp" alt="Conceptual demo UI mockup, not an actual application screenshot" width="1400" height="788" decoding="async" />
-          <span className="sw__modal-art-caption"><strong>DEMO REPRESENTATION ONLY</strong> — NOT ACTUAL PRODUCT SCREENSHOT</span>
+          <img className="sw__modal-image" data-sw-modal-image src="/assets/project-covers/notecheck.webp" alt="Project screenshot" width="1400" height="788" decoding="async" />
+          <span className="sw__modal-art-caption"><strong>ACTUAL PRODUCT</strong> — APPLICATION SCREENSHOT</span>
         </div>
         <div className="sw__modal-copy">
           <p className="sw__modal-eyebrow" data-sw-modal-eyebrow>PROJECT 01 / MANAGEMENT</p>

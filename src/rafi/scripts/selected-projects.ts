@@ -151,7 +151,7 @@ if (root) {
     const modalImage = dialog.querySelector<HTMLImageElement>('[data-sw-modal-image]');
     if (modalImage) {
       modalImage.src = cloudinaryProjectCover(project.slug, 1400);
-      modalImage.alt = `Generated demonstration mockup for ${project.title}, not a screenshot of the actual application`;
+      modalImage.alt = `Screenshot of ${project.title}`;
     }
     const art = dialog.querySelector<HTMLElement>('[data-sw-modal-art]')!;
     art.className = `sw__modal-art sw__modal-art--${project.tone}`;

@@ -28,7 +28,7 @@ export const experienceOrganizations: ExperienceOrganization[] = [
     dates: 'AUG 2026 — PRESENT',
     location: 'DHAKA, BANGLADESH',
     introduction: 'Engineering scalable DataOps pipelines for automated data ingestion, quality validation, and feature preprocessing while architecting containerized FastAPI inference microservices and Agentic AI workflows.',
-    background: '/assets/experience/datapulse.webp',
+    background: '/assets/experience/poridhi.webp',
     accent: '#42DED1',
     projects: [
       { name: 'Automated ML Ingestion Pipelines', note: 'Data validation, preprocessing and feature engineering' },
@@ -52,7 +52,7 @@ export const experienceOrganizations: ExperienceOrganization[] = [
     dates: 'SEP 2026',
     location: 'DHAKA, BANGLADESH',
     introduction: 'Completed intensive industrial training researching and developing NoteCheck — an AI-powered counterfeit Bangladeshi banknote authentication system using fine-tuned Vision Transformers and real-time computer vision.',
-    background: '/assets/experience/boraq.webp',
+    background: '/assets/experience/synesis.webp',
     accent: '#F36A35',
     projects: [
       { name: 'NoteCheck ViT Engine', note: 'DeiT-Tiny Vision Transformer achieving ~97.88% accuracy', label: 'FLAGSHIP' },
@@ -71,7 +71,7 @@ export const experienceOrganizations: ExperienceOrganization[] = [
     dates: 'JAN 2023 — PRESENT',
     location: 'CUET · CHATTOGRAM, BANGLADESH',
     introduction: 'Leading research initiatives across Computer Vision, RAG architectures, and cybersecurity, authoring 7 research papers for IEEE & international conferences while maintaining competitive programming excellence.',
-    background: '/assets/experience/robotics.webp',
+    background: '/assets/experience/cuet.webp',
     accent: '#69E49C',
     projects: [
       { name: '7 Research Publications', note: 'Accepted at IEEE SPICSCON, OMLET, ICCPCT, QPAIN, etc.', label: '7 PAPERS' },

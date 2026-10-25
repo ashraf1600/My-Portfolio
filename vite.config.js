@@ -8,8 +8,8 @@ const root = path.dirname(fileURLToPath(import.meta.url))
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Pages: index.html (neo-brutalist v2, the homepage), v1.html (developer-noir version),
-  // v2.html (same as index, kept so old /v2.html links work)
+  // Pages: index.html (editorial homepage, src/rafi), v1.html (developer-noir version),
+  // v2.html (neo-brutalist version)
   build: {
     rollupOptions: {
       input: {

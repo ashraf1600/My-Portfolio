@@ -28,7 +28,7 @@ export const projectGroups: {key: ProjectGroup | 'all'; name: string; count: num
 
 export const selectedProjects: ProjectRecord[] = [
   {
-    slug: 'docmind',
+    slug: 'notecheck',
     title: 'NOTECHECK AI',
     group: 'ai',
     kicker: 'Vision Transformer / Currency Authentication',
@@ -46,7 +46,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'wine'
   },
   {
-    slug: 'sicko-soul',
+    slug: 'flembe-essence',
     title: 'FLEMBE ESSENCE',
     group: 'client',
     kicker: 'Production Client E-Commerce',
@@ -64,7 +64,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'ember'
   },
   {
-    slug: 'safepath',
+    slug: 'clinisync',
     title: 'CLINISYNC CLINIC',
     group: 'web',
     kicker: 'Smart Healthcare & Real-Time Queue',
@@ -82,7 +82,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'paper'
   },
   {
-    slug: 'ai-image-generator',
+    slug: 'personal-ai-agent',
     title: 'PERSONAL AI AGENT',
     group: 'ai',
     kicker: 'Agentic AI / Gemini & LangChain',
@@ -98,7 +98,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'ink'
   },
   {
-    slug: 'smart-inventory',
+    slug: 'traffic-light-rl',
     title: 'TRAFFIC LIGHT RL',
     group: 'ai',
     kicker: 'Deep Reinforcement Learning / Mobility',
@@ -114,7 +114,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'ember'
   },
   {
-    slug: 'deepfake',
+    slug: 'fraud-detection',
     title: 'FRAUD DETECTION ML',
     group: 'ai',
     kicker: 'Imbalanced Machine Learning & XAI',
@@ -130,7 +130,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'wine'
   },
   {
-    slug: 'make-my-event',
+    slug: 'resqnet',
     title: 'RESQNET DISASTER',
     group: 'systems',
     kicker: 'Distributed Disaster Coordination',
@@ -146,7 +146,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'paper'
   },
   {
-    slug: 'careerpath',
+    slug: 'stacks',
     title: 'STACKS CONCURRENCY',
     group: 'systems',
     kicker: 'Row-Level Locking / Django DRF',
@@ -162,7 +162,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'ink'
   },
   {
-    slug: 'ridesplit',
+    slug: 'exportmart',
     title: 'EXPORTMART PLATFORM',
     group: 'web',
     kicker: 'E-Commerce API & Storefront',
@@ -178,7 +178,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'ember'
   },
   {
-    slug: 'flaresphere',
+    slug: 'coxs-bazar-forum',
     title: 'COX’S BAZAR FORUM',
     group: 'client',
     kicker: 'Community Platform / Production Live',
@@ -195,7 +195,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'paper'
   },
   {
-    slug: 'head-detection',
+    slug: 'cuet-hospital',
     title: 'CUET HOSPITAL SYSTEM',
     group: 'web',
     kicker: 'Campus Healthcare Management',
@@ -211,7 +211,7 @@ export const selectedProjects: ProjectRecord[] = [
     tone: 'wine'
   },
   {
-    slug: 'aust-students',
+    slug: 'cuet-peer-delivery',
     title: 'CUET PEER DELIVERY',
     group: 'web',
     kicker: 'Campus Logistics / MERN Stack',

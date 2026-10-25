@@ -8,8 +8,8 @@ export const featuredClient = {
   classification: 'CLIENT PROJECT / BOUTIQUE FASHION & JEWELLERY',
   domain: 'flembe-essence.onrender.com',
   url: 'https://flembe-essence-frontend.onrender.com/',
-  image: '/assets/client-projects/sicko-soul-showcase.webp',
-  original: '/assets/client-projects/sicko-soul-showcase.webp',
+  image: '/assets/client-projects/flembe-essence-showcase.webp',
+  original: '/assets/client-projects/flembe-essence-showcase.webp',
   tagline: 'Modern elegance, built for real customers.',
   description: 'A responsive, production client e-commerce platform built for a boutique fashion and jewellery brand. Features dynamic catalog browsing, instant Cash on Delivery (COD) and campus delivery checkout, WhatsApp customer support, and a robust Django REST Framework backend.',
   editorialNotes: [

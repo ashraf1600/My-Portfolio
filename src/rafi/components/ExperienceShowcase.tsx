@@ -18,7 +18,7 @@ const [first] = experienceOrganizations;
         <p className="xp__intro-kicker">THE PLACES I BUILD WITH <span aria-hidden="true">✳</span></p>
         <h2 id="xp-title">WORK IN<br/><em>PROGRESS.</em></h2>
       </div>
-      <p>From production engineering to ambitious startups and university leadership. Three chapters, one enduring obsession: <em>building things that matter.</em></p>
+      <p>From DataOps pipelines to industrial computer vision and university research. Three chapters, one enduring obsession: <em>building things that matter.</em></p>
     </div>
   </div>
 
@@ -56,7 +56,7 @@ const [first] = experienceOrganizations;
             <span className="xp__story-kicker">{org.eyebrow}</span>
             <span className="xp__story-location">{org.arrangement}</span>
           </div>
-          <h3 id={`xp-org-${org.id}`} className="xp__story-name">{org.name === 'AUST Robotics Club' ? <>AUST<br/>ROBOTICS CLUB</> : org.name}</h3>
+          <h3 id={`xp-org-${org.id}`} className="xp__story-name">{org.name}</h3>
           <div className="xp__position-row">
             <p className="xp__position">{org.role}</p>
             <span className="xp__position-date">{org.dates}</span>
@@ -124,7 +124,7 @@ const [first] = experienceOrganizations;
     </div>
   </div>
   <div className="xp__outro"><span>THREE ENVIRONMENTS. ONE COMMITMENT TO THE CRAFT.</span><span>CONTINUALLY EVOLVING / 2026 <i aria-hidden="true">✳</i></span></div>
-  <span className="xp__sr-only" data-xp-status role="status" aria-live="polite">Showing DataPulse Global experience</span>
+  <span className="xp__sr-only" data-xp-status role="status" aria-live="polite">Showing {first.name} experience</span>
 </section>
 </>
   );

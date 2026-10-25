@@ -37,7 +37,7 @@ export default function Home() {
             >
               <img
                 className="site-logo__image"
-                src="/assets/brand/rafi-signature.webp"
+                src="/assets/brand/ashraf-monogram.webp"
                 width="57"
                 height="54"
                 alt=""
@@ -162,13 +162,13 @@ export default function Home() {
                 >
                   <picture>
                     <source
-                      type="image/png"
-                      srcSet="/assets/ashraf-enhanced.png"
+                      type="image/webp"
+                      srcSet="/assets/ashraf-hero-cutout.webp"
                     />
 
                     <img
                       className="hero__portrait"
-                      src="/assets/ashraf-enhanced.png"
+                      src="/assets/ashraf-hero-cutout.webp"
                       width="1122"
                       height="1402"
                       alt="Md. Ashraful Islam - AI & ML Engineer"

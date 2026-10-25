@@ -36,7 +36,7 @@ export const researchRecords: ResearchRecord[] = [
     abstract: 'Proposes an explainable ensemble voting classifier for detecting sophisticated cyber attacks in highly imbalanced IoT network environments. Combines diverse base learners with dynamic class-balancing and utilizes SHAP (SHapley Additive exPlanations) to interpret model decisions on critical minority attack vectors.',
     authors: 'Ashraful Islam · Towhidul Islam · Dr. Mahfuzulhoq Chowdhury',
     tags: ['IoT Security', 'Explainable AI (XAI)', 'Ensemble Classifier', 'SHAP', 'Cybersecurity'],
-    cover: '/assets/research/zero-trust.webp',
+    cover: '/assets/research/iot-cyber-attack.webp',
     accent: '#dfaa8d',
     links: [
       { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
@@ -56,7 +56,7 @@ export const researchRecords: ResearchRecord[] = [
     abstract: 'Introduces a content-conditioned multi-key watermarking framework specifically formulated for granular passage-level attribution in Retrieval-Augmented Generation. Enables high-precision recovery of source provenance in LLM outputs while preserving semantic fidelity and language naturalness.',
     authors: 'Towhidul Islam · Ashraful Islam · Dr. Mahfuzul Hoq Chowdhury',
     tags: ['RAG', 'Watermarking', 'Passage Attribution', 'LLMOps', 'Information Retrieval'],
-    cover: '/assets/research/banglafakemmd.webp',
+    cover: '/assets/research/ccmk-rag.webp',
     accent: '#edbb92',
     links: [
       { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
@@ -76,7 +76,7 @@ export const researchRecords: ResearchRecord[] = [
     abstract: 'Fine-tunes a Data-efficient Image Transformer (DeiT-Tiny) architecture coupled with bilateral edge extraction and homography rectification to discriminate micro-print, watermark fidelity, and intaglio ink patterns on Bangladeshi banknotes with ~97.88% accuracy.',
     authors: 'Ashraful Islam · Dr. Mahfuzulhoq Chowdhury · Towhidul Islam',
     tags: ['Vision Transformer', 'DeiT', 'Counterfeit Detection', 'PyTorch', 'OpenCV'],
-    cover: '/assets/research/histopathology.webp',
+    cover: '/assets/research/banknote-vit.webp',
     accent: '#c99195',
     links: [
       { label: 'VIEW LIVE SYSTEM (NOTECHECK)', url: 'https://notecheck-frontend.onrender.com/', note: 'Production web application' }
@@ -96,7 +96,7 @@ export const researchRecords: ResearchRecord[] = [
     abstract: 'Examines hierarchical and section-aware retrieval strategies for domain-specific statutory legal QA. Demonstrates that preserving structural section context within vector indices significantly minimizes statutory hallucination compared to naive dense embedding baselines.',
     authors: 'Towhidul Islam · Ashraf-Ul-Islam · Dr. Mahfuzulhoq Chowdhury',
     tags: ['Legal NLP', 'Section-Aware RAG', 'LangChain', 'Dense Retrieval', 'Evaluation'],
-    cover: '/assets/research/submission.webp',
+    cover: '/assets/research/labour-law-rag.webp',
     accent: '#c8a5a9',
     links: [
       { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
@@ -116,7 +116,7 @@ export const researchRecords: ResearchRecord[] = [
     abstract: 'Formulates a multi-tiered stacking ensemble incorporating gradient boosted decision trees and deep tabular models to forecast traffic infractions. Couples granular SHAP feature attribution to surface temporal, geospatial, and demographic risk drivers for urban traffic management.',
     authors: 'Dr. Mahfuzul Hoq Chowdhury · Oarisa Rebayet · Ifath Jeba Chowdhury · Ashraf-ul-Islam · Isnat Mehrin Sami · Snaholata Mondal',
     tags: ['Traffic Analytics', 'Stacking Ensemble', 'SHAP Analysis', 'Explainable AI'],
-    cover: '/assets/research/driver-vision.webp',
+    cover: '/assets/research/traffic-violation-shap.webp',
     accent: '#d29d67',
     links: [
       { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
@@ -136,7 +136,7 @@ export const researchRecords: ResearchRecord[] = [
     abstract: 'Addresses severe imbalance in enterprise tax filing data using a synchronized SMOTE-Tomek resampling technique and Optuna hyperparameter exploration. Deploys a two-layer stacking architecture with SHAP force plots to facilitate transparent financial fraud auditing.',
     authors: 'Dr. Mahfuzulhoq Chowdhury · Saklain Ahmed · Ashraful Islam',
     tags: ['Fraud Detection', 'Stacking Classifier', 'SMOTE-Tomek', 'Optuna', 'SHAP'],
-    cover: '/assets/research/geospatial.webp',
+    cover: '/assets/research/tax-fraud-optuna.webp',
     accent: '#b6a8c6',
     links: [
       { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
@@ -156,7 +156,7 @@ export const researchRecords: ResearchRecord[] = [
     abstract: 'Investigates biometric face morphing vulnerability in automated border control systems. Synthesizes high-frequency texture anomalies extracted via Xception with long-range contextual attention vectors from a Vision Transformer across a novel 10-channel forensic representation.',
     authors: 'Ashraful Islam · Towhidul Islam · Dr. Mahfuzulhoq Chowdhury',
     tags: ['Face Morphing', 'Vision Transformer', 'Xception', 'Forensics', 'Deep Learning'],
-    cover: '/assets/research/zero-trust.webp',
+    cover: '/assets/research/face-morphing-vit.webp',
     accent: '#e28d84',
     links: [],
   },

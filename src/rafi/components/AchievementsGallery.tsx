@@ -22,7 +22,7 @@ export default function AchievementsGallery() {
       </div>
       <div className="aw__intro-aside">
         <span className="aw__aside-index">03 <small>RECOGNITIONS</small></span>
-        <p>Not a list of claims. A collection of real moments — the work, the people, and the photographs that prove it.</p>
+        <p>Not a list of claims. A record of real milestones — the papers, the rankings, and the systems that prove it.</p>
         <span className="aw__aside-sign">THE RECORD / 2025—2026 <b>↗</b></span>
       </div>
     </header>
@@ -42,10 +42,10 @@ export default function AchievementsGallery() {
             ))}
           </div>
           <div className="aw__photo-vignette" aria-hidden="true"></div>
-          <div className="aw__photo-header"><span><i></i> DOCUMENTED MOMENT</span><span data-aw-evidence-counter>01 / 03</span></div>
+          <div className="aw__photo-header"><span><i></i> DOCUMENTED RECORD</span><span data-aw-evidence-counter>01 / 03</span></div>
           <div className="aw__photo-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          <button className="aw__photo-zoom" type="button" data-aw-zoom aria-label="Open full award photograph">
-            <span className="aw__zoom-icon" aria-hidden="true">↗</span><span>VIEW ORIGINAL PHOTO</span>
+          <button className="aw__photo-zoom" type="button" data-aw-zoom aria-label="Open full proof image">
+            <span className="aw__zoom-icon" aria-hidden="true">↗</span><span>VIEW FULL PROOF</span>
           </button>
           <span className="aw__photo-caption" data-aw-photo-caption>{achievements[0].award}</span>
           <div className="aw__seal" aria-hidden="true"><span>A</span><i>✳</i></div>
@@ -67,8 +67,8 @@ export default function AchievementsGallery() {
                   <div><small>WHEN</small><strong>{entry.date}</strong></div>
                 </div>
                 <div className="aw__story-actions">
-                  <a className="aw__original" href={entry.externalUrl} target="_blank" rel="noopener noreferrer" aria-label={`View original award post for ${entry.award} on Facebook`}>
-                    ORIGINAL AWARD POST <span aria-hidden="true">↗</span>
+                  <a className="aw__original" href={entry.externalUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open the source record for ${entry.award} in a new tab`}>
+                    VIEW SOURCE RECORD <span aria-hidden="true">↗</span>
                   </a>
                   <button className="aw__inspect" type="button" data-aw-inspect>
                     INSPECT PROOF <span aria-hidden="true">↗</span>
@@ -104,15 +104,15 @@ export default function AchievementsGallery() {
 
   <dialog className="aw__dialog" data-aw-dialog data-lenis-prevent aria-labelledby="aw-dialog-title">
     <div className="aw__dialog-content">
-      <div className="aw__dialog-heading"><span><i></i> VERIFIED MOMENT / EVIDENCE FILE <span data-aw-dialog-no>01</span></span><button type="button" data-aw-close aria-label="Close photograph">✕ <span>CLOSE</span></button></div>
+      <div className="aw__dialog-heading"><span><i></i> VERIFIED MOMENT / EVIDENCE FILE <span data-aw-dialog-no>01</span></span><button type="button" data-aw-close aria-label="Close proof viewer">✕ <span>CLOSE</span></button></div>
       <div className="aw__dialog-image-wrap"><img data-aw-dialog-image alt="" decoding="async" /></div>
       <div className="aw__dialog-bottom">
-        <div><span>DOCUMENTARY PHOTOGRAPH</span><h3 id="aw-dialog-title" data-aw-dialog-title>BEST PANEL MEMBER</h3><p data-aw-dialog-note>AUST Robotics Club</p></div>
-        <a data-aw-dialog-link href="#" target="_blank" rel="noopener noreferrer">VIEW ORIGINAL FACEBOOK POST <span aria-hidden="true">↗</span></a>
+        <div><span>PROOF FILE</span><h3 id="aw-dialog-title" data-aw-dialog-title>{achievements[0].award}</h3><p data-aw-dialog-note>{achievements[0].issuer}</p></div>
+        <a data-aw-dialog-link href="#" target="_blank" rel="noopener noreferrer">OPEN SOURCE RECORD <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </dialog>
-  <span className="aw__sr" role="status" aria-live="polite" data-aw-announcement>Showing Best Panel Member</span>
+  <span className="aw__sr" role="status" aria-live="polite" data-aw-announcement>Showing {achievements[0].award}</span>
 </section>
 </>
   );

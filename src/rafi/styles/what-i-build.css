@@ -23,7 +23,7 @@
   background:
     linear-gradient(180deg,#0a0708 0%,rgba(12,5,7,.67) 16%,rgba(12,5,7,.78) 58%,#0a0708 100%),
     linear-gradient(100deg,rgba(50,9,15,.42),transparent 57%),
-    url('../assets/hero-atmosphere.webp') center top / cover no-repeat;
+    url('/assets/hero-atmosphere.webp') center top / cover no-repeat;
 }
 .wib__bloom {
   position: absolute;

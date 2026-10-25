@@ -112,7 +112,7 @@ const codeSamples = [
         <button type="button" className="eu__all-skills" data-eu-all>EXPLORE ALL <span aria-hidden="true">↗</span></button>
       </div>
     </div>
-    <div className="eu__bottom-folio"><span>RAFI / AN ENGINEERING PRACTICE</span><span data-eu-motion-status>ANIMATION READY</span><span>THE WORK FOLLOWS <b aria-hidden="true">↘</b></span></div>
+    <div className="eu__bottom-folio"><span>ASHRAF / AN ENGINEERING PRACTICE</span><span data-eu-motion-status>ANIMATION READY</span><span>THE WORK FOLLOWS <b aria-hidden="true">↘</b></span></div>
   </div>
 
   <dialog className="eu__dialog" data-eu-dialog aria-labelledby="eu-dialog-title" data-lenis-prevent>

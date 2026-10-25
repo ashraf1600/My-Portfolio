@@ -54,7 +54,7 @@ export default function ClientProjects() {
           <span className="cp__story-live"><i aria-hidden="true"></i> LIVE WEBSITE</span>
         </div>
         <span className="cp__story-overline" data-cp-reveal>CLIENT WORK / INDEPENDENT IDENTITY</span>
-        <h3 className="cp__client-name" data-cp-reveal><span>SICKO</span><br /><em>SOUL.</em></h3>
+        <h3 className="cp__client-name" data-cp-reveal><span>FLEMBE</span><br /><em>ESSENCE.</em></h3>
         <div className="cp__story-rule" aria-hidden="true"><i></i></div>
         <p className="cp__story-lede" data-cp-reveal>{client.tagline}</p>
         <p className="cp__story-description" data-cp-reveal>{client.description}</p>
@@ -64,7 +64,7 @@ export default function ClientProjects() {
           ))}
         </div>
         <div className="cp__actions" data-cp-reveal>
-          <a className="cp__visit" href={client.url} target="_blank" rel="noopener noreferrer" aria-label="Visit Sicko Soul live website in a new tab">
+          <a className="cp__visit" href={client.url} target="_blank" rel="noopener noreferrer" aria-label="Visit Flembe Essence live website in a new tab">
             <span>VISIT LIVE WEBSITE</span><b aria-hidden="true">↗</b>
           </a>
           <button className="cp__inspect" type="button" data-cp-open aria-haspopup="dialog">
@@ -88,10 +88,10 @@ export default function ClientProjects() {
             <span className="cp__frame-status">01 / SHOWCASE</span>
           </div>
           <div className="cp__frame-image">
-            <img src={client.image} srcSet={cloudinarySrcset(client.image, [480, 768, 960, 1440, 1919])} sizes="(max-width: 700px) 95vw, (max-width: 1200px) 85vw, 1000px" alt="Sicko Soul website showing the streetwear brand, photographic editorial hero, and dark graphic typography" width="1919" height="969" loading="lazy" decoding="async" />
+            <img src={client.image} srcSet={cloudinarySrcset(client.image, [480, 768, 960, 1440, 1919])} sizes="(max-width: 700px) 95vw, (max-width: 1200px) 85vw, 1000px" alt="Flembe Essence storefront showing the jewellery hero banner, shop navigation and campus delivery highlights" width="1919" height="969" loading="lazy" decoding="async" />
             <div className="cp__frame-glare" aria-hidden="true"></div>
           </div>
-          <button type="button" className="cp__image-expand" data-cp-open aria-label="Expand Sicko Soul project screenshot">
+          <button type="button" className="cp__image-expand" data-cp-open aria-label="Expand Flembe Essence project screenshot">
             <span>OPEN THE VISUAL FILE</span><b aria-hidden="true">↗</b>
           </button>
         </div>
@@ -139,11 +139,11 @@ export default function ClientProjects() {
   <dialog className="cp__dialog" data-cp-dialog aria-labelledby="cp-dialog-title" data-lenis-prevent>
     <div className="cp__dialog-wrap">
       <div className="cp__dialog-top">
-        <div><span className="cp__dialog-eyebrow">CLIENT FILE 001 / IN FOCUS</span><h3 id="cp-dialog-title">SICKO SOUL <em>/ DIGITAL STOREFRONT</em></h3></div>
-        <button type="button" data-cp-close className="cp__dialog-close" aria-label="Close Sicko Soul project viewer">CLOSE <span aria-hidden="true">✕</span></button>
+        <div><span className="cp__dialog-eyebrow">CLIENT FILE 001 / IN FOCUS</span><h3 id="cp-dialog-title">FLEMBE ESSENCE <em>/ DIGITAL STOREFRONT</em></h3></div>
+        <button type="button" data-cp-close className="cp__dialog-close" aria-label="Close Flembe Essence project viewer">CLOSE <span aria-hidden="true">✕</span></button>
       </div>
-      <img className="cp__dialog-image" src={client.original} width="1919" height="969" alt="Full original screenshot of the Sicko Soul streetwear website design" loading="lazy" />
-      <div className="cp__dialog-bottom"><span>ORIGINAL USER-SUPPLIED WEBSITE SCREENSHOT / 1919 × 969</span><a href={client.url} target="_blank" rel="noopener noreferrer">OPEN {client.domain.toUpperCase()} <span aria-hidden="true">↗</span></a></div>
+      <img className="cp__dialog-image" src={client.original} width="1919" height="969" alt="Full screenshot of the Flembe Essence storefront homepage" loading="lazy" />
+      <div className="cp__dialog-bottom"><span>LIVE STOREFRONT SCREENSHOT / 1919 × 969</span><a href={client.url} target="_blank" rel="noopener noreferrer">OPEN {client.domain.toUpperCase()} <span aria-hidden="true">↗</span></a></div>
     </div>
   </dialog>
 </section>
