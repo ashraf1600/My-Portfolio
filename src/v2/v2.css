@@ -90,3 +90,14 @@ body {
   .animate-nb-marquee, .nb-caret { animation: none; }
   html { scroll-behavior: auto; }
 }
+
+/* Custom cursor (added by Cursor.jsx on mouse/trackpad devices only) */
+html.nb-cursor,
+html.nb-cursor * {
+  cursor: none !important;
+}
+html.nb-cursor input,
+html.nb-cursor textarea,
+html.nb-cursor [contenteditable="true"] {
+  cursor: text !important;
+}
