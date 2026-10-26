@@ -118,3 +118,23 @@
   .mobile-menu__panel a:last-child { border-bottom: none; }
   .mobile-menu__panel a span { font-size: 16px; color: var(--red); }
 }
+
+/* ---------- About: education moved to its own section at the end ---------- */
+.bt__columns { display: block !important; }
+@media (min-width: 901px) {
+  .bt__introduction {
+    position: relative !important;
+    top: auto !important;
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    column-gap: clamp(40px, 6vw, 110px);
+    align-items: start;
+    padding: 0 !important;
+  }
+  .bt__introduction::before { display: none; }
+  .bt__intro-top { grid-column: 1; grid-row: 1; }
+  .bt__intro-title-wrap { grid-column: 1; grid-row: 2 / span 2; }
+  .bt__intro-copy { grid-column: 2; grid-row: 1 / span 2; }
+  .bt__belief { grid-column: 2; grid-row: 3; }
+  .bt__intro-footer { grid-column: 1 / -1; grid-row: 4; }
+}
