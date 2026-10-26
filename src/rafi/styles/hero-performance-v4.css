@@ -252,7 +252,7 @@
 
   white-space: nowrap;
 
-  font-size: 10px;
+  font-size: 11.5px;
   letter-spacing: .14em;
 
   transform: none;
@@ -391,7 +391,7 @@
   }
 
   .hero__side--right .eyebrow {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .hero__side--right .hero__role-list {
@@ -405,12 +405,12 @@
   }
 
   .hero__side--right .hero__role-list strong {
-    font-size: 10px;
+    font-size: 11.5px;
     letter-spacing: .02em;
   }
 
   .hero__side--right .hero__role-list small {
-    font-size: 8px;
+    font-size: 10.5px;
     letter-spacing: .03em;
   }
 }
@@ -453,7 +453,7 @@
   }
 
   .hero__side--right .eyebrow {
-    font-size: 7px;
+    font-size: 9.5px;
     line-height: 1.5;
     letter-spacing: .08em;
   }
@@ -473,13 +473,13 @@
   }
 
   .hero__side--right .hero__role-list strong {
-    font-size: 8px;
+    font-size: 10.5px;
     line-height: 1.4;
     letter-spacing: .005em;
   }
 
   .hero__side--right .hero__role-list small {
-    font-size: 7px;
+    font-size: 9.5px;
     letter-spacing: .005em;
   }
 
@@ -518,7 +518,7 @@
 
     padding: 0 4px;
 
-    font-size: 8px;
+    font-size: 10.5px;
     letter-spacing: .045em;
 
     white-space: normal;
@@ -540,7 +540,7 @@
     padding: 6px 8px 6px 6px;
     gap: 6px;
 
-    font-size: 9px;
+    font-size: 11px;
   }
 }
 
@@ -564,7 +564,7 @@
   }
 
   .hero__side--right .hero__role-list strong {
-    font-size: 7.6px;
+    font-size: 9.5px;
   }
 
   .hero__bottom-strip {
@@ -572,7 +572,7 @@
   }
 
   .hero__action-group .hero__cta {
-    font-size: 7.4px;
+    font-size: 9.5px;
   }
 
   .hero__action-group .hero__cta > span:first-child {
@@ -588,7 +588,7 @@
     padding: 5px;
     gap: 5px;
 
-    font-size: 8px;
+    font-size: 10.5px;
   }
 }
 
@@ -649,9 +649,9 @@
     padding-inline: min(74px, 6.13svh, 3.7vw);
   }
   .site-logo__image { width: min(57px, 4.7svh); height: min(57px, 4.7svh); }
-  .site-logo__caption, .site-header__folio { font-size: clamp(9px, 1svh, 11px); }
+  .site-logo__caption, .site-header__folio { font-size: 12px; }
   .site-nav { gap: min(42px, 3.47svh, 2.3vw); }
-  .site-nav > a { font-size: clamp(9px, 1svh, 11px); }
+  .site-nav > a { font-size: 12px; }
   .site-nav .site-nav__contact {
     padding: min(14px, 1.16svh) min(17px, 1.41svh);
   }
@@ -682,8 +682,8 @@
     top: 60%;
     width: min(290px, 19vw, 23.98svh);
   }
-  .hero__side--left .eyebrow { font-size: clamp(9px, 1svh, 11px); }
-  .hero__side--right .eyebrow { font-size: clamp(9px, 1svh, 11px); }
+  .hero__side--left .eyebrow { font-size: 12px; }
+  .hero__side--right .eyebrow { font-size: 12px; }
   .hero__side-line {
     width: min(36px, 2.98svh);
     margin-bottom: min(21px, 1.74svh);
@@ -705,9 +705,9 @@
     gap: min(10px, .83svh);
   }
   .hero__side--right .hero__role-index { font-size: clamp(14px, 1.7svh, 19px); }
-  .hero__side--right .hero__role-list strong { font-size: clamp(10px, 1.17svh, 13px); }
+  .hero__side--right .hero__role-list strong { font-size: clamp(11.5px, 1.17svh, 13px); }
   .hero__side--right .hero__role-list small {
-    font-size: clamp(8.5px, .95svh, 10px);
+    font-size: 11px;
     margin-top: min(5px, .41svh);
   }
 
@@ -717,13 +717,13 @@
   .hero__name-rule {
     margin: min(21px, 1.74svh) 0 min(15px, 1.24svh);
   }
-  .hero__profession { font-size: clamp(9px, 1.03svh, 11px); }
+  .hero__profession { font-size: 12px; }
   .hero__lower-left, .hero__lower-right { bottom: min(19px, 1.57svh); }
   .hero__lower-left p, .hero__lower-right p {
     font-size: clamp(15px, 1.8svh, 21px);
     margin-bottom: min(12px, .99svh);
   }
-  .hero__lower-sub { font-size: clamp(9px, 1.05svh, 10px); }
+  .hero__lower-sub { font-size: 11.5px; }
 
   /* Override the old auto-height/112px footer with height-aware sizing. */
   .hero__bottom-strip {

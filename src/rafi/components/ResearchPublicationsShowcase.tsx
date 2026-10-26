@@ -15,7 +15,7 @@ const first = researchRecords[0];
     <div className="rgl__folio">
       <span><i className="rgl__live-dot" aria-hidden="true"></i> 05 / THE RESEARCH ARCHIVE</span>
       <span className="rgl__folio-rule"></span>
-      <span>MD. ASHRAFUL ISLAM <b aria-hidden="true">✳</b> MMXXVI</span>
+      <span>ASHRAFUL ISLAM <b aria-hidden="true">✳</b> MMXXVI</span>
     </div>
 
     <div className="rgl__head">

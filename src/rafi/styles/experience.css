@@ -120,11 +120,11 @@
   .xp__dock { width: 47%; gap: 9px; }
   .xp__company-card { aspect-ratio: 3/4.35; }
   .xp__card-title { font-size: clamp(18px,2.2vw,25px); }
-  .xp__card-role { font-size: 8px; }
+  .xp__card-role { font-size: 10.5px; }
   .xp__description { font-size: 12px; }
 }
 @media (max-width: 760px) {
-  .xp__intro-folio { padding-top: 24px; font-size: 9px; }
+  .xp__intro-folio { padding-top: 24px; font-size: 11px; }
   .xp__intro-folio > span:last-child { display: none; }
   .xp__intro-grid { grid-template-columns: 1fr; padding: 42px 0 38px; gap: 18px; }
   .xp__intro-grid h2 { font-size: clamp(79px,15vw,126px); }
@@ -133,14 +133,14 @@
   .xp__stage { height: auto; min-height: 0; padding: 102px 21px 26px; }
   .xp__backdrop { object-position: 64% center; }
   .xp__scrim, .xp__stage--boraq .xp__scrim, .xp__stage--robotics .xp__scrim { background: linear-gradient(90deg,#060608d9,#060608a8 66%,#06060878), linear-gradient(0deg,#080709e8,#08070900 50%,#080709aa); }
-  .xp__stage-folio { top: 22px; left: 20px; right: 21px; font-size: 8px; }
+  .xp__stage-folio { top: 22px; left: 20px; right: 21px; font-size: 10.5px; }
   .xp__stage-folio span:last-child { display: none; }
   .xp__narrative { left: auto; width: 100%; margin: 0; }
   .xp__story { min-height: 460px; }
   .xp__story-name { font-size: clamp(66px,13vw,107px); }
-  .xp__position-date { font-size: 9px; }
+  .xp__position-date { font-size: 11px; }
   .xp__project-main strong { font-size: 12px; }
-  .xp__project-badge { max-width: 105px; font-size: 7px; }
+  .xp__project-badge { max-width: 105px; font-size: 9.5px; }
   .xp__dock { position: relative; right: auto; bottom: auto; width: 100%; margin-top: 26px; gap: 10px; justify-content: stretch; }
   .xp__company-card { flex: 1; max-width: none; aspect-ratio: 3/3.5; }
   .xp__card-title { font-size: clamp(19px,3.6vw,30px); bottom: 36px; }
@@ -149,35 +149,35 @@
   .xp__stage-end { display: none; }
   .xp__swatches { gap: 6px; }
   .xp__swatches i { width: 20px; }
-  .xp__outro { padding-block: 18px 34px; font-size: 8px; }
+  .xp__outro { padding-block: 18px 34px; font-size: 10.5px; }
 }
 @media (max-width: 470px) {
   .xp__intro-folio { padding-top: 19px; }
   .xp__intro-grid { padding: 37px 0 31px; }
   .xp__intro-grid h2 { font-size: clamp(72px,17vw,94px); }
   .xp__intro-grid h2 em { font-size: clamp(58px,13.4vw,77px); }
-  .xp__intro-kicker { font-size: 9px; }
+  .xp__intro-kicker { font-size: 11px; }
   .xp__stage { padding: 90px 16px 22px; }
   .xp__stage-folio { left: 16px; right: 16px; }
   .xp__story-name { font-size: clamp(60px,16vw,84px); }
   .xp__description { margin: 12px 0 17px; font-size: 12px; }
   .xp__project { padding: 8px 0; }
   .xp__project-main strong { font-size: 11px; }
-  .xp__project-main > span { font-size: 9px; }
-  .xp__project-badge { font-size: 7px; max-width: 80px; }
+  .xp__project-main > span { font-size: 11px; }
+  .xp__project-badge { font-size: 9.5px; max-width: 80px; }
   .xp__career-steps { grid-template-columns: repeat(2,minmax(0,1fr)); row-gap: 14px; }
   .xp__career-steps::before { display: none; }
   .xp__career-step { border-top: 1px solid #efd4bd54; }
   .xp__career-pin { top: -4px; }
-  .xp__career-step strong { font-size: 10px; }
-  .xp__story-footnote { font-size: 7px; }
+  .xp__career-step strong { font-size: 11.5px; }
+  .xp__story-footnote { font-size: 9.5px; }
   .xp__company-card { aspect-ratio: 3/4; }
   .xp__card-number { font-size: 12px; top: 9px; left: 9px; }
   .xp__card-title { font-size: clamp(16px,4.1vw,22px); right: 7px; bottom: 34px; left: 8px; }
-  .xp__card-role { font-size: 7px; left: 8px; right: 15px; bottom: 9px; }
+  .xp__card-role { font-size: 9.5px; left: 8px; right: 15px; bottom: 9px; }
   .xp__card-arrow { font-size: 14px; bottom: 7px; right: 5px; }
   .xp__switcher { gap: 9px; }
-  .xp__switcher button { font-size: 8px; }
+  .xp__switcher button { font-size: 10.5px; }
   .xp__counter { font-size: 21px; }
   .xp__counter span { font-size: 14px; }
 }

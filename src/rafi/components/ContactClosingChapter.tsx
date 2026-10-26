@@ -95,7 +95,7 @@ const year = new Date().getFullYear();
 
   <footer className="rc__footer">
     <div className="rc__footer-brand">
-      <a href="#page-top" aria-label="Back to top, Md. Ashraful Islam" className="rc__monogram"><img src="/assets/brand/ashraf-monogram.webp" alt="" width="60" height="60" decoding="async" /></a>
+      <a href="#page-top" aria-label="Back to top, Ashraful Islam" className="rc__monogram"><img src="/assets/brand/ashraf-monogram.webp" alt="" width="60" height="60" decoding="async" /></a>
       <div><strong>{contact.displayName}</strong><small>ENGINEERING WITH INTENTION</small></div>
     </div>
     <div className="rc__footer-center">© {year} · MADE WITH PURPOSE · {contact.location}</div>

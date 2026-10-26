@@ -38,12 +38,12 @@ html.lenis, html.lenis body { scroll-behavior:auto !important; }
  .hero__bottom-strip { grid-template-columns: minmax(0,1fr) !important; min-height:72px; height:auto !important; padding-block:10px !important; }
  .hero__bottom-folio,.hero__bottom-scroll { display:none !important; }
  .hero__action-group { width:100%; justify-content:space-between; gap:8px; }
- .hero__cv-link {padding:10px 8px; font-size:9px; letter-spacing:.055em; gap:5px;}
+ .hero__cv-link {padding:10px 8px; font-size:11px; letter-spacing:.055em; gap:5px;}
  .hero__action-group .hero__cta {padding:10px 0; }
  .hero__action-group .hero__cta > span:first-child{max-width:104px;line-height:1.3;}
  .site-logo__image{width:42px;height:42px;}
 }
-@media(max-width:385px){.hero__cv-link{font-size:8px;padding-inline:7px;} .hero__action-group .hero__cta>span:first-child{max-width:84px;} }
+@media(max-width:385px){.hero__cv-link{font-size:10.5px;padding-inline:7px;} .hero__action-group .hero__cta>span:first-child{max-width:84px;} }
 @media(prefers-reduced-motion:reduce){
   .hero__entry-gate{display:none!important;}
   .site-logo__image,.hero__cv-link {transition:none!important;}

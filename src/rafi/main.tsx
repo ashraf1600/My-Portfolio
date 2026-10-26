@@ -11,6 +11,7 @@ import "./styles/site-finish.css";
 import "./styles/hero-experience-refinement.css";
 // Must load last
 import "./styles/hero-performance-v4.css";
+import "./styles/polish.css";
 
 import { createRoot } from "react-dom/client";
 import Home from "./components/Home";

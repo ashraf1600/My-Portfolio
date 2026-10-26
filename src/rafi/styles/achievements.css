@@ -171,7 +171,7 @@
 }
 @media(max-width:700px){
   .aw__shell{padding:68px 15px 40px}
-  .aw__folio{gap:8px;font-size:8px;letter-spacing:.09em}
+  .aw__folio{gap:8px;font-size:10.5px;letter-spacing:.09em}
   .aw__folio>span:last-child{display:none}
   .aw__intro{grid-template-columns:1fr;gap:24px;padding:40px 0 34px}
   .aw__intro h2{font-size:clamp(57px,14vw,95px)}
@@ -179,15 +179,15 @@
   .aw__intro-aside{display:grid;grid-template-columns:70px 1fr;align-items:center;column-gap:16px;padding-left:15px}
   .aw__intro-aside p{margin:0}
   .aw__aside-index{font-size:55px;margin-bottom:0}
-  .aw__aside-index small{display:block;font-size:7px;margin-left:0;margin-top:8px}
+  .aw__aside-index small{display:block;font-size:9.5px;margin-left:0;margin-top:8px}
   .aw__aside-sign{grid-column:1/-1;margin-top:17px}
   .aw__theater{padding:9px}
-  .aw__theater-edge{font-size:8px;letter-spacing:.10em;padding:9px 5px 14px}
+  .aw__theater-edge{font-size:10.5px;letter-spacing:.10em;padding:9px 5px 14px}
   .aw__exhibit{min-height:465px}
   .aw__photo-main{width:calc(100% - 62px);height:calc(100% - 126px);max-height:370px}
-  .aw__photo-header{top:20px;left:18px;right:18px;font-size:8px}
+  .aw__photo-header{top:20px;left:18px;right:18px;font-size:10.5px}
   .aw__photo-zoom{left:18px;bottom:19px}
-  .aw__photo-caption{right:17px;bottom:27px;font-size:7px;max-width:110px}
+  .aw__photo-caption{right:17px;bottom:27px;font-size:9.5px;max-width:110px}
   .aw__seal{top:58px;right:21px}
   .aw__story-panel{padding:22px 20px 20px}
   .aw__story-stack{min-height:0;padding:25px 0}
@@ -195,16 +195,16 @@
   .aw__story-subtitle{font-size:clamp(22px,6vw,30px)}
   .aw__story-description{font-size:13px}
   .aw__facts{grid-template-columns:1fr 1fr;gap:10px}
-  .aw__story-tail{font-size:7px}
-  .aw__rail-head{font-size:8px;letter-spacing:.13em}
+  .aw__story-tail{font-size:9.5px}
+  .aw__rail-head{font-size:10.5px;letter-spacing:.13em}
   .aw__award-nav{grid-template-columns:1fr;gap:8px}
   .aw__award{grid-template-columns:72px minmax(0,1fr) 20px;min-height:90px;padding:9px 12px}
   .aw__award-img{width:72px;height:70px}
   .aw__award-info strong{font-size:24px}
-  .aw__outro{font-size:8px;letter-spacing:.08em;align-items:flex-start}
+  .aw__outro{font-size:10.5px;letter-spacing:.08em;align-items:flex-start}
   .aw__outro span:last-child{white-space:nowrap}
   .aw__dialog{max-width:96vw;max-height:92dvh}
-  .aw__dialog-heading span{font-size:8px;letter-spacing:.05em}
+  .aw__dialog-heading span{font-size:10.5px;letter-spacing:.05em}
   .aw__dialog-heading button span{display:none}
   .aw__dialog-bottom{flex-direction:column;align-items:stretch}
   .aw__dialog-bottom a{justify-content:space-between}

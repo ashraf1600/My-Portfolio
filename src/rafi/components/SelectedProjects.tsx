@@ -123,7 +123,7 @@ export default function SelectedProjects() {
           <a className="sw__modal-repo" data-sw-modal-repo href="https://github.com/ashraf1600" target="_blank" rel="noopener noreferrer">EXPLORE SOURCE REPOSITORY <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <div className="sw__modal-bottom"><span>PORTFOLIO ARCHIVE / MD. ASHRAFUL ISLAM</span><span data-sw-modal-pagination>01 / 12</span></div>
+      <div className="sw__modal-bottom"><span>PORTFOLIO ARCHIVE / ASHRAFUL ISLAM</span><span data-sw-modal-pagination>01 / 12</span></div>
     </div>
   </dialog>
 </section>
