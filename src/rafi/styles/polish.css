@@ -18,34 +18,19 @@
   mask: url("/assets/ashraf-hero-cutout.webp") center / 100% 100% no-repeat;
 }
 
-/* recolour the purple side light (and shirt) to the burgundy/ember palette,
-   leaving the centre of the face natural */
-.hero__portrait-grade {
-  background:
-    linear-gradient(90deg,
-      #a3362a 0%,
-      rgba(163, 54, 42, .95) 34%,
-      rgba(178, 70, 50, .55) 41%,
-      rgba(190, 90, 64, 0) 47%,
-      rgba(196, 96, 66, 0) 53%,
-      rgba(206, 104, 70, .55) 59%,
-      rgba(206, 104, 70, .95) 66%,
-      #c4583c 100%),
-    linear-gradient(0deg, #6b1d1a 0%, rgba(107, 29, 26, .9) 30%, rgba(107, 29, 26, 0) 48%);
-  mix-blend-mode: color;
-  opacity: .9;
-}
+/* keep the face natural: the photo is shown as-is, with only a faint warm
+   rim on the outermost edges so the cut-out sits in the burgundy scene */
+.hero__portrait-grade { display: none; }
 
-/* warm cream rim light that hugs both sides of the face */
 .hero__portrait-rim {
   background:
     linear-gradient(90deg,
-      rgba(232, 197, 171, .95) 0%,
-      rgba(232, 197, 171, 0) 30%,
-      rgba(232, 197, 171, 0) 70%,
-      rgba(232, 197, 171, .95) 100%);
+      rgba(232, 197, 171, .7) 0%,
+      rgba(232, 197, 171, 0) 16%,
+      rgba(232, 197, 171, 0) 84%,
+      rgba(232, 197, 171, .7) 100%);
   mix-blend-mode: soft-light;
-  opacity: .75;
+  opacity: .45;
 }
 
 /* soft ground shadow so the cut-out sits on the stage instead of floating */
