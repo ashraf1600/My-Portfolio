@@ -20,7 +20,24 @@
 
 /* keep the face natural: the photo is shown as-is, with only a faint warm
    rim on the outermost edges so the cut-out sits in the burgundy scene */
-.hero__portrait-grade { display: none; }
+/* gentle warm grade: neutralises the blue/purple studio light on the
+   sides of the face and hair so it sits in the burgundy scene, while
+   the skin keeps its natural tone (blend: color, 50%) */
+.hero__portrait-grade {
+  background:
+    linear-gradient(90deg,
+      #b8775f 0%,
+      rgba(184, 119, 95, .9) 30%,
+      rgba(184, 119, 95, .35) 42%,
+      rgba(184, 119, 95, 0) 50%,
+      rgba(196, 128, 100, .35) 58%,
+      rgba(196, 128, 100, .9) 70%,
+      #c48064 100%),
+    linear-gradient(180deg, rgba(150, 95, 80, .8) 0%, rgba(150, 95, 80, 0) 30%),
+    linear-gradient(0deg, #5a2422 0%, rgba(90, 36, 34, .85) 30%, rgba(90, 36, 34, 0) 48%);
+  mix-blend-mode: color;
+  opacity: .5;
+}
 
 .hero__portrait-rim {
   background:
