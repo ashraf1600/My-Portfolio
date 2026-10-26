@@ -38,9 +38,7 @@ export const researchRecords: ResearchRecord[] = [
     tags: ['IoT Security', 'Explainable AI (XAI)', 'Ensemble Classifier', 'SHAP', 'Cybersecurity'],
     cover: '/assets/research/iot-cyber-attack.webp',
     accent: '#dfaa8d',
-    links: [
-      { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
-    ],
+    links: [],
   },
   {
     id: 'ccmk-rag',
@@ -58,9 +56,7 @@ export const researchRecords: ResearchRecord[] = [
     tags: ['RAG', 'Watermarking', 'Passage Attribution', 'LLMOps', 'Information Retrieval'],
     cover: '/assets/research/ccmk-rag.webp',
     accent: '#edbb92',
-    links: [
-      { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
-    ],
+    links: [],
   },
   {
     id: 'banknote-vit',
@@ -98,9 +94,7 @@ export const researchRecords: ResearchRecord[] = [
     tags: ['Legal NLP', 'Section-Aware RAG', 'LangChain', 'Dense Retrieval', 'Evaluation'],
     cover: '/assets/research/labour-law-rag.webp',
     accent: '#c8a5a9',
-    links: [
-      { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
-    ],
+    links: [],
   },
   {
     id: 'traffic-violation-shap',
@@ -118,9 +112,7 @@ export const researchRecords: ResearchRecord[] = [
     tags: ['Traffic Analytics', 'Stacking Ensemble', 'SHAP Analysis', 'Explainable AI'],
     cover: '/assets/research/traffic-violation-shap.webp',
     accent: '#d29d67',
-    links: [
-      { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
-    ],
+    links: [],
   },
   {
     id: 'tax-fraud-optuna',
@@ -138,9 +130,7 @@ export const researchRecords: ResearchRecord[] = [
     tags: ['Fraud Detection', 'Stacking Classifier', 'SMOTE-Tomek', 'Optuna', 'SHAP'],
     cover: '/assets/research/tax-fraud-optuna.webp',
     accent: '#b6a8c6',
-    links: [
-      { label: 'VIEW SCHOLAR PROFILE', url: 'https://scholar.google.com/citations?user=ashraf1600', note: 'Google Scholar profile record' }
-    ],
+    links: [],
   },
   {
     id: 'face-morphing-vit',

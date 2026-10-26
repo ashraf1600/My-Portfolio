@@ -8,6 +8,8 @@ import { selectedProjects, type ProjectGroup } from "../data/selectedProjects";
 import { researchRecords } from "../data/research";
 import { experienceOrganizations } from "../data/experience";
 import { skillGroups } from "../data/skillAtlas";
+import { achievements } from "../data/achievements";
+import { contact } from "../data/contact";
 
 /* Recruiter-friendly sections: everything visible at a glance, no carousels. */
 
@@ -28,7 +30,7 @@ function Head({ id, eyebrow, title, em, intro }: { id: string; eyebrow: string; 
     <header className="cs__head">
       <div>
         <p className="cs__eyebrow">{eyebrow}</p>
-        <h2 id={id} className="cs__title">{title}<br /><em>{em}</em></h2>
+        <h2 id={id} className="cs__title">{title} <em>{em}</em></h2>
       </div>
       {intro && <p className="cs__intro">{intro}</p>}
     </header>
@@ -406,7 +408,7 @@ export function CleanEducation() {
   return (
     <section className="cs" id="education" aria-labelledby="cs-edu-title">
       <div className="cs__wrap">
-        <Folio index="09" label="EDUCATION" right="THE PATH SO FAR" />
+        <Folio index="08" label="EDUCATION" right="THE PATH SO FAR" />
         <Head id="cs-edu-title" eyebrow="ACADEMIC BACKGROUND" title="EDUCATION" em="the path." />
         <ol className="cs__edu">
           {schools.map((e, i) => (
@@ -420,6 +422,86 @@ export function CleanEducation() {
             </li>
           ))}
         </ol>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------- AT A GLANCE ------------------------------ */
+
+export function GlanceStrip() {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(contact.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      window.location.href = `mailto:${contact.email}`;
+    }
+  };
+  return (
+    <section className="cs-gl" aria-label="At a glance">
+      <div className="cs__wrap cs-gl__inner">
+        <p className="cs-gl__status"><i aria-hidden="true"></i> Open to AI / ML Engineer &amp; MLOps roles</p>
+        <dl className="cs-gl__facts">
+          <div><dt>Now</dt><dd>ML &amp; DataOps Intern, Poridhi.io</dd></div>
+          <div><dt>Study</dt><dd>B.Sc. CSE, CUET · final year</dd></div>
+          <div><dt>Based in</dt><dd>Chittagong / Dhaka, Bangladesh</dd></div>
+        </dl>
+        <div className="cs-gl__actions">
+          <button type="button" className="cs__btn" onClick={copy}>{copied ? "Email copied ✓" : contact.email}</button>
+          <a className="cs__btn cs__btn--solid" href="/Ashraful_Islam_AI_Engineer_CV.pdf" download>Download CV <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------ HIGHLIGHTS ------------------------------ */
+
+const clientWork = [
+  { name: "Flembe Essence", note: "E-commerce store for a fashion & jewellery brand · React 19, Django REST", url: "https://flembe-essence-frontend.onrender.com/", image: "/assets/client-projects/flembe-essence-showcase.webp" },
+  { name: "Cox's Bazar Student Forum", note: "Community platform for CUET students & alumni · Django", url: "https://cox-s-bazar-student-forum-cuet.onrender.com", image: "/assets/project-covers/coxs-bazar-forum.webp" },
+];
+
+export function CleanHighlights() {
+  return (
+    <section className="cs" id="achievements" aria-labelledby="cs-hl-title">
+      <div className="cs__wrap">
+        <Folio index="07" label="HONOURS & CLIENT WORK" right="HIGHLIGHTS" />
+        <Head id="cs-hl-title" eyebrow="BEYOND THE BUILD" title="HIGHLIGHTS" em="& recognition." />
+        <ul className="cs-hl">
+          {achievements.map((a) => (
+            <li key={a.id} className="cs__card cs-hl__item">
+              <div className="cs-hl__img"><img src={a.photo} alt={a.photoAlt} loading="lazy" decoding="async" /></div>
+              <div className="cs-hl__body">
+                <p className="cs__project-kind">{a.level} · {a.date}</p>
+                <h3>{a.award}</h3>
+                <p>{a.spotlight}</p>
+                {a.externalUrl && (
+                  <a className="cs__link" href={a.externalUrl} {...(a.externalUrl.startsWith("http") ? ext : {})}>
+                    {a.externalUrl.startsWith("#") ? "See research ↓" : "View ↗"}
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <h3 className="cs-hl__sub">Client work · live in production</h3>
+        <ul className="cs-cl">
+          {clientWork.map((c) => (
+            <li key={c.name} className="cs__card cs-cl__item">
+              <img src={c.image} alt="" loading="lazy" decoding="async" />
+              <div>
+                <h4>{c.name}</h4>
+                <p>{c.note}</p>
+              </div>
+              <a className="cs__btn cs__btn--solid" href={c.url} {...ext}>Visit site <span aria-hidden="true">↗</span></a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

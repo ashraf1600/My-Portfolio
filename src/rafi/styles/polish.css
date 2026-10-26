@@ -133,8 +133,39 @@
   }
   .bt__introduction::before { display: none; }
   .bt__intro-top { grid-column: 1; grid-row: 1; }
-  .bt__intro-title-wrap { grid-column: 1; grid-row: 2 / span 2; }
+  .bt__intro-title-wrap { grid-column: 1; grid-row: 2; }
+  .bt__facts { grid-column: 1; grid-row: 3; align-self: start; }
   .bt__intro-copy { grid-column: 2; grid-row: 1 / span 2; }
   .bt__belief { grid-column: 2; grid-row: 3; }
   .bt__intro-footer { grid-column: 1 / -1; grid-row: 4; }
+}
+
+/* About: key facts card */
+.bt__facts {
+  margin: 36px 0 0;
+  padding: 8px 22px;
+  border: 1px solid rgba(228, 204, 175, .18);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(36, 22, 21, .7), rgba(20, 11, 11, .7));
+}
+.bt__facts div { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 14px; padding: 13px 0; }
+.bt__facts div + div { border-top: 1px solid rgba(228, 204, 175, .12); }
+.bt__facts dt { font-size: 11px; font-weight: 700; letter-spacing: .18em; color: var(--taupe); padding-top: 2px; }
+.bt__facts dd { margin: 0; font-size: 15px; font-weight: 500; color: var(--cream); }
+@media (max-width: 900px) { .bt__facts { margin: 28px 0; } }
+
+/* ---------- hero lettering: the portrait sits in the gap between "ML" and "OPS" ---------- */
+.hero__masthead { align-items: center !important; }
+.hero__masthead-pre { margin-bottom: .05em; }
+.hero__masthead-core--split {
+  display: grid !important;
+  font-size: .8em !important;
+  grid-template-columns: 1fr .8em 1fr;
+  align-items: end;
+}
+.hero__masthead-core--split > span:first-child { text-align: right; }
+.hero__masthead-core--split > span:last-child { text-align: left; }
+@media (max-width: 680px) {
+  /* on phones the word sits above the portrait, so no gap is needed */
+  .hero__masthead-core--split { font-size: 1em !important; grid-template-columns: auto .16em auto; justify-content: center; }
 }

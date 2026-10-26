@@ -74,6 +74,14 @@ export default function BeyondTitle() {
                 </h2>
               </div>
 
+              <dl className="bt__facts" data-bt-reveal>
+                <div><dt>CURRENTLY</dt><dd>ML &amp; DataOps Intern, Poridhi.io</dd></div>
+                <div><dt>EDUCATION</dt><dd>B.Sc. CSE, CUET (2023 — now)</dd></div>
+                <div><dt>FOCUS</dt><dd>Computer vision, RAG &amp; agents, MLOps</dd></div>
+                <div><dt>RESEARCH</dt><dd>7 papers · 5 accepted (IEEE &amp; intl.)</dd></div>
+                <div><dt>BASED IN</dt><dd>Chittagong / Dhaka, Bangladesh</dd></div>
+              </dl>
+
               <div className="bt__intro-copy" data-bt-reveal>
                 <p className="bt__lead">
                   I'm <strong>Ashraful Islam</strong> —

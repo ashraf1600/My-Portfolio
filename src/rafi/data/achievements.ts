@@ -40,8 +40,8 @@ export const achievements: Achievement[] = [
     photoAlt: 'Typographic card: 7 papers across ICDSBS, IEEE OMLET, ICCPCT, IEEE QPAIN and iCONEECT 2026',
     photoWidth: 1050,
     photoHeight: 778,
-    externalUrl: 'https://scholar.google.com/citations?user=ashraf1600',
-    note: 'Google Scholar profile & conference proceedings records',
+    externalUrl: '#research',
+    note: 'Full list in the Research section',
   },
   {
     id: 'codeforces-specialist',

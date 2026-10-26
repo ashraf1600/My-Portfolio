@@ -1,7 +1,5 @@
 import "./styles/hero.css";
 import "./styles/beyond-title.css";
-import "./styles/achievements.css";
-import "./styles/client-projects.css";
 import "./styles/contact-closing-chapter.css";
 import "./styles/site-finish.css";
 import "./styles/hero-experience-refinement.css";
@@ -31,7 +29,5 @@ createRoot(document.getElementById("root")!).render(<Home />);
 requestAnimationFrame(async () => {
   await import("./scripts/motion");
   await import("./scripts/site-finish");
-  await import("./scripts/achievements");
-  await import("./scripts/client-projects");
   await import("./scripts/contact-closing-chapter");
 });
