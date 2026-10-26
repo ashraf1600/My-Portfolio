@@ -1,8 +1,6 @@
 import { cx, css } from "../utils/jsx";
 import BeyondTitle from "./BeyondTitle";
-import { CleanEducation, CleanExperience, CleanProjects, CleanResearch, CleanSkills } from "./CleanSections";
-import AchievementsGallery from "./AchievementsGallery";
-import ClientProjects from "./ClientProjects";
+import { GlanceStrip, CleanHighlights, CleanEducation, CleanExperience, CleanProjects, CleanResearch, CleanSkills } from "./CleanSections";
 import ContactClosingChapter from "./ContactClosingChapter";
 
 export default function Home() {
@@ -163,8 +161,10 @@ export default function Home() {
                     <span className="hero__masthead-pre">
                       AI ENGINEERING
                     </span>
-                    <span className="hero__masthead-core">
-                      &amp; MLOPS
+                    <span className="hero__masthead-core hero__masthead-core--split">
+                      <span>&amp; ML</span>
+                      <span className="hero__masthead-gap"></span>
+                      <span>OPS</span>
                     </span>
                   </p>
                 </div>
@@ -377,14 +377,15 @@ export default function Home() {
             </div>
           </section>
 
+          <GlanceStrip />
+
           {/* Remaining portfolio sections */}
           <BeyondTitle />
           <CleanSkills />
           <CleanExperience />
           <CleanProjects />
           <CleanResearch />
-          <AchievementsGallery />
-          <ClientProjects />
+          <CleanHighlights />
           <CleanEducation />
           <ContactClosingChapter />
         </main>

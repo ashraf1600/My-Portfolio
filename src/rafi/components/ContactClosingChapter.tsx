@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
     <div className="rc__ghost-type">CONNECT</div>
   </div>
   <div className="rc__contact-top">
-    <span className="rc__chapter"><i></i> 10 / THE FINAL WORD</span>
+    <span className="rc__chapter"><i></i> 09 / THE FINAL WORD</span>
     <span className="rc__top-line" aria-hidden="true"></span>
     <span className="rc__availability"><span className="rc__availability-dot"></span> OPEN TO NEW CONVERSATIONS</span>
   </div>
@@ -48,7 +48,7 @@ const year = new Date().getFullYear();
     <div className="rc__directory" data-contact-directory>
       <div className="rc__directory-head">
         <span>ALL LINES ARE OPEN</span>
-        <span className="rc__directory-count">05 CHANNELS ↗</span>
+        <span className="rc__directory-count">04 CHANNELS ↗</span>
       </div>
       <div className="rc__directory-title">
         <span className="rc__directory-kicker">THE DIRECT DIRECTORY</span>
