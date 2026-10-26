@@ -8,14 +8,11 @@ const root = path.dirname(fileURLToPath(import.meta.url))
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Pages: index.html (editorial homepage, src/rafi), v1.html (developer-noir version),
-  // v2.html (neo-brutalist version)
+  // Single page: index.html (homepage, src/rafi). Docs are served from public/NextGen-AI/.
   build: {
     rollupOptions: {
       input: {
         main: path.resolve(root, 'index.html'),
-        v1: path.resolve(root, 'v1.html'),
-        v2: path.resolve(root, 'v2.html'),
       },
     },
   },
