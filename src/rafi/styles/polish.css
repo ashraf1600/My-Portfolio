@@ -90,3 +90,29 @@
   .hero__bottom-folio,
   .hero__bottom-scroll { font-size: 11.5px !important; }
 }
+
+/* ---------- header: room for the NextGen AI docs link ---------- */
+@media (max-width: 1600px) {
+  .site-header__folio { display: none; }
+  .site-header__inner { grid-template-columns: 1fr auto; }
+}
+@media (min-width: 1001px) and (max-width: 1280px) {
+  .site-nav { gap: clamp(14px, 1.7vw, 28px) !important; }
+  .site-nav > a { letter-spacing: .1em; font-size: 11.5px !important; }
+  .site-nav .site-nav__contact { padding: 12px 14px !important; }
+}
+/* tablets: the full nav no longer fits, so use the menu button */
+@media (min-width: 681px) and (max-width: 1000px) {
+  .site-nav { display: none; }
+  .mobile-menu { display: block; justify-self: end; position: relative; }
+  .mobile-menu summary { display: flex; align-items: center; justify-content: flex-end; gap: 15px; cursor: pointer; min-width: 65px; min-height: 44px; list-style: none; font-size: 11.5px; letter-spacing: .2em; font-weight: 700; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu__glyph { display: flex; flex-direction: column; gap: 6px; width: 20px; }
+  .mobile-menu__glyph i { display: block; width: 20px; height: 1px; background: var(--cream); transition: transform .22s; }
+  .mobile-menu[open] .mobile-menu__glyph i:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .mobile-menu[open] .mobile-menu__glyph i:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+  .mobile-menu__panel { position: absolute; z-index: 50; right: -5px; top: 48px; width: 310px; background: #1a0c0d; border: 1px solid rgba(228,204,175,.35); padding: 20px; box-shadow: 0 20px 65px rgba(0,0,0,.68); display: grid; }
+  .mobile-menu__panel a { display: flex; justify-content: space-between; align-items: center; min-height: 49px; letter-spacing: .16em; font-size: 11.5px; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(228,204,175,.14); }
+  .mobile-menu__panel a:last-child { border-bottom: none; }
+  .mobile-menu__panel a span { font-size: 16px; color: var(--red); }
+}

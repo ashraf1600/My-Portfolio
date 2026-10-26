@@ -73,6 +73,10 @@ export default function Home() {
                 PROFILE <span aria-hidden="true">↗</span>
               </a>
 
+              <a href="/NextGen-AI/" title="NextGen AI: engineering notes on RAG, agents, MLOps, Docker and AWS">
+                NEXTGEN AI DOCS <span aria-hidden="true">↗</span>
+              </a>
+
               <a className="site-nav__contact" href="#contact">
                 LET'S CONNECT <span aria-hidden="true">↗</span>
               </a>
@@ -105,6 +109,10 @@ export default function Home() {
 
                 <a href="#beyond-title">
                   PROFILE <span aria-hidden="true">↗</span>
+                </a>
+
+                <a href="/NextGen-AI/">
+                  NEXTGEN AI DOCS <span aria-hidden="true">↗</span>
                 </a>
 
                 <a href="#contact">
