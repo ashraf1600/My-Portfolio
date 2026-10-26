@@ -26,3 +26,6 @@ dist-ssr
 *.aux
 *.out
 scratch/
+
+# Editor index
+.puku/
