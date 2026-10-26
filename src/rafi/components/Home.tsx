@@ -1,9 +1,6 @@
 import { cx, css } from "../utils/jsx";
 import BeyondTitle from "./BeyondTitle";
-import EngineeringUniverse from "./EngineeringUniverse";
-import SelectedProjects from "./SelectedProjects";
-import ResearchPublicationsShowcase from "./ResearchPublicationsShowcase";
-import ExperienceShowcase from "./ExperienceShowcase";
+import { CleanExperience, CleanProjects, CleanResearch, CleanSkills } from "./CleanSections";
 import AchievementsGallery from "./AchievementsGallery";
 import ClientProjects from "./ClientProjects";
 import ContactClosingChapter from "./ContactClosingChapter";
@@ -376,10 +373,10 @@ export default function Home() {
 
           {/* Remaining portfolio sections */}
           <BeyondTitle />
-          <EngineeringUniverse />
-          <SelectedProjects />
-          <ResearchPublicationsShowcase />
-          <ExperienceShowcase />
+          <CleanExperience />
+          <CleanProjects />
+          <CleanResearch />
+          <CleanSkills />
           <AchievementsGallery />
           <ClientProjects />
           <ContactClosingChapter />

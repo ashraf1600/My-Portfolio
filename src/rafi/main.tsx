@@ -1,9 +1,5 @@
 import "./styles/hero.css";
 import "./styles/beyond-title.css";
-import "./styles/engineering-universe.css";
-import "./styles/selected-projects.css";
-import "./styles/research-publications.css";
-import "./styles/experience.css";
 import "./styles/achievements.css";
 import "./styles/client-projects.css";
 import "./styles/contact-closing-chapter.css";
@@ -11,6 +7,7 @@ import "./styles/site-finish.css";
 import "./styles/hero-experience-refinement.css";
 // Must load last
 import "./styles/hero-performance-v4.css";
+import "./styles/clean-sections.css";
 import "./styles/polish.css";
 
 import { createRoot } from "react-dom/client";
@@ -34,10 +31,6 @@ createRoot(document.getElementById("root")!).render(<Home />);
 requestAnimationFrame(async () => {
   await import("./scripts/motion");
   await import("./scripts/site-finish");
-  await import("./scripts/engineering-universe");
-  await import("./scripts/selected-projects");
-  await import("./scripts/research-publications");
-  await import("./scripts/experience");
   await import("./scripts/achievements");
   await import("./scripts/client-projects");
   await import("./scripts/contact-closing-chapter");
