@@ -142,7 +142,7 @@
 .bt__introduction::before { content: ''; position: absolute; left: calc(-1 * clamp(20px,2.8vw,50px)); top: 0; bottom: 12%; width: 1px; background: linear-gradient(to bottom, rgba(228,204,175,.36), rgba(228,204,175,.03) 86%); }
 .bt__intro-top { display: flex; align-items: center; gap: 13px; }
 .bt__intro-mark { font: 22px/1 var(--serif); color: var(--bt-red); }
-.bt__intro-top .bt__overline { font-size: 10px; }
+.bt__intro-top .bt__overline { font-size: 11.5px; }
 .bt__intro-top .bt__overline span { color:var(--bt-red); padding-inline: 9px; }
 .bt__intro-title-wrap { margin-top: 16px; }
 .bt__intro-title { margin: 0; color:var(--bt-cream); font: 900 clamp(90px, 8vw, 155px)/.77 var(--display); letter-spacing: -.027em; }
@@ -163,7 +163,7 @@
 .bt__intro-footer-signature { display:flex; align-items:center; gap:13px; }
 .bt__intro-footer-signature > span:first-child { font: italic 43px/1 var(--serif); }
 .bt__intro-footer-signature > span:last-child { font:700 10px/1.4 var(--ui); letter-spacing: .11em; }
-.bt__intro-footer-signature small { display:block; margin-top:5px; font-size:8px; color:#bda89e; letter-spacing:.18em; }
+.bt__intro-footer-signature small { display:block; margin-top:5px; font-size:10.5px; color:#bda89e; letter-spacing:.18em; }
 .bt__intro-link { text-decoration:none; white-space: nowrap; font:700 10px/1.5 var(--ui); letter-spacing:.12em; border-bottom:1px solid rgba(228,204,175,.56); padding-bottom:9px; transition:color .25s,border-color .25s; }
 .bt__intro-link span { color:var(--bt-red); display:inline-block; margin-left:5px; font-size:15px; transition:transform .35s var(--bt-ease); }
 .bt__intro-link:hover { color:#fff0da; border-color:var(--bt-red); }
@@ -202,10 +202,10 @@
 @media (max-width: 680px) {
   .bt__wrap { width:calc(100% - 40px); }
   .bt__chapter { min-height:79px; gap:14px; }
-  .bt__chapter-index { font-size:8px; letter-spacing:.14em; }
+  .bt__chapter-index { font-size:10.5px; letter-spacing:.14em; }
   .bt__chapter-edition { display:none; }
   .bt__columns { padding-top:54px; padding-bottom:75px; gap:55px; }
-  .bt__overline { font-size:9px; letter-spacing:.17em; }
+  .bt__overline { font-size:11px; letter-spacing:.17em; }
   .bt__intro-title { font-size:clamp(75px,17vw,118px); }
   .bt__intro-title-wrap { margin-top:22px; }
   .bt__intro-copy { padding-top:29px; margin-top:27px; }
@@ -215,8 +215,8 @@
   .bt__belief-asterisk { left:16px; top:21px; font-size:68px; }
   .bt__belief p { font-size:20px; }
   .bt__intro-footer { align-items:flex-end; margin-top:33px; }
-  .bt__intro-footer-signature > span:last-child { font-size:9px; }
-  .bt__intro-link { font-size:9px; }
+  .bt__intro-footer-signature > span:last-child { font-size:11px; }
+  .bt__intro-link { font-size:11px; }
   .bt__education-heading { padding-bottom:23px; }
   .bt__timeline-title { font-size:clamp(54px,12vw,71px); }
   .bt__milestone-count { display:none; }

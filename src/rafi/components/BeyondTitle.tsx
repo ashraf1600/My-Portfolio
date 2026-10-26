@@ -121,7 +121,7 @@ export default function BeyondTitle() {
                   </span>
 
                   <span>
-                    MD. ASHRAFUL ISLAM
+                    ASHRAFUL ISLAM
                     <small>CHITTAGONG / DHAKA, BANGLADESH</small>
                   </span>
                 </div>

@@ -89,7 +89,7 @@ html.cp-dialog-open{overflow:hidden!important}
 .cp__frame-lights {display:flex;gap:5px}
 .cp__frame-lights i {display:block;width:6px;height:6px;border-radius:50%;background:#b85c51}
 .cp__frame-lights i:nth-child(2) {background:#75514e}.cp__frame-lights i:nth-child(3) {background:#705450}
-.cp__frame-status {color:#8e6c68;font-size:9px}
+.cp__frame-status {color:#8e6c68;font-size:11px}
 .cp__frame-image {position:relative;overflow:hidden;background:#050505;aspect-ratio:1919/969}
 .cp__frame-image img {display:block;width:100%;height:100%;object-fit:contain;transition:transform .7s cubic-bezier(.1,.7,.2,1)}
 .cp__visual-zone:hover .cp__frame-image img {transform:scale(1.023)}
@@ -181,7 +181,7 @@ html.cp-dialog-open{overflow:hidden!important}
 }
 @media(max-width:680px) {
   .cp__container {padding-inline:19px}
-  .cp__topline {padding-top:24px;font-size:9px;gap:12px;letter-spacing:.11em}
+  .cp__topline {padding-top:24px;font-size:11px;gap:12px;letter-spacing:.11em}
   .cp__topline>span:last-child {display:none}
   .cp__intro {grid-template-columns:1fr;gap:23px;padding:65px 0 35px}
   .cp__heading {font-size:clamp(60px,15.3vw,92px)}
@@ -194,18 +194,18 @@ html.cp-dialog-open{overflow:hidden!important}
   .cp__frame-header {height:30px}
   .cp__frame-status {display:none}
   .cp__visual-stamp {width:68px;height:68px;top:1%;right:-8px}
-  .cp__visual-stamp strong {font-size:16px}.cp__visual-stamp small {font-size:6px;margin-top:4px}
+  .cp__visual-stamp strong {font-size:16px}.cp__visual-stamp small {font-size:8.5px;margin-top:4px}
   .cp__visual-corner {display:none}
-  .cp__visual-under {bottom:0;font-size:7px;text-align:center;width:100%}
+  .cp__visual-under {bottom:0;font-size:9.5px;text-align:center;width:100%}
   .cp__story {padding-top:11px}
-  .cp__story-head {font-size:9px;margin-bottom:31px}
+  .cp__story-head {font-size:11px;margin-bottom:31px}
   .cp__client-name {font-size:clamp(99px,24vw,165px)}
   .cp__story-description {font-size:14px;line-height:1.75}
   .cp__story-rule {margin-top:32px}
-  .cp__story-foot {font-size:8px;gap:9px}
+  .cp__story-foot {font-size:10.5px;gap:9px}
   .cp__actions {flex-wrap:wrap}
   .cp__visit,.cp__inspect {min-width:100%;min-height:48px}
-  .cp__bridge {display:block;font-size:9px;line-height:2;margin-top:25px}
+  .cp__bridge {display:block;font-size:11px;line-height:2;margin-top:25px}
   .cp__bridge span {display:block}
   .cp__future {grid-template-columns:1fr;gap:8px;margin:100px 0 70px;padding-top:25px}
   .cp__future-intro {padding:50px 0 2px}
@@ -214,19 +214,19 @@ html.cp-dialog-open{overflow:hidden!important}
   .cp__future-vault {min-height:330px}
   .cp__vault-card {width:62%;left:5%;top:10%;min-height:240px;padding:22px}
   .cp__vault-card strong {font-size:44px}
-  .cp__closing {font-size:8px;letter-spacing:.11em}
+  .cp__closing {font-size:10.5px;letter-spacing:.11em}
   .cp__closing span:first-child {display:none}
   .cp__dialog-top {align-items:start}
   .cp__dialog h3 {font-size:34px}
   .cp__dialog h3 em {font-size:18px}
-  .cp__dialog-close {padding:11px 12px;font-size:10px}
+  .cp__dialog-close {padding:11px 12px;font-size:11.5px}
   .cp__dialog-close span {margin-left:5px}
-  .cp__dialog-bottom {flex-direction:column;align-items:start;font-size:8px}
+  .cp__dialog-bottom {flex-direction:column;align-items:start;font-size:10.5px}
 }
 @media(max-width:390px) {
   .cp__client-name {font-size:clamp(81px,23vw,105px)}
-  .cp__story-meta strong {font-size:10px}
-  .cp__story-meta span {font-size:8px}
+  .cp__story-meta strong {font-size:11.5px}
+  .cp__story-meta span {font-size:10.5px}
   .cp__future h3 {font-size:62px}
   .cp__future h3 em {font-size:42px}
   .cp__vault-card strong {font-size:34px}

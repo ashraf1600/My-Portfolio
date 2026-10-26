@@ -42,7 +42,7 @@
 .sa__experience {display:grid;grid-template-columns:minmax(0,1.01fr) minmax(0,.99fr);border:1px solid rgba(228,204,175,.25);background:linear-gradient(132deg,rgba(36,10,14,.76),rgba(17,8,10,.92) 48%,rgba(34,10,15,.84));box-shadow:0 30px 100px rgba(0,0,0,.23);}
 .sa__dial-column {min-width:0;border-right:1px solid var(--sa-rule);position:relative;overflow:hidden;}
 .sa__dial-caption,.sa__detail-heading {min-height:65px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px clamp(18px,2.2vw,34px);border-bottom:1px solid var(--sa-rule);font:700 10px/1.45 var(--ui,Arial,sans-serif);letter-spacing:.16em;color:#caaf9a;}
-.sa__dial-caption span:last-child {font-size:9px;color:#947b71;}
+.sa__dial-caption span:last-child {font-size:11px;color:#947b71;}
 .sa__dial {position:relative;width:min(calc(100% - 26px),610px);margin:clamp(16px,2vw,36px) auto;aspect-ratio:1;isolation:isolate;}
 .sa__dial::before {content:'';position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(84,19,25,.48),rgba(31,10,14,.30) 51%,rgba(24,9,11,.05) 72%);box-shadow:0 0 85px rgba(99,21,23,.16);}
 .sa__dial-rings {position:absolute;inset:0;pointer-events:none;}
@@ -133,7 +133,7 @@
  .sa__dial-column {border-right:0;border-bottom:1px solid var(--sa-rule);}
  .sa__dial {width:min(calc(100% - 26px),495px);margin:20px auto;}
  .sa__dial-center strong {font-size:clamp(19px,2.9vw,26px);}
- .sa__dial-center-caption {font-size:9px;}
+ .sa__dial-center-caption {font-size:11px;}
  .sa__panels {min-height:0;}
  .sa__panel {min-height:465px;}
  .sa__panel h3 {font-size:clamp(65px,8vw,100px);}
@@ -141,23 +141,23 @@
 }
 @media(max-width:650px) {
  .sa__shell {width:calc(100% - 38px);}
- .sa__chapter {min-height:67px;font-size:8px;letter-spacing:.11em;gap:12px;}
- .sa__chapter-label {font-size:8px;}
+ .sa__chapter {min-height:67px;font-size:10.5px;letter-spacing:.11em;gap:12px;}
+ .sa__chapter-label {font-size:10.5px;}
  .sa__intro {padding:46px 0 25px;}
- .sa__eyebrow {font-size:9px;letter-spacing:.14em;}
+ .sa__eyebrow {font-size:11px;letter-spacing:.14em;}
  .sa__headline {font-size:clamp(58px,16.3vw,103px);letter-spacing:-.025em;}
  .sa__intro-aside p {font-size:27px;}
  .sa__lead {padding:21px 0 29px;}
  .sa__lead p {font-size:18px;}
  .sa__lead>span {display:none;}
- .sa__dial-caption,.sa__detail-heading {min-height:53px;padding:12px 17px;font-size:8px;letter-spacing:.09em;}
+ .sa__dial-caption,.sa__detail-heading {min-height:53px;padding:12px 17px;font-size:10.5px;letter-spacing:.09em;}
  .sa__dial {width:min(calc(100% - 12px),450px);margin:18px auto;}
  .sa__dial-center {gap:6px;}
  .sa__dial-center-index {font-size:clamp(23px,6vw,36px);}
  .sa__dial-center strong {font-size:clamp(13px,4vw,25px);}
- .sa__dial-center-caption {font-size:clamp(6px,1.8vw,8px);letter-spacing:.06em;}
+ .sa__dial-center-caption {font-size:clamp(8.5px,1.8vw,8px);letter-spacing:.06em;}
  .sa__node {width:44px;height:44px;font-size:16px;}
- .sa__dial-footer {padding:12px 16px;font-size:8px;}
+ .sa__dial-footer {padding:12px 16px;font-size:10.5px;}
  .sa__panel {min-height:455px;padding:27px 23px 21px;}
  .sa__panel h3 {font-size:clamp(53px,12.2vw,78px);margin:28px 0 10px;}
  .sa__panel-subtitle {font-size:24px;}
@@ -175,7 +175,7 @@
  .sa__ledger-row ul {grid-column:2/-1;}
  .sa__project-tools {grid-template-columns:1fr;gap:13px;margin-top:75px;padding:24px 0;}
  .sa__project-tools ul {grid-column:auto;}
- .sa__outro {font-size:8px;letter-spacing:.08em;}
+ .sa__outro {font-size:10.5px;letter-spacing:.08em;}
 }
 @media(max-width:375px) {
  .sa__shell {width:calc(100% - 30px);}
@@ -186,7 +186,7 @@
  .sa__panel {padding:24px 17px 19px;}
  .sa__panel h3 {font-size:12vw;}
  .sa__selected-count {font-size:20px;}
- .sa__dial-caption span:last-child {font-size:7px;}
+ .sa__dial-caption span:last-child {font-size:9.5px;}
 }
 @media(prefers-reduced-motion:reduce) {
  .sa *, .sa *::before,.sa *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important;}
@@ -218,7 +218,7 @@
 .sa__autoplay-symbol { color: #b85e55; font-size: 14px; line-height: 1; }
 .sa__autoplay.is-playing .sa__autoplay-symbol { color: #e3a797; }
 @media (max-width: 650px) {
-  .sa__autoplay { padding: 8px 10px; font-size: 8px; letter-spacing: .08em; }
+  .sa__autoplay { padding: 8px 10px; font-size: 10.5px; letter-spacing: .08em; }
   .sa__controls { gap: 6px; }
   .sa__step { letter-spacing: .09em; }
 }

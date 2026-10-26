@@ -38,11 +38,11 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
 .site-logo { display: inline-flex; align-items: center; justify-self: start; gap: 14px; width: max-content; text-decoration: none; }
 .site-logo__symbol { font: 66px/.6 var(--serif); letter-spacing: -.14em; text-transform: lowercase; transform: translateY(-4px); }
 .site-logo__period { color: var(--red); }
-.site-logo__caption { font-weight: 600; font-size: 9px; line-height: 1.5; letter-spacing: .23em; }
+.site-logo__caption { font-weight: 600; font-size: 11px; line-height: 1.5; letter-spacing: .23em; }
 .site-header__folio { font: 500 9px/1.4 var(--ui); letter-spacing: .27em; color: var(--sand); margin: 0; white-space: nowrap; }
 .micro-star { display: inline-block; font-size: 13px; color: var(--red); padding: 0 12px; transform: translateY(1px); }
 .site-nav { display: flex; align-items: center; justify-content: flex-end; gap: clamp(16px, 2.3vw, 42px); }
-.site-nav > a { position: relative; font-size: 10px; font-weight: 600; white-space: nowrap; letter-spacing: .16em; text-decoration: none; padding: 12px 0; transition: color .25s ease; }
+.site-nav > a { position: relative; font-size: 11.5px; font-weight: 600; white-space: nowrap; letter-spacing: .16em; text-decoration: none; padding: 12px 0; transition: color .25s ease; }
 .site-nav > a:not(.site-nav__contact)::after { content: ''; height: 1px; width: 0; position: absolute; left: 0; bottom: 7px; background: var(--red); transition: width .4s cubic-bezier(.2,.8,.2,1); }
 .site-nav > a:hover { color: var(--red); }
 .site-nav > a:hover::after,.site-nav > a:focus-visible::after { width: 100%; }
@@ -123,7 +123,7 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
 .hero__side--left { left: clamp(20px, 3.7vw, 74px); }
 .hero__side--right { right: clamp(20px, 3.7vw, 74px); }
 .hero__side-line { height: 1px; width: 36px; background: var(--red); margin-bottom: 21px; }
-.eyebrow { color: var(--sand); font-size: 10px; font-weight: 600; line-height: 1.65; letter-spacing: .25em; }
+.eyebrow { color: var(--sand); font-size: 11.5px; font-weight: 600; line-height: 1.65; letter-spacing: .25em; }
 .hero__side-manifesto { margin: 24px 0 0; font-family: var(--display); font-weight: 800; font-size: clamp(33px, 4vw, 61px); line-height: .92; letter-spacing: .005em; }
 .hero__side-manifesto em { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 1.02em; }
 .accent-dot { color: var(--red); }
@@ -131,7 +131,7 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
 .hero__role-list { list-style: none; padding: 0; margin: 27px 0 0; display: grid; gap: 23px; }
 .hero__role-list li { display: grid; grid-template-columns: 30px 1fr; gap: 14px; font-size: 12px; line-height: 1.65; font-weight: 600; letter-spacing: .13em; }
 .hero__role-index { color: var(--red); font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.4; }
-.hero__role-list small { color: var(--taupe); display: block; font-size: 9px; font-weight: 600; letter-spacing: .16em; margin-top: 5px; }
+.hero__role-list small { color: var(--taupe); display: block; font-size: 11px; font-weight: 600; letter-spacing: .16em; margin-top: 5px; }
 
 /* FOREGROUND NAME — real HTML, layered above suit */
 .hero__nameplate { position: absolute; z-index: 8; top: 69%; left: 50%; width: min(58vw, 650px); transform: translateX(-50%); text-align: center; pointer-events: none; text-shadow: 0 3px 14px rgba(10,7,8,.65), 0 3px 38px rgba(10,7,8,.45); }
@@ -150,18 +150,18 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
 .hero__small-line { display: block; background: var(--red); width: 37px; height: 2px; margin-bottom: 17px; }
 .hero__lower-right .hero__small-line { margin-left: auto; }
 .hero__lower-left p,.hero__lower-right p { font: 400 20px/1.02 var(--serif); letter-spacing: .014em; margin: 0 0 12px; }
-.hero__lower-sub { color: var(--taupe); font-size: 9px; letter-spacing: .22em; font-weight: 600; }
+.hero__lower-sub { color: var(--taupe); font-size: 11px; letter-spacing: .22em; font-weight: 600; }
 .hero__lower-sub span { color: var(--red); }
 
 /* CHAPTER FOOTER */
 .hero__bottom-strip { position: relative; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 73px; border-top: 1px solid var(--fine-rule); padding: 0 clamp(20px,3.7vw,74px); gap: 14px; background: rgba(7,5,5,.25); z-index: 21; }
-.hero__bottom-folio,.hero__bottom-scroll { white-space: nowrap; font-size: 10px; font-weight: 600; letter-spacing: .19em; color: var(--taupe); }
+.hero__bottom-folio,.hero__bottom-scroll { white-space: nowrap; font-size: 11.5px; font-weight: 600; letter-spacing: .19em; color: var(--taupe); }
 .hero__bottom-folio { display: flex; align-items: center; gap: 11px; }
 .hero__bottom-folio i { display: inline-block; width: 8px; aspect-ratio: 1; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 4px rgba(184,94,85,.13); }
 .hero__bottom-slash { color: var(--red); }
 .hero__bottom-scroll { text-align: right; }
 .hero__scroll-motif { display: inline-block; color: var(--red); font-size: 19px; padding-right: 10px; animation: scrollHint 2.5s ease-in-out infinite; }
-.hero__cta { position: relative; display: flex; align-items: center; justify-content: center; gap: 21px; text-decoration: none; font-size: 10px; font-weight: 700; letter-spacing: .22em; padding: 17px 0 17px 18px; overflow: hidden; transition: color .25s; }
+.hero__cta { position: relative; display: flex; align-items: center; justify-content: center; gap: 21px; text-decoration: none; font-size: 11.5px; font-weight: 700; letter-spacing: .22em; padding: 17px 0 17px 18px; overflow: hidden; transition: color .25s; }
 .hero__cta::before { content: ''; position: absolute; left: 0; right: 0; bottom: 7px; background: var(--red); height: 1px; transform: scaleX(.28); transform-origin: right; transition: transform .45s cubic-bezier(.19,1,.22,1); }
 .hero__cta:hover::before,.hero__cta:focus-visible::before { transform: scaleX(1); transform-origin: left; }
 .hero__cta-arrow { color: var(--red); font-size: 19px; transition: transform .3s; }
@@ -185,7 +185,7 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
   .site-header { height: 82px; }
   .hero__stage { height:max(760px,calc(100svh - 149px)); min-height:760px; }
   .site-nav {gap:17px;}
-  .site-nav > a {font-size:9px;}
+  .site-nav > a {font-size:11px;}
   .site-nav .site-nav__contact {padding:13px 12px;}
   .hero__masthead {font-size:26.7vw;}
   .hero__masthead-depth {top:5%;}
@@ -193,15 +193,15 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
   .hero__portrait-depth {width: min(68vw,630px);bottom:4%;}
   .hero__side {top:48%;width:23%;}
   .hero__side-manifesto {font-size:clamp(30px,4.4vw,40px);}
-  .hero__role-list li {font-size:9px;letter-spacing:.08em;}
+  .hero__role-list li {font-size:11px;letter-spacing:.08em;}
   .hero__role-index {font-size:14px;}
-  .eyebrow {font-size:9px;letter-spacing:.14em;}
+  .eyebrow {font-size:11px;letter-spacing:.14em;}
   .hero__nameplate {top:72%;}
   .hero__surname {font-size:clamp(93px,13vw,135px);}
   .hero__given-name {font-size:18px;}
-  .hero__profession {letter-spacing:.32em;font-size:9px;}
+  .hero__profession {letter-spacing:.32em;font-size:11px;}
   .hero__lower-left p,.hero__lower-right p {font-size:16px;}
-  .hero__lower-sub {font-size:8px;}
+  .hero__lower-sub {font-size:10.5px;}
   .hero__bottom-scroll {display:none;}
   .hero__bottom-strip {grid-template-columns:1fr auto;}
 }
@@ -210,10 +210,10 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
   .site-header {height:72px;padding:0 20px;}
   .site-logo {gap:10px;}
   .site-logo__symbol {font-size:54px;}
-  .site-logo__caption {font-size:8px;letter-spacing:.15em;}
+  .site-logo__caption {font-size:10.5px;letter-spacing:.15em;}
   .site-nav {display:none;}
   .mobile-menu {display:block;justify-self:end; position:relative;}
-  .mobile-menu summary {display:flex; align-items:center; justify-content:flex-end; gap:15px; cursor:pointer; min-width:65px;min-height:44px;list-style:none;font-size:10px;letter-spacing:.2em;font-weight:700;}
+  .mobile-menu summary {display:flex; align-items:center; justify-content:flex-end; gap:15px; cursor:pointer; min-width:65px;min-height:44px;list-style:none;font-size:11.5px;letter-spacing:.2em;font-weight:700;}
   .mobile-menu summary::-webkit-details-marker {display:none;}
   .mobile-menu__glyph {display:flex; flex-direction:column;gap:6px;width:20px;}
   .mobile-menu__glyph i {display:block;width:20px;height:1px;background:var(--cream);transition:transform .22s;}
@@ -236,26 +236,26 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
   .hero__side--right {right:20px;text-align:right;}
   .hero__side--right .hero__side-line {margin-left:auto;}
   .hero__side-line {width:25px;margin-bottom:13px;}
-  .eyebrow {font-size:7px;letter-spacing:.13em;line-height:1.6;}
+  .eyebrow {font-size:9.5px;letter-spacing:.13em;line-height:1.6;}
   .hero__side-manifesto {font-size:clamp(20px,6.5vw,33px);line-height:.97;margin-top:11px;}
   .hero__side-mark {display:none;}
   .hero__role-list {margin-top:13px;gap:13px;}
-  .hero__role-list li {display:flex;flex-direction:column;gap:0;font-size:8px;line-height:1.45;letter-spacing:.07em;}
+  .hero__role-list li {display:flex;flex-direction:column;gap:0;font-size:10.5px;line-height:1.45;letter-spacing:.07em;}
   .hero__role-index {font-size:14px;}
-  .hero__role-list small {font-size:7px;letter-spacing:.05em;margin-top:2px;color:#c0aca0;}
+  .hero__role-list small {font-size:9.5px;letter-spacing:.05em;margin-top:2px;color:#c0aca0;}
   .hero__nameplate {top:68.9%;width:100%;}
   .hero__given-name {font-size:clamp(16px,4.3vw,20px);letter-spacing:.23em;}
   .hero__surname {font-size:clamp(90px,23vw,142px);}
   .hero__name-rule {margin:14px 0 11px;}
-  .hero__profession {font-size:8px;letter-spacing:.18em;}
+  .hero__profession {font-size:10.5px;letter-spacing:.18em;}
   .hero__lower-left,.hero__lower-right {display:none;}
   .hero__lower-left {left:20px;}.hero__lower-right {right:20px;}
   .hero__small-line {width:24px;margin-bottom:9px;}
   .hero__lower-left p,.hero__lower-right p {font-size:12px;}
-  .hero__lower-sub {font-size:7px;letter-spacing:.09em;}
+  .hero__lower-sub {font-size:9.5px;letter-spacing:.09em;}
   .hero__bottom-strip {height:65px;padding:0 20px;}
-  .hero__bottom-folio {font-size:8px;letter-spacing:.1em;}
-  .hero__cta {font-size:8px;gap:8px;letter-spacing:.08em;padding-left:4px;}
+  .hero__bottom-folio {font-size:10.5px;letter-spacing:.1em;}
+  .hero__cta {font-size:10.5px;gap:8px;letter-spacing:.08em;padding-left:4px;}
   .hero__cta-arrow {font-size:17px;}
 }
 @media (max-width: 400px) {
@@ -263,7 +263,7 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
  .hero__portrait-depth {width:112vw;bottom:13%;}
  .hero__side {top:37.5%;}
  .hero__side-manifesto {font-size:clamp(19px,6vw,24px);}
- .hero__role-list li {font-size:7.5px;}
+ .hero__role-list li {font-size:9.5px;}
  .hero__nameplate {top:68%;}
  .hero__given-name {font-size:16px;}
  .hero__surname {font-size:clamp(77px,24vw,98px);}
@@ -274,10 +274,10 @@ a:focus-visible,summary:focus-visible { outline: 2px solid var(--cream); outline
  .hero__portrait-depth {width:117vw;bottom:19%;}
  .hero__side--right {right:15px;}
  .hero__side--left {left:15px;}
- .hero__side--left .eyebrow,.hero__side--right .eyebrow {font-size:6.8px;}
+ .hero__side--left .eyebrow,.hero__side--right .eyebrow {font-size:8.5px;}
  .hero__surname {font-size:83px;}
  .hero__nameplate {top:64%;}
- .hero__profession {letter-spacing:.11em;font-size:7.5px;}
+ .hero__profession {letter-spacing:.11em;font-size:9.5px;}
  .hero__given-name {letter-spacing:.16em;}
  .hero__bottom-strip {padding:0 15px;}
 }

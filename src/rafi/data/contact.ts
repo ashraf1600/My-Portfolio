@@ -3,7 +3,7 @@ export const contact = {
   email: 'ashrafdcc1502@gmail.com',
   projectSubject: 'AI / Machine Learning / Software System Inquiry',
   location: 'CHITTAGONG / DHAKA, BANGLADESH',
-  displayName: 'MD. ASHRAFUL ISLAM',
+  displayName: 'ASHRAFUL ISLAM',
   socials: [
     {
       id: 'linkedin',

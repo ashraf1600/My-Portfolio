@@ -171,33 +171,33 @@
   .rc__signal-rings { left:30%; width:90vw; top:14%; }
 }
 @media (max-width: 560px) {
-  .rc__contact-top { flex-wrap:wrap; gap:9px 12px; padding-top:26px; font-size:9px; }
+  .rc__contact-top { flex-wrap:wrap; gap:9px 12px; padding-top:26px; font-size:11px; }
   .rc__top-line { min-width:15px; }
   .rc__availability { width:100%; }
   .rc__container { padding-top:54px; padding-bottom:58px; gap:58px; }
-  .rc__serial { font-size:9px; letter-spacing:.14em; gap:12px; }
-  .rc__heading-overline { font-size:10px; letter-spacing:.18em; }
+  .rc__serial { font-size:11px; letter-spacing:.14em; gap:12px; }
+  .rc__heading-overline { font-size:11.5px; letter-spacing:.18em; }
   .rc__heading-overline::before { width:25px; }
   .rc__heading { margin-top:17px; margin-bottom:25px; }
   .rc__heading-line { font-size:clamp(86px,23.6vw,137px); }
   .rc__heading-line--serif { font-size:clamp(69px,18.1vw,102px); }
   .rc__heading-line--last { font-size:clamp(116px,29.5vw,167px); }
   .rc__manifesto-bottom > p { font-size:15px; line-height:1.65; }
-  .rc__manifesto-foot { margin-top:42px; font-size:9px; letter-spacing:.12em; }
+  .rc__manifesto-foot { margin-top:42px; font-size:11px; letter-spacing:.12em; }
   .rc__directory { padding:19px 16px; }
-  .rc__directory-head { font-size:9px; letter-spacing:.13em; }
+  .rc__directory-head { font-size:11px; letter-spacing:.13em; }
   .rc__directory-title { padding:28px 0 23px; }
   .rc__directory-title h3 { font-size:50px; }
   .rc__directory-title h3 em { font-size:43px; }
   .rc__email-card { padding:18px 12px; align-items:flex-end; }
   .rc__email-link { align-items:flex-start; }
   .rc__email-link strong { font-size:clamp(14px,3.5vw,18px); }
-  .rc__channel-meta { gap:6px; font-size:8px; }
+  .rc__channel-meta { gap:6px; font-size:10.5px; }
   .rc__copy { flex-basis:44px; min-height:47px; }
   .rc__social { min-height:70px; }
   .rc__social-content strong { font-size:23px; }
-  .rc__social-content small { font-size:9px; }
-  .rc__directory-foot { font-size:8px; letter-spacing:.1em; }
+  .rc__social-content small { font-size:11px; }
+  .rc__directory-foot { font-size:10.5px; letter-spacing:.1em; }
   .rc__footer { min-height:0; padding-bottom:30px; align-items:flex-start; }
   .rc__to-top { width:100%; justify-content:space-between; margin-top:14px; }
   .rc__footer-center { padding-top:15px; border-top:1px solid var(--rc-line); }

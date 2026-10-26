@@ -33,7 +33,7 @@ export default function Home() {
             <a
               className="site-logo"
               href="#page-top"
-              aria-label="Md. Ashraful Islam, top of page"
+              aria-label="Ashraful Islam, top of page"
             >
               <img
                 className="site-logo__image"
@@ -45,7 +45,7 @@ export default function Home() {
               />
 
               <span className="site-logo__caption">
-                MD. ASHRAFUL<br />
+                ASHRAFUL<br />
                 ISLAM
               </span>
             </a>
@@ -59,6 +59,10 @@ export default function Home() {
             <nav className="site-nav" aria-label="Primary navigation">
               <a href="#selected-work">
                 SELECTED WORK <span aria-hidden="true">↗</span>
+              </a>
+
+              <a href="#experience">
+                EXPERIENCE <span aria-hidden="true">↗</span>
               </a>
 
               <a href="#research">
@@ -89,6 +93,10 @@ export default function Home() {
               >
                 <a href="#selected-work">
                   SELECTED WORK <span aria-hidden="true">↗</span>
+                </a>
+
+                <a href="#experience">
+                  EXPERIENCE <span aria-hidden="true">↗</span>
                 </a>
 
                 <a href="#research">
@@ -142,10 +150,10 @@ export default function Home() {
                 <div className="hero__masthead-mask">
                   <p className="hero__masthead" data-enter="headline">
                     <span className="hero__masthead-pre">
-                      AI &amp; MACHINE
+                      AI ENGINEERING
                     </span>
                     <span className="hero__masthead-core">
-                      LEARNING
+                      &amp; MLOPS
                     </span>
                   </p>
                 </div>
@@ -171,11 +179,13 @@ export default function Home() {
                       src="/assets/ashraf-hero-cutout.webp"
                       width="1122"
                       height="1402"
-                      alt="Md. Ashraful Islam - AI & ML Engineer"
+                      alt="Ashraful Islam, AI Engineer"
                       fetchPriority="high"
                       decoding="async"
                     />
                   </picture>
+                  <span className="hero__portrait-grade" aria-hidden="true"></span>
+                  <span className="hero__portrait-rim" aria-hidden="true"></span>
                 </div>
               </div>
 
@@ -251,11 +261,6 @@ export default function Home() {
                 data-enter="name"
               >
                 <p className="hero__given-name">
-                  MD.
-                  <span
-                    className="hero__given-separator"
-                    aria-hidden="true"
-                  >✳</span>
                   ASHRAFUL
                 </p>
 
@@ -271,9 +276,9 @@ export default function Home() {
                 </div>
 
                 <p className="hero__profession">
-                  AI &amp; ML ENGINEER
+                  AI ENGINEER
                   <span aria-hidden="true">/</span>
-                  LLMOPS &amp; FULL STACK
+                  MLOPS &amp; FULL STACK
                 </p>
               </div>
 
@@ -327,9 +332,7 @@ export default function Home() {
               <div className="hero__action-group">
                 <a
                   className="hero__cta"
-                  href="https://github.com/ashraf1600"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#selected-work"
                 >
                   <span>EXPLORE SELECTED WORK</span>
                   <span
@@ -352,7 +355,7 @@ export default function Home() {
               <a
                 className="hero__bottom-scroll"
                 href="#beyond-title"
-                aria-label="Scroll to Beyond the Title"
+                aria-label="Scroll to About"
               >
                 <span
                   className="hero__scroll-motif"
