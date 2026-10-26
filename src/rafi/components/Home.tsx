@@ -1,6 +1,6 @@
 import { cx, css } from "../utils/jsx";
 import BeyondTitle from "./BeyondTitle";
-import { CleanExperience, CleanProjects, CleanResearch, CleanSkills } from "./CleanSections";
+import { CleanEducation, CleanExperience, CleanProjects, CleanResearch, CleanSkills } from "./CleanSections";
 import AchievementsGallery from "./AchievementsGallery";
 import ClientProjects from "./ClientProjects";
 import ContactClosingChapter from "./ContactClosingChapter";
@@ -54,26 +54,24 @@ export default function Home() {
             </p>
 
             <nav className="site-nav" aria-label="Primary navigation">
-              <a href="#selected-work">
-                SELECTED WORK <span aria-hidden="true">↗</span>
-              </a>
-
-              <a href="#experience">
-                EXPERIENCE <span aria-hidden="true">↗</span>
-              </a>
-
-              <a href="#research">
-                RESEARCH <span aria-hidden="true">↗</span>
-              </a>
-
               <a href="#beyond-title">
                 PROFILE <span aria-hidden="true">↗</span>
               </a>
-
-              <a href="/NextGen-AI/" title="NextGen AI: engineering notes on RAG, agents, MLOps, Docker and AWS">
+              <a href="#skills">
+                SKILLS <span aria-hidden="true">↗</span>
+              </a>
+              <a href="#experience">
+                EXPERIENCE <span aria-hidden="true">↗</span>
+              </a>
+              <a href="#selected-work">
+                PROJECTS <span aria-hidden="true">↗</span>
+              </a>
+              <a href="#research">
+                RESEARCH <span aria-hidden="true">↗</span>
+              </a>
+              <a title="NextGen AI: engineering notes on RAG, agents, MLOps, Docker and AWS" href="/NextGen-AI/">
                 NEXTGEN AI DOCS <span aria-hidden="true">↗</span>
               </a>
-
               <a className="site-nav__contact" href="#contact">
                 LET'S CONNECT <span aria-hidden="true">↗</span>
               </a>
@@ -92,20 +90,28 @@ export default function Home() {
                 className="mobile-menu__panel"
                 aria-label="Mobile navigation"
               >
-                <a href="#selected-work">
-                  SELECTED WORK <span aria-hidden="true">↗</span>
+                <a href="#beyond-title">
+                  PROFILE <span aria-hidden="true">↗</span>
+                </a>
+
+                <a href="#skills">
+                  SKILLS <span aria-hidden="true">↗</span>
                 </a>
 
                 <a href="#experience">
                   EXPERIENCE <span aria-hidden="true">↗</span>
                 </a>
 
+                <a href="#selected-work">
+                  PROJECTS <span aria-hidden="true">↗</span>
+                </a>
+
                 <a href="#research">
                   RESEARCH <span aria-hidden="true">↗</span>
                 </a>
 
-                <a href="#beyond-title">
-                  PROFILE <span aria-hidden="true">↗</span>
+                <a href="#education">
+                  EDUCATION <span aria-hidden="true">↗</span>
                 </a>
 
                 <a href="/NextGen-AI/">
@@ -373,12 +379,13 @@ export default function Home() {
 
           {/* Remaining portfolio sections */}
           <BeyondTitle />
+          <CleanSkills />
           <CleanExperience />
           <CleanProjects />
           <CleanResearch />
-          <CleanSkills />
           <AchievementsGallery />
           <ClientProjects />
+          <CleanEducation />
           <ContactClosingChapter />
         </main>
       </div>

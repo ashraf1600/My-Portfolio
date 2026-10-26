@@ -1,4 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import flembeShop from "../../assets/work_logo/flembe/shop.webp";
+import flembeProduct from "../../assets/work_logo/flembe/product_detail.webp";
+import flembeContact from "../../assets/work_logo/flembe/contact.webp";
+import clinisyncBooking from "../../assets/work_logo/clinisync_booking.webp";
+import clinisyncTracker from "../../assets/work_logo/clinisync_tracker.webp";
 import { selectedProjects, type ProjectGroup } from "../data/selectedProjects";
 import { researchRecords } from "../data/research";
 import { experienceOrganizations } from "../data/experience";
@@ -49,7 +54,7 @@ export function CleanExperience() {
   return (
     <section className="cs" id="experience" aria-labelledby="cs-exp-title">
       <div className="cs__wrap">
-        <Folio index="03" label="EXPERIENCE" right="WHERE I'VE WORKED" />
+        <Folio index="04" label="EXPERIENCE" right="WHERE I'VE WORKED" />
         <Head id="cs-exp-title" eyebrow="INDUSTRY & RESEARCH" title="EXPERIENCE" em="so far." />
         <ol className="cs__jobs">
           {experienceOrganizations.map((org) => (
@@ -93,44 +98,148 @@ const groupLabel: Record<string, string> = {
   ai: "AI / ML", web: "Web platform", systems: "Backend system", client: "Client · live", experimental: "Experiment",
 };
 
-export function CleanProjects() {
-  const [filter, setFilter] = useState<ProjectGroup | "all">("all");
-  const list = filter === "all" ? selectedProjects : selectedProjects.filter((p) => p.group === filter);
+/* Flagship projects with several real screenshots each. */
+const spotlight: { slug: string; images: string[] }[] = [
+  { slug: "notecheck", images: ["/assets/achievements/notecheck-synesis.webp", "/assets/project-covers/notecheck.webp"] },
+  {
+    slug: "flembe-essence",
+    images: ["/assets/project-covers/flembe-essence.webp", flembeShop, flembeProduct, flembeContact, "/assets/client-projects/flembe-essence-showcase.webp"],
+  },
+  { slug: "clinisync", images: ["/assets/project-covers/clinisync.webp", clinisyncBooking, clinisyncTracker] },
+];
+const SLIDE_MS = 3200;
+
+function Spotlight() {
+  const items = spotlight
+    .map((s) => ({ ...s, project: selectedProjects.find((p) => p.slug === s.slug)! }))
+    .filter((s) => s.project);
+  const [pi, setPi] = useState(0);
+  const [ii, setIi] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reduced = useRef(false);
+
+  useEffect(() => {
+    reduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
+
+  useEffect(() => {
+    if (paused || reduced.current) return;
+    const t = window.setTimeout(() => {
+      if (ii + 1 < items[pi].images.length) setIi(ii + 1);
+      else { setPi((pi + 1) % items.length); setIi(0); }
+    }, SLIDE_MS);
+    return () => window.clearTimeout(t);
+  }, [pi, ii, paused, items]);
+
+  const go = (n: number) => { setPi((n + items.length) % items.length); setIi(0); };
+  const cur = items[pi];
+  const p = cur.project;
 
   return (
-    <section className="cs" id="selected-work" aria-labelledby="cs-work-title">
+    <div
+      className="cs-sp"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+      aria-roledescription="carousel"
+      aria-label="Flagship projects"
+    >
+      <div className="cs-sp__media">
+        {items.map((it, k) => (
+          <div key={it.slug} className={`cs-sp__set${k === pi ? " is-active" : ""}`} aria-hidden={k !== pi}>
+            <div className="cs-sp__track" style={{ transform: `translateX(-${(k === pi ? ii : 0) * 100}%)` }}>
+              {it.images.map((src) => (
+                <div key={src} className="cs-sp__slide">
+                  <img className="cs-sp__blur" src={src} alt="" loading="lazy" decoding="async" />
+                  <img className="cs-sp__img" src={src} alt="" loading="lazy" decoding="async" />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+        <div className="cs-sp__thumbs">
+          {cur.images.map((src, k) => (
+            <button key={src} type="button" className={k === ii ? "is-active" : ""} onClick={() => setIi(k)} aria-label={`Screenshot ${k + 1} of ${cur.images.length}`}>
+              <img src={src} alt="" loading="lazy" />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="cs-sp__body" aria-live="polite">
+        <p className="cs-sp__count">
+          <span>FLAGSHIP {String(pi + 1).padStart(2, "0")}</span> / {String(items.length).padStart(2, "0")}
+        </p>
+        <p className="cs__project-kind">{groupLabel[p.group]}</p>
+        <h3 className="cs-sp__title">{titleCase(p.title)}</h3>
+        <p className="cs-sp__kicker">{p.kicker}</p>
+        <p className="cs-sp__summary">{p.summary}</p>
+        {p.highlights && (
+          <ul className="cs-sp__points">
+            {p.highlights.slice(0, 3).map((h) => <li key={h}>{h}</li>)}
+          </ul>
+        )}
+        <Chips items={p.stack.slice(0, 6)} />
+        <div className="cs__project-links">
+          {p.liveUrl && <a className="cs__btn cs__btn--solid" href={p.liveUrl} {...ext}>Live demo <span aria-hidden="true">↗</span></a>}
+          <a className="cs__btn" href={p.repo} {...ext}>Source code <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div className="cs-sp__nav">
+          <button type="button" onClick={() => go(pi - 1)} aria-label="Previous project">←</button>
+          <div className="cs-sp__dots">
+            {items.map((it, k) => (
+              <button key={it.slug} type="button" className={k === pi ? "is-active" : ""} onClick={() => go(k)} aria-label={`Show ${titleCase(it.project.title)}`}>
+                <i style={k === pi && !paused ? { animationDuration: `${SLIDE_MS * it.images.length}ms` } : undefined} key={`${k}-${pi}`} />
+              </button>
+            ))}
+          </div>
+          <button type="button" onClick={() => go(pi + 1)} aria-label="Next project">→</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function CleanProjects() {
+  const [filter, setFilter] = useState<ProjectGroup | "all">("all");
+  const rest = selectedProjects.filter((p) => !spotlight.some((s) => s.slug === p.slug));
+  const list = filter === "all" ? rest : rest.filter((p) => p.group === filter);
+
+  return (
+    <section className="cs cs--work" id="selected-work" aria-labelledby="cs-work-title">
       <div className="cs__wrap">
-        <Folio index="04" label="SELECTED PROJECTS" right={`${selectedProjects.length} PROJECTS`} />
+        <Folio index="05" label="PROJECTS" right={`${selectedProjects.length} PROJECTS`} />
         <Head
           id="cs-work-title"
           eyebrow="WHAT I'VE BUILT"
           title="THE WORK"
           em="up close."
-          intro="Every cover is a screenshot of the real application. Each card links to the live app or the source code."
+          intro="Every image is a screenshot of the real application. Start with the three flagship builds, then browse the rest."
         />
 
-        <div className="cs__filters" role="group" aria-label="Filter projects">
-          {filters.map((f) => {
-            const count = f.key === "all" ? selectedProjects.length : selectedProjects.filter((p) => p.group === f.key).length;
-            return (
-              <button
-                key={f.key}
-                type="button"
-                className={filter === f.key ? "is-active" : ""}
-                aria-pressed={filter === f.key}
-                onClick={() => setFilter(f.key)}
-              >
-                {f.label} <small>{count}</small>
-              </button>
-            );
-          })}
+        <Spotlight />
+
+        <div className="cs-more__head">
+          <h3>More projects</h3>
+          <div className="cs__filters" role="group" aria-label="Filter projects">
+            {filters.filter((f) => f.key === "all" || rest.some((p) => p.group === f.key)).map((f) => {
+              const count = f.key === "all" ? rest.length : rest.filter((p) => p.group === f.key).length;
+              return (
+                <button key={f.key} type="button" className={filter === f.key ? "is-active" : ""} aria-pressed={filter === f.key} onClick={() => setFilter(f.key)}>
+                  {f.label} <small>{count}</small>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <ul className="cs__projects">
-          {list.map((p) => (
+          {list.map((p, i) => (
             <li key={p.slug} className="cs__card cs__project">
               <a className="cs__project-cover" href={p.liveUrl || p.repo} {...ext} tabIndex={-1} aria-hidden="true">
-                <img src={`/assets/project-covers/${p.slug}.webp`} alt="" loading="lazy" decoding="async" />
+                <img src={`/assets/project-covers/${p.slug}.webp`} alt="" loading="lazy" decoding="async" style={{ animationDelay: `${i * -2.3}s` }} />
               </a>
               <div className="cs__project-body">
                 <p className="cs__project-kind">{groupLabel[p.group]}</p>
@@ -177,7 +286,7 @@ export function CleanResearch() {
   return (
     <section className="cs" id="research" aria-labelledby="cs-research-title">
       <div className="cs__wrap">
-        <Folio index="05" label="RESEARCH" right={`${researchRecords.length} PAPERS · ${accepted} ACCEPTED`} />
+        <Folio index="06" label="RESEARCH" right={`${researchRecords.length} PAPERS · ${accepted} ACCEPTED`} />
         <Head
           id="cs-research-title"
           eyebrow="PUBLICATIONS"
@@ -213,21 +322,104 @@ export function CleanResearch() {
 
 /* -------------------------------- SKILLS -------------------------------- */
 
+/* Floating style: the old "skills in motion" stream returns as slow, drifting
+   rows of tool names behind glass cards that gently float. Everything stays
+   readable; motion stops for people who prefer reduced motion. */
+const allSkills = skillGroups.flatMap((g) => g.skills);
+const rows = [
+  allSkills.filter((_, i) => i % 3 === 0),
+  allSkills.filter((_, i) => i % 3 === 1),
+  allSkills.filter((_, i) => i % 3 === 2),
+];
+const coreStack = ["Python", "PyTorch", "LangGraph", "RAG", "FastAPI", "Docker", "PostgreSQL", "AWS", "React"];
+
 export function CleanSkills() {
   return (
-    <section className="cs" id="skills" aria-labelledby="cs-skills-title">
+    <section className="cs cs--skills" id="skills" aria-labelledby="cs-skills-title">
+      <div className="cs-sk__stream" aria-hidden="true">
+        {rows.map((row, i) => (
+          <div key={i} className={`cs-sk__row cs-sk__row--${i + 1}`}>
+            <div className="cs-sk__track">
+              {[0, 1].map((k) => (
+                <span key={k}>{row.map((t) => <b key={t}>{t}<i>✳</i></b>)}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
       <div className="cs__wrap">
-        <Folio index="06" label="SKILLS" right="TOOLS I WORK WITH" />
-        <Head id="cs-skills-title" eyebrow="ENGINEERING & EXPERTISE" title="SKILLS" em="& tools." />
+        <Folio index="03" label="SKILLS & TOOLS" right={`${allSkills.length} TOOLS · ${skillGroups.length} DISCIPLINES`} />
+        <Head
+          id="cs-skills-title"
+          eyebrow="WHAT I WORK WITH"
+          title="SKILLS"
+          em="& tools."
+          intro="The stack I use to take models from research notebooks to production: deep learning and computer vision, RAG and agents, and the backend and MLOps tooling around them."
+        />
+
+        <ul className="cs-sk__core" aria-label="Core stack">
+          {coreStack.map((t, i) => (
+            <li key={t} style={{ animationDelay: `${(i % 5) * -1.1}s` }}>{t}</li>
+          ))}
+        </ul>
+
         <div className="cs__skills">
-          {skillGroups.map((g) => (
-            <div key={g.id} className="cs__card cs__skill">
+          {skillGroups.map((g, i) => (
+            <div key={g.id} className="cs__card cs__skill" style={{ animationDelay: `${i * -1.3}s` }}>
+              <p className="cs__skill-index">{String(i + 1).padStart(2, "0")} / {g.short}</p>
               <h3>{g.title}</h3>
               <p>{g.subtitle}</p>
               <Chips items={g.skills} />
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------- EDUCATION ------------------------------ */
+
+const schools = [
+  {
+    period: "2023 — Now",
+    level: "University · Current",
+    school: "Chittagong University of Engineering & Technology (CUET)",
+    detail: "B.Sc. in Computer Science & Engineering · Final-year undergraduate researcher with 7 publications",
+  },
+  {
+    period: "2019 — 2021",
+    level: "Higher Secondary",
+    school: "Dhaka City College",
+    detail: "Higher Secondary Certificate (HSC), Science · GPA 5.00",
+  },
+  {
+    period: "2017 — 2019",
+    level: "Secondary",
+    school: "Cox's Bazar Government High School",
+    detail: "Secondary School Certificate (SSC), Science",
+  },
+];
+
+export function CleanEducation() {
+  return (
+    <section className="cs" id="education" aria-labelledby="cs-edu-title">
+      <div className="cs__wrap">
+        <Folio index="09" label="EDUCATION" right="THE PATH SO FAR" />
+        <Head id="cs-edu-title" eyebrow="ACADEMIC BACKGROUND" title="EDUCATION" em="the path." />
+        <ol className="cs__edu">
+          {schools.map((e, i) => (
+            <li key={e.school} className={`cs__card cs__edu-item${i === 0 ? " is-current" : ""}`}>
+              <span className="cs__edu-period">{e.period}</span>
+              <div>
+                <p className="cs__edu-level">{e.level}</p>
+                <h3>{e.school}</h3>
+                <p className="cs__edu-detail">{e.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
